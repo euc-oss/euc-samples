@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "bd5b6bfd-9e78-46c3-9985-9859806ebbc5",
+		"name": "Intelligence-ReturnToService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "223984"
+	},
+	"item": [
+		{
+			"name": "iOS Wipe with ReturnToService",
+			"id":"iOSWipewithReturnToService14589",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CommandXML\": \"<dict><key>DisallowProximitySetup</key><true/><key>RequestType</key><string>EraseDevice</string><key>ReturnToService</key>  <dict><key>Enabled</key><true/><key>WiFiProfileData</key><data>base64-encoded profile string</data></dict></dict>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+					"protocol": "https",
+					"host": [
+						"as1784",
+						"awmdm",
+						"com"
+					],
+					"path": [
+						"api",
+						"mdm",
+						"devices",
+						"commands"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "CustomMdmCommand"
+						},
+						{
+							"key": "searchby",
+							"value": "Udid"
+						},
+						{
+							"key": "id",
+							"value": "00008030-000675061E10402E"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "iOS Wipe with ReturnToService",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzOTRERjJFRkQ5QTQwQTY0MzcyNENFOTVBQUJDNEQ2RjdGOEFGM0YiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJZNVRmTHYyYVFLWkRja3pwV3F2RTF2ZjRyejgifQ.eyJuYmYiOjE3MDc4NDc3NjUsImV4cCI6MTcwNzg1MTY2NSwiaXNzIjoiaHR0cHM6Ly9uYS51ZW1hdXRoLnZtd3NlcnZpY2VzLmNvbSIsImF1ZCI6InVlbS1hcGkiLCJjbGllbnRfaWQiOiI1YWNmNWJmOGZhMzY0YjJhYTA3ZTRlZGJiYzVjZDNhOSIsInNjb3BlIjpbInVlbS1hcGkiXX0.ZJgBFuUKWyA1tGu0NxtoTbZkDd4ZqZT4dEdMSW71aKPNL_6ZaToA1sPNVWJdyvw_7YIWMchHkOXLATK1LwrWzTreH4CyjEUoF9udHDDnxalTLxDQKnPWVpXBUtcEshZOXlCvTpPPI33mdRJ8xa1QsZINsSQNa6xy-y9cHQ0gfcbq-IbN0PrF1_AF_oTj_ZyTWWyRKrnq7H-tMxBIUK0LGG3JTN5IxeVJykZhxsztEnCcOGr-5XGzuKp8Fv473SnTIIQQUz9Q-CgxlbgJclItoZVkeIxz8zIme2TwEuYVby9oBuJ4YKyUEAMai4fm53TuuhTnFL2T82ZFF2dEGUaNQg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CommandXML\": \r\n    \"<dict>\r\n    <key>DisallowProximitySetup</key>\r\n    <true/>\r\n    <key>RequestType</key>\r\n    <string>EraseDevice</string>\r\n    <key>ReturnToService</key>\r\n    <dict>\r\n        <key>Enabled</key>\r\n        <true/>\r\n        <key>WiFiProfileData</key>\r\n        <data>base64-encoded profile string</data>\r\n    </dict>\r\n</dict>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+							"protocol": "https",
+							"host": [
+								"as1784",
+								"awmdm",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"devices",
+								"commands"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "CustomMdmCommand"
+								},
+								{
+									"key": "searchby",
+									"value": "Udid"
+								},
+								{
+									"key": "id",
+									"value": "00008030-000675061E10402E"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Correlation-ID",
+							"value": "2a830b6b-c47a-43f6-914c-8f185801a22e"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "50000"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "49934"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1707936363"
+						},
+						{
+							"key": "X-Api-Version",
+							"value": "v1"
+						},
+						{
+							"key": "api-supported-versions",
+							"value": "1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Feb 2024 18:47:43 GMT"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
