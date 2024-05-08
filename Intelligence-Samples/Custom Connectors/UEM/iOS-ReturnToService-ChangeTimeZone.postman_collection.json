@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "bd5b6bfd-9e78-46c3-9985-9859806ebbc5",
+		"name": "UEM Custom Connector - with Actions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "223984"
+	},
+	"item": [
+		{
+			"name": "iOS Wipe with ReturnToService",
+			"id": "iOS Wipe with ReturnToService-234324234",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzOTRERjJFRkQ5QTQwQTY0MzcyNENFOTVBQUJDNEQ2RjdGOEFGM0YiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJZNVRmTHYyYVFLWkRja3pwV3F2RTF2ZjRyejgifQ.eyJuYmYiOjE3MTQ2NzM3MjcsImV4cCI6MTcxNDY3NzYyNywiaXNzIjoiaHR0cHM6Ly9uYS51ZW1hdXRoLnZtd3NlcnZpY2VzLmNvbSIsImF1ZCI6InVlbS1hcGkiLCJjbGllbnRfaWQiOiIyYTA4NjQ3N2ZjMDc0MDQ4YTJlOTc4MmU1OTJkNmY2ZCIsInNjb3BlIjpbInVlbS1hcGkiXX0.G0Ge0iOvQyv6pf6Q_J1GC6IIYZ6VT_rJuMg0SKE-jMdnyWbCd-8TjosL1wRWGByXaLjnF-Ltx3kQ3F5E-K8HeSJrd2BeqdaiVkvkwwPl9jHsQAPqV_cMKGuuD-lenv13lI0YjHHtQFgFSYNBCgbPOCAHfLXa6JtoWI5ITzWDJCqdbjcNlG7ZYTUb_Oy3A4nGW-BNT-MFLBY8rvuTxAoU7yLh154FgKLiFCrG-hj_ZaxjhfYp2gWuP5o3EhO56eeKJ3OOXgenNr2qpJpEaGIZ0n5GJT2JEYsVzGgI--Y8PF2hk9lIsS7uCKdGybYpoTIZvvDV9a74p99g7DX2rht9vw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CommandXML\": \"<dict><key>DisallowProximitySetup</key><true/><key>RequestType</key><string>EraseDevice</string><key>ReturnToService</key><dict><key>Enabled</key><true/><key>WiFiProfileData</key><data>base64-encodedprofilestring</data></dict></dict>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+					"protocol": "https",
+					"host": [
+						"as1784",
+						"awmdm",
+						"com"
+					],
+					"path": [
+						"api",
+						"mdm",
+						"devices",
+						"commands"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "CustomMdmCommand"
+						},
+						{
+							"key": "searchby",
+							"value": "Udid"
+						},
+						{
+							"key": "id",
+							"value": "00008030-000675061E10402E"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "iOS Wipe with ReturnToService",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzOTRERjJFRkQ5QTQwQTY0MzcyNENFOTVBQUJDNEQ2RjdGOEFGM0YiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJZNVRmTHYyYVFLWkRja3pwV3F2RTF2ZjRyejgifQ.eyJuYmYiOjE3MTQ2NzM3MjcsImV4cCI6MTcxNDY3NzYyNywiaXNzIjoiaHR0cHM6Ly9uYS51ZW1hdXRoLnZtd3NlcnZpY2VzLmNvbSIsImF1ZCI6InVlbS1hcGkiLCJjbGllbnRfaWQiOiIyYTA4NjQ3N2ZjMDc0MDQ4YTJlOTc4MmU1OTJkNmY2ZCIsInNjb3BlIjpbInVlbS1hcGkiXX0.G0Ge0iOvQyv6pf6Q_J1GC6IIYZ6VT_rJuMg0SKE-jMdnyWbCd-8TjosL1wRWGByXaLjnF-Ltx3kQ3F5E-K8HeSJrd2BeqdaiVkvkwwPl9jHsQAPqV_cMKGuuD-lenv13lI0YjHHtQFgFSYNBCgbPOCAHfLXa6JtoWI5ITzWDJCqdbjcNlG7ZYTUb_Oy3A4nGW-BNT-MFLBY8rvuTxAoU7yLh154FgKLiFCrG-hj_ZaxjhfYp2gWuP5o3EhO56eeKJ3OOXgenNr2qpJpEaGIZ0n5GJT2JEYsVzGgI--Y8PF2hk9lIsS7uCKdGybYpoTIZvvDV9a74p99g7DX2rht9vw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CommandXML\": \"<dict><key>DisallowProximitySetup</key><true/><key>RequestType</key><string>EraseDevice</string><key>ReturnToService</key><dict><key>Enabled</key><true/><key>WiFiProfileData</key><data>base64-encodedprofilestring</data></dict></dict>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+							"protocol": "https",
+							"host": [
+								"as1784",
+								"awmdm",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"devices",
+								"commands"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "CustomMdmCommand"
+								},
+								{
+									"key": "searchby",
+									"value": "Udid"
+								},
+								{
+									"key": "id",
+									"value": "00008030-000675061E10402E"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Correlation-ID",
+							"value": "679b0a31-d7d7-4634-82cd-41e067ed7e46"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "50000"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "49998"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1714760464"
+						},
+						{
+							"key": "X-Api-Version",
+							"value": "v1"
+						},
+						{
+							"key": "api-supported-versions",
+							"value": "1"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 May 2024 18:21:35 GMT"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "iOS TimeZone",
+			"id": "iOS TimeZone-234324234",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzOTRERjJFRkQ5QTQwQTY0MzcyNENFOTVBQUJDNEQ2RjdGOEFGM0YiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJZNVRmTHYyYVFLWkRja3pwV3F2RTF2ZjRyejgifQ.eyJuYmYiOjE3MTQ2NzM3MjcsImV4cCI6MTcxNDY3NzYyNywiaXNzIjoiaHR0cHM6Ly9uYS51ZW1hdXRoLnZtd3NlcnZpY2VzLmNvbSIsImF1ZCI6InVlbS1hcGkiLCJjbGllbnRfaWQiOiIyYTA4NjQ3N2ZjMDc0MDQ4YTJlOTc4MmU1OTJkNmY2ZCIsInNjb3BlIjpbInVlbS1hcGkiXX0.G0Ge0iOvQyv6pf6Q_J1GC6IIYZ6VT_rJuMg0SKE-jMdnyWbCd-8TjosL1wRWGByXaLjnF-Ltx3kQ3F5E-K8HeSJrd2BeqdaiVkvkwwPl9jHsQAPqV_cMKGuuD-lenv13lI0YjHHtQFgFSYNBCgbPOCAHfLXa6JtoWI5ITzWDJCqdbjcNlG7ZYTUb_Oy3A4nGW-BNT-MFLBY8rvuTxAoU7yLh154FgKLiFCrG-hj_ZaxjhfYp2gWuP5o3EhO56eeKJ3OOXgenNr2qpJpEaGIZ0n5GJT2JEYsVzGgI--Y8PF2hk9lIsS7uCKdGybYpoTIZvvDV9a74p99g7DX2rht9vw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CommandXML\": \"<dict><key>RequestType</key><string>Settings</string><key>Settings</key><array><dict><key>Item</key><string>TimeZone</string><key>TimeZone</key><string>America/New_York</string></dict></array></dict>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+					"protocol": "https",
+					"host": [
+						"as1784",
+						"awmdm",
+						"com"
+					],
+					"path": [
+						"api",
+						"mdm",
+						"devices",
+						"commands"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "CustomMdmCommand"
+						},
+						{
+							"key": "searchby",
+							"value": "Udid"
+						},
+						{
+							"key": "id",
+							"value": "00008030-000675061E10402E"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "iOS TimeZone",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CommandXML\": \"<dict><key>RequestType</key><string>Settings</string><key>Settings</key><array><dict><key>Item</key><string>TimeZone</string><key>TimeZone</key><string>America/New_York</string></dict></array></dict>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://as1784.awmdm.com/api/mdm/devices/commands?command=CustomMdmCommand&searchby=Udid&id=00008030-000675061E10402E",
+							"protocol": "https",
+							"host": [
+								"as1784",
+								"awmdm",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"devices",
+								"commands"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "CustomMdmCommand"
+								},
+								{
+									"key": "searchby",
+									"value": "Udid"
+								},
+								{
+									"key": "id",
+									"value": "00008030-000675061E10402E"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Correlation-ID",
+							"value": "26a9b23e-b1ed-4e64-a1fd-135a66ec41ce"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "50000"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "49999"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1714760464"
+						},
+						{
+							"key": "X-Api-Version",
+							"value": "v1"
+						},
+						{
+							"key": "api-supported-versions",
+							"value": "1"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 May 2024 18:21:03 GMT"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
