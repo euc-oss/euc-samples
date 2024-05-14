@@ -6,7 +6,7 @@
 # Developed by: Matt Zaske, Leon Letto and others
 # July 2022
 #
-# revision 13.1 (October 17, 2023)
+# revision 13.2 (May 14, 2024)
 #
 # macOS Updater Utility (mUU):
 # Designed to keep macOS devices on the desired OS version
@@ -1008,7 +1008,7 @@ log_to_screen false
 
 log_info "===== Launching macOS Updater Utility $(date)============"
 #log "===== Launching macOS Updater Utility ====="
-log_info "  --- Revision 13.1 ---  "
+log_info "  --- Revision 13.2 ---  "
 
 
 #Setup ManagePlist
@@ -1195,12 +1195,15 @@ if [[ "$downloadCheck" = "no" ]]; then
     if [[ "$updateType" = "major" ]]; then
         #download major OS Installer
         (set -m; /usr/sbin/softwareupdate --fetch-full-installer --full-installer-version "$desiredOS" &)
-        if [ "$desiredMajor" -ge "13" ]; then
+        dlStarted=$(/usr/libexec/PlistBuddy -c "Print :dlStarted" "$counterFile" 2>/dev/null || :)
+        if [[ "$desiredMajor" -ge "13" && $dlStarted = "" ]]; then
             response=$(dlInstaller "$updateType")
             if [[ "$response" == "no" ]]; then
                 log_info "HubCLI command to download installer failed, exiting....."
             else
                 log_info "major update installer download started via MDM command"
+                #set a flag so we only do this once
+                /usr/bin/defaults write "$counterFile" dlStarted -int 1
             fi
         else
             sudo launchctl kickstart -k system/com.apple.softwareupdated
