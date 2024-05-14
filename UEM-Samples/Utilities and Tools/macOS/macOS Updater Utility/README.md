@@ -139,3 +139,5 @@ Here is a breakdown of the keys and their meaning:
         -  macOS Sonoma logic
 - 2023-10-17: Revision 13.1:
     - Fix for displaying deadline date on user prompt screen
+- 2023-10-17: Revision 13.2:
+    - Fix for users not being prompted on major upgrades
