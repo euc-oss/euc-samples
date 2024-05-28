@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jsheets\\Documents\\Projects\\APIEventNotification\\APIEventNotification\\APIEventNotification.csproj": {}
+    "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jsheets\\Documents\\Projects\\APIEventNotification\\APIEventNotification\\APIEventNotification.csproj": {
+    "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jsheets\\Documents\\Projects\\APIEventNotification\\APIEventNotification\\APIEventNotification.csproj",
+        "projectUniqueName": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
         "projectName": "APIEventNotification",
-        "projectPath": "C:\\Users\\jsheets\\Documents\\Projects\\APIEventNotification\\APIEventNotification\\APIEventNotification.csproj",
-        "packagesPath": "C:\\Users\\jsheets\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jsheets\\Documents\\Projects\\APIEventNotification\\APIEventNotification\\obj\\",
+        "projectPath": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
+        "packagesPath": "/Users/helmlingp/.nuget/packages/",
+        "outputPath": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jsheets\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/helmlingp/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/sdk/7.0.311/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,10 +55,25 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -67,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.311/RuntimeIdentifierGraph.json"
         }
       }
     }
