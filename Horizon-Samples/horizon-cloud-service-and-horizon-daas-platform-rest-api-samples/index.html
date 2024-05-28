@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html class="vmware aui ltr" dir="ltr" lang="en-US">
+
+<head>
+    <title>Horizon Cloud Service and Horizon DaaS Platform REST API Samples - Samples - VMware {code}</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+    <meta name="google-site-verification" content="4sw39tzmJEJbKLHofv5AZrf3qetHBTFB_-FGLJzzP18" />
+    <script
+        type="text/javascript">if (typeof console === "undefined" || typeof console.log === "undefined") { console = {}; console.log = function (a) { return } } (function () { var a = new RegExp("^\\d+\\.\\d+\\.\\d+\\.\\d+$"); var b = a.test(window.location.hostname) || window.location.hostname.toLowerCase().indexOf("localhost") >= 0 || window.location.search.toLowerCase().indexOf("debug") >= 0; if (b == false) { var d = function (f, e) { console.log(f + " \n" + e); window._gaq = window._gaq || []; window._gaq.push(["_trackEvent", "Exception", f, e, 1, true]) }; window.addEventListener("error", function (g) { g.preventDefault(); g.stopPropagation(); var e = g.target && (g.target.src || g.target.currentSrc); if (e && g.target.src.indexOf("keepalive") >= 0) { return } var h = e ? ("Missing reference for '" + (g.target.src || g.target.currentSrc) + "'") : g.message; var f = "Where -> " + window.location.href + (e ? "" : (" | File -> " + g.filename + " | Line -> " + g.lineno)); d(h, f) }, true); var c = function () { if (window.jQuery) { $(document).ajaxError(function (j, h, g) { var i = "AjaxError: " + g.url + " -> Result " + j.result; var f = "Where -> " + window.location.href; d(i, f) }) } else { setTimeout(c, 250) } }; c(); window.onerror = function () { return true } } })();</script>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <meta
+        content="OVERVIEW This is a collection of REST API samples for Horizon Cloud Service with Hosted Infrastructure and Horizon DaaS Platform. The REST API samp..."
+        lang="en-US" name="description" />
+    <link href="/vmware-code-theme/images/favicon.ico" rel="Shortcut Icon" />
+    <link rel="icon" href="https://www.vmware.com/favicon.ico" type="image/x-icon" />
+    <link href="https://code.vmware.com/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+        rel="canonical" />
+    <link
+        href="https://code.vmware.com/zh/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+        hreflang="zh-CN" rel="alternate" />
+    <link href="https://code.vmware.com/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+        hreflang="x-default" rel="alternate" />
+    <link
+        href="https://code.vmware.com/en/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+        hreflang="en-US" rel="alternate" />
+    <link
+        href="https://code.vmware.com/ja/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+        hreflang="ja-JP" rel="alternate" />
+    <link class="lfr-css-file"
+        href="/vmware-code-theme/css/aui.css?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;minifierType=css&amp;languageId=en_US&amp;b=6210&amp;t=1700661463000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="/html/css/main.css?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;minifierType=css&amp;languageId=en_US&amp;b=6210&amp;t=1638317906000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="/notifications-portlet/notifications/css/main.css?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;minifierType=css&amp;languageId=en_US&amp;b=6210&amp;t=1710385981000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="/dp-portlet/css/searchResults.css?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;minifierType=css&amp;languageId=en_US&amp;b=6210&amp;t=1710385981000"
+        rel="stylesheet" type="text/css" />
+    <script
+        src="/html/js/barebone.jsp?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;colorSchemeId=01&amp;minifierType=js&amp;minifierBundleId=javascript.barebone.files&amp;languageId=en_US&amp;b=6210&amp;t=1710385982000"
+        type="text/javascript"></script>
+    <link class="lfr-css-file"
+        href="/vmware-code-theme/css/main.css?browserId=other&amp;themeId=vmwarecode_WAR_vmwarecodetheme&amp;minifierType=css&amp;languageId=en_US&amp;b=6210&amp;t=1700661463000"
+        rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #p_p_id_samplecode_WAR_dpportlet_ .portlet-borderless-container {
+            border-width: ;
+            border-style:
+        }
+    </style>
+    <link rel="stylesheet" href="/vmware-code-theme/css/head.css?CFFA0EC92976B78CE7B0A73F0DF63E2C" />
+    <link rel="stylesheet" href="/vmware-code-theme/css/dc/master.css?C266ABE82EF76D8640310C3EEE123519" />
+    <link rel="stylesheet" href="/vmware-code-theme/css/dc/evidon.css?C4D9D7DD0C6670636E24786127EB57A1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video-js.min.css" />
+    <script type="text/javascript">window.isIntranet = false; window.isProduction = true;</script>
+    <script src="/vmware-code-theme/js/head.js?E46030326D58503683EE7FBD8A3EC93F" type="text/javascript"></script>
+    <script
+        type="text/javascript">var _gaq = _gaq || []; _gaq.push(["_setAccount", "UA-35283736-4"]); _gaq.push(["_setCustomVar", 1, "isMember", false, 1]); _gaq.push(["_setCustomVar", 2, "site", undefined, 3]); _gaq.push(["_setCustomVar", 3, "company", "guest", 1]); _gaq.push(["_setCustomVar", 4, "locale", "en_US", 3]); _gaq.push(["_trackPageview"]); var isGaEnabled = false; $(document).ready(function () { var b = isProduction ? "prod" : "qa"; function d(g, i) { var l = document, k = "meta", j = l.getElementsByTagName(k)[0]; if (!j) { j = l.head } var h = l.createElement(k); h.name = g; h.content = i; j.parentNode.insertBefore(h, j) } d("microsites-utag", "https://tags.tiqcdn.com/utag/vmware/microsites-privacy/" + b + "/utag.js"); d("microsites-at-utag", "https://tags.tiqcdn.com/utag/vmware/microsites-at-privacy/" + b + "/utag.js"); d("onetrust-data-domain", "b9242434-9feb-47be-a894-3a9e658fdd50" + (window.isProduction ? "" : "-test")); function e(k) { var j = document, i = "script", h = j.getElementsByTagName(i)[j.getElementsByTagName("script").length - 1]; if (!h) { h = j.head } var g = j.createElement(i); g.type = "text/javascript"; g.src = k; h.parentNode.insertBefore(g, h) } var c = /alert|confirm|prompt|eval\((.*?)\)/; var a = /%3Cscript%3E|<script>/; if (!c.test(location.href) && !c.test(location.href)) { e("//www.vmware.com/files/templates/inc/utag_data.js") } e("https://tags.tiqcdn.com/utag/vmware/microsites-privacy/" + b + "/utag.sync.js"); e("https://api.demandbase.com/api/v2/ip.js?key=e1f90d4a92d08428627aa34a78d58cc3e866c84f&var=db") });</script>
+</head>
+
+<body class=" yui3-skin-sam controls-visible guest-site signed-out public-page site"> <noscript>
+        <div class="unsupported-msg"> For full functionality of this site it is necessary to enable JavaScript. Here are
+            the <a href="http://www.enable-javascript.com/" target="_blank" rel="noopener" class=" external">
+                instructions how to enable JavaScript in your web browser</a>. </div>
+        <div class="unsupported-mask"></div>
+    </noscript>
+    <div class="ie-unsupported-msg" style="display:none;">
+        <div class="unsupported-msg"> For full functionality of this site it is necessary to update your Internet
+            Explorer (at least IE9). </div>
+        <div class="unsupported-mask"></div>
+    </div>
+    <div id="container">
+        <style>
+            #container .container img {
+                margin: 0 !important;
+            }
+
+            #logocode {
+                position: absolute;
+                left: 11.50%;
+                right: 79.93%;
+                top: 23.55%;
+                bottom: 52.73%;
+                font-family: Metropolis;
+                font-size: 28px;
+                line-height: 36px;
+                color: #FFFFFF;
+                font-weight: 700;
+            }
+
+            #logotm {
+                position: absolute;
+                left: 15.50%;
+                right: 79.79%;
+                top: 7.64%;
+                bottom: 75%;
+                font-family: Metropolis;
+                font-size: 9px;
+                line-height: 36px;
+                color: #FFFFFF;
+                font-weight: 700;
+            }
+
+            #brand-logo-with-title-text {
+                display: flex;
+                align-items: flex-start;
+                gap: 0px;
+            }
+
+            .navbar.main-navbar .container .brand.code_logo {
+                display: inline-flex;
+            }
+
+            .navbar-inner .container {
+                background: #15193D;
+            }
+
+            .active-tab {
+                color: #FFFFFF !important;
+                font-weight: 500 !important;
+                background: rgba(255, 255, 255, 0.15);
+                opacity: unset !important;
+            }
+
+            #nav-header-link {
+                margin-top: 10px;
+                margin-left: calc(3vw + 250px);
+            }
+
+            #nav-header-items-right {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .shadow {
+                border: 1px solid;
+                box-shadow: 3px 2px;
+            }
+
+            .brand-text {
+                font-size: 24px;
+                line-height: 24px;
+                padding-top: 0px;
+                padding-left: 7px;
+            }
+
+            .login-tooltip {
+                position: relative;
+                display: inline-block;
+            }
+
+            .login-tooltip .login-tooltiptext {
+                visibility: hidden;
+                width: fit-content;
+                background-color: #324F61;
+                color: white;
+                text-align: left;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                padding: 5px;
+                position: absolute;
+                left: -11em;
+                top: 3.5em;
+                z-index: 1;
+            }
+
+            .login-tooltip:hover .login-tooltiptext {
+                visibility: visible;
+            }
+
+            @media (max-width: 1199px) {
+                .brand-text {
+                    padding-top: 0px;
+                }
+
+                .navbar .container .nav-collapse {
+                    max-width: 350px !important;
+                }
+
+                .navbar-inner .container {
+                    background: transparent !important;
+                }
+
+                .active-tab {
+                    color: #565656 !important;
+                    background: #D9E4EA !important;
+                    border-left: 2px solid #1D428A;
+                }
+
+                #nav-header-link {
+                    float: none;
+                    margin: 0 0 10px;
+                }
+
+                #nav-header-items-right {
+                    display: flex;
+                    align-items: start;
+                    flex-direction: column;
+                    border-top: 1px solid #CCCCCC;
+                }
+
+                #localeSelector {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 95%;
+                }
+
+                #localeSelector::after {
+                    content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='20' width='20' viewBox='0 0 20 20' fill='grey' class='icon-down'>' <path fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd' /></svg>");
+                }
+            }
+        </style>
+        <div class="navbar main-navbar" style="height: 60px;">
+            <div class="navbar-inner" style="background-color: #15193D!important;">
+                <div class="container">
+                    <div class="device-search"> <a href="javascript:void(0)" id="topnav-device-close-icon"><i
+                                class="fa fa-close" style="color: #fff;font-size:20px" aria-hidden="true"></i></a> <a
+                            href="javascript:void(0)" id="topnav-device-search-icon"><i class="fa fa-search"
+                                style="color: #fff;font-size:20px" aria-hidden="true"></i></a>
+                        <!-- <a href="javascript:void(0)" id="top-nav-device-main-icon"><i class="fa fa-bars"></i></a> -->
+                        <a href="javascript:void(0)" id="top-nav-device-main-icon" class="btn btn-navbar collapsed"
+                            data-toggle="collapse" data-target=".navbar-responsive-collapse"> <i class="fa fa-bars"
+                                style="color: #fff;font-size:20px"></i> </a> </div>
+                    <div> <a class="brand code_logo internal" href="/" rel="noopener" style="align-items: center;"
+                            target="_self">
+                            <div id="brand-logo-with-title-text"> <img
+                                    src="/vmware-code-theme/images/VMware-by-Broadcom-Logo_white.svg" alt="vmware logo"
+                                    style="height: 100%" />
+                                <div class="brand-text"> Developer </div>
+                            </div>
+                        </a> </div>
+                    <div class="nav-collapse navbar-responsive-collapse collapse" style="height: 0px;">
+                        <ul id="nav-header-link" class="nav">
+                            <li class="first" style="border-left: 1px solid rgba(255, 255, 255, 0.15)"> <a href="/home"
+                                    class=" internal" target="_self"> <span translate-text="dc.Home">Home</span> </a>
+                            </li>
+                            <li> <a href="/products" class=" internal" target="_self"> <span
+                                        translate-text="dc.Products">Products</span> </a> </li>
+                            <li> <a href="/apis" class=" internal" target="_self"> <span
+                                        translate-text="dc.APIs">APIs</span> </a> </li>
+                            <li> <a href="/powercli" class=" internal" target="_self"> <span
+                                        translate-text="dc.APIs">PowerCLI</span> </a> </li>
+                            <li> <a href="/samples" class=" internal" target="_self"> <span
+                                        translate-text="dc.Samples">Code Samples</span> </a> </li>
+                            <li> <a href="/sdks" class=" internal" target="_self"> <span
+                                        translate-text="dc.SDKs">SDKs</span> </a> </li>
+                            <li> <a href="/tools" class=" internal" target="_self"> <span
+                                        translate-text="dc.Tools">Tools</span> </a> </li>
+                            <li> <a href="/join" class=" internal" target="_self"> <span
+                                        translate-text="dc.JoinCode">Join {code}</span> </a> </li>
+                        </ul> <!-- <hr class="nav" style="border-top:1px solid #CCCCCC;"> -->
+                        <ul class="nav pull-right" id="nav-header-items-right">
+                            <li class="desktop-search"> <a href="javascript:void(0)" id="topnav-search-icon"
+                                    style="color: #FFFFFF;"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                <form method="get" action="/web/dp/search" id="topnav-search-form"
+                                    style="display:none;margin-left:12px;margin-top:3px;" class=" internal"> <input
+                                        class="topnav-search-input" placeholder="Search VMware Developer"
+                                        translate-text-placeholder="dc.SearchVMwareCode" type="text" required="required"
+                                        value="" name="keywords" /> <button type="submit" tabindex="-1"
+                                        class="topnav-search-btn"><i class="fa fa-search"></i></button> </form>
+                            </li>
+                            <li id="localeSelector" class="locale"
+                                style="border-right: 1px solid rgba(255,255,255, 0.15);"> <a href="#"> <i
+                                        class="fa fa-globe"></i>English </a> </li>
+                            <script
+                                type="text/javascript">$(document).ready(function () { $("#localeSelector").on("click", function () { var a = '<ul id="availableLocales">    <li>        <a data-locale="zh" href="javascript:void(0);">            中文        </a>    </li>    <li>        <a data-locale="en" href="javascript:void(0);">            English        </a>    </li>    <li>        <a data-locale="ja" href="javascript:void(0);">            日本語        </a>    </li></ul>'; alertEx({ header: "Choose a Language", message: a, ok: "Cancel" }); $("#availableLocales a").off("click").on("click", function () { var c = window.location.pathname; var b = (c[0] === "/" && (c[3] === "/" || c.length === 3)) ? c.substring(3) : c; window.location = "/" + $(this).data("locale") + b + window.location.search + window.location.hash }); return false }) });</script>
+                            <!-- <li class="divider-vertical" style="height: 15px;margin:10px 10px 0 0px"></li> -->
+                            <li class="login-tooltip"> <a
+                                    href="https://devportal-csp-authenticator.esp.vmware.com/api/auth/discovery?targetUri=/web/dp/horizon-login"
+                                    id="login-trigger" style="background: none;padding-left: 10px;font-weight: normal;"
+                                    target="_self" class=" internal"> Login </a> <span class="login-tooltiptext">Login
+                                    with your VMware account (Customer Connect credentials).</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="device-search">
+                <div class="device-topnav-search">
+                    <form method="get" action="/web/dp/search" style="width: 100%;" class=" internal"> <input
+                            class="topnav-search-input device" placeholder="Search" required="required" value=""
+                            name="keywords" type="text" /> <button type="submit" tabindex="-1"
+                            class="device-topnav-search-btn"><i class="fa fa-search"></i></button> </form>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <script
+            type="text/javascript">$(document).ready(function () { var b = function () { var e = "a[href='" + window.location.pathname.replace("/web", "").replace("/dp", "") + "']"; var d = document.querySelector("#nav-header-link"); var c = d.querySelector(e); if (c) { c.classList.add("active-tab") } }; var a = function () { const c = "#container > div.navbar.main-navbar > div.navbar-inner.user-nav > div > div.nav-collapse.navbar-responsive-collapse.collapse"; element = document.querySelector(c); if (element) { element.classList.toggle("shadow") } }; b(); $("#sign-out").click(function (f) { f.preventDefault(); const c = "https://devportal-csp-authenticator.esp.vmware.com/api/auth/logout"; const g = sessionStorage.getItem("idToken"); const d = sessionStorage.getItem("refreshToken"); const e = c.concat("/", d, "/", g, "?allowCspLogoutPage=true"); document.cookie = "REDIRECT=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; sessionStorage.clear(); window.open("/c/portal/logout", "_blank"); window.open(e, "_self") }); $(document).on("click", "#topnav-search-icon", function () { $("#topnav-search-icon").hide(); $("#topnav-search-form").show(); $(".topnav-search-input").focus() }); $(document).click(function () { $("#topnav-search-icon").show(); $("#topnav-search-form").hide() }); $(document).on("click", ".topnav-search-input, .topnav-search-btn, #topnav-search-icon", function (c) { c.stopPropagation() }); $("#container .main-navbar .navbar-inner").addClass("user-nav"); $("#container .nav_site").addClass("user-nav"); if ($("body").find(".portlet-dockbar").length > 0) { $(".vmware #container .navbar.main-navbar").addClass("nav-admin"); $(".vmware .nav_site.user-nav").addClass("nav-admin"); $(".vmware #container > #content").addClass("nav-admin") } $(document).on("click", "#topnav-device-search-icon", function () { $(".device-topnav-search").slideDown(); $("#topnav-device-close-icon").show(); $("#topnav-device-search-icon").hide(); $(".topnav-search-input.device").focus() }); $(document).on("click", "#topnav-device-close-icon", function () { $(".device-topnav-search").slideUp(); $("#topnav-device-close-icon").hide(); $("#topnav-device-search-icon").show() }); $(document).on("click", "#top-nav-device-main-icon", function () { $(".device-topnav-search").slideUp(); $("#topnav-device-close-icon").hide(); $("#topnav-device-search-icon").show(); a() }) });</script>
+        <div id="content" class="clearfix">
+            <div id="main-content" class="generic-100">
+                <style>
+                    @media (max-width : 979px) {
+                        .vmware .bread-crumb .social-links {
+                            padding: 0;
+                            padding-top: 15px;
+                        }
+                    }
+
+                    @media (min-width : 980px) {
+                        .vmware .bread-crumb .social-links {
+                            padding: 0;
+                            padding-top: 18px;
+                        }
+                    }
+
+                    @media (max-width : 767px) {
+                        .vmware .social-links {
+                            display: none !important;
+                        }
+
+                        .vmware .bread-crumb .breadcrumb-search-input {
+                            width: auto !important;
+                        }
+
+                        .vmware .bread-crumb .breadcrumb {
+                            padding-bottom: 0px !important;
+                            margin-bottom: 0px !important;
+                        }
+
+                        .vmware .internal-global-search {
+                            margin: 0px;
+                        }
+                    }
+
+                    .vmware .bread-crumb {
+                        background: #fff none repeat scroll 0 0;
+                        height: 54px;
+                        padding: 0;
+                        width: 100%;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb {
+                        background: transparent;
+                        padding: 20px 0 10px 0px;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb a.breadcrumb-item {
+                        color: #646565;
+                        font-size: 16px;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb a.active {
+                        color: #0D9AE5 !important;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb-search-input {
+                        border: 0px solid #646565;
+                        line-height: 48px;
+                        height: 48px;
+                        color: #64657A;
+                        font-size: 18px;
+                        padding: 0px 10px;
+                        margin-bottom: 0px;
+                        width: 80%;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb-search-input:focus {
+                        color: #64657A;
+                        box-shadow: none !important;
+                    }
+
+                    .vmware .internal-global-search.internal {
+                        padding-top: 5px;
+                    }
+
+                    .vmware .bread-crumb .bdivider {
+                        color: #646565;
+                        padding: 0 2px;
+                    }
+
+                    .vmware .bread-crumb .breadcrumb_search form {
+                        margin: 0px;
+                    }
+
+                    .vmware .bread-crumb .social-links .overlay-con {
+                        margin-left: 0px;
+                    }
+
+                    .vmware .bread-crumb [class*="span"] {
+                        margin-left: 0px;
+                    }
+
+                    .vmware .overridecollapse {
+                        display: none !important;
+                    }
+
+                    .vmware #main-content.top-level-page .bread-crumb {
+                        display: block;
+                    }
+
+                    .vmware .bread-crumb .social-links a {
+                        color: #CCCCCC;
+                    }
+
+                    .vmware .breadcrumb-search-icon {
+                        color: #CCCCCC;
+                        font-size: 20px;
+                        font-weight: normal;
+                        position: relative;
+                        top: 4px;
+                    }
+
+                    .vmware .icon-search.breadcrumb-search-icon {
+                        color: #cccccc;
+                        font-size: 18px;
+                    }
+
+                    .vmware .bread-crumb-layout {
+                        border-bottom: 1px solid #cbcbcb;
+                    }
+
+                    .vmware .bread-crumb .social-links {
+                        margin: 0 !important;
+                    }
+
+                    .vmware #global-alert-msg.artifact-style {
+                        text-align: left;
+                        background-color: rgb(254, 236, 181);
+                        border: 1px solid rgb(239, 214, 3);
+                        color: rgb(107, 105, 98);
+                        font-family: "proxima nova_light", Proxima Nova, verdana, sans serif;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 16px;
+                        margin-top: 0px;
+                    }
+
+                    .vmware #global-alert-msg.artifact-style a {
+                        color: rgb(13, 154, 229);
+                        font-family: "proxima nova_light", Proxima Nova, verdana, sans serif;
+                        font-size: 16px;
+                        font-weight: 400;
+                        margin: 0;
+                    }
+
+                    .vmware #global-alert-msg.artifact-style .cancel {
+                        display: none;
+                    }
+
+                    @media (max-width : 1140px) {
+                        .vmware #global-alert-msg.artifact-style {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
+                <div class="bread-crumb-layout">
+                    <div class="bread-crumb">
+                        <div class="span9">
+                            <nav class="breadcrumb"> <!-- <a class="breadcrumb-item" href="/home">VMware {code}</a> -->
+                                <span class="bdivider">&nbsp;/&nbsp;</span> <a class="breadcrumb-item internal"
+                                    href="/samples" target="_self"> Samples </a> <span
+                                    class="bdivider">&nbsp;/&nbsp;</span> <a class="breadcrumb-item active internal"
+                                    href="."
+                                    target="_self"> Samples </a> </nav>
+                        </div>
+                        <div class="span2" style="float:right; display: none;">
+                            <div class="social-links">
+                                <div class="overlay-con"> <a
+                                        href="https://www.twitter.com/home?status=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                        target="_blank" class=" external" rel="noopener"><i
+                                            class="fa fa-twitter"></i></a>
+                                    <div class="social-overlay"> <i class="fa fa-twitter"></i> <a
+                                            href="https://www.twitter.com/home?status=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                            target="_blank" class=" external" rel="noopener">Share</a> </div>
+                                </div>
+                                <div class="overlay-con"> <a
+                                        href="https://www.facebook.com/sharer/sharer.php?u=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                        target="_blank" class=" external" rel="noopener"><i
+                                            class="fa fa-facebook"></i></a>
+                                    <div class="social-overlay"> <i class="fa fa-facebook"></i> <a
+                                            href="https://www.facebook.com/sharer/sharer.php?u=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                            target="_blank" class=" external" rel="noopener">Share</a> </div>
+                                </div>
+                                <div class="overlay-con"> <a target="_blank"
+                                        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples&amp;title=Samples&amp;summary=&amp;source=developer.vmware.com"
+                                        class=" external" rel="noopener"><i class="fa fa-linkedin"></i></a>
+                                    <div class="social-overlay"> <i class="fa fa-linkedin"></i> <a target="_blank"
+                                            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples&amp;title=Samples&amp;summary=&amp;source=developer.vmware.com"
+                                            class=" external" rel="noopener">Share</a> </div>
+                                </div>
+                                <div class="overlay-con"> <a target="_blank"
+                                        href="https://plus.google.com/share?url=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                        class=" external" rel="noopener"><i class="fa fa-google-plus"></i></a>
+                                    <div class="social-overlay"> <i class="fa fa-google-plus"></i> <a target="_blank"
+                                            href="https://plus.google.com/share?url=/samples/7411/horizon-cloud-service-and-horizon-daas-platform-rest-api-samples"
+                                            class=" external" rel="noopener">Share</a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <script>$(function () { var d = window.location.pathname; if (d == "/web/code/events") { var b = getParameterByName("category"); var c = getParameterByName("id"); var a; if (b != null && b != "") { a = b.replace(/_/g, " ") } if (c != null && c != "") { a = $("#doc-title").text() } $(".breadcrumb-item.active").text(a); $(".breadcrumb-item.active").attr("href", window.location.href) } else { $(".breadcrumb-item.active").text(document.title.split("-")[0].trim()) } });</script>
+                <div class="row-fluid">
+                    <div class="portlet-column portlet-column-only span12" id="column-1">
+                        <div class="portlet-dropzone portlet-column-content portlet-column-content-first"
+                            id="layout-column_column-1">
+                            <div class="portlet-boundary portlet-boundary_samplecode_WAR_dpportlet_ portlet-static portlet-static-end portlet-borderless sample-code-portlet "
+                                id="p_p_id_samplecode_WAR_dpportlet_"> <span id="p_samplecode_WAR_dpportlet"></span>
+                                <div class="portlet-borderless-container" style="">
+                                    <div class="portlet-body"> <!-- If available, show the error message -->
+                                        <style type="text/css">
+                                            .tooltip-help {
+                                                display: none !important
+                                            }
+
+                                            .samples {
+                                                margin: 5px 10px
+                                            }
+
+                                            .samples .form-control,
+                                            .samples input[type="text"],
+                                            .samples textarea,
+                                            .samples .select2-container,
+                                            #select2-drop .select2-input {
+                                                width: 98%
+                                            }
+
+                                            .samples input[type="radio"] {
+                                                margin: 0
+                                            }
+
+                                            .samples .input-prepend {
+                                                width: 97%
+                                            }
+
+                                            .samples select {
+                                                width: 100%
+                                            }
+
+                                            .samples h2 {
+                                                color: #444;
+                                                font-size: 24px
+                                            }
+
+                                            .section {
+                                                margin: 0 10px 10px;
+                                                padding: 0 0 5px
+                                            }
+
+                                            .section .avatar img {
+                                                display: block;
+                                                padding-bottom: 5px
+                                            }
+
+                                            .section .avatar {
+                                                margin-bottom: 15px
+                                            }
+
+                                            .section.readme {
+                                                min-height: 200px
+                                            }
+
+                                            .section.readme h1 {
+                                                color: #464646;
+                                                font-size: 20px;
+                                                font-weight: bold
+                                            }
+
+                                            .section.readme h2 {
+                                                color: #666;
+                                                font-size: 18px;
+                                                font-weight: bold
+                                            }
+
+                                            .section.header h2 {
+                                                color: #0095d3
+                                            }
+
+                                            .section.metadata {
+                                                background-color: #f1f1f1;
+                                                border-bottom: medium none;
+                                                border-top: 4px solid #c2cd23;
+                                                margin-bottom: 20px;
+                                                padding: 5px 20px 20px
+                                            }
+
+                                            .section.metadata h3 {
+                                                text-transform: uppercase;
+                                                margin-bottom: 5px;
+                                                margin-top: 17px
+                                            }
+
+                                            .section.metadata p {
+                                                margin-bottom: 3px
+                                            }
+
+                                            .section.metadata .ago i {
+                                                color: #c3ce2b
+                                            }
+
+                                            .section.metadata .comments-count i,
+                                            .section.metadata .edit i {
+                                                color: #09c
+                                            }
+
+                                            .section.metadata .downloads-count i,
+                                            .section.metadata .state i {
+                                                color: #6db33f
+                                            }
+
+                                            .section.metadata .delete i {
+                                                color: #f66
+                                            }
+
+                                            .section.metadata form {
+                                                margin-bottom: 0
+                                            }
+
+                                            .section.metadata .tag {
+                                                background: 0;
+                                                border-radius: 0;
+                                                border-right: 1px solid #ccc;
+                                                font-size: 1em;
+                                                margin-left: 0;
+                                                margin-right: 3px;
+                                                padding-left: 0
+                                            }
+
+                                            .section.metadata .tag:last-of-type {
+                                                border: 0
+                                            }
+
+                                            .section.comments {
+                                                background-color: #f1f1f1;
+                                                padding: 1px 20px
+                                            }
+
+                                            .section.comments .comment {
+                                                border-bottom: 1px solid #ccc;
+                                                margin-bottom: 20px;
+                                                padding-bottom: 5px
+                                            }
+
+                                            .section.comments .comment .ago {
+                                                margin-left: 5px;
+                                                color: #888
+                                            }
+
+                                            .section.comments textarea {
+                                                resize: vertical
+                                            }
+
+                                            .section.file-browser-container {
+                                                background-color: #fff;
+                                                border: 1px solid #ddd;
+                                                padding-bottom: 5px;
+                                                padding-top: 5px;
+                                                cursor: pointer;
+                                                overflow: hidden;
+                                                margin: 0
+                                            }
+
+                                            .section.file-browser-container>ul {
+                                                margin-left: 5px
+                                            }
+
+                                            .section.file-browser-container ul {
+                                                list-style: none
+                                            }
+
+                                            .section.file-browser-container li input {
+                                                margin-right: 5px;
+                                                margin-top: -2px
+                                            }
+
+                                            .section.file-browser-container li.closed>ul {
+                                                display: none
+                                            }
+
+                                            .section.metadata h3 {
+                                                margin-bottom: 0;
+                                                margin-top: 10px
+                                            }
+
+                                            .section.metadata hr {
+                                                margin-bottom: 0;
+                                                margin-top: 10px;
+                                                border-color: #ccc
+                                            }
+
+                                            .flag-settings {
+                                                background-repeat: no-repeat;
+                                                padding-right: 10px
+                                            }
+
+                                            .flag-dialog-form span {
+                                                margin-left: 9px
+                                            }
+
+                                            .flag-dialog-form p {
+                                                padding-left: 25px !important
+                                            }
+
+                                            .flag-dialog-form input {
+                                                margin-left: 5px !important;
+                                                margin-bottom: 5px !important
+                                            }
+
+                                            .flag-dialog-form a {
+                                                margin-right: 10px !important
+                                            }
+                                        </style>
+                                        <style type="text/css">
+                                            .download {
+                                                text-align: center
+                                            }
+
+                                            .download .btn {
+                                                display: block;
+                                                font-size: 18px;
+                                                font-weight: 500;
+                                                height: 30px;
+                                                line-height: 30px;
+                                                text-align: center
+                                            }
+
+                                            .download p {
+                                                margin-top: 0;
+                                                margin-bottom: 5px
+                                            }
+
+                                            .browser {
+                                                margin-bottom: 15px
+                                            }
+
+                                            .path p {
+                                                margin-bottom: 5px
+                                            }
+
+                                            .section.metadata {
+                                                margin-top: 35px
+                                            }
+
+                                            .favoriteHeart a,
+                                            .watchEye a {
+                                                text-decoration: none !important
+                                            }
+
+                                            .tab-pane,
+                                            .divSplitter,
+                                            .file-content-container {
+                                                overflow: hidden
+                                            }
+
+                                            .file-browser-container {
+                                                overflow: auto;
+                                                white-space: nowrap
+                                            }
+
+                                            .file-browser-container li>div {
+                                                padding-left: 4px
+                                            }
+
+                                            .divSplitter {
+                                                height: 100%;
+                                                min-height: 800px;
+                                                border: 1px solid #ccc
+                                            }
+
+                                            .vsplitbar {
+                                                width: 4px;
+                                                background: #ccc
+                                            }
+
+                                            .vsplitbar:hover {
+                                                background: #87d7ff
+                                            }
+
+                                            .flag-report {
+                                                float: right;
+                                                margin-top: 10px
+                                            }
+
+                                            .section.comments .body {
+                                                word-wrap: break-word
+                                            }
+                                        </style>
+                                        <div class="samples">
+                                            <div class="row-fluid">
+                                                <div class="span9 main-section">
+                                                    <div id="tabs" class="fluid">
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="active"><a href="#"
+                                                                    class="menu-tab tab-description"
+                                                                    translate-text="dc.sx.Description">Description</a>
+                                                            </li>
+                                                            <li><a href="#details"
+                                                                    class="menu-tab tab-metadata visible-phone"
+                                                                    translate-text="dc.sx.Details">Details</a></li>
+                                                            <li id="browsecode"><a href="#code"
+                                                                    class="menu-tab tab-browse-code"
+                                                                    translate-text="dc.sx.BrowseCode">Browse Code</a>
+                                                            </li>
+                                                        </ul>
+                                                        <div>
+                                                            <div class="tab-pane active">
+                                                                <div class="section header row-fluid">
+                                                                    <div class="span9">
+                                                                        <h1>Horizon Cloud Service and Horizon DaaS
+                                                                            Platform REST API Samples</h1>
+                                                                    </div>
+                                                                    <div class="span3 download">
+                                                                        <p><a class="btn external"
+                                                                                href="https://vdc-download.vmware.com/sampleExchange/v1/downloads/7411"
+                                                                                translate-text="dc.sx.Download"
+                                                                                target="_blank"
+                                                                                rel="noopener">Download</a></p>
+                                                                        <p><a href="#" class="sample-embed hidden-phone"
+                                                                                translate-text="dc.sx.Embed">Embed</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="section readme">
+                                                                    <h3>OVERVIEW</h3>
+                                                                    <p>This is a collection of REST API samples for
+                                                                        Horizon Cloud Service with Hosted Infrastructure
+                                                                        and Horizon DaaS Platform. The REST API samples
+                                                                        are the most commonly used APIs and are intended
+                                                                        to serve as starting guides for developers. This
+                                                                        is not an exhaustive list of APIs available.
+                                                                        Note that the APIs are not supported for other
+                                                                        types of Horizon Cloud Service implementations,
+                                                                        such as Horizon Cloud Service on Microsoft
+                                                                        Azure.</p>
+                                                                    <h3>REQUIREMENTS</h3>
+                                                                    <p><a class="external"
+                                                                            href="https://www.getpostman.com/"
+                                                                            rel="noopener" target="_blank">Postman
+                                                                            Client</a></p>
+                                                                    <h3>INSTALLATION</h3>
+                                                                    <p>The POSTMAN collections in the included folders
+                                                                        were built using the Postman client. It is
+                                                                        highly recommended to install the latest version
+                                                                        of the Postman client.</p>
+                                                                    <p>Once installed, launch the Postman client and
+                                                                        select the Import button in the upper left
+                                                                        corner. This should open an Import dialog box,
+                                                                        shown below. You can either Drag and Drop the
+                                                                        json files or use the Choose files button to
+                                                                        open the Postman Collection JSON
+                                                                        files.&nbsp;Once imported, the collections
+                                                                        should show up in Postman in format similar to :
+                                                                    </p>
+                                                                    <p>You can explore the POSTMAN documentation here
+                                                                        for more details about how to
+                                                                        import&nbsp;POSTMAN data here :&nbsp;<a
+                                                                            class="external"
+                                                                            href="https://learning.getpostman.com/docs/postman/collections/data_formats/#importing-postman-data"
+                                                                            rel="noopener"
+                                                                            target="_blank">https://learning.getpostman.com/docs/postman/collections/data_formats/#importing-postman-data</a>.&nbsp;&nbsp;
+                                                                    </p>
+                                                                </div>
+                                                                <div class="section comments"> <br />
+                                                                    <div class="well"
+                                                                        translate-text="dc.sx.SigninToAddComments"> Sign
+                                                                        in to be able to add comments. </div>
+                                                                    <h3 id="comments"> <translate-text
+                                                                            key="dc.sx.CommentsSection"> Comments
+                                                                        </translate-text> <span class="badge">0</span>
+                                                                    </h3> <br />
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane hidden details-placeholder"> </div>
+                                                            <div class="tab-pane hidden">
+                                                                <div class="section header row-fluid">
+                                                                    <div class="span9">
+                                                                        <h2>Horizon Cloud Service and Horizon DaaS
+                                                                            Platform REST API Samples</h2>
+                                                                    </div>
+                                                                    <div class="span3 download">
+                                                                        <p><a class="btn external"
+                                                                                href="https://vdc-download.vmware.com/sampleExchange/v1/downloads/7411"
+                                                                                translate-text="dc.sx.Download"
+                                                                                target="_blank"
+                                                                                rel="noopener">Download</a></p>
+                                                                        <p><a href="https://github.com/matts19/rest-samples"
+                                                                                class="github-link external"
+                                                                                translate-text="dc.sx.ViewonGitHub_com"
+                                                                                target="_blank" rel="noopener">View on
+                                                                                GitHub.com</a></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="divSplitter">
+                                                                    <div class="file-browser-container section"></div>
+                                                                    <div class="file-content-container">
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span3 secondary-section">
+                                                    <div class="section metadata">
+                                                        <div class="avatar">
+                                                            <h3 translate-text="dc.sx.Contributor">Contributor</h3>
+                                                            <p> <img
+                                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAI3klEQVR42u2Y6VvT2hbG8+fee+6551xnBRQURAYFBEXEARllKjIWECiDIIqAyNgpbdokbZM2TZqm6QjetbPbQBk09X7xw32e9fCApFk/3rX22u+SOPr+/bcK4ujo+28VxOHR0W8V/wf6KVDm8Oi3iv8VKH14lMocQiTT2Uhl0D/+OlBae2nBkQGOI0ivJtO8EHfTsoOKUExUkNRYPBlPppPpTDrzK28m8N9XaEA+yOrnY8trvHmOHZ1i3k3Q78w0fLO6wXFCNKom4imEVeibiV+jUeKpA4c0/p4dNjND4/TgmHdg1Ns37Hk7RHWbqNFpmvSKkqKqiVShTEThNIeQZs8mTsyww5NIGNM4jWl633l6TFTngLuj390/4rGSAmJKphOFMBF6MxoMSEB6ZdBmRKPB8kB6RDNEdQ0imje9rtc9ZP8I5WbEiJJQUUsZfT+RSB8aj3gqI0QSM0v+fJpssboGKaBp73W19ZAvu5ytHXbLCs2F5Si0eSpjMAWRSB0aj1gibSWlsWkW05iOaTzdg6hY7X1A4wKa5+22p68OOvpsTm8oLMeURAoxGUhBwHMGQ01lJCW5uhHUaQYwzTtPtwnTuNveul51k8/b7UDz+PluQ8v2l22GF2VZTarGshBqMmMwQB4+rL5f9GeP1chxI3dpjXyK5tHTb7VNX0em7CwvidE4fNxIlgKAlETaF4yNTjN635ykgUYGGuib5tdWTFPT+PVB/cbrnh2PXxAiajSeMgSkJDIGQ46nvIHoRTRwrFo7HEDT2LpX14xoKuvWyx+uNbZuunxBXlRkNWUkCwClDUZETXr88kU0LzodzW15NPdqP5dVrdY1r5MMx4Wj8HEjWYhoIm0wEFBAhhmIztQZmmdttsYXe3XPtnWa0gert++vNLauOxkegCQ1aSQLIcfTBkOKJWlOHp6k4YSfpWnCNE1blfVZmuKK5Vt3P7T1bpFMkBMVMZY0kqUQIDXlF2LTC77OPBqnRrNf/2y7tmnrQf16eY7m5t2lG6UL43NWly/ESYaBImrKYIBCwYj6cZMDIEwDA7Dlje3Jy/2Glh2NZqO8dq20Kktz/c5CWdWHz9uUJxDmpRgAGclCwN9tPELRuN0jwp2FK6XTPHyyVdWwUfFwrazqU0mO5kqx5XnHxp7Lz4QiITluMAUhxlLGQ1CSgbBiWfGd1Obhk29VDZuIpvoTdPGtHE1xxcLsRwfJhvxhRYgmDKYoDCisQNXiVEAanqL0cVz9ePP+oy93az7dqfxYdO/D9dKFKyWWq7fn+sa2D6iAl5d4SYUPGgWCRwsKED8gKjaP0D/qrGvOHfKaz3cefCwuX75RtnT19vyN0vmBiZ1dknX7wyBPSE4Yfz8BVSg0+EjcF1acjDA2Qz5+Dr38pax6teT+SlH5UknFUmX9ytSSbc/td/kFVojycjwUTRh/ecFAoSgKxCQoFCd9tfqnFsmB8YMu027f2N7kon3Tyti8vDsgejiZ5pWgnIDnCwDCCQwGJ8V3HdLqZsjukblI3C/G6KAMuZ1syE4H7UzQyQrwozcoW90ijNChCe/CKs+E1GA0AWEkBYEf/WlAeodXnp73jUwxYBfBUNuoCAAFpJgvHGMFBaqDA6pp90aGzF59oPePevdJKSCpUD4Q7MeJCPTEzyIgxb8diOZZtO4ADXj7YTM9aWE39wWSkQEIknGosVSSja7vCmBR8GWnz/T+Uc+2XYAGh8f4H+Yi4Nc/ja0DtGNgGuSmzTQyjRPoK+Qen2Un532TFt/Ye2bITIMX6MmnAeMGg7RzwGWlUJtj+otyEVwk8YMISIkdB5hoZiSnDdAM5ez94Chax7AhwT4fULLa9B/TvNIuGXCSvcOkgwYmBSS/KCMRgKwXRtxKyeY5HxYGdkIsjCm3GeJ1LGuPMI1m9YEG/DWi6UE2Ei7glnbkJJtfH8x88MBwYgTFL6nw/rNJCb8Uvyi8wZhlmRvGKDlhTGNZVXSn9jaHAmsQFgbtHqhMmAZdeTDWwRE0tOy2duxtO/wUJ2pM5yT9EdCWTcQo2TUjJ8wxikaDUfCB6ujT9rK32AsgUwvm5MnLA3CScOs9eoositnidLJBGA1sOFYAECOo0Kd6jUAY7Kb1RQwLg1HwDgQob46FQU0Dprbp5T5cefXPkCOAewau4aYXW/sumONhOhT1ieppIJ8YPze27RKokt+8ntM1yjUvRkHCdOOdVS8TCIP3oS24g8FMwjUMnml+1WWneYqLMELsVF6CFdWzwYTV2eWA6cw5wt6+WxMGn2polywKWli1/n1jf9ZmfYKE2QNh8D4EbklbQr7ANQyeqb3v277bR/oFKBwDc/VE6vOBHEwUBozevL05YfJR9BlzXCMNBQuzA14AygTCgJOseJRFuaM5/5rGzxv7XjvDU3yEFvKBQIyz8dUqmsZz0+VMjZAqeudmUaB5rfpRAn/98KQwtWt3qz/hJQTcLXimsuqVuY8OcEsuuPhCysnU5wDRgvphnc9rl/zJi2qEVenCqmRPNW5evEGjjqlbr3i0BsKUViHvVqKh3CwD5794696iyby76/I5WIEKRumTQPDDqXBxytSCD87RmeniPkbpRP/bko+yjVGqtBpB896rRaZWQ1kpureMUa7dWbhaMg+W8lXP5jc7Y6ODbi7iFWJ6dsIrqKfCzkYHx7N39XHn4ktAU0WbLnkFwp1bnUPRaoQ8JLg2sJHaPrSIjHaJ5XKx5VLR7H9uzTa0fPqy69mnONIveUIxPTsAxU7FLimdRdEHHZxnuAGgbbEq4PBrNFW0AiGUMr1dymFR1FS5DapYLhfNXbo19/fNmb9vzPx1/f3dmsWVr04wlg4fqpqe/Ryg5Q3+1CF62e1s7cyhaINOO0HHbQsrBzpEUKCcKlkUTZVLRXMgCeb497XpP69O/+vK1JXimYU1+w7J2tmQm5ePgUCuUzE+x+qq6JdRc3a0nHOCsue5cgX1Sq5A17RNCKP8dQM43v95deqPK1N/XJ7852XzPy6Z4evE/N6Wg7Z6gy4uQgUVnP2/S0JXM/LPcFsAAAAASUVORK5CYII=" />
+                                                                <a href="/user/matts19" rel="nofollow" class=" internal"
+                                                                    target="_self">Billy Suh</a> </p>
+                                                        </div>
+                                                        <p title="Sign in to be able to mark as favorite."
+                                                            class="truncate"> <small class="favoriteHeart"> <a> <i
+                                                                        class="icon-star-empty"></i>&nbsp;&nbsp;<b>0</b>
+                                                                    <span
+                                                                        translate-text="dc.sx.Favorite">Favorite</span>
+                                                                </a> </small> </p>
+                                                        <p><small class="downloads-count"><i
+                                                                    class="icon-download-alt"></i>&nbsp;<b> 499 </b>
+                                                                <span translate-text="dc.sx.Downloads">Downloads</span>
+                                                            </small></p>
+                                                        <div class="row-fluid">
+                                                            <div class="span1 hidden-phone">
+                                                                <p><small class="ago"><i class="icon-time"></i></small>
+                                                                </p>
+                                                            </div>
+                                                            <div class="span11">
+                                                                <p><small class="ago">&nbsp; <span
+                                                                            translate-text="dc.sx.Created">Created</span>
+                                                                        <b>3 years</b> <span
+                                                                            translate-text="dc.ago">ago</span></small>
+                                                                </p>
+                                                                <p><small class="ago">&nbsp; <span
+                                                                            translate-text="dc.sx.Updated">Updated</span>
+                                                                        <b>3 years</b> <span
+                                                                            translate-text="dc.ago">ago</span></small>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <h3 translate-text="dc.sx.Platform">Platform</h3>
+                                                        <p><small><a class="detail-platform external"
+                                                                    href="https://www.vmware.com/products/horizon-cloud-virtual-desktops.html"
+                                                                    target="_blank" rel="noopener"> Horizon Cloud
+                                                                    Service </a></small></p>
+                                                        <h3 translate-text="dc.sx.Language">Language</h3>
+                                                        <p><small class="detail-language">POSTMAN Collection</small></p>
+                                                        <h3 translate-text="dc.sx.License">License</h3>
+                                                        <p> <small> <a class="detail-license external"
+                                                                    href="http://opensource.org/licenses/MIT"
+                                                                    target="_blank" rel="noopener">MIT</a> </small> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- If available, show the error message -->
+                                        <script
+                                            type="text/javascript">function showAddFlagDialog(d, a, c, b) { $.ajax({ type: "GET", url: d, dataType: "json", contentType: "application/json; charset=utf-8", cache: false, data: { service: "getFlagTypes", entityType: c, language: "en_US" }, success: function (f) { var g = "<div><div class='flag-dialog-form'>"; for (var e = 0; e < f.flagTypes.length; e++) { var j = f.flagTypes[e]; var h = (e === 0) ? "checked='checked'" : ""; g += "<label><input type='radio' name='flag-submission-type' value='" + j.id + "'" + h + "  /><span class='flag-type'>" + j.flagTypeL10n + "</span><p>" + j.explanation + "</p><label>" } g += "<span>Description (Optional)</span><textarea rows='4' cols='54' style='max-width: 350px'> </textarea></div></div>"; confirmEx({ header: "Flag Sample", message: g, yes: "Accept", no: "Cancel" }, function () { var i = $(this.d.container); var k = i.find("input[type='radio'][name='flag-submission-type']:checked").val(); var l = i.find("textarea").val(); markFlag(d, "add", a, c, k, l, b); return false }) }, error: function (e, g, f) { alertEx({ header: "Unable to Flag Item", message: f }) } }) } function showRemoveFlagDialog(d, a, c, b) { confirmEx({ header: "Remove Flag", message: "Are you sure that you want to remove this flag?", yes: "Yes", no: "No" }, function () { markFlag(d, "remove", a, c, null, null, b); return false }) } function markFlag(f, g, a, e, c, d, b) { $.ajax({ type: "GET", url: f, dataType: "json", contentType: "application/json; charset=utf-8", cache: false, data: { service: "markFlag", command: g, entityId: a, entityType: e, description: d, flagTypeId: c }, success: function (h) { $.modal.close(); alertEx({ header: "Submission Successful", message: "Thank you for your feedback.", ok: "OK" }); setTimeout(function () { $.modal.close() }, 5000); if (b) { $(".flag-settings").toggleClass("flag-empty-icon flag-full-icon") } }, error: function (h, j, i) { alertEx({ header: "Unable to" + (g === "add" ? "Flag" : "Unflag") + " Item", message: i }) } }) };</script>
+                                        <script
+                                            type="application/ld+json"> { "@context": "http://schema.org", "@type": "SoftwareSourceCode", "codeRepository": "https://github.com/matts19/rest-samples", "codeSampleType": "REPOSITORY", "programmingLanguage": "POSTMAN Collection", "runtimePlatform": "Horizon Cloud Service ", "targetProduct": { "@type": "SoftwareApplication", "downloadUrl": "https://vdc-download.vmware.com/sampleExchange/v1/downloads/7411", "applicationCategory": "Sample" } } </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-boundary portlet-boundary_1_WAR_kaleodesignerportlet_ portlet-static portlet-static-end kaleo-designer-portlet "
+                id="p_p_id_1_WAR_kaleodesignerportlet_"> <span id="p_1_WAR_kaleodesignerportlet"></span> </div>
+            <form action="#" id="hrefFm" method="post" name="hrefFm"> <span></span> </form>
+        </div>
+        <footer>
+            <div class="gradient-hr"></div>
+            <div class="ph-footer">
+                <div class="footer-container-row ph-footer-row">
+                    <div class="footer-container-col"> <span> <a href="https://www.vmware.com" title="VMware Logo"
+                                target="_blank" class="nav-link external" rel="noopener"> <img alt="VMware Logo"
+                                    width="134" height="20" aria-label="VMware Logo"
+                                    src="/vmware-code-theme/images/VMware-by-Broadcom-Logo_color.svg" /> </a> </span>
+                    </div>
+                    <div class="footer-container-col"> <span class="ph-footer-col1">Company</span>
+                        <div class="footer-link-text ph-footer-col1-row2"> <a
+                                href="https://www.vmware.com/download/eula.html" class="clickable external"
+                                target="_blank" rel="noopener"> End User Terms &amp; Conditions </a> <br /> <a
+                                href="https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/company/vmw-modern-slavery-california-statement-2021.pdf"
+                                class="clickable external" target="_blank" rel="noopener"> California Transparency Act
+                                Statement </a> <br /> <a href="https://www.vmware.com/vmwarestore/"
+                                translate-text="dc.header.Store" class="clickable external" target="_blank"
+                                rel="noopener">Store</a> </div>
+                    </div>
+                    <div class="footer-container-col"> <span class="ph-footer-col1">Support</span>
+                        <div class="footer-link-text ph-footer-col1-row2"> <a
+                                href="/support" class="clickable internal" target="_self"
+                                rel="noopener noreferrer">Developer Support Options</a> <br /> <a
+                                href="https://dcpn.my.site.com/login?so=00Di0000000biLz" class="clickable external"
+                                target="_blank" rel="noopener">DC Partner Network</a> <br /> <a
+                                href="https://docs.vmware.com/" class="clickable external" target="_blank"
+                                rel="noopener">Product Documentation</a> <br /> <a
+                                href="https://www.vmware.com/resources/compatibility/search.php"
+                                class="clickable external" target="_blank" rel="noopener">Compatibility Guide</a> <br />
+                            <a class="feedback-trigger clickable">Report an Issue on this Page</a> </div>
+                    </div>
+                    <div class="footer-container-col ph-placeholder"></div>
+                    <div class="footer-container-col"> <span class="ph-footer-col1">Resources</span>
+                        <div class="footer-link-text ph-footer-col1-row2"> <a href="https://go.techzone.vmware.com/"
+                                class="clickable external" target="_blank" rel="noopener">VMware Tech Zone</a> <br /> <a
+                                href="https://www.vmware.com/training" class="clickable external" target="_blank"
+                                rel="noopener">Training</a> <br /> <a href="https://pathfinder.vmware.com/"
+                                class="clickable external" target="_blank" rel="noopener">Pathfinder</a> <br /> </div>
+                    </div>
+                    <div class="footer-container-col"> <span class="ph-footer-col1">VMware Social</span>
+                        <table class="ph-footer-col4">
+                            <tbody>
+                                <tr>
+                                    <td> <a href="https://twitter.com/VMware" title="Twitter" target="_blank"
+                                            rel="noopener" class="ph-footer-col4-row2 external"> <i
+                                                class="fa fa-twitter"></i> <span class="social-media">Twitter</span>
+                                        </a> </td>
+                                    <td> <a href="https://www.facebook.com/vmware" title="Facebook" target="_blank"
+                                            rel="noopener" class="ph-footer-col4-row2 external"> <i
+                                                class="fa fa-facebook-square"></i> <span
+                                                class="social-media">Facebook</span> </a> </td>
+                                </tr>
+                                <tr>
+                                    <td> <a href="https://www.youtube.com/user/vmwaretv" title="YouTube" target="_blank"
+                                            rel="noopener" class="ph-footer-col4-row2 external"> <i
+                                                class="fa fa-youtube-square"></i> <span
+                                                class="social-media">YouTube</span> </a> </td>
+                                    <td> <a href="https://www.linkedin.com/company/vmware" title="LinkedIn"
+                                            target="_blank" rel="noopener" class="ph-footer-col4-row2 external"> <i
+                                                class="fa fa-linkedin-square"></i> <span
+                                                class="social-media">LinkedIn</span> </a> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="fb-links">
+                    <hr class="br-black mb-90 line-size" /> <span class="copy fb-links-text">Copyright &copy; 2005-2024
+                        Broadcom. All Rights Reserved. The term “Broadcom” refers to Broadcom Inc. and/or its
+                        subsidiaries.</span> <br /> <a href="https://www.vmware.com/help/legal.html"
+                        title="Terms of Use" target="_blank" rel="noopener" class="fb-links-text external">Terms of
+                        Use</a> <a href="https://www.vmware.com/help/privacy.html" title="Privacy" target="_blank"
+                        rel="noopener" class="fb-links-text external">Privacy</a> <a
+                        href="https://www.vmware.com/help/privacy/california-privacy-rights.html"
+                        title="Your California Privacy Rights" target="_blank" rel="noopener"
+                        class="fb-links-text external">Your California Privacy Rights</a> <a
+                        href="https://www.vmware.com/help/accessibility.html" title="Accessibility" target="_blank"
+                        rel="noopener" name="&amp;lpos=nav_footer : 8&amp;le=event52,event75"
+                        class="fb-links-text external">Accessibility</a> <a
+                        href="https://www.vmware.com/help/trademarks.html" title="Trademarks" target="_blank"
+                        class="fb-links-text external" rel="noopener">Trademarks</a> <a
+                        href=" https://www.vmware.com/help.html" title="Help" target="_blank" rel="noopener noreferrer"
+                        class="fb-links-text">Help</a> <a href="https://www.vmware.com/forms/customer_feedback.html"
+                        title="Feedback" class="fb-links-text clickable external" target="_blank"
+                        rel="noopener">Feedback</a> <a href="https://www.vmware.com/company/contact_sales.html"
+                        title="Contact Sales" target="_blank" rel="noopener" class="fb-links-text external">Contact
+                        Sales</a>
+                </div>
+            </div>
+        </footer>
+        <style>
+            .ph-footer .footer-container-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 1em;
+            }
+
+            .ph-footer .footer-container-col {
+                flex: 0 0 200px;
+                min-width: 200px;
+            }
+
+            .ph-footer {
+                background-color: #ffffff;
+                padding: 43px 26px 9px 3vw;
+            }
+
+            @media (min-width: 895px) {
+                .ph-footer .ph-placeholder {
+                    display: none;
+                }
+            }
+
+            .ph-footer .logo-container a {
+                padding: 0px 0px 0px 12px;
+            }
+
+            .ph-footer .logo-container a img {
+                margin-top: -10px;
+                margin-right: 26px;
+            }
+
+            .ph-footer table {
+                margin-top: 1em;
+                width: 100%;
+                border-spacing: 0px;
+            }
+
+            .ph-footer td {
+                width: 50%;
+            }
+
+            .ph-footer p {
+                font-size: 20px;
+                line-height: 18px;
+                color: #717074;
+                padding: 0px 0px 0px 12px;
+                margin-top: 29px;
+            }
+
+            .ph-footer .fb-links {
+                margin-top: -20px;
+                padding: 24px 0 15px 0px;
+                text-align: center;
+                background-color: white;
+            }
+
+            .ph-footer .fb-links .copy {
+                font-size: 14px;
+            }
+
+            .ph-footer span {
+                padding-right: 0px;
+            }
+
+            .ph-footer .fb-links a {
+                margin-left: 30px;
+                font-size: 14px;
+                padding-right: 20px;
+                color: #565656;
+            }
+
+            .ph-footer .fb-links a:hover {
+                color: #0094d2;
+            }
+
+            .ph-footer .fb-links-text {
+                /* P1 Body Text */
+                text-align: center;
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                /* identical to box height, or 171% */
+                /* Text */
+                color: #565656;
+            }
+
+            @media (max-width: 479px) {
+                .ph-footer .fb-links-text {
+                    display: block;
+                    text-align: left;
+                }
+
+                .ph-footer .fb-links a {
+                    margin-left: 0px;
+                }
+            }
+
+            .ph-footer .line-size {
+                /* margin-left: 110px; margin-right: 130px; margin-bottom: 15px; background-color: white; */
+                border-top: 1px solid #CCCCCC;
+            }
+
+            .ph-footer .ph-footer-row {
+                margin-top: -30px;
+                max-width: 1920px;
+            }
+
+            .ph-footer .ph-footer-col1 {
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 24px;
+            }
+
+            .ph-footer .ph-footer-col4 {
+                /* Link Text */
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                /* identical to box height, or 171% */
+                /* Indigo/Primary/Link/Normal */
+                color: #1d428a;
+            }
+
+            .ph-footer .ph-footer-col1-row2 {
+                margin-top: -100px;
+                /* P1 Body Text */
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                /* or 171% */
+                /* Text */
+                color: #565656;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                word-break: break-word;
+            }
+
+            .ph-footer .ph-footer-col4-row2 {
+                /* Link Text */
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                /* identical to box height, or 171% */
+                /* Indigo/Primary/Link/Normal */
+                color: #1d428a;
+            }
+
+            .ph-footer .footer-link-text {
+                font-family: "Metropolis";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                /* or 171% */
+                /* Text */
+                color: #565656;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                word-break: break-word;
+                margin-top: 10px;
+            }
+
+            .ph-footer .social-media {
+                margin-left: 1em;
+            }
+
+            .gradient-hr {
+                content: "";
+                background: url(/vmware-code-theme/images/nav-marker.png) #5a39a0;
+                background-repeat: no-repeat;
+                height: 8px;
+                width: 100%;
+                display: block;
+                position: relative;
+            }
+
+            .ph-footer a {
+                text-decoration: none;
+            }
+
+            .clickable,
+            .clickable:visited {
+                color: #565656;
+            }
+
+            .clickable:hover {
+                color: #0094d2;
+            }
+
+            .feedback {
+                padding-left: 0.5rem;
+            }
+        </style>
+        <script
+            type="text/javascript">var apiCatogry = decodeURI(location.pathname.replace("/", "")).replaceAll(" ", "").replaceAll(".", "-").replaceAll("/", "-"); $("html.vmware").addClass("feedback-" + apiCatogry); (function (h, g, l, k, j, i) { window[k] = window[k] || {}; window[k]._q = window[k]._q || [];["identify", "page", "track", "metadata", "locale", "theme"].forEach(function (a) { window[k][a] = function () { var b = Array.prototype.slice.call(arguments); b.unshift(a); window[k]._q.push(b) } }); window[k]._url = l; window[k].init = window[k].init || function (c, b, a) { window[k]._clientId = c; window[k]._clientName = b; window[k]._configs = a || {}; j = h.createElement(g); j.async = 1; j.src = l + "?client_id=" + c + "&esp_object=" + k; i = h.getElementsByTagName(g)[0]; i.parentNode.insertBefore(j, i) } })(document, "script", "https://feedback.esp.vmware.com/assets/ipf/esp.js", "esp"); esp.init("esp-prod-133-jxoiz", "VMware Developer"); esp.identify("Guest");</script>
+    </div>
+    <div class="embeddedPortlets" style="display:none">
+        <div class="trackingPortlet">
+            <div class="portlet-boundary portlet-boundary_tracker_WAR_dpportlet_ portlet-static portlet-static-end portlet-borderless tracker-portlet "
+                id="p_p_id_tracker_WAR_dpportlet_"> <span id="p_tracker_WAR_dpportlet"></span>
+                <div class="portlet-borderless-container" style="">
+                    <div class="portlet-body">
+                        <script
+                            type="text/javascript">$(window).load(function () { DP.Tracking.initTrackingPortlet("/web/dp/samples?p_p_id=tracker_WAR_dpportlet&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_tracker_WAR_dpportlet_id=7411") });</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        #global-alert-msg .cancel {
+            cursor: pointer;
+            color: #fff;
+            float: right;
+            left: 4%;
+            position: relative
+        }
+
+        #global-alert-msg {
+            background-color: #387c2c;
+            color: #fff;
+            border: 1px solid #387c2c;
+            font-size: 18px;
+            padding: 16px 5% !important;
+            top: 0;
+            z-index: 1000 !important;
+            height: 20px;
+            margin-top: 42px
+        }
+
+        #global-alert-msg a {
+            color: #fff;
+            font-weight: bold;
+            margin-left: 50px
+        }
+    </style>
+    <script src="/vmware-code-theme/js/body.js?D8E42E349282E2D0D95E1BA5CC02D888" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js" type="text/javascript"></script>
+    <script
+        type="text/javascript">var analyticsLoaded = false; if (isGaEnabled || /Selenium|LoadPass|PhantomJS|Uptime/.test(navigator.userAgent)) { if (_gaq.length) { for (var i = 0; i < _gaq.length; i++) { console.log(_gaq[i]) } } _gaq.push = function () { console.log(arguments) } } else { if (!analyticsLoaded) { if (document.cookie.indexOf("OptanonConsent") > -1 && document.cookie.indexOf("groups=") > -1) { if (decodeURIComponent(document.cookie).indexOf("C0002:1") > -1) { (function () { var d = document.createElement("script"); d.type = "text/javascript"; d.async = true; d.src = "https://www.googletagmanager.com/gtag/js?id=G-LZ5W0Z51BZ"; var b = document.getElementsByTagName("script")[0]; b.parentNode.insertBefore(d, b); var a = document.createElement("script"); a.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date());gtag('config', 'G-LZ5W0Z51BZ');"; var c = document.getElementsByTagName("script")[0]; c.parentNode.insertBefore(a, c.nextSibling) })(); analyticsLoaded = true } } else { waitForConsentCookie() } var waitForConsent; function waitForConsentCookie() { if (document.cookie.indexOf("OptanonConsent") > -1 && document.cookie.indexOf("groups=") > -1) { clearTimeout(waitForConsent); if (decodeURIComponent(document.cookie).indexOf("C0002:1") > -1) { (function () { var d = document.createElement("script"); d.type = "text/javascript"; d.async = true; d.src = "http://www.googletagmanager.com/gtag/js?id=G-LZ5W0Z51BZ"; var b = document.getElementsByTagName("script")[0]; b.parentNode.insertBefore(d, b); var a = document.createElement("script"); a.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date());gtag('config', 'G-LZ5W0Z51BZ');"; var c = document.getElementsByTagName("script")[0]; c.parentNode.insertBefore(a, c.nextSibling) })(); analyticsLoaded = true } } else { waitForConsent = setTimeout(waitForConsentCookie, 250) } } } };</script>
+    <button style="display:none;" id="ot-sdk-btn" class="ot-sdk-show-settings"> Cookie Settings</button>
+    <script
+        src="/notifications-portlet/notifications/js/main.js?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=6210&amp;t=1710385981000"
+        type="text/javascript"></script>
+   <script
+        src="/vmware-code-theme/js/main.js?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=6210&amp;t=1700661463000"
+        type="text/javascript"></script>
+    <script
+        type="text/javascript">if ($("#global-alert-msg").length > 0 && window.screen.width <= 1024 && window.screen.width > 768) { $(".nav_site").css("margin-top", "126px") } if ($("#global-alert-msg").length > 0) { var currentParhUrl = window.location.pathname; $("#global-alert-msg a.visit-ph").attr("href", $("#global-alert-msg a.visit-ph").attr("href") + "?rel=" + currentParhUrl) } $(".bread-crumb-layout.affix").css({ top: $("#global-alert-msg").outerHeight(true) + "px" });</script>
+    <!--[if lte IE 9]> <script type="text/javascript">try{document.domain="vmware.com"}catch(e){};</script> <![endif]-->
+    <script type="text/javascript" src="/NVaY5QQaZ/8/o/ZO6sJBAKmt8sSd40/J7hEXSmNQmuJ/WDcTJw/LUMhe2/t7LD0"></script>
+</body>
+
+</html>
