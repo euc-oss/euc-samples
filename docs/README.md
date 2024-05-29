@@ -1,5 +1,0 @@
-# ws1-sdk-uem-ios
-
-The Workspace ONE SDK (formerly known as AirWatch SDK) code library for Apple iOS devices can be used to enable additional app config and security capabilities that may not yet be available natively as part of the AppConfig Community. Certain use cases such as granular analytics can be provided through a deeper integration with the SDK. The Workspace ONE SDK for iOS is also a good choice in deployment scenarios where a MDM profile installation on the device is not possible.
-
-This repo is structured to feed into the developer.omnissa.com Developer Portal via the [](https://github.com/euc-dev/developer.omnissa.github.io) repo using MkDocs published by GitHub Pages. All documentation should be created in MarkDown format with the capabilities of MkDocs and the Material theme in mind under the /docs/sdks/ws1-sdk-uem-ios folder. This folder will be integrated into the [developer portal repo](https://github.com/euc-dev/developer.omnissa.github.io) when built using a GitHub Action.
