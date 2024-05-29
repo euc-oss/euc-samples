@@ -1,0 +1,15 @@
+mkdocs>=1.5.3
+mkdocs-material>=9.5.7
+mkdocs-rss-plugin>=1.12.0
+mkdocs-git-revision-date-localized-plugin>=1.2.2
+mkdocs-markdownextradata-plugin>=0.2.5
+mkdocs-minify-plugin>=0.7.2
+mkdocs-open-in-new-tab>=1.0.3
+neoteroi-mkdocs>=1.0.5
+# mkdocs-git-authors-plugin>=0.7.2
+mkdocs-swagger-ui-tag>=0.6.8
+mkdocs-open-in-new-tab>=1.0.3
+neoteroi-mkdocs>=1.0.5
+mkdocs-markdownextradata-plugin>=0.2.5
+mkdocs-git-revision-date-localized-plugin>=1.2.5
+mkdocs-swagger-ui-tag>=0.6.10
