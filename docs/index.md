@@ -1,3 +1,12 @@
+---
+layout: default
+title: EUC Samples
+permalink: /docs/samples/
+hide:
+  #- navigation
+  - toc
+---
+
 # Code Samples
 
 Code Samples are provided AS-IS.....

@@ -1,9 +1,10 @@
 ---
-title: Sample page
+layout: default
+title: UEM Samples
+permalink: /docs/samples/UEM-Samples/
 hide:
-  - nav
+  #- navigation
   - toc
-draft: true|false
 ---
 
 # Code Samples
