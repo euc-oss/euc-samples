@@ -1,10 +1,10 @@
 ---
 layout: default
-title: App Volumes Samples
-permalink: /docs/samples/App-Volumes-Samples/
+title: Intelligence Samples
+#permalink: /docs/samples/Intelligence-Samples/
 hide:
-  #- navigation
-  - toc
+  - navigation
+  #- toc
 ---
 
 # Code Samples
@@ -15,8 +15,7 @@ this is an index page that is dynamically generated, reading the README.md for e
 
 
 
-
-## App Volumes Samples
+## Workspace ONE Intelligence Samples
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |

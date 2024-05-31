@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Horizon Samples
-permalink: /docs/samples/Horizon-Samples/
+title:  Workspace ONE Access Samples
+#permalink: /docs/samples/Access-Samples/
 hide:
-  #- navigation
-  - toc
+  - navigation
+  #- toc
 ---
 
 # Code Samples
@@ -16,7 +16,7 @@ this is an index page that is dynamically generated, reading the README.md for e
 
 
 
-## Horizon Samples
+## Workspace ONE Access Samples
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
