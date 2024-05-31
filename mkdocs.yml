@@ -8,7 +8,7 @@ site_dir: .site
 use_directory_urls: true
 
 # Repository
-repo_url: https://github.com/euc-oss/euc-samples
+repo_url: https://github.com/euc-dev/euc-samples
 edit_uri: edit/docs/
 
 # Copyright
@@ -165,3 +165,4 @@ nav:
     - support/index.md
   - About:
     - about.md
+    
