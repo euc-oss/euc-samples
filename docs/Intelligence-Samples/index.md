@@ -3,8 +3,8 @@ layout: default
 title: Intelligence Samples
 #permalink: /docs/samples/Intelligence-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

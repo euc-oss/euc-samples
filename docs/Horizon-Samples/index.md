@@ -3,8 +3,8 @@ layout: default
 title: Horizon Samples
 #permalink: /docs/samples/Horizon-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

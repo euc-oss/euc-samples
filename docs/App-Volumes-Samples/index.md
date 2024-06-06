@@ -3,8 +3,8 @@ layout: default
 title: App Volumes Samples
 #permalink: /docs/samples/App-Volumes-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

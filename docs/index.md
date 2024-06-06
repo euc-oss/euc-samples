@@ -3,8 +3,8 @@ layout: default
 title: EUC Samples
 #permalink: /docs/samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

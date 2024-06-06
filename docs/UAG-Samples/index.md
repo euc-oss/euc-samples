@@ -3,8 +3,8 @@ layout: default
 title: UAG Samples
 #permalink: /docs/samples/UAG-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

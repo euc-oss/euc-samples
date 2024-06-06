@@ -3,8 +3,8 @@ layout: default
 title:  Workspace ONE Access Samples
 #permalink: /docs/samples/Access-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

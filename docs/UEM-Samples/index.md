@@ -3,8 +3,8 @@ layout: default
 title: UEM Samples
 #permalink: /docs/samples/UEM-Samples/
 hide:
-  - navigation
-  #- toc
+  #- navigation
+  - toc
 ---
 
 # Code Samples

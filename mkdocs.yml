@@ -1,5 +1,5 @@
 # Project Information
-site_name: omnissa Developer Portal
+site_name: samples/euc-samples
 site_url: https://euc-dev.github.io/euc-samples
 site_author: Phil Helmling
 site_description: POC for developer.omnissa.com
@@ -9,7 +9,7 @@ use_directory_urls: true
 
 # Repository
 repo_url: https://github.com/euc-dev/euc-samples
-edit_uri: edit/docs/
+edit_uri: edit/main/docs/
 
 # Copyright
 copyright: |
@@ -55,10 +55,12 @@ theme:
   - content.code.annotate
   - content.code.copy
   - content.tabs.link
+  #- navigation.expand
   - navigation.footer
   - navigation.header
   - navigation.indexes
   - navigation.instant
+  - navigation.path
   - navigation.sections
   - navigation.tabs
   - navigation.tabs.sticky
@@ -68,6 +70,7 @@ theme:
   - search.share
   - search.suggest
   - toc.follow
+  - toc.integrate
 
 # Plugins
 plugins:
@@ -112,7 +115,7 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
-  - assets/stylesheets/spanable.css
+  - assets/stylesheets/neoteroi-mkdocs.css
 
 # Extensions
 markdown_extensions:
@@ -121,6 +124,7 @@ markdown_extensions:
   - footnotes
   - md_in_html
   - neoteroi.spantable
+  - neoteroi.cards
   - pymdownx.critic
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -146,23 +150,23 @@ markdown_extensions:
       permalink: true
 
 # Navigation
-nav:
-  - Home:
-    - index.md
-  - Dev Centre:
-    - dev-centre/index.md
-#  - Product Docs:
-#    - product-docs/index.md
-  - APIs:
-    - apis/index.md
-  - Code Samples: 
-    - samples/index.md
-  - PowerCLI:
-    - powercli/index.md
-  - SDKs: 
-    - /sdks/index.md
-  - Support:
-    - support/index.md
-  - About:
-    - about.md
+# nav:
+#   - Home:
+#     - index.md
+#   - Dev Centre:
+#     - dev-centre/index.md
+# #  - Product Docs:
+# #    - product-docs/index.md
+#   - APIs:
+#     - apis/index.md
+#   - Code Samples: 
+#     - samples/index.md
+#   - PowerCLI:
+#     - powercli/index.md
+#   - SDKs: 
+#     - /sdks/index.md
+#   - Support:
+#     - support/index.md
+#   - About:
+#     - about.md
     
