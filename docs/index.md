@@ -15,32 +15,37 @@ this is an index page that is dynamically generated, reading the README.md for e
 this index will also display the # Description: field within the [UEM-Samples/Scripts](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Scripts) and [UEM-Samples/Sensors](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Sensors) folders
 
 ## Workspace ONE Access Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
 
 ## App Volumes Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
 
 ## Horizon Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
 
 ## Workspace ONE Intelligence Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
 
 ## Unified Access Gateway Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
 
 ## Workspace ONE UEM Samples
+
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
 |  |  |  |
-
