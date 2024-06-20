@@ -1,0 +1,41 @@
+{
+   "customGroups": [{
+      "resourceKind": "Cluster_Status",
+      "membershipDefinition": {"ruleGroups": [
+         {
+            "resourceKind": "ClusterComputeResource",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 98,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "cpu|demandPct",
+               "isProperty": false
+            }]
+         },
+         {
+            "resourceKind": "ClusterComputeResource",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 98,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "mem|demand|workload",
+               "isProperty": false
+            }]
+         }
+      ]},
+      "adapterKind": "Container",
+      "autoResolveMembership": true,
+      "name": "Cluster_Busy",
+      "description": "",
+      "started": true
+   }],
+   "customGroupTypes": [{
+      "resourceKind": "Cluster_Status",
+      "localization": [{
+         "resourceKindName": "Cluster_Status",
+         "locale": "en"
+      }]
+   }]
+}
