@@ -19,8 +19,22 @@ copyright: |
 # Configuration
 theme:
   name: material
-  favicon: favicon.ico
-  logo: assets/images/icon-white.svg
+  custom_dir: overrides
+  favicon: assets/logos/favicon-light.svg
+  logo: assets/logos/favicon-dark.svg
+  admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
   icon:
     repo: fontawesome/brands/github
     annotation: material/plus-circle
@@ -32,31 +46,18 @@ theme:
     annotation: material/star-four-points-circle
     annotation: material/plus-circle-outline
   palette:
-  - media: "(prefers-color-scheme: light)"
-    scheme: default
-    primary: indigo
-    accent: indigo
-    toggle:
-      icon: material/toggle-switch
-      name: Dark Theme
-  - media: "(prefers-color-scheme: dark)"
-    scheme: slate
-    primary: indigo
-    accent: indigo
-    toggle:
-      icon: material/toggle-switch-off-outline
-      name: Light Theme
+    scheme: omnissa
+    primary: dark-shade-blue
+    accent: neon
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Outfit
+    code: Poppins
   features:
   - content.action.edit
   - content.action.view
   - content.code.annotate
   - content.code.copy
   - content.tabs.link
-  #- navigation.expand
-  - navigation.footer
   - navigation.header
   - navigation.indexes
   - navigation.instant
@@ -70,7 +71,6 @@ theme:
   - search.share
   - search.suggest
   - toc.follow
-  - toc.integrate
 
 # Plugins
 plugins:
@@ -89,33 +89,40 @@ plugins:
       fallback_to_build_date: true
       type: timeago
   - swagger-ui-tag
+  - monorepo
+  - macros
 
 # Customization
 extra:
-  version:
-    default: latest
-    provider: mike
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/euc-oss/euc-samples
-    - icon: fontawesome/brands/x-twitter
-      link: https://twitter.com/WorkspaceONE
-    - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/channel/UCYgGfqfb9c3AOGJqxqdjNYw
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/vmware-workspaceone/
-    - icon: fontawesome/brands/facebook
-      link: https://www.facebook.com/vmwareworkspaceone/
-    - icon: fontawesome/brands/instagram
-      link: https://www.instagram.com/vmware/
-    - icon: fontawesome/brands/slack
-      link: https://slack.com/vmware
-    - icon: fontawesome/brands/discord
-      link: https://discord.com/vmware
+  homepage: https://omnissa.com
+
+analytics: 
+  provider: custom
+  property: foobar
+  feedback:
+    title: Was this page helpful?
+    ratings:
+      - icon: material/thumb-up-outline
+        name: This page was helpful
+        data: 1
+        note: >-
+          Thanks for your feedback!
+      - icon: material/thumb-down-outline
+        name: This page could be improved
+        data: 0
+        note: >- 
+          Thanks for your feedback! Please provide some specifics by providing additional info in a new Issue:
+          https://github.com/euc-dev/euc-dev.github.io/issues/new/?title=[Feedback]+{title}+-+{url}
 
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/footer.Cx6ysBfj.css
+  - assets/stylesheets/neoteroi-mkdocsoad.css
   - assets/stylesheets/neoteroi-mkdocs.css
+
+extra_javascript:
+  - assets/javascripts/tablesort.min.js #https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - assets/javascripts/tablesort.js
 
 # Extensions
 markdown_extensions:
@@ -125,6 +132,7 @@ markdown_extensions:
   - md_in_html
   - neoteroi.spantable
   - neoteroi.cards
+  - pymdownx.details
   - pymdownx.critic
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -136,37 +144,37 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.snippets:
-      check_paths: true
   - pymdownx.superfences:
       custom_fences:
       - name: mermaid
         class: mermaid
         format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
       alternate_style: true
-  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - tables
   - toc:
       permalink: true
 
 # Navigation
-# nav:
-#   - Home:
-#     - index.md
-#   - Dev Centre:
-#     - dev-centre/index.md
-# #  - Product Docs:
-# #    - product-docs/index.md
-#   - APIs:
-#     - apis/index.md
-#   - Code Samples: 
-#     - samples/index.md
-#   - PowerCLI:
-#     - powercli/index.md
-#   - SDKs: 
-#     - /sdks/index.md
-#   - Support:
-#     - support/index.md
-#   - About:
-#     - about.md
+nav:
+  - index.md
+  - WS1 Access Samples:
+    - access-samples/index.md
+  - WS1 Android SDK Samples:
+    - android-samples/index.md
+  - App Volumes Samples: 
+    - app-volumes-samples/index.md
+  - Horizon Samples:
+    - horizon-samples/index.md
+  - WS1 Intelligence Samples: 
+    - intelligence-samples/index.md
+  - UAG Samples:
+    - uag-samples/index.md
+  - WS1 UEM Samples:
+    - uem-samples/index.md
     
