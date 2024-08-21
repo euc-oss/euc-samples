@@ -1,8 +1,8 @@
 # Project Information
-site_name: EUC-Samples Repository
+site_name: euc-Samples Repository
 site_url: https://euc-dev.github.io/euc-samples
 site_author: Phil Helmling
-site_description: POC for developer.omnissa.com
+site_description: Submodule for developer.omnissa.com
 docs_dir: docs
 site_dir: .site
 use_directory_urls: true
@@ -13,8 +13,7 @@ edit_uri: edit/main/docs/
 
 # Copyright
 copyright: |
-  Copyright &copy; 2005-2024 Broadcom. All rights reserved.<br/>
-  The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
+  Copyright &copy; 2005-2024 Omnissa, LLC. All rights reserved.<br/>
 
 # Configuration
 theme:
@@ -88,31 +87,16 @@ plugins:
         - index.md
       fallback_to_build_date: true
       type: timeago
-  - swagger-ui-tag
+  - swagger-ui-tag:
+        docExpansion: none
+        filter: ""
+        syntaxHighlightTheme: monokai
   - monorepo
   - macros
 
 # Customization
 extra:
   homepage: https://omnissa.com
-
-analytics: 
-  provider: custom
-  property: foobar
-  feedback:
-    title: Was this page helpful?
-    ratings:
-      - icon: material/thumb-up-outline
-        name: This page was helpful
-        data: 1
-        note: >-
-          Thanks for your feedback!
-      - icon: material/thumb-down-outline
-        name: This page could be improved
-        data: 0
-        note: >- 
-          Thanks for your feedback! Please provide some specifics by providing additional info in a new Issue:
-          https://github.com/euc-dev/euc-dev.github.io/issues/new/?title=[Feedback]+{title}+-+{url}
 
 extra_css:
   - assets/stylesheets/extra.css
