@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to th Omnissa **euc-samples** repository.  This project is intended for the community and Omnissa to share commonly used code snippets, sample apps, scripts and sensors that can aid Workspace ONE and Horizon administrators. 
+Welcome to the Omnissa **euc-samples** repository.  This project is intended for the community and Omnissa to share commonly used code snippets, sample apps, scripts and sensors that can aid Workspace ONE and Horizon administrators. 
 
 Some examples of items to submit for consideration and use by the community:
 
@@ -18,28 +18,49 @@ By downloading, installing, or using the Software, you agree to be bound by the 
 
 ## developer.omnissa.com
 
-This repo is structured to feed into the developer.omnissa.com Developer Portal via the [](https://github.com/euc-dev/euc-dev.github.io) repo using MkDocs published by GitHub Pages. An index of all scripts, snippets, tools, sensors etc is automatically created and stored within the `/docs` folder. Do not modify this folder. 
+This repo is structured to feed into the [https://developer.omnissa.com](http://developer.omnissa.com) Developer Portal via the [](https://github.com/euc-dev/euc-dev.github.io) repo using MkDocs published by GitHub Pages. An index of all scripts, snippets, tools, sensors etc is automatically generated and stored within the `/docs` folder. Do not modify this folder. 
 
-This folder will be integrated into the [developer portal repo](https://developer.omnissa.com).
+This folder is integrated into the [Developer Portal repo](https://developer.omnissa.com) automatically.
 
-## Submitting samples
+## Contributing to Samples
 
-The euc-samples project team welcomes contributions from the community.
+The **euc-samples** project team welcomes contributions from the community.
 
-### Required Information
+An index page is dynamically generated for each sample area and displayed within the [https://developer.omnissa.com](http://developer.omnissa.com) Developer Portal. 
 
-The following information must be included in a README.md for the submission. If the submission is a WS1 UEM Sensor or Script, then see the [Sensor README.md](./UEM-Samples/Sensors/README.md) and [Scripts README.md](./UEM-Samples/Scripts/README.md) for required information.
+As such, the submission must be placed in a new folder in the correct area and with the information included in the below example README.md:
 
-* Author Name
-  
-  This can include full name, email address or other identifiable piece of information that would allow interested parties to contact author with questions.
-* Date
-  
-  Date the sample was originally written
-* Minimal/High Level Description
+```markdown
+# NAME_OF_THE_SUBMISSION
 
-  What does the sample do?
-* Any KNOWN limitations or dependencies
+Version:        1.0  
+Author:         AUTHOR - EMAIL_ADDRESS
+Creation Date:  DATE
+
+## Overview
+
+<!-- Summary Start -->
+OVERVIEW
+<!-- Summary End -->
+EXTENDED OVERVIEW
+
+## Usage
+
+USAGE
+
+## Known Limitations and Dependencies
+LIMITATIONS
+
+```
+
+!!!Note
+    The `update-readme-summary-table.ps1` script is run on an as needed basis which reads the README.md for each application, utility or project and builds a summary table. Each sample, therefore requires its own folder and README.md file. The README.md file also needs to include a `<!-- Summary Start -->` and `<!-- Summary End -->` tag that surrounds desired the description or summary.
+
+If the submission is a WS1 UEM Script or Sensor, then see the [Sensor README.md](./UEM-Samples/Sensors/README.md) and [Scripts README.md](./UEM-Samples/Scripts/README.md) for required information.
+
+Workspace ONE UEM Scripts and Sensors have a dedicated index due to the number of samples within the [UEM-Samples/Sensors](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Sensors) and [UEM-Samples/Scripts](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Scripts) folders respectively, reading the `# Description:` field from each script or sensor.
+
+**It is therefore important that when contributing samples, that the appropriate tags or fields are provided, otherwise the sample will not be included in the index.**
 
 ### Suggested Information
 
@@ -49,15 +70,15 @@ The following information should be included when possible. Inclusion of informa
 * Client Operating System version against which the sample was developed/tested (e.g. Windows Build number, or macOS Version and Build Number)
 * Language (Bash/Python/Powershell) version against which the sample was developed/tested
 
-### Contribution Process
+## Contribution Process
 
 Please see the [CONTRIBUTING.md](https://github.com/euc-oss/.github/blob/main/CONTRIBUTING.md).
 
-### Developer Certificate of Origin
+## Developer Certificate of Origin
 
 Before you start working with euc-samples, please read our [Developer Certificate of Origin](https://github.com/euc-dev/.github/blob/main/Developer%20Certificate%20of%20Origin.md) document. All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
 
-### Code Style
+## Code Style
 
 We won't actively enforce any "official" style guides, but do ask that you do what you can to:
 * Make your samples easily readable
