@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Workspace ONE Android Samples
+title: Android Samples
 hide:
   #- navigation
   - toc
@@ -8,12 +8,10 @@ hide:
 
 ## Code Samples
 
-Code Samples are provided AS-IS.....
+This is an index of Code Samples within the Android-Samples area.
 
-this is an index page that is dynamically generated, reading the README.md for each application, utility or project and taking a summary built into a table and linking back to the summary
-
-## Workspace ONE Android Samples
+## Android Samples
 
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
-|  |  |  |
+| WS1-Profile-CustomSettings-Android-Reference-App |  | [Link](.%2FAndroid-Samples%2FWS1-Profile-CustomSettings-Android-Reference-App%2F) |
