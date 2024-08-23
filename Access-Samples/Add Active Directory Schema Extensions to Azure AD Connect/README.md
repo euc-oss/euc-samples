@@ -1,9 +1,9 @@
 # Add Active Directory Schema Extensions to Azure AD Connect
 
 Azure AD Connect allows to extend the schema in Microsoft Azure AD with attributes from on-premise Active Directory. Not all Active Directory attributes are accessible in Directory Extensions wizard.
-
+<!-- Summary Start -->
 Provided scrips allow to manually add directory extensions to Azure AD and Azure AD Connect connector schema.
-
+<!-- Summary End -->
 ## How to use
 
 * run: `Add-Extension-Property-To-Azure-AD.ps1 -ApplicationName "My application" -PropertyName property1` to add directory extension to Azure AD,

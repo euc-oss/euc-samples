@@ -1,0 +1,360 @@
+{
+    "name": "Mobile SaaS/Native App Usage and Performance",
+    "widgets": [
+        {
+            "name": "Top 10 Mobile Apps Used",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "uag.tunnel.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "uag.tunnel.app_bundle_id"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "uag.tunnel._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "entities_by_integration": {
+                    "uag": [
+                        "tunnel"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "uag.tunnel._event_id",
+                    "uag.tunnel.app_bundle_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Top 10 Mobile Internal SaaS Apps Used",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "uag.tunnel.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "uag.tunnel.host_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "uag.tunnel._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "uag.tunnel.host_name NOT IN ( '127.0.0.53' )",
+                "entities_by_integration": {
+                    "uag": [
+                        "tunnel"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "uag.tunnel.host_name",
+                    "operator": "NOT IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "127.0.0.53"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "uag.tunnel.host_name",
+                            "operator": "NOT IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "127.0.0.53"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "uag.tunnel._event_id",
+                    "uag.tunnel.host_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 12
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Top Mobile Browsers by Traffic Volume",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "uag.tunnel.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "uag.tunnel.app_bundle_id"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "uag.tunnel.up_bytes",
+                        "aggregation_function": "SUM"
+                    }
+                ],
+                "filter": "uag.tunnel.host_name NOT IN ( '127.0.0.53' )  AND  uag.tunnel.app_bundle_id NOT IN ( 'com.airwatch.tunnel.default.whitelisted.app' )",
+                "entities_by_integration": {
+                    "uag": [
+                        "tunnel"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "uag.tunnel.host_name",
+                        "operator": "NOT IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "127.0.0.53"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "uag.tunnel.app_bundle_id",
+                        "operator": "NOT IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "com.airwatch.tunnel.default.whitelisted.app"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "uag.tunnel.host_name",
+                            "operator": "NOT IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "127.0.0.53"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "uag.tunnel.app_bundle_id",
+                            "operator": "NOT IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "com.airwatch.tunnel.default.whitelisted.app"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "uag.tunnel.up_bytes",
+                    "uag.tunnel.app_bundle_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 12
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Top 10 Mobile Internal SaaS Apps by Traffic Volume",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "uag.tunnel.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "uag.tunnel.host_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "uag.tunnel.up_bytes",
+                        "aggregation_function": "SUM"
+                    }
+                ],
+                "filter": "uag.tunnel.host_name NOT IN ( '127.0.0.53' )",
+                "entities_by_integration": {
+                    "uag": [
+                        "tunnel"
+                    ]
+                },
+                "cardinality": 5,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "uag.tunnel.host_name",
+                    "operator": "NOT IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "127.0.0.53"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "uag.tunnel.host_name",
+                            "operator": "NOT IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "127.0.0.53"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "uag.tunnel.up_bytes",
+                    "uag.tunnel.host_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2022-05-16T19:27:21.220Z"
+}

@@ -1,0 +1,1111 @@
+{
+    "name": "DEEM Windows Device Performance",
+    "widgets": [
+        {
+            "name": "Memory Reads/sec",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.memory_pages_sec",
+                        "aggregation_function": "AVG"
+                    }
+                ],
+                "filter": "employee_experience.device_performance._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.device_performance._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Windows Desktop"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.device_name",
+                    "employee_experience.device_performance.memory_pages_sec"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Device with Less than 1GB Storage",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.device_performance.logicaldisk_free_space_mbytes < 5",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 20,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.device_performance.logicaldisk_free_space_mbytes",
+                    "operator": "<",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "LONG",
+                            "value": 5
+                        }
+                    ],
+                    "operand_collection_present": false
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance.logicaldisk_free_space_mbytes",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 5
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 6
+            },
+            "chart_type": "TABLE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Shutdown Degradation",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps._application_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.apps.event_name IN ( 'Shutdown Degradation' )  AND  employee_experience.apps._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Shutdown Degradation"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Shutdown Degradation"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.apps._application_name",
+                    "employee_experience.apps._event_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 6,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 8,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Average GPU 1 usage",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.gpu_name1"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.gpu_usage1",
+                        "aggregation_function": "AVG"
+                    }
+                ],
+                "filter": "employee_experience.device_performance._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.device_performance._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Windows Desktop"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.gpu_name1",
+                    "employee_experience.device_performance.gpu_usage1"
+                ]
+            },
+            "top_left": {
+                "row_number": 8,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 10,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with memory usage > 90%",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.device_performance.memory_usage_percent > 90  AND  employee_experience.device_performance._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance.memory_usage_percent",
+                        "operator": ">",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 90
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance.memory_usage_percent",
+                            "operator": ">",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 90
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 6,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 8,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "CPU Temp > 75 Deg C",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.thermal_zone_information_zone_temperature",
+                        "aggregation_function": "MAX"
+                    }
+                ],
+                "filter": "employee_experience.device_performance.thermal_zone_information_zone_temperature > 347",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.device_performance.thermal_zone_information_zone_temperature",
+                    "operator": ">",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "LONG",
+                            "value": 347
+                        }
+                    ],
+                    "operand_collection_present": false
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance.thermal_zone_information_zone_temperature",
+                            "operator": ">",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 347
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.thermal_zone_information_zone_temperature",
+                    "employee_experience.device_performance.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "CPU Spikes > 90 %",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.device_model"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.processor_total_processor_totaltime",
+                        "aggregation_function": "MAX"
+                    }
+                ],
+                "filter": "employee_experience.device_performance.processor_total_processor_totaltime > 90  AND  employee_experience.device_performance._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 20,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance.processor_total_processor_totaltime",
+                        "operator": ">",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 90
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance.processor_total_processor_totaltime",
+                            "operator": ">",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 90
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.processor_total_processor_totaltime",
+                    "employee_experience.device_performance.device_model"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with WiFi Signal Strength < 30",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event.dot11_signal_quality < 30  AND  employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event.dot11_signal_quality",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 30
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.dot11_signal_quality",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 30
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices using page file > 70%",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.device_performance.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_performance.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.device_performance.paging_file_usage > 70  AND  employee_experience.device_performance._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_performance"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance.paging_file_usage",
+                        "operator": ">",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 70
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_performance._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance.paging_file_usage",
+                            "operator": ">",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 70
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_performance._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_performance.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Boot Degradation Events",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps._application_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.apps.event_name IN ( 'Boot Degradation' )  AND  employee_experience.apps._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Boot Degradation"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Boot Degradation"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.apps._application_name",
+                    "employee_experience.apps._event_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2021-04-27T18:41:40.375Z"
+}

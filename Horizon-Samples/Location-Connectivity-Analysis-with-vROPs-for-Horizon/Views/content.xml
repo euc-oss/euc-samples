@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Content>
+    <Views>
+        <ViewDef id="a0c1e99e-6896-44f8-8cbf-a5caa178b030">
+            <Title>BLAST VDI Session Latency Distribution</Title>
+            <Description/>
+            <SubjectType adapterKind="V4V" resourceKind="UserDesktop" type="descendant"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_4" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_5" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="blast|round_trip_latency"/>
+    <Property name="preferredUnitId" value="1000"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="V4V"/>
+    <Property name="resourceKind" value="UserDesktop"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="isShowRelativeTimestamp" value="false"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="buckets-control_id_6" type="buckets-control" visible="false">
+                    <Property name="maxValue" value="0"/>
+                    <Property name="minValue" value="0"/>
+                    <Property name="dynamicCalcFunction" value="SIMPLEMAXMIN"/>
+                    <Property name="bucketInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0"/>
+    <Property name="endValue" value="100"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="100"/>
+    <Property name="endValue" value="150"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="150"/>
+    <Property name="endValue" value="200"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="200"/>
+    <Property name="endValue" value="250"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="250"/>
+    <Property name="endValue" value="10000"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                    <Property name="isDynamic" value="false"/>
+                </Control>
+                <Control id="metadata_id_7" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="distribution-view" id="distribution-view_id_3"/>
+            </DataProviders>
+            <Presentation type="pie-chart"/>
+        </ViewDef>
+        <ViewDef id="0f3180b8-322e-4725-ad35-616cec6d1082">
+            <Title>BLAST App Session Latency Distribution</Title>
+            <Description/>
+            <SubjectType adapterKind="V4V" resourceKind="AppSession" type="descendant"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_38" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_39" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="blast|round_trip_latency"/>
+    <Property name="preferredUnitId" value="1000"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="V4V"/>
+    <Property name="resourceKind" value="AppSession"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="isShowRelativeTimestamp" value="false"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="buckets-control_id_40" type="buckets-control" visible="false">
+                    <Property name="maxValue" value="0"/>
+                    <Property name="minValue" value="0"/>
+                    <Property name="dynamicCalcFunction" value="SIMPLEMAXMIN"/>
+                    <Property name="bucketInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0"/>
+    <Property name="endValue" value="100"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="100"/>
+    <Property name="endValue" value="150"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="150"/>
+    <Property name="endValue" value="200"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="200"/>
+    <Property name="endValue" value="250"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="250"/>
+    <Property name="endValue" value="10000"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                    <Property name="isDynamic" value="false"/>
+                </Control>
+                <Control id="metadata_id_41" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="distribution-view" id="distribution-view_id_37"/>
+            </DataProviders>
+            <Presentation type="pie-chart"/>
+        </ViewDef>
+        <ViewDef id="a7014b4c-0742-4ad6-861c-38c2548a2355">
+            <Title>BLAST VDI Session Packet Loss</Title>
+            <Description/>
+            <SubjectType adapterKind="V4V" resourceKind="UserDesktop" type="descendant"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_54" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_55" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="blast|session_packet_loss_uplink"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="V4V"/>
+    <Property name="resourceKind" value="UserDesktop"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="isShowRelativeTimestamp" value="false"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="buckets-control_id_56" type="buckets-control" visible="false">
+                    <Property name="maxValue" value="0"/>
+                    <Property name="minValue" value="0"/>
+                    <Property name="dynamicCalcFunction" value="SIMPLEMAXMIN"/>
+                    <Property name="bucketInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0"/>
+    <Property name="endValue" value="0.1"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0.1"/>
+    <Property name="endValue" value="0.5"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0.5"/>
+    <Property name="endValue" value="1"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="1"/>
+    <Property name="endValue" value="5"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="5"/>
+    <Property name="endValue" value="1000"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                    <Property name="isDynamic" value="false"/>
+                </Control>
+                <Control id="metadata_id_57" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="distribution-view" id="distribution-view_id_53"/>
+            </DataProviders>
+            <Presentation type="pie-chart"/>
+        </ViewDef>
+        <ViewDef id="cd58ad33-8022-4072-a392-d0bb1171ad7f">
+            <Title>App Session BLAST Packet Loss Distribution</Title>
+            <Description/>
+            <SubjectType adapterKind="V4V" resourceKind="AppSession" type="descendant"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_48" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_49" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="blast|session_packet_loss_uplink"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="V4V"/>
+    <Property name="resourceKind" value="AppSession"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="isShowRelativeTimestamp" value="false"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="buckets-control_id_50" type="buckets-control" visible="false">
+                    <Property name="maxValue" value="0"/>
+                    <Property name="minValue" value="0"/>
+                    <Property name="dynamicCalcFunction" value="SIMPLEMAXMIN"/>
+                    <Property name="bucketInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0"/>
+    <Property name="endValue" value="0.1"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0.1"/>
+    <Property name="endValue" value="0.5"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="0.5"/>
+    <Property name="endValue" value="1"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="1"/>
+    <Property name="endValue" value="5"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="startValue" value="5"/>
+    <Property name="endValue" value="10000"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                    <Property name="isDynamic" value="false"/>
+                </Control>
+                <Control id="metadata_id_51" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="distribution-view" id="distribution-view_id_47"/>
+            </DataProviders>
+            <Presentation type="pie-chart"/>
+        </ViewDef>
+    </Views>
+</Content>

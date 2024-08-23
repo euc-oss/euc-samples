@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="net.propero.workspace.windowsagent.appender" monitorInterval="30">
+	<Appenders>
+		<WSAppender name="WSApp"/>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.vmware.vdi" level="DEBUG" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="net.propero" level="DEBUG" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="com.desktone.directory" level="info" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="com.vmware.daas" level="DEBUG" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="com.vmware.hcs.broker" level="DEBUG" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="org.apache.axis.message.SAX2EventRecorder" level="debug" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="broker.Audit" level="info" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="broker.Profiling" level="DEBUG" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+		<Logger name="org.opensaml.xml.encryption" level="fatal" additivity="false">
+			<AppenderRef ref="WSApp"/>
+		</Logger>
+                <Logger name="io.netty" level="INFO" additivity="false">
+                        <AppenderRef ref="WSApp"/>
+                </Logger>
+		<Root level="error">
+			<AppenderRef ref="WSApp"/>
+		</Root>
+	</Loggers>
+</Configuration>

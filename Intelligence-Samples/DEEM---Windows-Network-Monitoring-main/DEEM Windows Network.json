@@ -1,0 +1,822 @@
+{
+    "name": "DEEM Windows Network",
+    "widgets": [
+        {
+            "name": "Devices with RSSI < -80dbm",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event.dot11_rssi < -80  AND  employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event.dot11_rssi",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": -80
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.dot11_rssi",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": -80
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with IPv6 enabled",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event.ipv6_enabled = true  AND  employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event.ipv6_enabled",
+                        "operator": "=",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "BOOLEAN",
+                                "value": true
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.ipv6_enabled",
+                            "operator": "=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "BOOLEAN",
+                                    "value": true
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 12
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices connection type WiFi/Ethernet",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.net_event.nic_type"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.net_event._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Windows Desktop"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name",
+                    "employee_experience.net_event.nic_type"
+                ]
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "WiFi Modes",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.net_event.dot11_mode",
+                    "employee_experience.net_event.device_model"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 20,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.net_event._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Windows Desktop"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name",
+                    "employee_experience.net_event.device_model",
+                    "employee_experience.net_event.dot11_mode"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 12
+            },
+            "chart_type": "AREA",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Driver Issues",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "bucketing_attributes": [
+                    "employee_experience.device_network_adapter.driver_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.device_network_adapter.device_name",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.device_network_adapter.driver_problem = true  AND  employee_experience.device_network_adapter._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "device_network_adapter"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_network_adapter.driver_problem",
+                        "operator": "=",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "BOOLEAN",
+                                "value": true
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.device_network_adapter._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_network_adapter.driver_problem",
+                            "operator": "=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "BOOLEAN",
+                                    "value": true
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.device_network_adapter._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.device_network_adapter.driver_name",
+                    "employee_experience.device_network_adapter.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with WiFi Signal Strength < 30",
+            "description": "Showing devices with ",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event.dot11_signal_quality < 30  AND  employee_experience.net_event._device_platform IN ( 'Windows Desktop' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event.dot11_signal_quality",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 30
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Windows Desktop"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.dot11_signal_quality",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 30
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with less than 20mbps upload speed",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.net_event.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.net_event.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.net_event._device_platform IN ( 'Windows Desktop' )  AND  employee_experience.net_event.l2_tx_link_speed_bits_ps < 2097152  AND  employee_experience.net_event.l2_tx_link_speed_bits_ps != 0",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "net_event"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "operand_collection_present": false,
+                        "logical_operator": "AND",
+                        "lhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        "rhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.l2_tx_link_speed_bits_ps",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2097152
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.net_event.l2_tx_link_speed_bits_ps",
+                        "operator": "!=",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 0
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Windows Desktop"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.l2_tx_link_speed_bits_ps",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2097152
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.net_event.l2_tx_link_speed_bits_ps",
+                            "operator": "!=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 0
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "employee_experience.net_event.device_name"
+                ]
+            },
+            "top_left": {
+                "row_number": 6,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 8,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2022-04-29T13:50:52.175Z"
+}
