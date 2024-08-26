@@ -1,4 +1,4 @@
-# Get number of days until Dell Warranty Expires
+# Description: Get number of days until Dell Warranty Expires
 # Return Type: Integer
 # Execution Context: System 
 # Execution Architecture: Auto

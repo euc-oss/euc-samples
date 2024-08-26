@@ -1,4 +1,4 @@
-# Get the Model of a Dell PC
+# Description: Get the Model of a Dell PC
 # Return Type: String
 # Execution Context: System 
 # Execution Architecture: Auto

@@ -1,4 +1,4 @@
-# Returns value from json file. Use this sensor to read a JSON file and return a value from a node
+# Description: Returns value from json file. Use this sensor to read a JSON file and return a value from a node
 # Return Type: String
 # Execution Context: System
 # Execution Architecture: Auto
