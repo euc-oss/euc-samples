@@ -53,7 +53,7 @@ LIMITATIONS
 
 ```
 
-!!!Note
+**Note**
     The `update-readme-summary-table.ps1` script is run on an as needed basis which reads the README.md for each application, utility or project and builds a summary table. Each sample, therefore requires its own folder and README.md file. The README.md file also needs to include a `<!-- Summary Start -->` and `<!-- Summary End -->` tag that surrounds desired the description or summary.
 
 If the submission is a WS1 UEM Script or Sensor, then see the [Sensor README.md](./UEM-Samples/Sensors/README.md) and [Scripts README.md](./UEM-Samples/Scripts/README.md) for required information.

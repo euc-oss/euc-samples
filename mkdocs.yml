@@ -147,21 +147,12 @@ markdown_extensions:
 # Navigation
 nav:
   - index.md
-  - WS1 Access Samples:
-    - docs/Access-Samples/index.md
-  - WS1 Android SDK Samples:
-    - docs/Android-Samples/index.md
-  - App Volumes Samples: 
-    - docs/App-Volumes-Samples/index.md
-  - Horizon Samples:
-    - docs/Horizon-Samples/index.md
-  - WS1 Intelligence Samples: 
-    - docs/Intelligence-Samples/index.md
-  - UAG Samples:
-    - docs/UAG-Samples/index.md
-  - WS1 UEM Samples:
-    - docs/UEM-samples/index.md
-  - WS1 Scripts Samples:
-    - docs/UEM-samples/scripts-index.md
-  - WS1 Sensors Samples:
-    - docs/UEM-samples/sensors-index.md
+  - WS1 Access Samples: docs/Access-Samples/index.md
+  - WS1 Android SDK Samples: docs/Android-Samples/index.md
+  - App Volumes Samples: docs/App-Volumes-Samples/index.md
+  - Horizon Samples: docs/Horizon-Samples/index.md
+  - WS1 Intelligence Samples: docs/Intelligence-Samples/index.md
+  - UAG Samples: docs/UAG-Samples/index.md
+  - WS1 UEM Samples: docs/UEM-samples/index.md
+  - WS1 Scripts Samples: docs/UEM-samples/scripts-index.md
+  - WS1 Sensors Samples: docs/UEM-samples/sensors-index.md
