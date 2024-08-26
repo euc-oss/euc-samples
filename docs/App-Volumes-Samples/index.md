@@ -15,4 +15,4 @@ This is an index of Code Samples within the App-Volumes-Samples area.
 
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
-| Expand Writable Volumes |  | [Link](.%2FApp-Volumes-Samples%2FExpand%20Writable%20Volumes%2F) |
+| Expand Writable Volumes |  | [Link](https://github.com/euc-dev/euc-samples/App-Volumes-Samples/Expand%20Writable%20Volumes) |

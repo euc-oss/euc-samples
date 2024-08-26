@@ -1,3 +1,28 @@
+<# Workspace ONE Script Importer
+
+  .SYNOPSIS
+    This Powershell script builds the index tables that feeds into the https://developer.omnissa.com portal
+  .NOTES
+    Created:   	    August, 2024
+    Created by:	    Richard Croft
+    Contributors:   Phil Helmling
+    Organization:   Omnissa, LLC
+    Github:         https://github.com/vmware-samples/euc-samples/tree/master
+
+  .DESCRIPTION
+    This script builds the index tables that feeds into the https://developer.omnissa.com portal. The tables are written as Markdown into the /docs folder. There is one table per area:
+    * Access-Samples
+    * Android-Samples
+    * App-Volumes-Samples
+    * Horizon-Samples
+    * Intelligence-Samples
+    * UAG-Samples
+    * UEM-Samples
+    * UEM-Samples/Scripts
+    * UEM-Samples/Sensors
+
+#>
+
 function Get-TextBetweenTwoStrings ([string]$startPattern, [string]$endPattern, [string]$filePath){
     # Get content from the input file
     $fileContent = Get-Content -Path $filePath -Raw
@@ -7,65 +32,133 @@ function Get-TextBetweenTwoStrings ([string]$startPattern, [string]$endPattern, 
     return [regex]::Match($fileContent,$pattern).Groups[1].Value.ToString()
 }
 
+function Get-Description ([string]$filePath){
+    $fileContent = Get-Content -Path $filePath
+    
+    $d = $fileContent | Select-String -Pattern 'Description: ' -Raw -ErrorAction SilentlyContinue
+
+    if($d){$description = $d.Substring($d.LastIndexOf('Description: ')+13) -replace '[#]' -replace '"',"" -replace "'",""}else{$Description = $null}
+    return $description
+}
+
 function ReplaceMarkdownTableContent {
     param(
         [string]$filePath,
         [string[]]$tableData
     )
 
-    $index = (Get-Content $filePath | Select-String -Pattern "\| --- \| --- \| ---:\|").LineNumber
-
+    $newContent = $null
+    $content = Get-Content $filePath
+    $index = ($content | Select-String -Pattern "\| --- \| --- \| ---:\|").LineNumber
+    
     if ($index) {
-        $headerRow = $content[$index - 1]
-        $newContent = $content[0..($index - 2)]
-
-        #$tableRows = $tableData | ForEach-Object { write-host $_  }
-        $tableRows = $tableData | ForEach-Object { }
-        $newContent += $headerRow
-        $newContent += $tableData
-
+        $newContent = $content[0..($index - 1)]
+        $newContent += $tableData | ForEach-Object { $_ }
         Set-Content $filePath -Value $newContent
     } else {
-        Write-Warning "Pattern '| --- | --- | ---:|' not found in the file."
+        Write-Warning "Pattern '| --- | --- | ---:|' not found in the file {0}." -f $filePath
+    }
+}
+
+function ReplaceScriptSensorMarkdownTableContent {
+    param(
+        [string]$filePath,
+        [string[]]$tableData
+    )
+
+    $newContent = $null
+    $content = Get-Content $filePath
+    $index = ($content | Select-String -Pattern "\| --- \| --- \| --- \| ---:\|").LineNumber
+    
+    if ($index) {
+        $newContent = $content[0..($index - 1)]
+        $newContent += $tableData | ForEach-Object { $_ }
+        Set-Content $filePath -Value $newContent
+    } else {
+        Write-Warning "Pattern '| --- | --- | --- | ---:|' not found in the file {0}." -f $filePath
     }
 }
 
 $current_path = (Get-Location).Path
 
-$paths = @("Access-Samples",
-"Android-Samples",
-"App-Volumes-Samples",
-"Horizon-Samples",
-"Intelligence-Samples",
-"UAG-Samples",
-"UEM-Samples")
-
-$startPattern = '<!-- Summary Start -->'
-$endPattern   = '<!-- Summary End -->'
-
-# find README.md files under each sample directory
-foreach ($p in $paths) {
-
-    $results = @()
-    $files = Get-ChildItem -Path $p -Recurse -Include 'readme.md' -exclude 'docs/*' -Depth 5
-
-    foreach ($f in $files) {
-        #Write-Host("Working on $f") -ForegroundColor Green
-        $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
-        $summary = $match.Trim()
-        $fulldirname = $f.DirectoryName
-        $newpath = $fulldirname.Replace($current_path,"")
-        $dirname = $f.Directory.Name
-        $fname = $f.Name
-        $link = [uri]::EscapeDataString(".$newpath/")
-
-        $results += "| $dirname | $summary | [Link]($link) |"
-    }
+function updateMainIndexes {
+    $paths = @("Access-Samples",
+    "Android-Samples",
+    "App-Volumes-Samples",
+    "Horizon-Samples",
+    "Intelligence-Samples",
+    "UAG-Samples",
+    "UEM-Samples")
     
-    #Write the results to the index file after the table header, replacing everything previous
-    $docpath = "docs/$p/index.md"
-    $file = Get-ChildItem -Path $docpath
-    ReplaceMarkdownTableContent $file $results
+    $repo = "https://github.com/euc-dev/euc-samples"
+    $startPattern = '<!-- Summary Start -->'
+    $endPattern   = '<!-- Summary End -->'
 
+    # find README.md files under each sample directory
+    foreach ($p in $paths) {
+
+        $results = @()
+        $files = Get-ChildItem -Path $p -Recurse -Include 'readme.md' -File
+
+        foreach ($f in $files) {
+            #Write-Host("Working on $f") -ForegroundColor Green
+            $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
+            
+            $summary = $match.Trim()
+            $fulldirname = $f.DirectoryName
+            $newpath = $fulldirname.Replace($current_path,"")
+            $dirname = $f.Directory.Name
+            
+            $URI = $repo,$newpath -join ""
+            $link = [uri]::EscapeUriString($URI)
+            $results += "| $dirname | $summary | [Link]($link) |"
+
+        }
+        
+        #Write the results to the index file after the table header, replacing everything previous
+        $docpath = "docs/$p/index.md"
+        $file = Get-ChildItem -Path $docpath
+        ReplaceMarkdownTableContent $file $results
+
+    }
 }
+
+function updateSensorScriptIndexes {
+    $paths = @("Scripts",
+    "Sensors")
+    
+    $repo = "https://github.com/euc-dev/euc-samples/tree/main"
+    
+    # find README.md files under each sample directory
+    foreach ($p in $paths) {
+
+        $results = @()
+        $ExcludedTemplates = "import_script_samples|template*|import_sensor_samples|get_enrollment_sid_32_64|check_matching_sid_sensor|readme|README"
+        $files = Get-ChildItem -Path "UEM-Samples/$p" -Recurse -File | Where-Object Name -NotMatch $ExcludedTemplates
+
+        foreach ($f in $files) {
+            $match = Get-Description -filePath $f.FullName
+            $summary = $match.Trim()
+            $fname = $f.Name
+            $fullName = $f.FullName
+            $dirname = $f.Directory.Name
+            $newpath = $fullName.Replace($current_path,"")
+
+            $URI = $repo,$newpath -join ""
+            $link = [uri]::EscapeUriString($URI)
+            $results += "| $dirname | $fname | $summary | [$fname]($link) |"
+        }
+        
+        #Write the results to the index file after the table header, replacing everything previous
+        $docpath = "docs/UEM-Samples/$p-index.md"
+        $file = Get-ChildItem -Path $docpath
+        ReplaceScriptSensorMarkdownTableContent $file $results
+
+    }
+}
+# Update main indexes
+updateMainIndexes
+
+# Update Scripts and Sensor indexes
+updateSensorScriptIndexes
 

@@ -14,4 +14,4 @@ This is an index of Code Samples within the Android-Samples area.
 
 | Sample Name | Summary | Link |
 | --- | --- | ---:|
-| WS1-Profile-CustomSettings-Android-Reference-App |  | [Link](.%2FAndroid-Samples%2FWS1-Profile-CustomSettings-Android-Reference-App%2F) |
+| WS1-Profile-CustomSettings-Android-Reference-App |  | [Link](https://github.com/euc-dev/euc-samples/Android-Samples/WS1-Profile-CustomSettings-Android-Reference-App) |
