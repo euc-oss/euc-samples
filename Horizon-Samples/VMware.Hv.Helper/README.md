@@ -11,6 +11,10 @@ This powershell modules extends the capabilities provided by the `VMware.VimAuto
 4. Import "VMware.Hv.Helper" module by running: Import-Module -Name "location of this module" or Get-Module -ListAvailable 'VMware.Hv.Helper' | Import-Module.
 5. Get-Command -Module "This module Name" to list all available functions or Get-Command -Module 'VMware.Hv.Helper'.
 
+## Documentation
+
+Documentation for this module and all its functions can be found in the [PowerCLI](https://euc-dev.github.io/horizon-powercli/) section of the Omnissa Developer Portal.
+
 ## Example script to connect ViewAPI service
 
 ```
