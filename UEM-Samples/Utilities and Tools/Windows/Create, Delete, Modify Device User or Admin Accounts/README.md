@@ -7,9 +7,10 @@
 - **Supported Platforms**: Windows 7/8.1/10
 - **Tested on Windows 10**: 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 These sets of sample BATCH files will add and delete users and create and downgrade admins. 
-
+<!-- Summary End -->
 - **CreateAdmin.bat** - Creates a local admin on the device
 - **CreateUser.bat** - Creates a local user on the device
 - **DeleteUser.bat** - Deletes a local user or admin on the device

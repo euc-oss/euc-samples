@@ -6,8 +6,9 @@
 * Date Created: 6/8/2020
 * Supported Platforms: WS1 UEM - All Versions
 
+<!-- Summary Start -->
 These email templates can be used as a starting point to create custom email notifications in Workspace ONE UEM. Where the basic ones provide the users with alot of information, it might be a better idea to incorporate your own company styling and languague. By doing this, the users will recognize and understand the emails. Whereas the default emails templates might come across as spam and/or phishing to some users. Included are templates for iOS Update Notifications and Compliancy Violations.
-
+<!-- Summary End -->
 # Prerequisites
 
 In order for you to fully leverage this templates, you need to host your company logo on some webserver. You could use imgur for this, or use some other static webserver for this.

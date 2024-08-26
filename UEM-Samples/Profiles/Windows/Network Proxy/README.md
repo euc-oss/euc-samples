@@ -7,8 +7,10 @@
 - **Supported Platforms**: Windows 10 Desktop 1703 and above
 - **Tested on Windows 10**: 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 This folder has a sample configuration that will apply a machine wide network proxy on a Windows 10 Desktop for versions 1703 (Creators update) and above using an Auto-config PAC Script URL.
+<!-- Summary End -->
 The [NetworkProxy CSP](https://docs.microsoft.com/en-us/windows/client-management/mdm/networkproxy-csp) was introduced in the Creator's update and only applies to the Windows 10 Desktop SKU.
 
 ## Required Changes/Updates

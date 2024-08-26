@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS Catalina
 
 ## Purpose
-
+<!-- Summary Start -->
 Install the Carbon Black Defense agent via unattended installation using Workspace ONE UEM.
-
+<!-- Summary End -->
 1) Deploy the [Kernel Extension profile for the Carbon Black Kernel Extension](#kernel-extension-profile-for-the-carbon-black-kext).
 2) Download the Carbon Black Defense installer package for macOS (generally *confer_installer_mac-<version>.dmg*)
 3) Parse the installer with the [Workspace ONE Admin Assistant](https://awagent.com/AdminAssistant/VMwareAirWatchAdminAssistant.dmg)

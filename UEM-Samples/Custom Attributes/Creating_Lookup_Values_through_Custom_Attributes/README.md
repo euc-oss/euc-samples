@@ -6,9 +6,9 @@
 * Date Created: 7/29/2019
 * Supported Platforms: WS1 UEM 1907
 * Tested on macOS Versions: macOS Mojave
-
+<!-- Summary Start -->
 When deploying any type of macOS script (ie: preinstall, postinstall, or a standalone script) through Workspace ONE, there may be situations where you need to programmatically reference user- or device-specific informations within the script itself.  Custom Attributes can be created to define this information in a way that can be looked up on each device within the script itself.
-
+<!-- Summary End -->
 ### Defining a Custom Attribute
 
 When you deploy a "Custom Attributes" profile payload to a macOS device, you will be able to store the returned value of a defined script as an attribute within Workspace ONE.  However, these attributes are also referenceable on the device side, stored in a plist file located at:

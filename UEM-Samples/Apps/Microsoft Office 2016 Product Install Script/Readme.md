@@ -8,8 +8,9 @@
 - **Tested on macOS Versions**: macOS Yosemite
 
 ## Purpose
+<!-- Summary Start -->
 A script that downloads Microsoft Office 2016 for Mac installers from the Microsoft Office CDN and performs installation of each installer.   The script is a modified version of another publicly available script as attributed in the script source.  Cross-posted from the original sample posted to code.vmware.com.
-
+<!-- Summary End -->
 ## Required Changes/Updates
 None
 

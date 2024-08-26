@@ -8,9 +8,9 @@
 - **Tested on macOS Versions**: macOS Catalina 10.15.2
 
 ## Purpose
-
+<!-- Summary Start -->
 Manage Microsoft Edge Preferences/Settings via Workspace ONE:
-
+<!-- Summary End -->
 1) Download the Install package from Microsoft (link below in [Resources](#Additional-Resources))
 2) Create a Custom Settings profile payload that contains any settings you wish to manage (link below in [Resources](#Additional-Resources))
 3) Deploy the Microsoft Edge browser app in order to leverage the policies configured in the preferences (via Custom XML)

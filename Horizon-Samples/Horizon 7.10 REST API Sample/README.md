@@ -6,7 +6,9 @@ Creation Date:  10/9/2019
 Purpose/Change: Initial script development  
 
 ## Overview
-Only works on Horizon 7.10 and later
+<!-- Summary Start -->
+Uses Horizon Server 7.10+ REST API calls to list Connection Servers, list Farms, list RDS Servers, list Events Information, list AD Domains, list UAG Information, list SAML Authenticators, list Composer Servers, and list Virtual Centers.
+<!-- Summary End -->
 
 ## Usage
 Run script which will present a menu.

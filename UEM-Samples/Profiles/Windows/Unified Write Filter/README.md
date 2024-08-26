@@ -11,9 +11,10 @@
 - **Supported Platforms**: Windows 10 Enterprise, Education ONLY
 - **Tested on Windows 10**: 1607, 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 The Unified Write Filter feature is a powerful feature on Windows which is designed to protect the drives on a system by reducing the number of write cycles that the drive goes through during use.
-
+<!-- Summary End -->
 It does this by creating a drive Overlay in memory where all changes to the system are written to memory. At the end of the session the changes can be written to memory or discarded.
 
 Common use cases are

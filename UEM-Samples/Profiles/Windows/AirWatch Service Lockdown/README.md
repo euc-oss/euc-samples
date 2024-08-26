@@ -11,9 +11,10 @@
 - **Supported Platforms**: AirWatch 9.2.2+ and AirWatch Agent 9.2+
 - **Tested on Windows 10**: 1703, 1709
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 Prevent end users from changing the AirWatch service properties on their devices with a Windows Desktop Custom Settings Profile. For devices that already have local changes, the profile resets the device to the default values and locks those settings from further changes.
-
+<!-- Summary End -->
 ## Details
 1. Navigate to **Add > Profile > Windows > Desktop > Device Profile**.
 1. Add General Profile Settings to determine how the profile deploys and who receives it.

@@ -5,11 +5,9 @@ Last Edit: 11/4/2020
 Version 1.0  
 
 ## Overview
-Gets information on Instant Clone Pool VMs  
-Returns information on Horizon Instant Clone pool VMs, including space consumed, and hierarchy of Parent, Replica, Template, Snapshot, and Master  
-Identifies VMs that are potentially orphaned/abandoned by Horizon  
-Array of VM objects containing data on their associated IC VMs and a status  
-
+<!-- Summary Start -->
+Gets information on Instant Clone Pool VMs. Returns information on Horizon Instant Clone pool VMs, including space consumed, and hierarchy of Parent, Replica, Template, Snapshot, and Master. Identifies VMs that are potentially orphaned/abandoned by Horizon. Array of VM objects containing data on their associated IC VMs and a status.
+<!-- Summary End -->
 ## Requirements
 PowerCLI, VMware.Hv.Helper ,and Powershell 5. VMware.Hv.Helper module is not yet supported in Powershell Core
 For instructions on installing VMware.Hv.Helper, see https://blogs.vmware.com/euc/2020/01/vmware-horizon-7-powercli.html

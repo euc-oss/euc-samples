@@ -8,8 +8,9 @@
 - **Tested on AirWatch 9.7.0.0**: Completed
 
 ## SYNOPSIS
+<!-- Summary Start -->
 This Powershell script allows you to download LGPO.exe from the MSFT website and upload it as a Managed App to a specified WS1 Organization Group. 
-
+<!-- Summary End -->
 **Requirements**
 - Must download supporting file Deploy-LGPO.ps1 and save it in the same location that Download-LGPO.ps1 will be run from.
 - Must have access to an AirWatch Admin Account that can authenticate to the APIs with Basic auth (Certificates currently not supported)

@@ -8,8 +8,9 @@
 * Tested On: Windows 10 1803, SCCM 1802 and AirWatch 19.4
 
 ## Description
+<!-- Summary Start -->
 How you can use an SCCM compliance baseline to check for valid enrollment and if it fails, run a script to remove old agent, repair WMI, re-enroll automatically. 
-
+<!-- Summary End -->
 ## Instructions
 There are several steps to the staging process:
 

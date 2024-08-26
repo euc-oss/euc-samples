@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS High Sierra
 
 ## Purpose
-
+<!-- Summary Start -->
 Manage Google Chrome Settings as Supported by Google via Workspace ONE:
-
+<!-- Summary End -->
 1) Download the 64-bit Enterprise Bundle from Google (link below in [Resources](#Additional-Resources))
 2) Review the [Chrome Policy List online](https://cloud.google.com/docs/chrome-enterprise/policies) or using chrome_policy_list.html found in GoogleChromeEnterpriseBundle64/Documentation/Chrome\ Policies/{language}/
 3) The Custom XML file in this folder is derived from the *com.google.Chrome.plist* file in the Enterprise Bundle (GoogleChromeEnterpriseBundle64/Configuration/com.google.Chrome.plist).  Review and modify as needed for your organization as based on the Chrome Policy List

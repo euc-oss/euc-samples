@@ -9,9 +9,9 @@
 
 
 Note: This package is largely based off of the [AppBlocker](https://github.com/erikberglund/AppBlocker) script by Erik Berglund, with some minor updates to handle edge cases and configurations to easily integrate with Workspace ONE.
-
+<!-- Summary Start -->
 The included .pkg and .plist files can be uploaded directly to the Workspace ONE Adminsitrator Console, and pre-install and post-uninstall scripts can be configured to easily specify which applications (identified by their Bundle IDs) should not be launched.  If a specified application is launched, the user will receive an alert and the application process will be killed.
-
+<!-- Summary End -->
 ![AppBlocker_WS1.png?raw=true](/macOS-Samples/Scripts/AppBlocker_WS1/bin/AppBlocker_WS1.png)
 
 Note: This package is primarily targeted towards end users with Standard user accounts.  Clever users with Administrator account could potentially manipulate or remove this package so it no longer functions as expected.

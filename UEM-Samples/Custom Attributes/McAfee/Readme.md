@@ -8,9 +8,9 @@
 - **Tested on macOS Versions**: macOS El Capitan, macOS Sierra
 
 ## Purpose
-These custom attributes can be used to retrieve information from clients running McAfee
-Endpoint Security/Protection
-
+<!-- Summary Start -->
+These custom attributes can be used to retrieve information from clients running McAfee Endpoint Security/Protection.
+<!-- Summary End -->
 
 ## Uploaded Custom attributes
 * McAfee-IsManaged

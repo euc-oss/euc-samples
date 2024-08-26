@@ -1,8 +1,9 @@
 # Workspace ONE UEM Smart Group from CSV
 
 ## SYNOPSIS
+<!-- Summary Start -->
 This script can be used to create a smart group from a CSV file in Workspace ONE UEM. There is one way the script is designed to be executed, and that is by directly calling the script and entering environment and smart group details when prompted.
-
+<!-- Summary End -->
 ## DESCRIPTION
 The Create-Smartgroup.ps1 file can be use on an ad-hoc basis. At script execution, the script will require prompt to manually enter;
 - API Key

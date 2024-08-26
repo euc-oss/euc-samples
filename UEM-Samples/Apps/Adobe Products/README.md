@@ -8,8 +8,9 @@
 - **Tested on macOS Versions**: macOS High Sierra (10.13.6)
 
 ## Purpose
+<!-- Summary Start -->
 When deploying Adobe Creative Cloud (CC) products with Workspace ONE UEM, admins should strongly consider using the integrated munki functionality built into "Internal Apps."   By using Internal Apps, admins gain the benefit of code which already understands the unique nature of the Creative Cloud app packages and handles them appropriately.  That said, as a macOS administrator, there is still some manual work which must be done to deliver these Adobe CC packages successfully.
-
+<!-- Summary End -->
 *__NOTE:   Adobe recommends packaging a single application at a time.   In other words, you should have a "Photoshop" package, an "InDesign" package, a "Lightroom" package, etc.   Do not attempt to package the entire creative cloud suite into a single installer package.__*
 
 *__NOTE #2:    CC 2018 apps should be packaged using Creative Cloud Packager.   Creative Cloud Packager does not work for named user apps for Creative Cloud 2019 or later.   In this case, you must use the Admin Console -- see [Adobe Support](https://helpx.adobe.com/enterprise/kb/apps-not-available-in-ccp.html) .__*

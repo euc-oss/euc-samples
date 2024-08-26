@@ -8,9 +8,9 @@
 
 
 ## Purpose
-
+<!-- Summary Start -->
 Deploy the Torii Extension for various browsers on macOS.
-
+<!-- Summary End -->
 ## Deploy Torii Chrome Extension
 
 1) Download the [Torii Extension Mobileconfig](https://s3-us-west-2.amazonaws.com/torii-static/extensions/chrome/jamf/torii_extension.mobileconfig)

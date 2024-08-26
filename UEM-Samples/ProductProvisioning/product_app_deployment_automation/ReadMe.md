@@ -6,7 +6,10 @@
 * **Date Created** : 06 March 2020
 
 ## **Purpose**
-The tool provides an example of how the product deployment APIs of Workspace ONE UEM can be used for Android app deployment. This script can be used to automate product delivery to your end-user devices in the following cases:
+<!-- Summary Start -->
+The tool provides an example of how the product deployment APIs of Workspace ONE UEM can be used for Android app deployment. 
+<!-- Summary End -->
+This script can be used to automate product delivery to your end-user devices in the following cases:
 1. Create product with app manifest and appropriate smartgroup assignments
 2. Update assignment for existing product
 

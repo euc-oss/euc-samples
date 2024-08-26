@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS Big Sur
 
 ## Purpose
-
+<!-- Summary Start -->
 Deploying Netskope Client for macOS with Workspace ONE UEM
-
+<!-- Summary End -->
 1) Deploy configuration profile with all the needed payloads
 2) Deploy Sensor to map user's email address to the device
 3) Obtain the Netskope Client application

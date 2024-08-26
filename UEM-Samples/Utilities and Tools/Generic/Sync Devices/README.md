@@ -1,8 +1,9 @@
 # Workspace ONE UEM Device Sync
 
 ## SYNOPSIS
+<!-- Summary Start -->
 This script is useful for initiating a sync from the client application to the Workspace ONE UEM application server (Device Services). There are two ways in which the script can be executed; ad-hoc with a menu, and on a recurring schedule without a menu.
-
+<!-- Summary End -->
 ## DESCRIPTION
 Within the 'WithMenu' folder, the SyncDevices-Menu.ps1 file can be use on an ad-hoc basis. This script will require manually entering the API Key, Workspace ONE UEM API Endpoint URL, and credentials to authenticate against the API. The script can be executed by double clicking the file within a Windows GUI, or from command line interace.
 

@@ -8,8 +8,9 @@
 - **Tested on macOS Versions**: macOS High Sierra
 
 ## Purpose
+<!-- Summary Start -->
 Firefox for Enterprise allows administrators to manage certain settings within the browser.  It also provides the flexibility for admins to better control the browser release cadence within their organization by adopting either the rapid release or the extended support release.   One item to note is that policy availability does differ between the two releases.   Policies for macOS are now deployed via a mobileconfig file (or via profile payloads in your MDM).  Be mindful of which policies you wish to deploy, as some are only available for the Extended Support Release (ESR) version of Firefox.
-
+<!-- Summary End -->
 > The ESR release is a SEPARATE download.  ESR functionality does not necessarily apply in the non-ESR download/installer.
 
 To deploy with VMware Workspace ONE UEM, add FireFox as an internal application and then customize the mobileconfig to your liking by using the following template:

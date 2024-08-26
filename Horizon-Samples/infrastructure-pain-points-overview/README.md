@@ -1,14 +1,7 @@
----
-layout: page
-title: Infrastructure Pain Points Overview - Samples
-hide:
-  #- navigation
-  - toc
----
-
-## Overview
-
+# Overview
+<!-- Summary Start -->
 The main reason for this vROPS dashboard is to get a high level overview about the pain points for the whole infrastructure regarding performance and availability. Based on Custom Groups with defined thresholds (as filters) you can see how well your infrastructure is running.
+<!-- Summary End -->
 
 ## Installation
 

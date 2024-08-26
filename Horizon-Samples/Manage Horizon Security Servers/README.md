@@ -7,7 +7,9 @@ Creation Date:  11/2/2020
 Purpose/Change: Initial script development  
 
 ## Overview
-Script to update existing Horizon Security Servers
+<!-- Summary Start -->
+Script to update existing Horizon Security Servers.
+<!-- Summary End -->
 
 ## Usage
 Run script which will present menu.

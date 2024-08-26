@@ -1,8 +1,8 @@
 # Bootstrap Package
 <img src="https://raw.githubusercontent.com/vmware-samples/euc-samples/master/macOS-Samples/BootstrapPackage/images/Bootstrap_icon_400px.png" style="width: 200px;"/>
-
+<!-- Summary Start -->
 The Bootstrap Package feature gives admins the ability to have their installer pkgs deployed to devices *immediately* after enrollment has completed.
-
+<!-- Summary End -->
 Without using Bootstrap, the AirWatch Agent must be installed first, and the Agent handles the installer pkgs. However, sometimes this process is too slow and happens several minutes after enrollment completes, which can cause problems if the user begins to use the machine before all software and tools are installed & configured. With this feature, Admins can have peace of mind that their installer pkgs are deployed as soon as technically possible.
 
 ## Who is this feature for?

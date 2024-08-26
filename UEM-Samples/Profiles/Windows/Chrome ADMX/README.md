@@ -9,8 +9,9 @@
 
         
 ## Description
+<!-- Summary Start -->
 ADMX-backed policies were introduced starting in Windows 10 version 1703, however you should stick to the latest version in order to have support for all of the policies. Microsoft allowed ADMX-backed policies to be deployed using CSPs, this sample will show you how to deploy the Chrome ADMX template (easily be modified to support any other ADMX template). As well as push out ADMX-backed Chrome policies to the device once the ADMX template is installed. Please reference the resources below to figure out what value (format) needs to go inside of the data tag. This varies depending on the element type such as: text, List, Enum, MultiText, No Elements, etc. 
-
+<!-- Summary End -->
 You can deploy these Chrome CSPs samples via Workspace ONE UEM. To deploy navigate to **Devices & User > Profile > Add > Windows > Desktop > Device > Custom Settings**, then copy and paste the SyncML into the install / unistall box and publish the profile.
 
 These are all ADMX-backed policies and require special SyncML format to enable or disable. For details, see [Understanding ADMX-backed policies](https://docs.microsoft.com/en-us/windows/client-management/mdm/understanding-admx-backed-policies).

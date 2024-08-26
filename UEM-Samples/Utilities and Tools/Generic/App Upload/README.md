@@ -9,8 +9,9 @@
 
 
 ## Description
+<!-- Summary Start -->
 This script is a basic example of using uploadchunk apis to upload larger apps to the Workspace ONE UEM console.
-
+<!-- Summary End -->
 ## Requirements
 1. Powershell
 2. Workspace ONE UEM API credentials

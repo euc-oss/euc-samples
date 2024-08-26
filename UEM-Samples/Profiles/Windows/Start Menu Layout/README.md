@@ -11,9 +11,10 @@
 - **Supported Platforms**: Windows 10 Enterprise and Education
 - **Tested on Windows 10**: 1607, 1703 (StartLayoutDevice.xml only supported in 1703)
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 The StartLayout CSP is used to customized the Start Menu Layout of a device for a uniform look and feel for all of your corporate devices. Once customized users cannot modify the Start Menu.
-
+<!-- Summary End -->
 There are two samples here: 
 
 

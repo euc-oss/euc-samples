@@ -3,9 +3,9 @@
 * **Minimal/High Level Description:**    Notes on Deploying Microsoft Office for Mac
 
 ## Determining A Deployment Method
-
+<!-- Summary Start -->
 Microsoft Office for Mac can be distributed in one of two ways:  App Store and non-Store (via Office.com downloads).  In general, VMware recommends deploying Microsoft Office from the Mac App Store (via device-based licensing through Apple Business Manager) unless any of the following apply: 
-
+<!-- Summary End -->
 1. You are not licensing users via Office 365 (such as using Volume Licensing).   (The Mac App Store version requires Office 365 licensing.)
 2. You have strict version requirements around deployed Office apps.   (The Mac App Store only delivers the latest version of Office.)
 3. You are managing devices where you wish to opt the apps into the Office "Insider" program.  (The Mac App Store versions of Office apps cannot participate in the Insiders program.)

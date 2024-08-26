@@ -7,9 +7,9 @@
 - **Supported Platforms**: Unified Access Gateway 3.4 and above 
 
 ## Purpose 
-This script search for the Master appliance in a given Unified Access Gateway Cluster,
-it leverage the Unified Access Gateway REST API to obtain the High Availability state of the appliance and identity the Master.
-
+<!-- Summary Start -->
+This script search for the Master appliance in a given Unified Access Gateway Cluster, it leverage the Unified Access Gateway REST API to obtain the High Availability state of the appliance and identity the Master.
+<!-- Summary End -->
 ## Requirements
  
 In order to execute this script successfully you need to:

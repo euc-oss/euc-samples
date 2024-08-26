@@ -7,9 +7,9 @@
 
 
 ## Purpose
-
+<!-- Summary Start -->
 A sample of how Atlassian APIs can be customized and used for Automation workflows in Workspace ONE Intelligence
-
+<!-- Summary End -->
 
 ## Requirements
 

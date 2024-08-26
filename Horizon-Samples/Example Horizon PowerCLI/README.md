@@ -6,7 +6,9 @@ Creation Date:  7/18/2019
 Purpose/Change: Initial script development  
 
 ## Overview
+<!-- Summary Start -->
 Samples Scripts Using the VMware Horizon API via PowerCLI
+<!-- Summary End -->
 
 ## Usage
 

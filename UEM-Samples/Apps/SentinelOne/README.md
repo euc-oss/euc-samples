@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS Catalina
 
 ## Purpose
-
+<!-- Summary Start -->
 Install the SentinelOne agent via unattended installation using Workspace ONE UEM.
-
+<!-- Summary End -->
 1) Deploy the Kernel Extension profile for the SentinelOne Kernel Extension.
 2) Download the SentinelOne installer package for macOS (generally *SentinelAgent\_macos\_\<version\>.pkg*)
 3) Parse the installer with the [Workspace ONE Admin Assistant](https://awagent.com/AdminAssistant/VMwareAirWatchAdminAssistant.dmg)

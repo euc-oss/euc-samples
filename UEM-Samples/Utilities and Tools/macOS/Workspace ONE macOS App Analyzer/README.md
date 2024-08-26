@@ -8,8 +8,9 @@
 
 
 ## Summary
+<!-- Summary Start -->
 The Workspace ONE macOS App Analyzer will determine any Privacy Permissions, Kernel Extensions, or System Extensions needed by an installed macOS application, and can be used to automatically create profiles in Workspace ONE UEM to whitelist those same settings when deploying apps to managed devices.
-
+<!-- Summary End -->
 ![WS1_App_Analyzer.png?raw=true](WS1_App_Analyzer.png)
 
 ## To connect to your Workspace ONE UEM environment:

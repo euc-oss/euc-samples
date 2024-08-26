@@ -1,10 +1,9 @@
 # Workspace ONE UEM - Android - Custom Settings MDM Profile - Reference Application 
 
 ## SYNOPSIS
-This application is useful for demonstrating how to retrieve values from a Workspace ONE UEM MDM profile. These values can be used
-throughout an Android application, and eliminate the need to build separate applications with different hardcoded values. 
-This allows the use of key value pairs (KVP) in a custom settings profile payload to be read by the restrictions manager Android class.
-
+<!-- Summary Start -->
+This application is useful for demonstrating how to retrieve values from a Workspace ONE UEM MDM profile. These values can be used throughout an Android application, and eliminate the need to build separate applications with different hardcoded values. This allows the use of key value pairs (KVP) in a custom settings profile payload to be read by the restrictions manager Android class.
+<!-- Summary End -->
 
 ## DESCRIPTION
 This sample application and Workspace ONE UEM MDM profile provides a working example of how to implement restrictions manager.

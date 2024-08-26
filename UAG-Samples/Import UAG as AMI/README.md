@@ -6,9 +6,10 @@
 - **Date Created**: 11/04/2018
 - **Supported Platforms**: Unified Access Gateway 3.5 and above 
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 This script automated the process of making available the Unified Access Gateway vmdk image into Amazon Web Services as registered AMI in preparation for the EC2 instance creation.
-
+<!-- Summary End -->
 The following operations will be performed by the script:
 - Validated if the S3 bucket informed exist, otherwise create
 - Validated if the vmimport Role exist, otherwise create the role and assigned the required policy

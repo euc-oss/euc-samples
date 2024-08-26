@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS Big Sur
 
 ## Purpose
-
+<!-- Summary Start -->
 Deploying Pulse Secure for macOS with Workspace ONE UEM
-
+<!-- Summary End -->
 1) Parse the DMG with the [Workspace ONE Admin Assistant](https://awagent.com/AdminAssistant/VMwareAirWatchAdminAssistant.dmg)
 2) Modify the generated plist file as instructed.
 3) Upload the DMG, plist, and icon to Workspace ONE UEM as an Internal App (Resources > Apps > Native > Internal)

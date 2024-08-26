@@ -11,8 +11,9 @@
 You can only deploy the (legacy) AirWatch App Catalog Webclip, via MDM, in the user context to the primary managed user. This means, in some organizations, that other local users on the device will not be able to access the App Catalog, unless they know the exact url.
 
 ## Solution
+<!-- Summary Start -->
 The App Catalog webclip is comprised of just a specific url for the device to retrieve the list of available applications. This package dynamically creates this url, and the webclip (.webloc file) and saves it to `/Users/Shared/VMware` with permissions readable by all users. It also places a global LaunchAgent to load on *every user's next login*, to run another script to place the webclip on the user's dock. Once the webclip is added to the dock, a runonce file is created at `~/.appcatalog_runonce` to prevent the script from running again and creating duplicate webclips on the dock.
-
+<!-- Summary End -->
 Please see [Required Changes](#Required-Changes) section for one modification you must make to the code for your deployment. You can also optionally use your own icon image, instead of the default one provided at `payload/Users/Shared/VMware/Catalog.png`
 
 This solution works for both Administrator and Standard users.

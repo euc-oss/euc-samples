@@ -7,8 +7,9 @@
 - **Supported Platforms**: Unified Access Gateway 3.7 and above 
 
 ## Purpose 
+<!-- Summary Start -->
 This script automated the process of rotating keytab files on Unified Access Gateway, including create new keytabs and update related IIS configurations.
-
+<!-- Summary End -->
 The script will perform the following operations:
 - Create a keytab file and update service account password using ktpass
 - Upload keytab file to Unified Access Gateway using REST API 

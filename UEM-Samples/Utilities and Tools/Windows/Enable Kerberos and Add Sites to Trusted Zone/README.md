@@ -7,9 +7,10 @@
 - **Supported Platforms**: Windows 7/8.1/10
 - **Tested on Windows 10**: 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 This sample BATCH script will enable Kerberos on a Windows device, enable sending authentication (domain credentials) to trusted sites which you have added into the trusted zones in this script. 
-
+<!-- Summary End -->
 ## Details
 The device must be domain joined for these features to work. This script is for Internet Explorer, however other browsers may require some additional configurations which can be added to this sample. 
 

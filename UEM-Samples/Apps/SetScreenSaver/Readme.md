@@ -7,9 +7,9 @@
 * Supported Platforms: WS1 UEM 1907
 * Tested on macOS Versions: macOS High Sierra
 
-
+<!-- Summary Start -->
 More granular configuration of screen saver settings can be done on macOS through scripting.  This script can be setup as a login script, which will reapply every time the end user logs into their device.  Alternatively, if you are looking to deploy one or more images to the device to configure as the screen saver, you can create a PKG file that will deploy the files and apply the configuration all in one go.
-
+<!-- Summary End -->
 ## Deploy Screen Saver as a PKG
 After navigating to the project directory, you can build the SetScreenSaver PKG with the following command:
 

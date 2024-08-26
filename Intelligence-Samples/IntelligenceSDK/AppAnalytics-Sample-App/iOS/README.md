@@ -8,9 +8,9 @@
 
 
 ## Purpose
-
+<!-- Summary Start -->
 This sample includes the complete source code of an iOS sample app that integrates with Workspace ONE Intelligence SDK (previously Apteligent SDK).
-
+<!-- Summary End -->
 The app allows the user to generate App Loads, User Flows, Network Insight, Crash and Exception Handled events, which will be sent to Workspace ONE Intelligence and Apteligent Console based on the AppID configured to deploy the app.
 
 The final binary of this application is not included, which requires to compile this project using XCode to generate the IPA file and deploy on your device for testing.

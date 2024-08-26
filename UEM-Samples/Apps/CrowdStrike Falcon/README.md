@@ -9,9 +9,9 @@
 - **Tested on macOS Versions**: macOS Big Sur
 
 ## Purpose
-
+<!-- Summary Start -->
 Deploying CrowdStrike Falcon Agent for macOS with Workspace ONE UEM
-
+<!-- Summary End -->
 1) Deploy configuration profile with all the needed payloads
 2) Download the profile Falcon Agent pkg
 3) Parse the pkg with the [Workspace ONE Admin Assistant](https://awagent.com/AdminAssistant/VMwareAirWatchAdminAssistant.dmg)

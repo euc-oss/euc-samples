@@ -7,9 +7,9 @@
 
 
 ## Purpose
-
-A sample of how Zendesk APIs can be customized and used for Automation workflows in Workspace ONE Intelligence
-
+<!-- Summary Start -->
+A sample of how Zendesk APIs can be customized and used for Automation workflows in Workspace ONE Intelligence.
+<!-- Summary End -->
 
 ## Requirements
 

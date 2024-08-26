@@ -7,8 +7,9 @@
 - **Tested on Windows 10 1709, 1803**: Completed
 
 ## SYNOPSIS
+<!-- Summary Start -->
 This Powershell script allows you to quickly check a device for the required services and network connections required for MDM enrollment.
-
+<!-- Summary End -->
 ## DESCRIPTION
 When run, if command line parameters are not provided, this script collect the required data and display it on the Powershell screen. The script can generate an HTML report for easier review and also collect the logs in the same location as the report to make sharing the information easier.
 

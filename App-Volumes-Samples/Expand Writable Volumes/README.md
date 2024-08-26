@@ -6,7 +6,9 @@ Creation Date:  4/8/2019
 Purpose/Change: Initial script development  
 
 ## Overview
+<!-- Summary Start -->
 Script to update the size of VMware App Volumes Writable Volumes.  Can also be used to view sizes of volumes.  
+<!-- Summary End -->
 New sizes won't be reflected until a user logs in and attaches the Writable Volume	
 Outputs log file stored in %temp%\expand-wv.log>
 
