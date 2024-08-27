@@ -8,8 +8,9 @@
 
         
 ## Description
+<!-- Summary Start -->
 This policy allows IT admins to control which policy will be used when both MDM policy and the equivalent Group Policy are set on the device.
-
+<!-- Summary End -->
 ## Background
 This policy is used to ensure that MDM policy wins over GP when same setting is set by both GP and MDM channel. This policy doesn’t support Delete command. This policy doesn’t support setting the value to be 0 again after it was previously set 1. The default value is 0. The MDM policies in Policy CSP will behave as described if this policy value is set 1.
 

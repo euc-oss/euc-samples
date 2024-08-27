@@ -12,8 +12,11 @@
 - **Supported Platforms**: Windows 10 Enterprise and Education
 - **Tested on Windows 10**: 1511, 1607, 1703, 1803, 1809
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 The AssignedAccess CSP is used to enable single app kiosk mode on Windows 10 devices for Universal Windows Platform (UWP) apps. For Win32 apps you can use Shell Launcher; more information can be found in the Additional Resources section below.
+<!-- Summary End -->
+
 ## Required Changes/Updates
 You must update the data under **Account** using the *username* of the local user on the device or *domain\\username* for domain users on the device. You also have to update the **AUMID** value for the UWP app you would like to lock into kiosk mode. Refer to [How to Find an App's AUMID](https://docs.microsoft.com/en-us/windows-hardware/customize/enterprise/find-the-application-user-model-id-of-an-installed-app) for more information on obtaining the AUMID value. 
 

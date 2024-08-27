@@ -1,0 +1,68 @@
+{
+   "customGroups": [
+      {
+         "resourceKind": "Storage_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "Datastore",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 25,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "devices:Aggregate of all instances|totalWriteLatency_average",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Storage_WriteLatency",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Storage_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "Datastore",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 25,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "devices:Aggregate of all instances|totalReadLatency_average",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Storage_ReadLatency",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Storage_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "Datastore",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 0,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "devices:Aggregate of all instances|commandsAborted_summation",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Storage_withCommandAborts",
+         "description": "",
+         "started": true
+      }
+   ],
+   "customGroupTypes": [{
+      "resourceKind": "Storage_Status",
+      "localization": [{
+         "resourceKindName": "Storage_Status",
+         "locale": "en"
+      }]
+   }]
+}

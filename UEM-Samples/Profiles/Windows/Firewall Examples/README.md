@@ -12,8 +12,10 @@
 - **Supported SKUs**: Pro, Business, Enterprise, Education
 - **Tested on**: Windows 10 1709 Enterprise
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 This folder has a sample configurations that will apply a firewall profile or custom firewall rules for an application or service on a Windows 10 Desktop for versions 1709 and above.
+<!-- Summary End -->
 The [Firewall CSP](https://docs.microsoft.com/en-us/windows/client-management/mdm/firewall-csp) was introduced in the 1709 update and only applies to the Windows 10 Desktop SKU.
 
 The Sample configuration creates a Firewall rule that allows an applications traffic to come inbound through the firewall. Outbound rules can be specified as well.

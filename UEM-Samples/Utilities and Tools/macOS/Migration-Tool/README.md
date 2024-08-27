@@ -1,5 +1,7 @@
 # Migrate macOS Devices to Workspace ONE UEM
-
+<!-- Summary Start -->
+This tool provides a better user experience when migrating macOS devices to Workspace ONE.
+<!-- Summary End -->
 This is an updated version of the previous generation of the tool which can be found [here]().
 
 This tool is designed to be flexible to fit different use cases. There is no default mode, so you must understand how the tool works in order to configure it for your needs.

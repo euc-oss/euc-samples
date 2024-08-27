@@ -1,0 +1,158 @@
+# Project Information
+site_name: euc-samples
+site_url: https://euc-dev.github.io/euc-samples
+site_author: Phil Helmling
+site_description: Submodule for developer.omnissa.com
+docs_dir: docs
+site_dir: .site
+use_directory_urls: true
+
+# Repository
+repo_url: https://github.com/euc-dev/euc-samples
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: |
+  Copyright &copy; 2005-2024 Omnissa, LLC. All rights reserved.<br/>
+
+# Configuration
+theme:
+  name: material
+  custom_dir: overrides
+  favicon: assets/logos/favicon-light.svg
+  logo: assets/logos/favicon-dark.svg
+  admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
+  icon:
+    repo: fontawesome/brands/github
+    annotation: material/plus-circle
+    annotation: material/circle-medium
+    annotation: material/record-circle
+    annotation: material/arrow-right-circle
+    annotation: material/arrow-right-circle-outline
+    annotation: material/chevron-right-circle
+    annotation: material/star-four-points-circle
+    annotation: material/plus-circle-outline
+  palette:
+    scheme: omnissa
+    primary: dark-shade-blue
+    accent: neon
+  font:
+    text: Outfit
+    code: Poppins
+  features:
+  - content.action.edit
+  - content.action.view
+  - content.code.annotate
+  - content.code.copy
+  - content.tabs.link
+  - navigation.header
+  - navigation.indexes
+  - navigation.instant
+  - navigation.path
+  - navigation.sections
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.top
+  - navigation.tracking
+  - search.highlight
+  - search.share
+  - search.suggest
+  - toc.follow
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\u200b\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - open-in-new-tab
+  - markdownextradata:
+      jinja_options:
+        variable_start_string: "${{"
+        variable_end_string: "}}"
+  - git-revision-date-localized:
+      enabled: !ENV [CI, false]
+      enable_creation_date: false
+      exclude:
+        - index.md
+      fallback_to_build_date: true
+      type: timeago
+  - swagger-ui-tag:
+        docExpansion: none
+        filter: ""
+        syntaxHighlightTheme: monokai
+  - monorepo
+  - macros
+
+# Customization
+extra:
+  homepage: https://omnissa.com
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/footer.Cx6ysBfj.css
+  - assets/stylesheets/neoteroi-mkdocsoad.css
+  - assets/stylesheets/neoteroi-mkdocs.css
+
+extra_javascript:
+  - assets/javascripts/tablesort.min.js #https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - assets/javascripts/tablesort.js
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - neoteroi.spantable
+  - neoteroi.cards
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+        - material/.icons
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.snippets:
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - toc:
+      permalink: true
+
+# Navigation
+nav:
+  - index.md
+  - WS1 Access Samples: 'Access-Samples/index.md'
+  - WS1 Android SDK Samples: 'Android-Samples/index.md'
+  - App Volumes Samples: 'App-Volumes-Samples/index.md'
+  - Horizon Samples: 'Horizon-Samples/index.md'
+  - WS1 Intelligence Samples: 'Intelligence-Samples/index.md'
+  - UAG Samples: 'UAG-Samples/index.md'
+  - WS1 UEM Samples: 'UEM-Samples/index.md'
+  - WS1 Scripts Samples: 'UEM-Samples/scripts-index.md'
+  - WS1 Sensors Samples: 'UEM-Samples/sensors-index.md'

@@ -7,9 +7,10 @@
 - **Supported Platforms**: Windows 10 Pro, Enterprise and Education
 - **Tested on Windows 10**: 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 The [Office CSP](https://docs.microsoft.com/en-us/windows/client-management/mdm/office-csp) is used to install the Office on a device via the Office Deployment Tool. This CSP was added in Windows 10 1703. 
-
+<!-- Summary End -->
 ## Details
 The [Office CSP ](https://docs.microsoft.com/en-us/windows/client-management/mdm/office-csp) allows customers to attach a serialized configuration XML within the Data tags to allow of auto download and installation of various Office 365 editions. 
 

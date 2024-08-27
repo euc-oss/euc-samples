@@ -6,8 +6,10 @@
 - **Date Created**: 2021-09-27
 
 ## Purpose
-
-A sample of how you can use the MDM Rest API to issue Custom MDM Commands to a device.   This postman collection contains the following custom commands:
+<!-- Summary Start -->
+A sample of how you can use the MDM Rest API to issue Custom MDM Commands to a device.
+<!-- Summary End -->
+This postman collection contains the following custom commands:
 
 1. RestartDevice
 2. RecommendationCadence

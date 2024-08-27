@@ -9,8 +9,11 @@
 - **Supported SKUs**: Home, Pro, Enterprise, Education
 - **Tested on**: Windows 10 1809 Enterprise and higher
 
-## Purpose 
-These sample configuration files are to be used together, deploying one Quality Update (QU) Ring profile, one Feature Update (FU) Ring profile and one Delivery Optimization profile. Combined, these profiles control Windows 10/11 Update settings as referenced below with the following design principles
+## Purpose
+<!-- Summary Start -->
+These sample configuration files are to be used together, deploying one Quality Update (QU) Ring profile, one Feature Update (FU) Ring profile and one Delivery Optimization profile. 
+<!-- Summary End -->
+Combined, these profiles control Windows 10/11 Update settings as referenced below with the following design principles
 1. Auto-Approved Updates
 2. Deferrals to control deployment and risk
 3. Delivery Optimization to control/improve download usage

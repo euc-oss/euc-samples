@@ -1,0 +1,1498 @@
+{
+   "dashboards": [{
+      "autoswitchEnabled": false,
+      "columnCount": 1,
+      "columnProportion": "1",
+      "creationTime": 1560960255723,
+      "dashboardNavigations": {},
+      "description": "",
+      "disabled": false,
+      "gridsterMaxColumns": 12,
+      "hidden": false,
+      "homeTab": false,
+      "id": "b1800d76-562d-44e9-a4c4-98cfe54568ed",
+      "importAttempts": 0,
+      "importComplete": true,
+      "isDefault": false,
+      "locked": false,
+      "name": "C4/C4 Horizon Site Connectivity Analysis",
+      "namePath": "C4",
+      "rank": 2,
+      "shared": false,
+      "states": [],
+      "temporary": false,
+      "userId": "52a94a73-2447-404f-aaaf-b08443a9a2c7",
+      "widgetInteractions": [
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "112fd3c8-ce91-4823-a9ef-b820cc5c47cd"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "1d8a04d1-e800-49ef-aed2-7570522cc16f"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "f2581a30-11ba-4a77-a40f-3d3230dad316"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "597b5d28-c8ee-4365-b22a-cba41d71ea16"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "f2581a30-11ba-4a77-a40f-3d3230dad316",
+            "widgetIdReceiver": "597b5d28-c8ee-4365-b22a-cba41d71ea16"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "09565db6-bb50-4c11-be94-742f5468434d"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "73563317-ccd6-4b4d-a8e9-f1ba4e04b946"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "8a90f570-3090-453d-a097-807b189429a3"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "1a7f4e4d-5bad-4ddf-bf53-2f4e40cbe55f",
+            "widgetIdReceiver": "597b5d28-c8ee-4365-b22a-cba41d71ea16"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "1a7f4e4d-5bad-4ddf-bf53-2f4e40cbe55f",
+            "widgetIdReceiver": "ef733584-7541-4e01-b84d-c262e9797f2c"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "4fb4ec3c-6471-4a16-ad93-0525cd928edc",
+            "widgetIdReceiver": "ef733584-7541-4e01-b84d-c262e9797f2c"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "c3211e1f-c70d-4dbf-928d-ae6c5b686d23"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "1a7f4e4d-5bad-4ddf-bf53-2f4e40cbe55f",
+            "widgetIdReceiver": "c3211e1f-c70d-4dbf-928d-ae6c5b686d23"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "930adb41-5dc6-46f8-8da1-9b42e4d9d751"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "112fd3c8-ce91-4823-a9ef-b820cc5c47cd",
+            "widgetIdReceiver": "c3211e1f-c70d-4dbf-928d-ae6c5b686d23"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "4fb4ec3c-6471-4a16-ad93-0525cd928edc"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "widgetIdReceiver": "ef733584-7541-4e01-b84d-c262e9797f2c"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "4fb4ec3c-6471-4a16-ad93-0525cd928edc",
+            "widgetIdReceiver": "77eb98ab-1e20-46a2-8ce9-b927c89a5ab3"
+         },
+         {
+            "type": "resourceId",
+            "widgetIdProvider": "4fb4ec3c-6471-4a16-ad93-0525cd928edc",
+            "widgetIdReceiver": "9c192ea5-b59e-46f1-8bc3-2614e84158fb"
+         }
+      ],
+      "widgets": [
+         {
+            "collapsed": false,
+            "config": {
+               "additionalColumns": [{
+                  "boxLabel": "Session Count",
+                  "metricKey": "populationGroup|populationTotalCount",
+                  "metricName": "Population|populationTotalCount",
+                  "resourceKindId": "resourceKind:id:0_::_"
+               }],
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "filterMode": "tagPicker",
+               "mode": "all",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resource": [],
+               "selectFirstRow": {"selectFirstRow": true},
+               "selfProvider": {"selfProvider": true},
+               "tagFilter": {
+                  "path": ["/source/kind/kind:resourceKind:id:0_::_"],
+                  "value": {
+                     "adapterInstance": [],
+                     "adapterKind": [],
+                     "bus": [],
+                     "collector": [],
+                     "day": [],
+                     "exclaim": false,
+                     "healthRange": [],
+                     "kind": ["resourceKind:id:0_::_"],
+                     "maintenanceSchedule": [],
+                     "state": [],
+                     "status": [],
+                     "tag": [],
+                     "tier": []
+                  }
+               },
+               "title": "1) Select Site for Analysis"
+            },
+            "gridsterCoords": {
+               "h": 4,
+               "w": 6,
+               "x": 1,
+               "y": 1
+            },
+            "height": 210,
+            "id": "5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+            "states": [{
+               "key": "permResGrid_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_5b9b3340-9e33-4e7e-bfb4-5b39de6d968d",
+               "value": "o%3Acolumns%3Da%253Ao%25253Aid%25253Ds%2525253Ah1%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah2%25255Ewidth%25253Dn%2525253A133%255Eo%25253Aid%25253Ds%2525253Ah3%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah17%25255Ehidden%25253Db%2525253A0%25255Ewidth%25253Dn%2525253A121%255Eo%25253Aid%25253Ds%2525253Ah15%25255Ehidden%25253Db%2525253A0%255Eo%25253Aid%25253Ds%2525253Ah5%25255Ehidden%25253Db%2525253A0%255Eo%25253Aid%25253Ds%2525253Ah4%25255Ehidden%25253Db%2525253A0%255Eo%25253Aid%25253Ds%2525253Ah6%25255Ehidden%25253Db%2525253A0%255Eo%25253Aid%25253Ds%2525253Ah7%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah8%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah9%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah10%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah11%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah12%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah13%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah14%255Eo%25253Aid%25253Ds%2525253Ah16%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah18%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah19%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah20%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah21%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah22%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah23%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah24%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah25%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah26%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah27%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah28%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah29%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah30%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah31%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah32%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah33%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah34%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah35%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah36%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah37%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah38%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah39%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah40%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah41%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah42%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah43%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah44%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah45%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100%255Eo%25253Aid%25253Ds%2525253Ah46%25255Ehidden%25253Db%2525253A1%25255Ewidth%25253Dn%2525253A100"
+            }],
+            "title": "1) Select Site for Analysis",
+            "type": "ResourceList"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": "1,1",
+               "filterMode": "tagPicker",
+               "refreshContent": {"refreshContent": false},
+               "refreshInterval": 300,
+               "resourceId": null,
+               "resourceName": null,
+               "selfProvider": {"selfProvider": false},
+               "tagFilter": null,
+               "title": "4c) Review VDI Session relationship, look for additional impacted objects with alerts.",
+               "traversalSpecId": ""
+            },
+            "gridsterCoords": {
+               "h": 6,
+               "w": 12,
+               "x": 1,
+               "y": 21
+            },
+            "height": 323,
+            "id": "597b5d28-c8ee-4365-b22a-cba41d71ea16",
+            "states": [
+               {
+                  "key": "perm_toolbarVisible_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_597b5d28-c8ee-4365-b22a-cba41d71ea16",
+                  "value": "b%3A1"
+               },
+               {
+                  "key": "perm_ResourceRelationshipTree_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_597b5d28-c8ee-4365-b22a-cba41d71ea16",
+                  "value": "o%3A"
+               }
+            ],
+            "title": "4c) Review VDI Session relationship, look for additional impacted objects with alerts.",
+            "type": "ResourceRelationshipAdvanced"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "boxColumns": 6,
+               "boxHeight": null,
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "labelSize": 16,
+               "maxCellCount": 100,
+               "metric": {
+                  "mode": "resourceKind",
+                  "resourceKindMetrics": [
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel13211-1",
+                        "isStringMetric": false,
+                        "label": "Avg Health",
+                        "link": "",
+                        "metricKey": "Health|populationAverage",
+                        "metricName": "Health|Average Score Of All Group Members",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel4014-1",
+                        "isStringMetric": false,
+                        "label": "Normal",
+                        "link": "",
+                        "metricKey": "Health|Normal|totalCount",
+                        "metricName": "Health|Normal|Total Count",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel4014-2",
+                        "isStringMetric": false,
+                        "label": "Critical",
+                        "link": "",
+                        "metricKey": "Health|Critical|totalCount",
+                        "metricName": "Health|Critical|Total Count",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": 0,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": -2
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel4014-3",
+                        "isStringMetric": false,
+                        "label": "Immediate",
+                        "link": "",
+                        "metricKey": "Health|Immediate|totalCount",
+                        "metricName": "Health|Immediate|Total Count",
+                        "metricUnitId": null,
+                        "orangeBound": 0,
+                        "redBound": 100000,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": -1
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel4014-4",
+                        "isStringMetric": false,
+                        "label": "Warning",
+                        "link": "",
+                        "metricKey": "Health|Warning|totalCount",
+                        "metricName": "Health|Warning|Total Count",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": -2,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": 0
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel13211-2",
+                        "isStringMetric": false,
+                        "label": "Unknown",
+                        "link": "",
+                        "metricKey": "Health|Unknown|totalCount",
+                        "metricName": "Health|Unknown|Total Count",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     }
+                  ],
+                  "resourceMetrics": [],
+                  "subMode": "resourceKindAll"
+               },
+               "mode": {"layoutMode": "fixedView"},
+               "oldMetricValues": false,
+               "periodLength": "last7Days",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resInteractionMode": null,
+               "resource": [],
+               "roundDecimals": null,
+               "selfProvider": {"selfProvider": false},
+               "showDT": {"showDT": true},
+               "showMetricName": {"showMetricName": true},
+               "showMetricUnit": {"showMetricUnit": true},
+               "showResourceName": {"showResourceName": false},
+               "showSparkline": {"showSparkline": true},
+               "title": "2b) Review Site Connectivity Health Stats",
+               "valueSize": 24,
+               "visualTheme": 3
+            },
+            "gridsterCoords": {
+               "h": 3,
+               "w": 12,
+               "x": 1,
+               "y": 5
+            },
+            "height": 153,
+            "id": "112fd3c8-ce91-4823-a9ef-b820cc5c47cd",
+            "title": "2b) Review Site Connectivity Health Stats",
+            "type": "Scoreboard"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "boxColumns": 5,
+               "boxHeight": null,
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "labelSize": 16,
+               "maxCellCount": 100,
+               "metric": {
+                  "mode": "resourceKind",
+                  "resourceKindMetrics": [
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel2915-1",
+                        "isStringMetric": false,
+                        "label": "VDI Avg Latency",
+                        "link": "",
+                        "metricKey": "Super Metric|sm_da6846b2-5c78-4127-8630-ba8d5b6dd42e",
+                        "metricName": "Super Metric|VDI Avg Latency",
+                        "metricUnitId": "ms",
+                        "orangeBound": 180,
+                        "redBound": 200,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": "ms",
+                        "yellowBound": 150
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel2915-2",
+                        "isStringMetric": false,
+                        "label": "VDI Avg Packet Loss",
+                        "link": "",
+                        "metricKey": "Super Metric|sm_172c9b9b-7193-486b-89d3-8c96456967f9",
+                        "metricName": "Super Metric|VDI Avg Packet Loss",
+                        "metricUnitId": "%",
+                        "orangeBound": 0.9,
+                        "redBound": 1,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": "%",
+                        "yellowBound": 0.5
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel2915-4",
+                        "isStringMetric": false,
+                        "label": "BLAST Jitter",
+                        "link": "",
+                        "metricKey": "Super Metric|sm_e7916b59-2b9d-4c89-a170-c4df1de46308",
+                        "metricName": "Super Metric|VDI Avg Jitter Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel2915-5",
+                        "isStringMetric": false,
+                        "label": "Frame Rate",
+                        "link": "",
+                        "metricKey": "Super Metric|sm_fbc5cb82-82d4-495a-a6de-85392c95a3f4",
+                        "metricName": "Super Metric|VDI Avg Frame Rate",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel2915-3",
+                        "isStringMetric": false,
+                        "label": "Avg Total TX MB",
+                        "link": "",
+                        "metricKey": "Super Metric|sm_563432b0-414e-43d0-816b-2d7a63b7d031",
+                        "metricName": "Super Metric|VDI Avg Transmit",
+                        "metricUnitId": "MB",
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": "MB",
+                        "yellowBound": null
+                     }
+                  ],
+                  "resourceMetrics": [],
+                  "subMode": "resourceKindAll"
+               },
+               "mode": {"layoutMode": "fixedView"},
+               "oldMetricValues": false,
+               "periodLength": "last24Hour",
+               "refreshContent": {"refreshContent": false},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resInteractionMode": null,
+               "resource": [],
+               "roundDecimals": null,
+               "selfProvider": {"selfProvider": false},
+               "showDT": {"showDT": true},
+               "showMetricName": {"showMetricName": true},
+               "showMetricUnit": {"showMetricUnit": true},
+               "showResourceName": {"showResourceName": false},
+               "showSparkline": {"showSparkline": true},
+               "title": "3a) Review VDI Session stats for anomalies on KPI colored metrics.",
+               "valueSize": 24,
+               "visualTheme": 3
+            },
+            "gridsterCoords": {
+               "h": 3,
+               "w": 12,
+               "x": 1,
+               "y": 8
+            },
+            "height": 153,
+            "id": "1d8a04d1-e800-49ef-aed2-7570522cc16f",
+            "title": "3a) Review VDI Session stats for anomalies on KPI colored metrics.",
+            "type": "Scoreboard"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "chartViewItems": [
+                  "legend",
+                  "labels",
+                  "title"
+               ],
+               "isUpdatedView": true,
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "resource": null,
+               "selectFirstRow": {"selectFirstRow": false},
+               "selfProvider": {"selfProvider": false},
+               "title": "3c) Click distribution to see which VDI sessions are impacted by packet loss.",
+               "traversalSpecId": "",
+               "viewDefinitionId": "a7014b4c-0742-4ad6-861c-38c2548a2355"
+            },
+            "gridsterCoords": {
+               "h": 4,
+               "w": 6,
+               "x": 7,
+               "y": 11
+            },
+            "height": 210,
+            "id": "f2581a30-11ba-4a77-a40f-3d3230dad316",
+            "title": "3c) Click distribution to see which VDI sessions are impacted by packet loss.",
+            "type": "View"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "boxColumns": 5,
+               "boxHeight": null,
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "labelSize": 16,
+               "maxCellCount": 100,
+               "metric": {
+                  "mode": "resourceKind",
+                  "resourceKindMetrics": [
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel10556-1",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "Super Metric|sm_c1c53905-8738-4101-8ee7-4d0f6e1eda00",
+                        "metricName": "Super Metric|RDSH Avg Latency",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel10556-2",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "Super Metric|sm_b35b14cb-992a-4f55-be8d-c15d678b1188",
+                        "metricName": "Super Metric|RDSH Avg Packet Loss",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel10556-3",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "Super Metric|sm_60b83ff1-01f3-44a3-a406-f5b1504f1091",
+                        "metricName": "Super Metric|RDSH Avg Jitter Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel10556-4",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "Super Metric|sm_c02ea890-67ed-4a83-a081-03851b394c73",
+                        "metricName": "Super Metric|RDSH Avg Transmit",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel10556-5",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "Super Metric|sm_ed671d95-da5a-4d9c-97a6-690a166feadd",
+                        "metricName": "Super Metric|RDSH Avg Frame Rate",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:0_::_",
+                        "resourceKindName": "Location",
+                        "unit": null,
+                        "yellowBound": null
+                     }
+                  ],
+                  "resourceMetrics": [],
+                  "subMode": "resourceKindAll"
+               },
+               "mode": {"layoutMode": "fixedView"},
+               "oldMetricValues": false,
+               "periodLength": null,
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resInteractionMode": null,
+               "resource": [],
+               "roundDecimals": null,
+               "selfProvider": {"selfProvider": false},
+               "showDT": {"showDT": true},
+               "showMetricName": {"showMetricName": true},
+               "showMetricUnit": {"showMetricUnit": true},
+               "showResourceName": {"showResourceName": false},
+               "showSparkline": {"showSparkline": true},
+               "title": "5a) Review App Session Stats for anomalies on KPI colored metrics.",
+               "valueSize": 24,
+               "visualTheme": 3
+            },
+            "gridsterCoords": {
+               "h": 3,
+               "w": 12,
+               "x": 1,
+               "y": 27
+            },
+            "height": 153,
+            "id": "09565db6-bb50-4c11-be94-742f5468434d",
+            "title": "5a) Review App Session Stats for anomalies on KPI colored metrics.",
+            "type": "Scoreboard"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "chartViewItems": [
+                  "legend",
+                  "labels",
+                  "title"
+               ],
+               "isUpdatedView": true,
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "resource": null,
+               "selectFirstRow": {"selectFirstRow": false},
+               "selfProvider": {"selfProvider": false},
+               "title": "5b)  Click distribution to see which App sessions are impacted by latency.",
+               "traversalSpecId": "",
+               "viewDefinitionId": "0f3180b8-322e-4725-ad35-616cec6d1082"
+            },
+            "gridsterCoords": {
+               "h": 5,
+               "w": 6,
+               "x": 1,
+               "y": 30
+            },
+            "height": 268,
+            "id": "73563317-ccd6-4b4d-a8e9-f1ba4e04b946",
+            "title": "5b)  Click distribution to see which App sessions are impacted by latency.",
+            "type": "View"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "chartViewItems": [
+                  "legend",
+                  "labels",
+                  "title"
+               ],
+               "isUpdatedView": true,
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "resource": null,
+               "selectFirstRow": {"selectFirstRow": false},
+               "selfProvider": {"selfProvider": false},
+               "title": "5c)  Click distribution to see which App sessions are impacted by packet loss.",
+               "traversalSpecId": "",
+               "viewDefinitionId": "cd58ad33-8022-4072-a392-d0bb1171ad7f"
+            },
+            "gridsterCoords": {
+               "h": 5,
+               "w": 6,
+               "x": 7,
+               "y": 30
+            },
+            "height": 268,
+            "id": "8a90f570-3090-453d-a097-807b189429a3",
+            "title": "5c)  Click distribution to see which App sessions are impacted by packet loss.",
+            "type": "View"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "configs": [{
+                  "attributeKind": {"value": ""},
+                  "color": {
+                     "maxValue": 100,
+                     "minValue": 0,
+                     "thresholds": {
+                        "colors": [
+                           "#FF0000",
+                           "#FF0000",
+                           "#FF6600",
+                           "#00FF00"
+                        ],
+                        "values": [
+                           0,
+                           75,
+                           90
+                        ]
+                     }
+                  },
+                  "colorBy": {
+                     "metricKey": "System Attributes|health",
+                     "value": "vRealize Operations Generated|Self - Health Score"
+                  },
+                  "customFilter": {
+                     "excludedResources": null,
+                     "filter": [{
+                        "filterTypes": [{
+                           "condition": "EQUALS",
+                           "filterType": "metrics",
+                           "isStringMetric": true,
+                           "metricKey": "status|session_state",
+                           "metricName": "Status|Session State",
+                           "metricUnit": null,
+                           "metricValue": {
+                              "isStringMetric": true,
+                              "value": "Connected"
+                           }
+                        }],
+                        "resourceKind": "002003V4VUserDesktop",
+                        "resourceKindId": "002003V4VUserDesktop"
+                     }],
+                     "includedResources": null
+                  },
+                  "filterMode": "tagPicker",
+                  "focusOnGroups": true,
+                  "groupBy": {
+                     "id": "004null002009ContainerLocation",
+                     "originalText": "Location",
+                     "parentId": "Container",
+                     "parentText": "Container",
+                     "text": "Location",
+                     "type": "resourceKind",
+                     "typeId": "resourceKind:id:0_::_"
+                  },
+                  "mode": {"mode": false},
+                  "name": "VDI Session Health",
+                  "relationalGrouping": false,
+                  "resourceKind": "resourceKind:id:2_::_",
+                  "sizeBy": {
+                     "metricKey": "System Attributes|health",
+                     "value": "vRealize Operations Generated|Self - Health Score"
+                  },
+                  "solidColoring": true,
+                  "tagFilter": null,
+                  "thenBy": {
+                     "id": "004null002003V4VViewPool",
+                     "originalText": "VDI Desktop Pool",
+                     "parentId": "V4V",
+                     "parentText": "Horizon Adapter",
+                     "text": "VDI Desktop Pool",
+                     "type": "resourceKind",
+                     "typeId": "resourceKind:id:1_::_"
+                  }
+               }],
+               "depth": 10,
+               "mode": "all",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": [
+                  1,
+                  -1,
+                  0
+               ]},
+               "resource": [],
+               "selfProvider": {"selfProvider": false},
+               "title": "4a) Select VDI  Session to review health metrics and relationship",
+               "value": 0
+            },
+            "gridsterCoords": {
+               "h": 6,
+               "w": 6,
+               "x": 1,
+               "y": 15
+            },
+            "height": 323,
+            "id": "1a7f4e4d-5bad-4ddf-bf53-2f4e40cbe55f",
+            "states": [{
+               "key": "perm_HeatMap_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_1a7f4e4d-5bad-4ddf-bf53-2f4e40cbe55f",
+               "value": "o%3A"
+            }],
+            "title": "4a) Select VDI  Session to review health metrics and relationship",
+            "type": "Heatmap"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "configs": [{
+                  "attributeKind": {"value": ""},
+                  "color": {
+                     "maxValue": 100,
+                     "minValue": 0,
+                     "thresholds": {
+                        "colors": [
+                           "#FF0000",
+                           "#FFFF00",
+                           "#00FF00"
+                        ],
+                        "values": [
+                           0,
+                           50,
+                           100
+                        ]
+                     }
+                  },
+                  "colorBy": {
+                     "metricKey": "System Attributes|health",
+                     "value": "vRealize Operations Generated|Self - Health Score"
+                  },
+                  "customFilter": {
+                     "excludedResources": null,
+                     "filter": [{
+                        "filterTypes": [{
+                           "condition": "EQUALS",
+                           "filterType": "metrics",
+                           "isStringMetric": true,
+                           "metricKey": "status|session_state",
+                           "metricName": "Status|Session State",
+                           "metricUnit": null,
+                           "metricValue": {
+                              "isStringMetric": true,
+                              "value": "Connected"
+                           }
+                        }],
+                        "resourceKind": "002003V4VAppSession",
+                        "resourceKindId": "002003V4VAppSession"
+                     }],
+                     "includedResources": null
+                  },
+                  "filterMode": "tagPicker",
+                  "focusOnGroups": true,
+                  "groupBy": {
+                     "id": "004null002009ContainerLocation",
+                     "originalText": "Location",
+                     "parentId": "Container",
+                     "parentText": "Container",
+                     "text": "Location",
+                     "type": "resourceKind",
+                     "typeId": "resourceKind:id:0_::_"
+                  },
+                  "mode": {"mode": false},
+                  "name": "App Session Health",
+                  "relationalGrouping": false,
+                  "resourceKind": "resourceKind:id:4_::_",
+                  "sizeBy": {
+                     "metricKey": "System Attributes|health",
+                     "value": "vRealize Operations Generated|Self - Health Score"
+                  },
+                  "solidColoring": false,
+                  "tagFilter": null,
+                  "thenBy": {
+                     "id": "004null002003V4VRDSServer",
+                     "originalText": "RDS Host",
+                     "parentId": "V4V",
+                     "parentText": "Horizon Adapter",
+                     "text": "RDS Host",
+                     "type": "resourceKind",
+                     "typeId": "resourceKind:id:3_::_"
+                  }
+               }],
+               "depth": 10,
+               "mode": "all",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": [
+                  1,
+                  -1,
+                  0
+               ]},
+               "resource": [],
+               "selfProvider": {"selfProvider": false},
+               "title": "6a) Select App Session to review health metrics and relationship",
+               "value": 0
+            },
+            "gridsterCoords": {
+               "h": 6,
+               "w": 6,
+               "x": 1,
+               "y": 35
+            },
+            "height": 323,
+            "id": "4fb4ec3c-6471-4a16-ad93-0525cd928edc",
+            "states": [{
+               "key": "perm_HeatMap_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_4fb4ec3c-6471-4a16-ad93-0525cd928edc",
+               "value": "o%3A"
+            }],
+            "title": "6a) Select App Session to review health metrics and relationship",
+            "type": "Heatmap"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "boxColumns": 3,
+               "boxHeight": null,
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "labelSize": 16,
+               "maxCellCount": 100,
+               "metric": {
+                  "mode": "resourceKind",
+                  "resourceKindMetrics": [
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel29758-1",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_critical",
+                        "metricName": "vRealize Operations Generated|Alert Count Critical",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": 0,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": null,
+                        "yellowBound": -2
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel29758-2",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_immediate",
+                        "metricName": "vRealize Operations Generated|Alert Count Immediate",
+                        "metricUnitId": null,
+                        "orangeBound": 0,
+                        "redBound": 100000,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": null,
+                        "yellowBound": -1
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel29758-3",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_warning",
+                        "metricName": "vRealize Operations Generated|Alert Count Warning",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": -2,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": null,
+                        "yellowBound": 0
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel20769-5",
+                        "isStringMetric": false,
+                        "label": "BLAST Latency",
+                        "link": "",
+                        "metricKey": "blast|round_trip_latency",
+                        "metricName": "BLAST|Round Trip Latency",
+                        "metricUnitId": -1,
+                        "orangeBound": 180,
+                        "redBound": 200,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": 150
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel20769-1",
+                        "isStringMetric": false,
+                        "label": "BLAST Packet Loss",
+                        "link": "",
+                        "metricKey": "blast|session_packet_loss_uplink",
+                        "metricName": "BLAST|Blast Session Packet Loss Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": 0.9,
+                        "redBound": 1,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": null,
+                        "yellowBound": 0.7
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel20769-2",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|session_jitter_uplink",
+                        "metricName": "BLAST|Blast Session Jitter Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel20769-3",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|encoded_frame_rate",
+                        "metricName": "BLAST|Encoded Frame Rate",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel20769-4",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|estimate_bandwidth",
+                        "metricName": "BLAST|Estimate Bandwidth",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel20769-6",
+                        "isStringMetric": false,
+                        "label": "CPU Workload",
+                        "link": "",
+                        "metricKey": "cpu|workload",
+                        "metricName": "CPU|Workload",
+                        "metricUnitId": -1,
+                        "orangeBound": 90,
+                        "redBound": 95,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": 85
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel20769-8",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "session|session_duration",
+                        "metricName": "Session|Session Duration",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel23035-1",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "session|logon_time",
+                        "metricName": "Session|Total Logon Time",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:2_::_",
+                        "resourceKindName": "VDI Desktop Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     }
+                  ],
+                  "resourceMetrics": [],
+                  "subMode": "resourceKindAll"
+               },
+               "mode": {"layoutMode": "fixedView"},
+               "oldMetricValues": false,
+               "periodLength": null,
+               "refreshContent": {"refreshContent": false},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resInteractionMode": null,
+               "resource": [],
+               "roundDecimals": null,
+               "selfProvider": {"selfProvider": false},
+               "showDT": {"showDT": true},
+               "showMetricName": {"showMetricName": true},
+               "showMetricUnit": {"showMetricUnit": true},
+               "showResourceName": {"showResourceName": false},
+               "showSparkline": {"showSparkline": true},
+               "title": "4b) Review session metrics for anomalies, KPI's will be colored based on threshold.",
+               "valueSize": 24,
+               "visualTheme": 3
+            },
+            "gridsterCoords": {
+               "h": 6,
+               "w": 6,
+               "x": 7,
+               "y": 15
+            },
+            "height": 323,
+            "id": "ef733584-7541-4e01-b84d-c262e9797f2c",
+            "title": "4b) Review session metrics for anomalies, KPI's will be colored based on threshold.",
+            "type": "Scoreboard"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "impactedBadge": "",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": [
+                  -1,
+                  0
+               ]},
+               "resource": null,
+               "selfProvider": {"selfProvider": false},
+               "title": "2a) Review Top Alerts",
+               "topIssuesDisplayLimit": 5
+            },
+            "gridsterCoords": {
+               "h": 4,
+               "w": 6,
+               "x": 7,
+               "y": 1
+            },
+            "height": 210,
+            "id": "c3211e1f-c70d-4dbf-928d-ae6c5b686d23",
+            "title": "2a) Review Top Alerts",
+            "type": "ProblemAlertsList"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "chartViewItems": [
+                  "legend",
+                  "labels",
+                  "title"
+               ],
+               "isUpdatedView": true,
+               "refreshContent": {"refreshContent": false},
+               "refreshInterval": 300,
+               "resource": null,
+               "selectFirstRow": {"selectFirstRow": false},
+               "selfProvider": {"selfProvider": false},
+               "title": "3b)  Click distribution to see which VDI sessions are impacted by latency.",
+               "traversalSpecId": "",
+               "viewDefinitionId": "a0c1e99e-6896-44f8-8cbf-a5caa178b030"
+            },
+            "gridsterCoords": {
+               "h": 4,
+               "w": 6,
+               "x": 1,
+               "y": 11
+            },
+            "height": 210,
+            "id": "930adb41-5dc6-46f8-8da1-9b42e4d9d751",
+            "title": "3b)  Click distribution to see which VDI sessions are impacted by latency.",
+            "type": "View"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": "1,1",
+               "filterMode": "tagPicker",
+               "refreshContent": {"refreshContent": true},
+               "refreshInterval": 300,
+               "resourceId": null,
+               "resourceName": null,
+               "selfProvider": {"selfProvider": false},
+               "tagFilter": null,
+               "title": "6c) Review App Session relationship, look for additional impacted objects with alerts.",
+               "traversalSpecId": ""
+            },
+            "gridsterCoords": {
+               "h": 5,
+               "w": 12,
+               "x": 1,
+               "y": 41
+            },
+            "height": 267,
+            "id": "9c192ea5-b59e-46f1-8bc3-2614e84158fb",
+            "states": [{
+               "key": "perm_ResourceRelationshipTree_widget_b1800d76-562d-44e9-a4c4-98cfe54568ed_9c192ea5-b59e-46f1-8bc3-2614e84158fb",
+               "value": "o%3A"
+            }],
+            "title": "6c) Review App Session relationship, look for additional impacted objects with alerts.",
+            "type": "ResourceRelationshipAdvanced"
+         },
+         {
+            "collapsed": false,
+            "config": {
+               "boxColumns": 2,
+               "boxHeight": null,
+               "customFilter": {
+                  "excludedResources": null,
+                  "filter": [],
+                  "includedResources": null
+               },
+               "depth": 1,
+               "labelSize": 16,
+               "maxCellCount": 100,
+               "metric": {
+                  "mode": "resourceKind",
+                  "resourceKindMetrics": [
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-9",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_critical",
+                        "metricName": "vRealize Operations Generated|Alert Count Critical",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": 0,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": -2
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-10",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_immediate",
+                        "metricName": "vRealize Operations Generated|Alert Count Immediate",
+                        "metricUnitId": null,
+                        "orangeBound": 0,
+                        "redBound": 100000,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": -1
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-11",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "System Attributes|alert_count_warning",
+                        "metricName": "vRealize Operations Generated|Alert Count Warning",
+                        "metricUnitId": null,
+                        "orangeBound": -1,
+                        "redBound": -2,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": 0
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-5",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "blast|round_trip_latency",
+                        "metricName": "BLAST|Round Trip Latency",
+                        "metricUnitId": -1,
+                        "orangeBound": 180,
+                        "redBound": 200,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": 150
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel16660-1",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "blast|session_packet_loss_uplink",
+                        "metricName": "BLAST|Blast Session Packet Loss Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": 0.9,
+                        "redBound": 1,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": 0.7
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel84620-1",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|session_jitter_uplink",
+                        "metricName": "BLAST|Blast Session Jitter Uplink",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-4",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "blast|estimate_bandwidth",
+                        "metricName": "BLAST|Estimate Bandwidth",
+                        "metricUnitId": -1,
+                        "orangeBound": 2000,
+                        "redBound": 1000,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": 3000
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel84620-3",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|encoded_frame_rate",
+                        "metricName": "BLAST|Encoded Frame Rate",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel84620-2",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "blast|session_transmitted_bytes",
+                        "metricName": "BLAST|Blast Session Transmitted Bytes",
+                        "metricUnitId": null,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": null,
+                        "yellowBound": null
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-6",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "cpu|workload",
+                        "metricName": "CPU|Workload",
+                        "metricUnitId": -1,
+                        "orangeBound": 90,
+                        "redBound": 95,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": 85
+                     },
+                     {
+                        "colorMethod": 0,
+                        "id": "extModel84620-7",
+                        "isStringMetric": false,
+                        "label": "",
+                        "link": "",
+                        "metricKey": "session|logon_time",
+                        "metricName": "Session|Total Logon Time",
+                        "metricUnitId": -1,
+                        "orangeBound": 45,
+                        "redBound": 55,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": 35
+                     },
+                     {
+                        "colorMethod": 1,
+                        "id": "extModel84620-8",
+                        "isStringMetric": false,
+                        "link": "",
+                        "metricKey": "session|session_duration",
+                        "metricName": "Session|Session Duration",
+                        "metricUnitId": -1,
+                        "orangeBound": null,
+                        "redBound": null,
+                        "resourceKindId": "resourceKind:id:4_::_",
+                        "resourceKindName": "Application Session",
+                        "unit": "Auto",
+                        "yellowBound": null
+                     }
+                  ],
+                  "resourceMetrics": [],
+                  "subMode": "resourceKindAll"
+               },
+               "mode": {"layoutMode": "fixedView"},
+               "oldMetricValues": false,
+               "periodLength": null,
+               "refreshContent": {"refreshContent": false},
+               "refreshInterval": 300,
+               "relationshipMode": {"relationshipMode": 0},
+               "resInteractionMode": null,
+               "resource": [],
+               "roundDecimals": null,
+               "selfProvider": {"selfProvider": false},
+               "showDT": {"showDT": true},
+               "showMetricName": {"showMetricName": true},
+               "showMetricUnit": {"showMetricUnit": true},
+               "showResourceName": {"showResourceName": false},
+               "showSparkline": {"showSparkline": true},
+               "title": "6b) Review session metrics for anomalies, KPI's will be colored based on threshold.",
+               "valueSize": 24,
+               "visualTheme": 3
+            },
+            "gridsterCoords": {
+               "h": 6,
+               "w": 6,
+               "x": 7,
+               "y": 35
+            },
+            "height": 323,
+            "id": "77eb98ab-1e20-46a2-8ce9-b927c89a5ab3",
+            "title": "6b) Review session metrics for anomalies, KPI's will be colored based on threshold.",
+            "type": "Scoreboard"
+         }
+      ]
+   }],
+   "entries": {"resourceKind": [
+      {
+         "adapterKindKey": "V4V",
+         "internalId": "resourceKind:id:2_::_",
+         "resourceKindKey": "UserDesktop"
+      },
+      {
+         "adapterKindKey": "V4V",
+         "internalId": "resourceKind:id:3_::_",
+         "resourceKindKey": "RDSServer"
+      },
+      {
+         "adapterKindKey": "Container",
+         "internalId": "resourceKind:id:0_::_",
+         "resourceKindKey": "Location"
+      },
+      {
+         "adapterKindKey": "V4V",
+         "internalId": "resourceKind:id:4_::_",
+         "resourceKindKey": "AppSession"
+      },
+      {
+         "adapterKindKey": "V4V",
+         "internalId": "resourceKind:id:1_::_",
+         "resourceKindKey": "ViewPool"
+      }
+   ]},
+   "uuid": "7ea80593-ba98-47a7-b459-f007dcb03d87"
+}

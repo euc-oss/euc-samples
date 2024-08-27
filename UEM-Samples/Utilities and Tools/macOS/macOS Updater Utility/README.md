@@ -14,17 +14,25 @@
 - **Tested on macOS Versions**: macOS 11+ (Intel and Apple Silicon CPU)
 
 ## Purpose
-
-The macOS Updater Utility (mUU) keeps your Mac device fleet up to date by prompting users to update to your specified version of macOS. If necessary, mUU will force users to update their OS. mUU utilizes [Apple's MDM Commands](https://developer.apple.com/documentation/devicemanagement/scheduleosupdatecommand/command/updatesitem) to download and install updates via the Workspace ONE UEM API. mUU will allow you to specify max number of deferrals, deferral grace period, and more! Read more to find out how to deploy this solution using Workspace ONE UEM. 
+<!-- Summary Start -->
+The macOS Updater Utility (mUU) keeps your Mac device fleet up to date by prompting users to update to your specified version of macOS. If necessary, mUU will force users to update their OS. mUU utilizes [Apple's MDM Commands](https://developer.apple.com/documentation/devicemanagement/scheduleosupdatecommand/command/updatesitem) to download and install updates via the Workspace ONE UEM API. mUU will allow you to specify max number of deferrals, deferral grace period, and more! 
+<!-- Summary End -->
+Read more to find out how to deploy this solution using Workspace ONE UEM. 
 <p align="center">
     <img width="532" alt="image" src="https://user-images.githubusercontent.com/63124926/181076575-23266933-bff4-46fd-adf9-ab332054f994.png">
 </p>
 
-1. [Prerequisites for mUU](#prerequisites-for-mUU)
-    1. ~~[API Credentials](#api-credentials)~~
-2. [Deploying macOS Updater Utility](#deploying-macOS-updater-utility)
-    1. [Script](#script)
-    2. [Profile](#profile)
+- [macOS Updater Utility (mUU)](#macos-updater-utility-muu)
+  - [Overview](#overview)
+  - [Purpose](#purpose)
+  - [Prerequisites for mUU](#prerequisites-for-muu)
+      - [~~API Credentials~~](#api-credentials)
+  - [Deploying macOS Updater Utility](#deploying-macos-updater-utility)
+      - [Script](#script)
+      - [Profile](#profile)
+  - [Notes](#notes)
+  - [Required Changes/Updates](#required-changesupdates)
+  - [Change Log](#change-log)
 
 ## Prerequisites for mUU
 - macOS Version 11.0 (Big Sur) or higher recommended. This tool has not been tested on anything previous to Big Sur.

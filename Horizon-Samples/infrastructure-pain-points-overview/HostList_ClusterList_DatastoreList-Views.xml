@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Content>
+    <Views>
+        <ViewDef id="6c8576cd-4da3-4dcf-9cf8-97f8a55b1ce2">
+            <Title>Infra Pain Points - Cluster List</Title>
+            <Description/>
+            <SubjectType adapterKind="VMWARE" resourceKind="ClusterComputeResource" type="descendant"/>
+            <SubjectType adapterKind="VMWARE" resourceKind="ClusterComputeResource" type="self"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_63" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_64" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="summary|parentVcenter"/>
+    <Property name="isStringAttribute" value="true"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="ClusterComputeResource"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="true"/>
+    <Property name="displayName" value="vCenter"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="summary|parentDatacenter"/>
+    <Property name="isStringAttribute" value="true"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="ClusterComputeResource"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="true"/>
+    <Property name="displayName" value="Datacenter"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="mem|demand|workload"/>
+    <Property name="preferredUnitId" value="percent"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="ClusterComputeResource"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Memory Demand (%)"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="cpu|demand|workload"/>
+    <Property name="preferredUnitId" value="percent"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="ClusterComputeResource"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="CPU Demand (%)"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="pagination-control_id_65" type="pagination-control" visible="true">
+                    <Property name="start" value="0"/>
+                    <Property name="size" value="50"/>
+                </Control>
+                <Control id="metadata_id_66" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="list-view" id="list-view_id_62"/>
+            </DataProviders>
+            <Presentation type="list"/>
+        </ViewDef>
+        <ViewDef id="f1936462-4d9a-4123-a49f-e0df45b7d485">
+            <Title>Infra Pain Points - Host List</Title>
+            <Description/>
+            <SubjectType adapterKind="VMWARE" resourceKind="HostSystem" type="descendant"/>
+            <SubjectType adapterKind="VMWARE" resourceKind="HostSystem" type="self"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_57" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="DAYS"/>
+                    <Property name="count" value="7"/>
+                </Control>
+                <Control id="attributes-selector_id_58" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="summary|parentVcenter"/>
+    <Property name="isStringAttribute" value="true"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="true"/>
+    <Property name="displayName" value="vCenter"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="summary|parentCluster"/>
+    <Property name="isStringAttribute" value="true"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="true"/>
+    <Property name="displayName" value="Cluster"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="cpu|capacity_contentionPct"/>
+    <Property name="preferredUnitId" value="percent"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="CPU Contention"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="mem|host_contentionPct"/>
+    <Property name="preferredUnitId" value="percent"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Memory Contention"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="mem|swapinRate_average"/>
+    <Property name="preferredUnitId" value="auto"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Swap In Rate"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="net:Aggregate of all instances|droppedPct"/>
+    <Property name="preferredUnitId" value="percent"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Dropped Packets (%)"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="disk:Aggregate of all instances|totalLatency_average"/>
+    <Property name="preferredUnitId" value="auto"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="HostSystem"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Total Latency"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="pagination-control_id_59" type="pagination-control" visible="true">
+                    <Property name="start" value="0"/>
+                    <Property name="size" value="50"/>
+                </Control>
+                <Control id="metadata_id_60" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="distributionColor" value="6870C4"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="list-view" id="list-view_id_56"/>
+            </DataProviders>
+            <Presentation type="list"/>
+        </ViewDef>
+        <ViewDef id="3fd3f7d5-3a9b-4d85-887a-a0970f155831">
+            <Title>Infra Pain Points - Datastore List</Title>
+            <Description/>
+            <SubjectType adapterKind="VMWARE" resourceKind="Datastore" type="descendant"/>
+            <SubjectType adapterKind="VMWARE" resourceKind="Datastore" type="self"/>
+            <Usage>dashboard</Usage>
+            <Usage>report</Usage>
+            <Usage>details</Usage>
+            <Usage>content</Usage>
+            <Controls>
+                <Control id="time-interval-selector_id_69" type="time-interval-selector" visible="false">
+                    <Property name="advancedTimeMode" value="false"/>
+                    <Property name="unit" value="MONTHS"/>
+                    <Property name="count" value="1"/>
+                </Control>
+                <Control id="attributes-selector_id_70" type="attributes-selector" visible="false">
+                    <Property name="attributeInfos">
+                        <List>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="devices:Aggregate of all instances|commandsAveraged_average"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="Datastore"/>
+    <Property name="rollUpType" value="AVG"/>
+    <Property name="rollUpUnit" value="MINUTES"/>
+    <Property name="rollUpCount" value="5"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Total IOPS"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="datastore|numberReadAveraged_average"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="Datastore"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Read IOPS"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="datastore|numberWriteAveraged_average"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="Datastore"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Write IOPS"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="datastore|totalReadLatency_average"/>
+    <Property name="preferredUnitId" value="auto"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="Datastore"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Read Latency (ms)"/>
+</Value>
+                            </Item>
+                            <Item>
+<Value>
+    <Property name="objectType" value="RESOURCE"/>
+    <Property name="attributeKey" value="datastore|totalWriteLatency_average"/>
+    <Property name="preferredUnitId" value="auto"/>
+    <Property name="isStringAttribute" value="false"/>
+    <Property name="adapterKind" value="VMWARE"/>
+    <Property name="resourceKind" value="Datastore"/>
+    <Property name="rollUpType" value="NONE"/>
+    <Property name="rollUpCount" value="0"/>
+    <Property name="transformations">
+        <List>
+            <Item value="CURRENT"/>
+        </List>
+    </Property>
+    <Property name="isProperty" value="false"/>
+    <Property name="displayName" value="Write Latency (ms)"/>
+</Value>
+                            </Item>
+                        </List>
+                    </Property>
+                </Control>
+                <Control id="pagination-control_id_71" type="pagination-control" visible="true">
+                    <Property name="start" value="0"/>
+                    <Property name="size" value="50"/>
+                </Control>
+                <Control id="metadata_id_72" type="metadata" visible="false">
+                    <Property name="maxPointsCount" value="5000"/>
+                    <Property name="distributionColor" value="6870C4"/>
+                    <Property name="hideObjectNameColumn" value="false"/>
+                    <Property name="listTopResultSize" value="-1"/>
+                </Control>
+            </Controls>
+            <DataProviders>
+                <DataProvider dataType="list-view" id="list-view_id_68"/>
+            </DataProviders>
+            <Presentation type="list"/>
+        </ViewDef>
+    </Views>
+</Content>

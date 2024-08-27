@@ -1,0 +1,214 @@
+{
+   "customGroups": [
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 8,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "cpu|capacity_contentionPct",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_CPUContention",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleType": "StringMetricPropertyRule",
+               "ruleMetricKey": "runtime|connectionState",
+               "isProperty": true,
+               "ruleStringOperator": "EQUALS",
+               "ruleStringValue": "notResponding"
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_NotResponding",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleType": "StringMetricPropertyRule",
+               "ruleMetricKey": "runtime|connectionState",
+               "isProperty": true,
+               "ruleStringOperator": "EQUALS",
+               "ruleStringValue": "disconnected"
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_Disconnected",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "EQUALS",
+               "ruleValue": 0,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "summary|total_number_vms",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_withoutVMs",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleType": "StringMetricPropertyRule",
+               "ruleMetricKey": "runtime|maintenanceState",
+               "isProperty": true,
+               "ruleStringOperator": "NOT_EQUALS",
+               "ruleStringValue": "notInMaintenance"
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_In_Maintenance",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 3.15576E7,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "sys|uptime_latest",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_Uptime",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 100,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "mem|swapinRate_average",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_Swapping",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 5,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "mem|host_contentionPct",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_MemoryContention",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [
+            {
+               "resourceKind": "HostSystem",
+               "adapterKind": "VMWARE",
+               "rules": [{
+                  "ruleOperator": "GREATER_THAN",
+                  "ruleValue": 25,
+                  "ruleType": "NumericMetricPropertyRule",
+                  "ruleMetricKey": "storage|totalReadLatency_average",
+                  "isProperty": false
+               }]
+            },
+            {
+               "resourceKind": "HostSystem",
+               "adapterKind": "VMWARE",
+               "rules": [{
+                  "ruleOperator": "GREATER_THAN",
+                  "ruleValue": 25,
+                  "ruleType": "NumericMetricPropertyRule",
+                  "ruleMetricKey": "storage|totalWriteLatency_average",
+                  "isProperty": false
+               }]
+            }
+         ]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_StorageLatency",
+         "description": "",
+         "started": true
+      },
+      {
+         "resourceKind": "Host_Status",
+         "membershipDefinition": {"ruleGroups": [{
+            "resourceKind": "HostSystem",
+            "adapterKind": "VMWARE",
+            "rules": [{
+               "ruleOperator": "GREATER_THAN",
+               "ruleValue": 1,
+               "ruleType": "NumericMetricPropertyRule",
+               "ruleMetricKey": "net:Aggregate of all instances|droppedPct",
+               "isProperty": false
+            }]
+         }]},
+         "adapterKind": "Container",
+         "autoResolveMembership": true,
+         "name": "Host_DroppedPackets",
+         "description": "",
+         "started": true
+      }
+   ],
+   "customGroupTypes": [{
+      "resourceKind": "Host_Status",
+      "localization": [{
+         "resourceKindName": "Host_Status",
+         "locale": "en"
+      }]
+   }]
+}

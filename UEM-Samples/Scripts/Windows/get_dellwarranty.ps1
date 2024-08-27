@@ -26,6 +26,11 @@
     Filename:       get_dellwarranty.ps1
     Forked from:    https://github.com/helmlingp/sensors
 #>
+# Description: This script gathers the Dell Warranty info on the current Dell device.
+# Execution Context: System
+# Execution Architecture: EITHER64OR32BIT
+# Timeout: 30
+# Variables: APIKey,APISecret
 
 # WS1 Scripts Variables
 $ApiKey = $env:apikey

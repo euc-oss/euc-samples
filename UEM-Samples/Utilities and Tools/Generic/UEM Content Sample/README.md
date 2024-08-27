@@ -8,8 +8,9 @@ REST APIs for Content Management
 - **Supported Platforms:** Workspace ONE UEM 1811+
 
 ## Purpose
+<!-- Summary Start -->
 This script shows how to use the Workspace ONE REST API calls to download content from Content repositories.  This can be used as an example of the information required to dowload content.
-
+<!-- Summary End -->
 ## Description
 This project consists of two files **RunParams.json** and **PullContent.ps1**.  You *should* be able to just update the **RunParams.json** file.  The *PullContent.ps1* reads the values from the **RunParams.json** file at runtime.
 

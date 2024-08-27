@@ -8,8 +8,9 @@
 - **Tested on**: Windows 10 Pro/Enterprise 1803+, MacOs Catalina, Excel 2016+
 
 ## Purpose
+<!-- Summary Start -->
 This Add-In allows you to access your Workspace ONE UEM API from within Excel
-
+<!-- Summary End -->
 ## Description
 The Workspace ONE Excel Add-In takes the complication out of accessing your Workspace ONE UEM API's and importing that data into Excel. This is live data which you can update at any time and even copy into a different Office Application (eg. Word or Powerpoint) and maintain the connection to the live data your environment.
 

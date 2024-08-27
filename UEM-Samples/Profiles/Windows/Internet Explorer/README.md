@@ -9,9 +9,9 @@
         
 ## DESCRIPTION
 The Internet Explorer CSP and other ADMX-backed policies were introduced starting in Windows 10 version 1703, however you should stick to the latest version in order to have support for all of the policies. Microsoft allowed ADMX-backed policies to be deployed using CSPs and have added built-in support for Internet Explorer. 
-
+<!-- Summary Start -->
 This is a sample of some of the Internet Explorer CSPs which you can deploy to your devices. To deploy this sample, navigate to **Devices & User > Profile > Add > Windows > Desktop > Device > Custom Settings**, then copy and paste the SyncML into the box and publish the profile.
-
+<!-- Summary End -->
 These are all ADMX-backed policies and require special SyncML format to enable or disable. For details, see [Understanding ADMX-backed policies](https://docs.microsoft.com/en-us/windows/client-management/mdm/understanding-admx-backed-policies).
 	
 ## Modifications Required

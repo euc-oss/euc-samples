@@ -9,26 +9,30 @@
 - **Tested on macOS Versions**: macOS High Sierra
 
 ## Purpose
-
+<!-- Summary Start -->
 Cellular devices from Apple traditionally required a small, physical Subscriber Identity Module (SIM) card to enable service on a cellular carrier.  The SIM was typically pre-inserted by the carrier, but could be physically swapped if necessary.  Modern devices now include an eSIM, which is a chip built into the device that performs the same function but consumes less internal space.  eSIMs are also more flexible, as it supports any carrier supporting the eSIM standard and eliminates the need for physically touching/modifying the device.
-
+<!-- Summary End -->
 > **NOTE**:  The list of cellular providers is shown on [Apple's Cellular iPad page.](https://www.apple.com/ipad/cellular/)
 
 This sample guidance provides details on how to bulk activate iPad Cellular Plans.
 
 ## Table of Contents
 
-- [Activating Cellular Service without MDM](#activating-cellular-service-without-mdm)
-- [Automated Cellular Service Activation with Workspace ONE UEM](#automated-cellular-service-activation-with-workspace-one-uem)
-  - [Pre-Requisites](#pre-requisites)
-  - [Known Carrier eSIM Activation Server URLs](#known-carrier-esim-activation-server-urls)
-  - [Activating with API Integration](#Activating-with-API-Integration)
-  - [Activating via Workspace ONE UEM Console](#Activating-via-Workspace-ONE-UEM-Console)
-- [Considerations and Troubleshooting](#considerations-and-troubleshooting)
-  - [Considerations for Device Reset](#considerations-for-device-reset)
-  - [Considerations When Bulk Activating](#Considerations-When-Bulk-Activating)
-  - [eSIM Activation Troubleshooting](#eSIM-Activation-Troubleshooting)
-  - [Pop-Up Notifications Related to Cellular Networks](#Pop-Up-Notifications-Related-to-Cellular-Networks)
+- [Simplifying eSIM Cellular Plan Activation with Workspace ONE UEM](#simplifying-esim-cellular-plan-activation-with-workspace-one-uem)
+  - [Overview](#overview)
+  - [Purpose](#purpose)
+  - [Table of Contents](#table-of-contents)
+  - [Activating Cellular Service without MDM](#activating-cellular-service-without-mdm)
+  - [Automated Cellular Service Activation with Workspace ONE UEM](#automated-cellular-service-activation-with-workspace-one-uem)
+    - [Pre-Requisites](#pre-requisites)
+    - [Known Carrier eSIM Activation Server URLs](#known-carrier-esim-activation-server-urls)
+    - [Activating with API Integration](#activating-with-api-integration)
+    - [Activating via Workspace ONE UEM Console](#activating-via-workspace-one-uem-console)
+  - [Considerations and Troubleshooting](#considerations-and-troubleshooting)
+    - [Considerations for Device Reset](#considerations-for-device-reset)
+    - [Considerations When Bulk Activating](#considerations-when-bulk-activating)
+    - [eSIM Activation Troubleshooting](#esim-activation-troubleshooting)
+    - [Pop-Up Notifications Related to Cellular Networks](#pop-up-notifications-related-to-cellular-networks)
 
 ## Activating Cellular Service without MDM
 

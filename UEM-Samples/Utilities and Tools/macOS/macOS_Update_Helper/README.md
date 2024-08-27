@@ -6,9 +6,9 @@
 * Date Created: 5/19/2020
 * Supported Platforms: WS1 UEM 2003
 * Tested on macOS Versions: macOS Mojave -> macOS Catalina
-
+<!-- Summary Start -->
 This package can be used to provide more flexibility around deploying macOS updates to devices through Workspace ONE UEM, as well as to provide information and feedback to the user regarding the progress of the update.  The package can be customized through the use of a Custom Settings profile in Workspace ONE UEM.  It leverages [DEPNotify](https://gitlab.com/Mactroll/DEPNotify/blob/master/README.md) to act as a UI for the end user.
-
+<!-- Summary End -->
 Currently, this process leverages the ```startosinstall``` command in order to download and initiate the macOS update, and can be used to update devices on versions prior to macOS Catalina.  However, in future versions i'll look to leverage the ```softwareupdate``` command introduced in Catalina to provide an alternate workflow to update to newer versions beyond Catalina.
 
 The overall flow of the tool is as follows:

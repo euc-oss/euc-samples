@@ -5,9 +5,9 @@
   * macOS Sonoma 14
   * Workspace ONE UEM 2306
 
-
+<!-- Summary Start -->
 The Workspace ONE mobileconfig Importer gives you the ability to import existing mobileconfig files directly into a Workspace ONE UEM environment as a Custom Settings profile, import app preference plist files in order to created managed preference profiles, and to create new Custom Settings profiles from scratch. When importing existing configuration profiles, the tool will attempt to separate each PayloadContent dictionary into a separate payload for the Workspace ONE profile.
-
+<!-- Summary End -->
 ![Workspace ONE mobileconfig Importer](https://github.com/pevans00/euc-samples/assets/53051545/60d2bc3c-20e8-455e-8a6c-b115a711e1d8)
 
 

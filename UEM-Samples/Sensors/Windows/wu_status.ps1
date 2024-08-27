@@ -1,4 +1,4 @@
-# Report Status of Windows Update - Up-To-Date/Pending Reboot/Out-of-Date/Update-Failed/No Status
+# Description: Report Status of Windows Update - Up-To-Date/Pending Reboot/Out-of-Date/Update-Failed/No Status
 # Return Type: String
 # Execution Context: System 
 # Execution Architecture: Auto

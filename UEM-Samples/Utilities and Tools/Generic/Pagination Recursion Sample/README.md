@@ -8,8 +8,9 @@
 * Tested On: Workspace ONE UEM 21.11
 
 ## Description
+<!-- Summary Start -->
 This sample shows how you can use recursion to query all records in paginated Workspace ONE UEM APIs
-
+<!-- Summary End -->
 ## Requirements
 1. Powershell
 2. Workspace ONE UEM API credentials

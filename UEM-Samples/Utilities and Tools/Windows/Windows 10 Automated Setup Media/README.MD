@@ -15,8 +15,9 @@
 * Update autounattend.xml file to install the version of Windows 10 you selected (i.e. professional or education, etc)
 
 ## Description
+<!-- Summary Start -->
 This script creates automated Windows 10 setup on bootable USB media. It takes any Windows 10 ISO, formats USB to support UEFI NTFS booting, and places autounattend.xml in the root of the drive in order to make it a zero touch setup process.
-
+<!-- Summary End -->
 ## Requirements
 1. 8 GB or larger USB drive (USB 3.0 recommended)
 2. Windows 10 Setup Media in ISO format

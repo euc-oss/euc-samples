@@ -7,8 +7,10 @@
 - **Supported Platforms**: Surface Hub
 - **Tested on Windows 10**: 1607, 1703
 
-## Purpose 
+## Purpose
+<!-- Summary Start -->
 This folder has mutiple configurations that can be applied to SurfaceHubs that will help manage them through OMA-DM via AirWatch.
+<!-- Summary End -->
 The [SurfaceHub CSP](https://docs.microsoft.com/en-us/windows/client-management/mdm/surfacehub-csp) is a service provider that is specific to Microsoft Surface Hub hardware and will not apply to other device types. 
 This CSP can be used for a variety of configurations like configuring Friendly names, sleep timeout, session timeout, OMS keys, O365 accounts etc.
 
