@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Workspace ONE Sensors Samples
+title: UEM Sensors Samples
 hide:
   #- navigation
   - toc

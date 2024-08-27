@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Workspace ONE UEM Samples
+title: UEM Samples
 hide:
   #- navigation
   - toc

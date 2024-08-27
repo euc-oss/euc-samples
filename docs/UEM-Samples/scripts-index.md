@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Workspace ONE Scripts Samples
+title: UEM Scripts Samples
 hide:
   #- navigation
   - toc
