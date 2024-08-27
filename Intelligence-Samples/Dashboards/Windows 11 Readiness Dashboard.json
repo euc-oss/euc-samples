@@ -1,0 +1,1211 @@
+{
+    "name": "Windows 11 Readiness",
+    "widgets": [
+        {
+            "name": "Devices not Ready – SecureBoot",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_bios_secure_boot = false",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "airwatch.devicesensors.adp_modified_at",
+                        "operator": "WITHIN",
+                        "operands": [
+                            {
+                                "operand_type": "DateTimeOperand",
+                                "operator": "MINUS",
+                                "interval": 60,
+                                "unit": "DAYS",
+                                "instant": "2024-05-13T08:54:24.758418677Z",
+                                "data_type": "LONG"
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_bios_secure_boot",
+                        "operator": "=",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "BOOLEAN",
+                                "value": false
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.758619888Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_bios_secure_boot",
+                            "operator": "=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "BOOLEAN",
+                                    "value": false
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 9
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices not Ready – TPM",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_friendly_name",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_tpm_highest_version < 2",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "airwatch.devicesensors.adp_modified_at",
+                        "operator": "WITHIN",
+                        "operands": [
+                            {
+                                "operand_type": "DateTimeOperand",
+                                "operator": "MINUS",
+                                "interval": 60,
+                                "unit": "DAYS",
+                                "instant": "2024-05-13T08:54:24.758725253Z",
+                                "data_type": "LONG"
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_tpm_highest_version",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 2
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_friendly_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.758780464Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_tpm_highest_version",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 3
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 6
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices not Ready – Memory",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_system_totalphysicalmemory < 8",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "airwatch.devicesensors.adp_modified_at",
+                        "operator": "WITHIN",
+                        "operands": [
+                            {
+                                "operand_type": "DateTimeOperand",
+                                "operator": "MINUS",
+                                "interval": 60,
+                                "unit": "DAYS",
+                                "instant": "2024-05-13T08:54:24.758828496Z",
+                                "data_type": "LONG"
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_system_totalphysicalmemory",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 8
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.758876940Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_totalphysicalmemory",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 8
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 9
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 12
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices not Ready – CPU",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_system_cpu_maxclockspeed <= 1024  AND  airwatch.devicesensors._ca_system_cpu_supported != 'Valid'  AND  airwatch.devicesensors._ca_system_logicalprocessors < 2",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "operand_collection_present": false,
+                        "logical_operator": "AND",
+                        "lhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "operand_collection_present": false,
+                            "logical_operator": "AND",
+                            "lhs": {
+                                "parenthesized": false,
+                                "nested_attribute": false,
+                                "custom_attribute": false,
+                                "attribute": "airwatch.devicesensors.adp_modified_at",
+                                "operator": "WITHIN",
+                                "operands": [
+                                    {
+                                        "operand_type": "DateTimeOperand",
+                                        "operator": "MINUS",
+                                        "interval": 60,
+                                        "unit": "DAYS",
+                                        "instant": "2024-05-13T08:54:24.758936108Z",
+                                        "data_type": "LONG"
+                                    }
+                                ],
+                                "operand_collection_present": false
+                            },
+                            "rhs": {
+                                "parenthesized": false,
+                                "nested_attribute": false,
+                                "custom_attribute": true,
+                                "attribute": "airwatch.devicesensors._ca_system_cpu_maxclockspeed",
+                                "operator": "<=",
+                                "operands": [
+                                    {
+                                        "operand_type": "BasicOperand",
+                                        "data_type": "LONG",
+                                        "value": 1024
+                                    }
+                                ],
+                                "operand_collection_present": false
+                            }
+                        },
+                        "rhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_cpu_supported",
+                            "operator": "!=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Valid"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_system_logicalprocessors",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 2
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.759047144Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_cpu_maxclockspeed",
+                            "operator": "<=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 1024
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_cpu_supported",
+                            "operator": "!=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Valid"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_logicalprocessors",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 1,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 9
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Total Devices Ready for Windows 11",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_bios_secure_boot = true  AND  airwatch.devicesensors._ca_os_build_number >= 19041  AND  airwatch.devicesensors._ca_os_disk_size >= 64  AND  airwatch.devicesensors._ca_os_disk_free_space >= 10  AND  airwatch.devicesensors._ca_system_cpu_maxclockspeed >= 1024  AND  airwatch.devicesensors._ca_system_cpu_supported = 'Valid'  AND  airwatch.devicesensors._ca_system_logicalprocessors >= 2  AND  airwatch.devicesensors._ca_system_totalphysicalmemory >= 8  AND  airwatch.devicesensors._ca_tpm_highest_version >= 2",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "operand_collection_present": false,
+                        "logical_operator": "AND",
+                        "lhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "operand_collection_present": false,
+                            "logical_operator": "AND",
+                            "lhs": {
+                                "parenthesized": false,
+                                "nested_attribute": false,
+                                "custom_attribute": false,
+                                "operand_collection_present": false,
+                                "logical_operator": "AND",
+                                "lhs": {
+                                    "parenthesized": false,
+                                    "nested_attribute": false,
+                                    "custom_attribute": false,
+                                    "operand_collection_present": false,
+                                    "logical_operator": "AND",
+                                    "lhs": {
+                                        "parenthesized": false,
+                                        "nested_attribute": false,
+                                        "custom_attribute": false,
+                                        "operand_collection_present": false,
+                                        "logical_operator": "AND",
+                                        "lhs": {
+                                            "parenthesized": false,
+                                            "nested_attribute": false,
+                                            "custom_attribute": false,
+                                            "operand_collection_present": false,
+                                            "logical_operator": "AND",
+                                            "lhs": {
+                                                "parenthesized": false,
+                                                "nested_attribute": false,
+                                                "custom_attribute": false,
+                                                "operand_collection_present": false,
+                                                "logical_operator": "AND",
+                                                "lhs": {
+                                                    "parenthesized": false,
+                                                    "nested_attribute": false,
+                                                    "custom_attribute": false,
+                                                    "operand_collection_present": false,
+                                                    "logical_operator": "AND",
+                                                    "lhs": {
+                                                        "parenthesized": false,
+                                                        "nested_attribute": false,
+                                                        "custom_attribute": false,
+                                                        "attribute": "airwatch.devicesensors.adp_modified_at",
+                                                        "operator": "WITHIN",
+                                                        "operands": [
+                                                            {
+                                                                "operand_type": "DateTimeOperand",
+                                                                "operator": "MINUS",
+                                                                "interval": 60,
+                                                                "unit": "DAYS",
+                                                                "instant": "2024-05-13T08:54:24.759351157Z",
+                                                                "data_type": "LONG"
+                                                            }
+                                                        ],
+                                                        "operand_collection_present": false
+                                                    },
+                                                    "rhs": {
+                                                        "parenthesized": false,
+                                                        "nested_attribute": false,
+                                                        "custom_attribute": true,
+                                                        "attribute": "airwatch.devicesensors._ca_bios_secure_boot",
+                                                        "operator": "=",
+                                                        "operands": [
+                                                            {
+                                                                "operand_type": "BasicOperand",
+                                                                "data_type": "BOOLEAN",
+                                                                "value": true
+                                                            }
+                                                        ],
+                                                        "operand_collection_present": false
+                                                    }
+                                                },
+                                                "rhs": {
+                                                    "parenthesized": false,
+                                                    "nested_attribute": false,
+                                                    "custom_attribute": true,
+                                                    "attribute": "airwatch.devicesensors._ca_os_build_number",
+                                                    "operator": ">=",
+                                                    "operands": [
+                                                        {
+                                                            "operand_type": "BasicOperand",
+                                                            "data_type": "LONG",
+                                                            "value": 19041
+                                                        }
+                                                    ],
+                                                    "operand_collection_present": false
+                                                }
+                                            },
+                                            "rhs": {
+                                                "parenthesized": false,
+                                                "nested_attribute": false,
+                                                "custom_attribute": true,
+                                                "attribute": "airwatch.devicesensors._ca_os_disk_size",
+                                                "operator": ">=",
+                                                "operands": [
+                                                    {
+                                                        "operand_type": "BasicOperand",
+                                                        "data_type": "LONG",
+                                                        "value": 64
+                                                    }
+                                                ],
+                                                "operand_collection_present": false
+                                            }
+                                        },
+                                        "rhs": {
+                                            "parenthesized": false,
+                                            "nested_attribute": false,
+                                            "custom_attribute": true,
+                                            "attribute": "airwatch.devicesensors._ca_os_disk_free_space",
+                                            "operator": ">=",
+                                            "operands": [
+                                                {
+                                                    "operand_type": "BasicOperand",
+                                                    "data_type": "LONG",
+                                                    "value": 10
+                                                }
+                                            ],
+                                            "operand_collection_present": false
+                                        }
+                                    },
+                                    "rhs": {
+                                        "parenthesized": false,
+                                        "nested_attribute": false,
+                                        "custom_attribute": true,
+                                        "attribute": "airwatch.devicesensors._ca_system_cpu_maxclockspeed",
+                                        "operator": ">=",
+                                        "operands": [
+                                            {
+                                                "operand_type": "BasicOperand",
+                                                "data_type": "LONG",
+                                                "value": 1024
+                                            }
+                                        ],
+                                        "operand_collection_present": false
+                                    }
+                                },
+                                "rhs": {
+                                    "parenthesized": false,
+                                    "nested_attribute": false,
+                                    "custom_attribute": true,
+                                    "attribute": "airwatch.devicesensors._ca_system_cpu_supported",
+                                    "operator": "=",
+                                    "operands": [
+                                        {
+                                            "operand_type": "BasicOperand",
+                                            "data_type": "STRING",
+                                            "value": "Valid"
+                                        }
+                                    ],
+                                    "operand_collection_present": false
+                                }
+                            },
+                            "rhs": {
+                                "parenthesized": false,
+                                "nested_attribute": false,
+                                "custom_attribute": true,
+                                "attribute": "airwatch.devicesensors._ca_system_logicalprocessors",
+                                "operator": ">=",
+                                "operands": [
+                                    {
+                                        "operand_type": "BasicOperand",
+                                        "data_type": "LONG",
+                                        "value": 2
+                                    }
+                                ],
+                                "operand_collection_present": false
+                            }
+                        },
+                        "rhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_totalphysicalmemory",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 8
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_tpm_highest_version",
+                        "operator": ">=",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 2
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.759685101Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_bios_secure_boot",
+                            "operator": "=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "BOOLEAN",
+                                    "value": true
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_build_number",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 19041
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_disk_size",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 64
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_disk_free_space",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 10
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_cpu_maxclockspeed",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 1024
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_cpu_supported",
+                            "operator": "=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Valid"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_logicalprocessors",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_system_totalphysicalmemory",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 8
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_tpm_highest_version",
+                            "operator": ">=",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 2
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 3
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices not Ready – OS Version",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_os_build_number < 19041",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "airwatch.devicesensors.adp_modified_at",
+                        "operator": "WITHIN",
+                        "operands": [
+                            {
+                                "operand_type": "DateTimeOperand",
+                                "operator": "MINUS",
+                                "interval": 60,
+                                "unit": "DAYS",
+                                "instant": "2024-05-13T08:54:24.759873796Z",
+                                "data_type": "LONG"
+                            }
+                        ],
+                        "operand_collection_present": false
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_os_build_number",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 19041
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.760060211Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_build_number",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 19041
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 1,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 3
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices not Ready – Storage",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "airwatch.devicesensors.device_udid",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "airwatch.devicesensors.adp_modified_at WITHIN 60 days  AND  airwatch.devicesensors._ca_os_disk_size < 64  AND  airwatch.devicesensors._ca_os_disk_free_space < 10",
+                "entities_by_integration": {
+                    "airwatch": [
+                        "devicesensors"
+                    ]
+                },
+                "cardinality": 30,
+                "accumulate": false,
+                "ignore_case": true,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "operand_collection_present": false,
+                        "logical_operator": "AND",
+                        "lhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.760112031Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        "rhs": {
+                            "parenthesized": false,
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_disk_size",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 64
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": true,
+                        "attribute": "airwatch.devicesensors._ca_os_disk_free_space",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 10
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                },
+                "all_report_column_attributes": [
+                    "airwatch.devicesensors.device_udid"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "airwatch.devicesensors.adp_modified_at",
+                            "operator": "WITHIN",
+                            "operands": [
+                                {
+                                    "operand_type": "DateTimeOperand",
+                                    "operator": "MINUS",
+                                    "interval": 60,
+                                    "unit": "DAYS",
+                                    "instant": "2024-05-13T08:54:24.760176112Z",
+                                    "data_type": "LONG"
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_disk_size",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 64
+                                }
+                            ],
+                            "operand_collection_present": false
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": true,
+                            "attribute": "airwatch.devicesensors._ca_os_disk_free_space",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 10
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                }
+            },
+            "top_left": {
+                "row_number": 1,
+                "column_number": 3
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2024-04-30T07:28:34.903Z"
+}
