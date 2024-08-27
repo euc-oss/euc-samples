@@ -1,11 +1,11 @@
 # Project Information
-site_name: euc-samples Repository
+site_name: euc-samples
 site_url: https://euc-dev.github.io/euc-samples
 site_author: Phil Helmling
 site_description: Submodule for developer.omnissa.com
 docs_dir: docs
 site_dir: .site
-use_directory_urls: true
+use_directory_urls: false
 
 # Repository
 repo_url: https://github.com/euc-dev/euc-samples
@@ -147,12 +147,12 @@ markdown_extensions:
 # Navigation
 nav:
   - index.md
-  - WS1 Access Samples: Access-Samples/index.md
-  - WS1 Android SDK Samples: Android-Samples/index.md
-  - App Volumes Samples: App-Volumes-Samples/index.md
-  - Horizon Samples: Horizon-Samples/index.md
-  - WS1 Intelligence Samples: Intelligence-Samples/index.md
-  - UAG Samples: UAG-Samples/index.md
-  - WS1 UEM Samples: UEM-samples/index.md
-  - WS1 Scripts Samples: UEM-samples/scripts-index.md
-  - WS1 Sensors Samples: UEM-samples/sensors-index.md
+  - WS1 Access Samples: 'Access-Samples/index.md'
+  - WS1 Android SDK Samples: 'Android-Samples/index.md'
+  - App Volumes Samples: 'App-Volumes-Samples/index.md'
+  - Horizon Samples: 'Horizon-Samples/index.md'
+  - WS1 Intelligence Samples: 'Intelligence-Samples/index.md'
+  - UAG Samples: 'UAG-Samples/index.md'
+  - WS1 UEM Samples: 'UEM-samples/index.md'
+  - WS1 Scripts Samples: 'UEM-samples/scripts-index.md'
+  - WS1 Sensors Samples: 'UEM-samples/sensors-index.md'
