@@ -24,7 +24,7 @@ Every one of the above steps is optional, and can be skipped with one of the inb
 
 For example, to run use the following (replacing values with correct environment details):
 
-```
+```powershell
 .\GoldMasterEnrollmentPoc.ps1 `
   -ApiUsername "uem-api-username" `
   -ApiPassword "uem-api-password" `
