@@ -13,7 +13,7 @@ This powershell modules extends the capabilities provided by the `VMware.VimAuto
 
 ## Documentation
 
-Documentation for this module and all its functions can be found in the [PowerCLI](https://euc-dev.github.io/horizon-powercli/) section of the Omnissa Developer Portal.
+Documentation for this module and all its functions can be found in the [PowerCLI](https://developer.omnissa.com/horizon-powercli/) section of the Omnissa Developer Portal.
 
 ## Example script to connect ViewAPI service
 

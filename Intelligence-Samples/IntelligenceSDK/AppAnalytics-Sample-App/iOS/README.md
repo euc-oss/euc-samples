@@ -39,4 +39,4 @@ In order to execute this app on your device or an emulator you need to:
 
 ## Additional Resources
 [Workspace ONE Intelligence Product Page](https://www.omnissa.com/workspace-one-intelligence/)  
-[Workspace ONE Intelligence SDK Overview](https://euc-dev.github.io/sdks/workspace-one-intelligence/)
+[Workspace ONE Intelligence SDK Overview](https://developer.omnissa.com/ws1-sdk-intelligence/)

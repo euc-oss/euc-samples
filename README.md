@@ -58,7 +58,7 @@ LIMITATIONS
 
 If the submission is a WS1 UEM Script or Sensor, then see the [Sensor README.md](./UEM-Samples/Sensors/README.md) and [Scripts README.md](./UEM-Samples/Scripts/README.md) for required information.
 
-Workspace ONE UEM Scripts and Sensors have a dedicated index due to the number of samples within the [UEM-Samples/Sensors](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Sensors) and [UEM-Samples/Scripts](https://github.com/euc-dev/euc-samples/tree/main/UEM-Samples/Scripts) folders respectively, reading the `# Description:` field from each script or sensor.
+Workspace ONE UEM Scripts and Sensors have a dedicated index due to the number of samples within the [UEM-Samples/Sensors](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Sensors) and [UEM-Samples/Scripts](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Scripts) folders respectively, reading the `# Description:` field from each script or sensor.
 
 **It is therefore important that when contributing samples, that the appropriate tags or fields are provided, otherwise the sample will not be included in the index.**
 

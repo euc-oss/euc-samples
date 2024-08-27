@@ -7,7 +7,7 @@
     Created by:	    Richard Croft
     Contributors:   Phil Helmling
     Organization:   Omnissa, LLC
-    Github:         https://github.com/vmware-samples/euc-samples/tree/master
+    Github:         https://github.com/euc-oss/euc-samples
 
   .DESCRIPTION
     This script builds the index tables that feeds into the https://developer.omnissa.com portal. The tables are written as Markdown into the /docs folder. There is one table per area:
@@ -80,6 +80,8 @@ function ReplaceScriptSensorMarkdownTableContent {
 }
 
 $current_path = (Get-Location).Path
+$repo = "https://github.com/euc-oss/euc-samples"
+$repopath = "$repo/tree/main"
 
 function updateMainIndexes {
     $paths = @("Access-Samples",
@@ -90,7 +92,6 @@ function updateMainIndexes {
     "UAG-Samples",
     "UEM-Samples")
     
-    $repo = "https://github.com/euc-dev/euc-samples"
     $startPattern = '<!-- Summary Start -->'
     $endPattern   = '<!-- Summary End -->'
 
@@ -109,7 +110,7 @@ function updateMainIndexes {
             $newpath = $fulldirname.Replace($current_path,"")
             $dirname = $f.Directory.Name
             
-            $URI = $repo,$newpath -join ""
+            $URI = $repopath,$newpath -join ""
             $link = [uri]::EscapeUriString($URI)
             $results += "| $dirname | $summary | [Link]($link) |"
 
@@ -127,7 +128,7 @@ function updateSensorScriptIndexes {
     $paths = @("Scripts",
     "Sensors")
     
-    $repo = "https://github.com/euc-dev/euc-samples/tree/main"
+
     
     # find README.md files under each sample directory
     foreach ($p in $paths) {
@@ -144,7 +145,7 @@ function updateSensorScriptIndexes {
             $dirname = $f.Directory.Name
             $newpath = $fullName.Replace($current_path,"")
 
-            $URI = $repo,$newpath -join ""
+            $URI = $repopath,$newpath -join ""
             $link = [uri]::EscapeUriString($URI)
             $results += "| $dirname | $fname | $summary | [$fname]($link) |"
         }
