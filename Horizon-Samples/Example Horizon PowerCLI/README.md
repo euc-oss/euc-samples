@@ -1,13 +1,13 @@
 # Expand-WV
 
 Version:        1.0  
-Author:         Chris Halstead - chalstead@vmware.com  
+Author:         Chris Halstead - chalstead@omnissa.com  
 Creation Date:  7/18/2019  
 Purpose/Change: Initial script development  
 
 ## Overview
 <!-- Summary Start -->
-Samples Scripts Using the VMware Horizon API via PowerCLI
+Samples Scripts Using the Omnissa Horizon API via PowerCLI
 <!-- Summary End -->
 
 ## Usage

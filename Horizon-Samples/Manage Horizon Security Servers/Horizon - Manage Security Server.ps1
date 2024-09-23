@@ -5,7 +5,7 @@ Script to update existing Horizon Security Servers
 	
 .NOTES
   Version:        1.0
-  Author:         Chris Halstead - chalstead@vmware.com
+  Author:         Chris Halstead - chalstead@omnissa.com
                   with lots of help from Andrew Morgan Twitter: @andyjmorgan
   Creation Date:  11/2/2020
   Purpose/Change: Initial script development
@@ -279,13 +279,13 @@ Function SetCSPairingPW {
   try {
 
     $ConnectionServerId = $script:hvServices.connectionserver.ConnectionServer_List()[0].Id
-    $pair = new-object -TypeName VMware.Hv.ConnectionServerSecurityServerPairingData
-    $securestring = new-object -TypeName VMware.Hv.SecureString
+    $pair = new-object -TypeName Omnissa.Horizon.ConnectionServerSecurityServerPairingData
+    $securestring = new-object -TypeName Omnissa.Horizon.SecureString
     $enc = [system.Text.Encoding]::UTF8
     $securestring.Utf8String = $enc.GetBytes('chris')
     $pair.PairingPassword = $securestring
     $pair.TimeoutMinutes = 30
-    $mapEntry = new-object -TypeName VMware.Hv.MapEntry
+    $mapEntry = new-object -TypeName Omnissa.Horizon.MapEntry
     $mapEntry.Key = "securityServerPairing"
     $mapEntry.Value = $pair
     $script:hvServices.ConnectionServer.ConnectionServer_Update($ConnectionServerId, $mapEntry)
@@ -326,17 +326,17 @@ $msgboxinput = [System.Windows.MessageBox]::Show('Would you like to update this 
   $ssid = $script:sslookup[$sstoupdate]
   $entries = @()
 
-  $exturlentry = New-Object VMware.Hv.MapEntry
+  $exturlentry = New-Object Omnissa.Horizon.MapEntry
   $exturlentry.key = 'general.externalURL'
   $exturlentry.value = $script:txtexternalurl.text
   $entries += $exturlentry
 
-  $bsgurlentry = New-Object VMware.Hv.MapEntry
+  $bsgurlentry = New-Object Omnissa.Horizon.MapEntry
   $bsgurlentry.key = 'general.externalAppblastURL'
   $bsgurlentry.value = $script:txtblastexternalurl.text
   $entries += $bsgurlentry
 
-  $pcoipurlentry = New-Object VMware.Hv.MapEntry
+  $pcoipurlentry = New-Object Omnissa.Horizon.MapEntry
   $pcoipurlentry.key = 'general.externalPCoIPURL'
   $pcoipurlentry.value = $script:txtpcoipexternalurl.text
   $entries += $pcoipurlentry
@@ -357,7 +357,7 @@ $msgboxinput = [System.Windows.MessageBox]::Show('Would you like to update this 
 function Show-Menu
   {
     param (
-          [string]$Title = 'VMware Horizon Security Server Management'
+          [string]$Title = 'Omnissa Horizon Security Server Management'
           )
        Clear-Host
        Write-Host "================ $Title ================"

@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-Samples Scripts Using the VMware Horizon API via PowerCLI
+Samples Scripts Using the Omnissa Horizon API via PowerCLI
 	
 .NOTES
   Version:        1.0
-  Author:         Chris Halstead - chalstead@vmware.com
+  Author:         Chris Halstead - chalstead@omnissa.com
   Creation Date:  7/18/2019
   Purpose/Change: Initial script development
  #>
@@ -52,11 +52,11 @@ Function GetSessions {
       
     try {
 
-      $query = New-Object "Vmware.Hv.QueryDefinition"
+      $query = New-Object "Omnissa.Horizon.QueryDefinition"
 
       $query.queryEntityType = 'SessionLocalSummaryView'
       
-      $qSrv = New-Object "Vmware.Hv.QueryServiceService"
+      $qSrv = New-Object "Omnissa.Horizon.QueryServiceService"
       
       $sresult = $qSRv.QueryService_Query($hvServices,$query)
               
@@ -149,11 +149,11 @@ Function GetDtPools {
    
     #Run PowerCLI Statements
    
-    $query = New-Object "Vmware.Hv.QueryDefinition"
+    $query = New-Object "Omnissa.Horizon.QueryDefinition"
 
     $query.queryEntityType = 'DesktopSummaryView'
 
-    $qSrv = New-Object "Vmware.Hv.QueryServiceService"
+    $qSrv = New-Object "Omnissa.Horizon.QueryServiceService"
 
     $sresult = $qSRv.QueryService_Query($hvServices,$query)
 
@@ -204,11 +204,11 @@ Function GetMachines {
          
           #Run PowerCLI Statements
          
-          $query = New-Object "Vmware.Hv.QueryDefinition"
+          $query = New-Object "Omnissa.Horizon.QueryDefinition"
 
           $query.queryEntityType = 'MachineNamesView'
       
-          $qSrv = New-Object "Vmware.Hv.QueryServiceService"
+          $qSrv = New-Object "Omnissa.Horizon.QueryServiceService"
       
           $sresult = $qSRv.QueryService_Query($hvServices,$query)
 
@@ -319,11 +319,11 @@ Function GetApplications {
                
             try {
                 
-              $query = New-Object "Vmware.Hv.QueryDefinition"
+              $query = New-Object "Omnissa.Horizon.QueryDefinition"
     
               $query.queryEntityType = 'ApplicationInfo'
           
-              $qSrv = New-Object "Vmware.Hv.QueryServiceService"
+              $qSrv = New-Object "Omnissa.Horizon.QueryServiceService"
           
               $sresult = $qSRv.QueryService_Query($hvServices,$query)
            
@@ -347,7 +347,7 @@ Function GetApplications {
 function Show-Menu
   {
     param (
-          [string]$Title = 'VMware Horizon API Menu'
+          [string]$Title = 'Omnissa Horizon API Menu'
           )
        Clear-Host
        Write-Host "================ $Title ================"

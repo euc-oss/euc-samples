@@ -2,9 +2,9 @@
       <Configuration>
           <ViewDefinitions>
               <View>
-                  <Name>VMware.HV.DesktopSummaryView</Name>
+                  <Name>Omnissa.Horizon.DesktopSummaryView</Name>
                   <ViewSelectedBy>
-                      <TypeName>VMware.HV.DesktopSummaryView</TypeName>
+                      <TypeName>Omnissa.Horizon.DesktopSummaryView</TypeName>
                   </ViewSelectedBy>
                   <TableControl>
                       <TableHeaders>
@@ -62,8 +62,8 @@
                                   </TableColumnItem>
 								  <TableColumnItem>
                                       <ScriptBlock>
-									    $filterContains = Get-HVQueryFilter localData.desktops -contains ([VMware.Hv.DesktopId[]]$_.id)
-                                        $GlobalfilterContains = Get-HVQueryFilter localData.desktops -contains ([VMware.Hv.DesktopId[]]$_.id)
+									    $filterContains = Get-HVQueryFilter localData.desktops -contains ([Omnissa.Horizon.DesktopId[]]$_.id)
+                                        $GlobalfilterContains = Get-HVQueryFilter localData.desktops -contains ([Omnissa.Horizon.DesktopId[]]$_.id)
                                         Try {   
                                           $results += Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $filterContains
                                           $results += Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $GlobalfilterContains
@@ -85,9 +85,9 @@
                   </TableControl>
               </View>
 			  <View>
-			  <Name>VMware.HV.DesktopSummaryViewList</Name>
+			  <Name>Omnissa.Horizon.DesktopSummaryViewList</Name>
                   <ViewSelectedBy>
-                      <TypeName>VMware.HV.DesktopSummaryView</TypeName>
+                      <TypeName>Omnissa.Horizon.DesktopSummaryView</TypeName>
                   </ViewSelectedBy>
 					<ListControl>
 					<ListEntries>
@@ -116,8 +116,8 @@
 						  <ListItem>
 						  <Label>Entitled</Label>
 						  <ScriptBlock>
-						    $filterContains = Get-HVQueryFilter localData.desktops -contains ([VMware.Hv.DesktopId[]]$_.id)
-                            $GlobalfilterContains = Get-HVQueryFilter localData.desktops -contains ([VMware.Hv.DesktopId[]]$_.id)
+						    $filterContains = Get-HVQueryFilter localData.desktops -contains ([Omnissa.Horizon.DesktopId[]]$_.id)
+                            $GlobalfilterContains = Get-HVQueryFilter localData.desktops -contains ([Omnissa.Horizon.DesktopId[]]$_.id)
                             Try {   
                               $results += Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $filterContains
                               $results += Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $GlobalfilterContains
@@ -141,9 +141,9 @@
 				  </ListControl>
             </View>
             <View>
-                  <Name>VMware.HV.MachineNamesView</Name>
+                  <Name>Omnissa.Horizon.MachineNamesView</Name>
                   <ViewSelectedBy>
-                      <TypeName>VMware.HV.MachineNamesView</TypeName>
+                      <TypeName>Omnissa.Horizon.MachineNamesView</TypeName>
                   </ViewSelectedBy>
                   <TableControl>
                       <TableHeaders>
@@ -213,9 +213,9 @@
                   </TableControl>
               </View>
 			  <View>
-			  <Name>VMware.HV.MachineNamesViewList</Name>
+			  <Name>Omnissa.Horizon.MachineNamesViewList</Name>
                   <ViewSelectedBy>
-                      <TypeName>VMware.HV.MachineNamesView</TypeName>
+                      <TypeName>Omnissa.Horizon.MachineNamesView</TypeName>
                   </ViewSelectedBy>
 					<ListControl>
 					<ListEntries>

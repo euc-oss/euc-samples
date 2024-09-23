@@ -1,6 +1,6 @@
 <#
 .NOTES
-    Author: Mark McGill, VMware
+    Author: Mark McGill, Omnissa
     Last Edit: 11/4/2020
     Version 1.0
 .SYNOPSIS
@@ -8,8 +8,7 @@
 .DESCRIPTION
     Returns information on Horizon Instant Clone pool VMs, including space consumed, and hierarchy of Parent, Replica, Template, Snapshot, and Master
     Identifies VMs that are potentially orphaned/abandoned by Horizon
-    REQUIREMENTS: PowerCLI, VMware.Hv.Helper ,and Powershell 5. VMware.Hv.Helper module is not yet supported in Powershell Core
-    For instructions on installing VMware.Hv.Helper, see https://blogs.vmware.com/euc/2020/01/vmware-horizon-7-powercli.html
+    REQUIREMENTS: PowerCLI, Omnissa.Horizon.Helper ,and Powershell 5.
 .PARAMETER connnectionServer
     Required: Yes
     You must specify a Horizon Connection Server to connect to
@@ -36,7 +35,7 @@
 
 Function Get-ICPoolInfo {
 #Requires -Version 5.0
-#Requires -Modules VMware.Hv.Helper,VMware.VimAutomation.HorizonView,VMware.Vim
+#Requires -Modules Omnissa.Horizon.Helper,Omnissa.VimAutomation.HorizonView
     [cmdletbinding()]
     Param
     (
@@ -259,7 +258,7 @@ Function Get-ICPoolInfo {
         {
             $hvFarmName = $hvFarm.data.name
             Write-Host "Getting information on Farm: $hvFarmName" -foregroundcolor Green
-            $farmhealth = New-Object VMware.Hv.FarmHealthService
+            $farmhealth = New-Object Omnissa.Horizon.FarmHealthService
             $hvRdshDesktops = $farmhealth.FarmHealth_Get($services,$hvFarm.Id) | Select -expand RdsServerHealth | Select Name,Status
             $type = "Farm"
             $arrResults += (Get-Desktop-Info $hvRdshDesktops $allViewVMs $type $hvFarmName)
