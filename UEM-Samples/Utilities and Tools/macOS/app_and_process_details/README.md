@@ -30,6 +30,7 @@ CD Hash: e16e4dd06ea262216f169400e69ab163b26c7849
 Team ID: not set
 SHA-265:  9bc8af16ae3d7dfdc6b8f795e36385b8fed206205725c4506020a64156ccf0d0
 Bundle ID: com.apple.podcasts
+Code Requirement: identifier "com.apple.podcasts" and anchor apple
 ```
 ## Contributing
 Changes and improvements welcome. Please follow the VMware Contribution guide for this repository. 
