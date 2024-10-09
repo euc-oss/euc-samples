@@ -1,7 +1,7 @@
-#Script Module : VMware.Hv.Helper
+#Script Module : Omnissa.Horizon.Helper
 #Version       : 1.3.1
 
-#Copyright © 2016 VMware, Inc. All Rights Reserved.
+#Copyright © 2016 Omnissa, Inc. All Rights Reserved.
 
 #Permission is hereby granted, free of charge, to any person obtaining a copy of
 #this software and associated documentation files (the "Software"), to deal in
@@ -29,7 +29,7 @@ function Get-HVObject {
     [Parameter(Mandatory = $false)]
     [System.Collections.Hashtable]$PropertyName
   )
-  $objStr = 'VMware.Hv.' + $typeName
+  $objStr = 'Omnissa.Horizon.' + $typeName
   return New-Object $objStr -Property $propertyName
 }
 
@@ -67,7 +67,7 @@ function Get-HVBaseImageVmList {
     [Parameter(Mandatory = $true)]
     $vcID
   )
-  $BaseImage_service_helper = New-Object VMware.Hv.BaseImageVmService
+  $BaseImage_service_helper = New-Object Omnissa.Horizon.BaseImageVmService
   if ((Get-HVModuleVersion) -lt [version] "12.2") {
     return $BaseImage_service_helper.BaseImageVm_List($services, $vcID)
   } else {
@@ -95,7 +95,7 @@ function Get-VcenterID {
     [string]
     $Vcenter
   )
-  $vc_service_helper = New-Object VMware.Hv.VirtualCenterService
+  $vc_service_helper = New-Object Omnissa.Horizon.VirtualCenterService
   $vcList = $vc_service_helper.VirtualCenter_List($services)
   if ($vCenter) {
     #ServerSpec.ServerName is IP/FQDN of the vCenter server. Input vCenter will be IP/FQDN of the vcenter server
@@ -137,11 +137,11 @@ function Get-HVvCenterServer {
     Get-HVvCenterServer -Name 'vCenter1'
 
   .OUTPUTS
-    Returns array of object type VMware.Hv.VirtualCenterInfo
+    Returns array of object type Omnissa.Horizon.VirtualCenterInfo
 
   .NOTES
       Author                      : Matt Frey.
-      Author email                : mfrey@vmware.com
+      Author email                : mfrey@omnissa.com
       Version                     : 1.0
 
       ===Tested Against Environment====
@@ -210,11 +210,11 @@ function Get-HVvCenterServerHealth {
     Get-HVvCenterServerHealth
 
   .OUTPUTS
-    Returns array of object type VMware.Hv.VirtualCenterInfo
+    Returns array of object type Omnissa.Horizon.VirtualCenterInfo
 
   .NOTES
       Author                      : Matt Frey.
-      Author email                : mfrey@vmware.com
+      Author email                : mfrey@omnissa.com
       Version                     : 1.0
 
       ===Tested Against Environment====
@@ -291,21 +291,21 @@ function Get-MapEntry {
     $Value
   )
 
-  $update = New-Object VMware.Hv.MapEntry
+  $update = New-Object Omnissa.Horizon.MapEntry
   $update.key = $key
   $update.value = $value
   return $update
 }
 
 function Get-RegisteredPhysicalMachine ($Services,$MachinesList) {
-  [VMware.Hv.MachineId[]]$machines = $null
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
+  [Omnissa.Horizon.MachineId[]]$machines = $null
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
   foreach ($machineName in $machinesList) {
-    $QueryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+    $QueryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
     $QueryFilterEquals.memberName = 'machineBase.name'
     $QueryFilterEquals.value = $machineName
 
-    $defn = New-Object VMware.Hv.QueryDefinition
+    $defn = New-Object Omnissa.Horizon.QueryDefinition
     $defn.queryEntityType = 'RegisteredPhysicalMachineInfo'
     $defn.Filter = $QueryFilterEquals
 
@@ -317,14 +317,14 @@ function Get-RegisteredPhysicalMachine ($Services,$MachinesList) {
 }
 
 function Get-RegisteredRDSServer ($Services,$ServerList) {
-  [VMware.Hv.RDSServerId[]]$servers = $null
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
+  [Omnissa.Horizon.RDSServerId[]]$servers = $null
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
   foreach ($serverName in $serverList) {
-    $QueryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+    $QueryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
     $QueryFilterEquals.memberName = 'base.name'
     $QueryFilterEquals.value = $serverName
 
-    $defn = New-Object VMware.Hv.QueryDefinition
+    $defn = New-Object Omnissa.Horizon.QueryDefinition
     $defn.queryEntityType = 'RDSServerInfo'
     $defn.Filter = $QueryFilterEquals
 
@@ -374,12 +374,12 @@ The Add-HVDesktop adds virtual machines to already exiting pools by using view A
     Add machines to automated specific named Floating pool
 
 .EXAMPLE
-    Add-HVDesktop -PoolName 'Unmanaged' -Machines 'desktop-1.eng.vmware.com'
+    Add-HVDesktop -PoolName 'Unmanaged' -Machines 'desktop-1.eng.omnissa.com'
     Add machines to unmanged manual pool
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
     Dependencies                : Make sure pool already exists before adding VMs to it.
 
@@ -441,7 +441,7 @@ The Add-HVDesktop adds virtual machines to already exiting pools by using view A
       break
     }
 
-    $desktop_service_helper = New-Object VMware.Hv.DesktopService
+    $desktop_service_helper = New-Object Omnissa.Horizon.DesktopService
     $user_assignement_helper = $desktop_service_helper.getDesktopUserAssignmentHelper()
     switch ($type) {
       'AUTOMATED' {
@@ -449,10 +449,10 @@ The Add-HVDesktop adds virtual machines to already exiting pools by using view A
           Write-Error "Parameters machines length: [$machines.Length] and users length: [$users.Length] should be of same size"
           return
         }
-        [VMware.Hv.DesktopSpecifiedName[]]$desktopSpecifiedNameArray = @()
+        [Omnissa.Horizon.DesktopSpecifiedName[]]$desktopSpecifiedNameArray = @()
         $cnt = 0
         foreach ($machine in $machines) {
-          $specifiedNames = New-Object VMware.Hv.DesktopSpecifiedName
+          $specifiedNames = New-Object Omnissa.Horizon.DesktopSpecifiedName
           $specifiedNames.vmName = $machine
           if ($userAssignment -eq $user_assignement_helper.USER_ASSIGNMENT_DEDICATED -and $users) {
             try {
@@ -501,17 +501,17 @@ The Add-HVDesktop adds virtual machines to already exiting pools by using view A
 
 function Get-UserId ($User) {
 
-  $defn = New-Object VMware.Hv.QueryDefinition
+  $defn = New-Object Omnissa.Horizon.QueryDefinition
   $defn.queryEntityType = 'ADUserOrGroupSummaryView'
-  $groupfilter = New-Object VMware.Hv.QueryFilterEquals -Property @{ 'memberName' = 'base.group'; 'value' = $false }
-  $userNameFilter = New-Object VMware.Hv.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $user }
+  $groupfilter = New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'memberName' = 'base.group'; 'value' = $false }
+  $userNameFilter = New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $user }
   $treeList = @()
   $treeList += $userNameFilter
   $treelist += $groupfilter
-  $filterAnd = New-Object VMware.Hv.QueryFilterAnd
+  $filterAnd = New-Object Omnissa.Horizon.QueryFilterAnd
   $filterAnd.Filters = $treelist
   $defn.Filter = $filterAnd
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
   $res = $query_service_helper.QueryService_Query($services,$defn)
   if ($null -eq $res.results) {
     throw "Query service did not return any users with given user name: [$user]"
@@ -521,8 +521,8 @@ function Get-UserId ($User) {
 
 function Get-MachinesByVCenter ($MachineList,$VcId) {
 
-  [VMware.Hv.MachineId[]]$machines = $null
-  $virtualMachine_helper = New-Object VMware.Hv.VirtualMachineService
+  [Omnissa.Horizon.MachineId[]]$machines = $null
+  $virtualMachine_helper = New-Object Omnissa.Horizon.VirtualMachineService
   $vcMachines = $virtualMachine_helper.VirtualMachine_List($services,$vcId)
   $machineDict = @{}
   foreach ($vMachine in $vcMachines) {
@@ -562,7 +562,7 @@ function Add-HVRDSServer {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
     Dependencies                : Make sure farm already exists before adding RDSServers to it.
 
@@ -611,7 +611,7 @@ function Add-HVRDSServer {
       Write-Error "Unable to retrieve FarmSummaryView with given farmName: [$farmName]"
       break
     }
-    $farm_service_helper = New-Object VMware.Hv.FarmService
+    $farm_service_helper = New-Object Omnissa.Horizon.FarmService
     switch ($type) {
       'AUTOMATED' {
         Write-Error "Only Manual farm types supported for this add operation"
@@ -677,7 +677,7 @@ function Connect-HVEvent {
 
 .NOTES
     Author                      : Paramesh Oddepally.
-    Author email                : poddepally@vmware.com
+    Author email                : poddepally@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -705,7 +705,7 @@ function Connect-HVEvent {
       Write-Error "Could not retrieve ViewApi services from connection object"
       break
     }
-    $EventDatabaseHelper = New-Object VMware.Hv.EventDatabaseService
+    $EventDatabaseHelper = New-Object Omnissa.Horizon.EventDatabaseService
     $EventDatabaseInfo = $EventDatabaseHelper.EventDatabase_Get($services)
 
     # Check whether event database is configured on the connection server
@@ -793,7 +793,7 @@ function Disconnect-HVEvent {
 
 .NOTES
     Author                      : Paramesh Oddepally.
-    Author email                : poddepally@vmware.com
+    Author email                : poddepally@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -893,7 +893,7 @@ function Get-HVEvent {
 
 .NOTES
     Author                      : Paramesh Oddepally.
-    Author email                : poddepally@vmware.com
+    Author email                : poddepally@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1133,7 +1133,7 @@ function Get-HVFarm {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1181,7 +1181,7 @@ function Get-HVFarm {
       Write-Host "Get-HVFarm: No Farm Found with given search parameters"
 	  }
   }
-  $farm_service_helper = New-Object VMware.Hv.FarmService
+  $farm_service_helper = New-Object Omnissa.Horizon.FarmService
   $queryResults = @()
   foreach ($id in $farmList.id) {
     $info = $farm_service_helper.Farm_Get($services,$id)
@@ -1244,7 +1244,7 @@ function Get-HVFarmSummary {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1310,8 +1310,8 @@ function Find-HVFarm {
 
   $params = $Param
 
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
+  $query = New-Object Omnissa.Horizon.QueryDefinition
 
   $wildcard = $false
   # build the query values
@@ -1324,17 +1324,17 @@ function Find-HVFarm {
 
   $query.queryEntityType = 'FarmSummaryView'
   if (! $wildcard) {
-    [VMware.Hv.queryfilter[]]$filterSet = @()
+    [Omnissa.Horizon.queryfilter[]]$filterSet = @()
     foreach ($setting in $farmSelectors.Keys) {
       if ($null -ne $params[$setting]) {
-        $equalsFilter = New-Object VMware.Hv.QueryFilterEquals
+        $equalsFilter = New-Object Omnissa.Horizon.QueryFilterEquals
         $equalsFilter.memberName = $farmSelectors[$setting]
         $equalsFilter.value = $params[$setting]
         $filterSet += $equalsFilter
       }
     }
     if ($filterSet.Count -gt 0) {
-      $queryList = New-Object VMware.Hv.QueryFilterAnd
+      $queryList = New-Object Omnissa.Horizon.QueryFilterAnd
       $queryList.Filters = $filterset
       $query.Filter = $queryList
     }
@@ -1429,7 +1429,7 @@ function Get-HVPool {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1488,7 +1488,7 @@ function Get-HVPool {
     return $poolList
   }
   $queryResults = @()
-  $desktop_helper = New-Object VMware.Hv.DesktopService
+  $desktop_helper = New-Object Omnissa.Horizon.DesktopService
   foreach ($id in $poolList.id) {
     $info = $desktop_helper.Desktop_Get($services,$id)
     $queryResults += $info
@@ -1565,7 +1565,7 @@ function Get-HVPoolSummary {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1642,8 +1642,8 @@ function Find-HVPool {
 
   $params = $Param
 
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
+  $query = New-Object Omnissa.Horizon.QueryDefinition
 
   $wildCard = $false
   #Only supports wild card '*'
@@ -1656,17 +1656,17 @@ function Find-HVPool {
   # build the query values
   $query.queryEntityType = 'DesktopSummaryView'
   if (! $wildcard) {
-    [VMware.Hv.queryfilter[]]$filterSet = @()
+    [Omnissa.Horizon.queryfilter[]]$filterSet = @()
     foreach ($setting in $poolSelectors.Keys) {
       if ($null -ne $params[$setting]) {
-        $equalsFilter = New-Object VMware.Hv.QueryFilterEquals
+        $equalsFilter = New-Object Omnissa.Horizon.QueryFilterEquals
         $equalsFilter.memberName = $poolSelectors[$setting]
         $equalsFilter.value = $params[$setting]
         $filterSet += $equalsFilter
       }
     }
     if ($filterSet.Count -gt 0) {
-      $andFilter = New-Object VMware.Hv.QueryFilterAnd
+      $andFilter = New-Object Omnissa.Horizon.QueryFilterAnd
       $andFilter.Filters = $filterset
       $query.Filter = $andFilter
     }
@@ -1697,10 +1697,10 @@ function Find-HVPool {
 function Get-HVQueryFilter {
 <#
 .Synopsis
-    Creates a VMware.Hv.QueryFilter based on input provided.
+    Creates a Omnissa.Horizon.QueryFilter based on input provided.
 
 .DESCRIPTION
-    This is a factory method to create a VMware.Hv.QueryFilter. The type of the QueryFilter would be determined based on switch used.
+    This is a factory method to create a Omnissa.Horizon.QueryFilter. The type of the QueryFilter would be determined based on switch used.
 
 .PARAMETER MemberName
     Property path separated by . (dot) from the root of queryable data object which is being queried for
@@ -1737,39 +1737,39 @@ function Get-HVQueryFilter {
 
 
 .EXAMPLE
-    Get-HVQueryFilter data.name -Eq vmware
+    Get-HVQueryFilter data.name -Eq omnissa
     Creates queryFilterEquals with given parameters memberName(position 0) and memberValue(position 2)
 
 .EXAMPLE
-    Get-HVQueryFilter -MemberName data.name -Eq -MemberValue vmware
+    Get-HVQueryFilter -MemberName data.name -Eq -MemberValue omnissa
     Creates queryFilterEquals with given parameters memberName and memberValue
 
 .EXAMPLE
-    Get-HVQueryFilter data.name -Ne vmware
+    Get-HVQueryFilter data.name -Ne omnissa
     Creates queryFilterNotEquals filter with given parameters memberName and memberValue
 
 .EXAMPLE
-    Get-HVQueryFilter data.name -Contains vmware
+    Get-HVQueryFilter data.name -Contains omnissa
     Creates queryFilterContains with given parameters memberName and memberValue
 
 .EXAMPLE
-    Get-HVQueryFilter data.name -Startswith vmware
+    Get-HVQueryFilter data.name -Startswith omnissa
     Creates queryFilterStartsWith with given parameters memberName and memberValue
 
 .EXAMPLE
-    $filter = Get-HVQueryFilter data.name -Startswith vmware
+    $filter = Get-HVQueryFilter data.name -Startswith omnissa
     Get-HVQueryFilter -Not $filter
     Creates queryFilterNot with given parameter filter
 
 .EXAMPLE
-    $filter1 = Get-HVQueryFilter data.name -Startswith vmware
+    $filter1 = Get-HVQueryFilter data.name -Startswith omnissa
     $filter2 = Get-HVQueryFilter data.name -Contains pool
     Get-HVQueryFilter -And @($filter1, $filter2)
 
     Creates queryFilterAnd with given parameter filters array
 
 .EXAMPLE
-    $filter1 = Get-HVQueryFilter data.name -Startswith vmware
+    $filter1 = Get-HVQueryFilter data.name -Startswith omnissa
     $filter2 = Get-HVQueryFilter data.name -Contains pool
     Get-HVQueryFilter -Or @($filter1, $filter2)
     Creates queryFilterOr with given parameter filters array
@@ -1779,7 +1779,7 @@ function Get-HVQueryFilter {
 
 .NOTES
     Author                      : Kummara Ramamohan.
-    Author email                : kramamohan@vmware.com
+    Author email                : kramamohan@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1819,7 +1819,7 @@ function Get-HVQueryFilter {
     [switch]$Not,
 
     [Parameter(ParameterSetName = 'not',Mandatory = $true,Position = 1)]
-    [VMware.Hv.QueryFilter]$Filter,
+    [Omnissa.Horizon.QueryFilter]$Filter,
 
     # Aggregators to join more than 1 filters #
     [Parameter(ParameterSetName = 'and',Mandatory = $true,Position = 0)]
@@ -1830,7 +1830,7 @@ function Get-HVQueryFilter {
 
     [Parameter(ParameterSetName = "and",Mandatory = $true,Position = 1)]
     [Parameter(ParameterSetName = "or",Mandatory = $true,Position = 1)]
-    [VMware.Hv.QueryFilter[]]$Filters
+    [Omnissa.Horizon.QueryFilter[]]$Filters
   )
 
   begin {
@@ -1902,15 +1902,15 @@ function Get-HVQueryResult {
     Returns query results of entityType DesktopSummaryView(position 0)
 
 .EXAMPLE
-    Get-HVQueryResult DesktopSummaryView (Get-HVQueryFilter data.name -Eq vmware)
+    Get-HVQueryResult DesktopSummaryView (Get-HVQueryFilter data.name -Eq omnissa)
     Returns query results of entityType DesktopSummaryView(position 0) with given filter(position 1)
 
 .EXAMPLE
-    Get-HVQueryResult -EntityType DesktopSummaryView -Filter (Get-HVQueryFilter desktopSummaryData.name -Eq vmware)
+    Get-HVQueryResult -EntityType DesktopSummaryView -Filter (Get-HVQueryFilter desktopSummaryData.name -Eq omnissa)
     Returns query results of entityType DesktopSummaryView with given filter
 
 .EXAMPLE
-    $myFilter = Get-HVQueryFilter data.name -Contains vmware
+    $myFilter = Get-HVQueryFilter data.name -Contains omnissa
     Get-HVQueryResult -EntityType DesktopSummaryView -Filter $myFilter -SortBy desktopSummaryData.displayName -SortDescending $false
     Returns query results of entityType DesktopSummaryView with given filter and also sorted based on dispalyName
 
@@ -1923,7 +1923,7 @@ function Get-HVQueryResult {
 
 .NOTES
     Author                      : Kummara Ramamohan.
-    Author email                : kramamohan@vmware.com
+    Author email                : kramamohan@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -1944,7 +1944,7 @@ function Get-HVQueryResult {
     [string]$EntityType,
 
     [Parameter(Position = 1,Mandatory = $false)]
-    [VMware.Hv.QueryFilter]$Filter = $null,
+    [Omnissa.Horizon.QueryFilter]$Filter = $null,
 
     [Parameter(Position = 2,Mandatory = $false)]
     [string]$SortBy = $null,
@@ -1969,7 +1969,7 @@ function Get-HVQueryResult {
   }
 
   process {
-    $queryDef = New-Object VMware.Hv.QueryDefinition
+    $queryDef = New-Object Omnissa.Horizon.QueryDefinition
     $queryDef.queryEntityType = $entityType
     $queryDef.sortDescending = $sortDescending
 
@@ -1984,7 +1984,7 @@ function Get-HVQueryResult {
     $queryDef.filter = $filter
 
     $returnList = @()
-    $query_service_helper = New-Object VMware.Hv.QueryServiceService
+    $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
     $queryResults = $query_service_helper.QueryService_Create($services,$queryDef)
     $returnList += $queryResults.results
 
@@ -2170,7 +2170,7 @@ function New-HVFarm {
     Creates new instantClone farm by using json file
 
 .EXAMPLE
-    New-HVFarm -Manual -FarmName "manualFarmTest" -FarmDisplayName "manualFarmTest" -Description "Manual PS Test" -RdsServers "vm-for-rds.eng.vmware.com","vm-for-rds-2.eng.vmware.com" -Confirm:$false
+    New-HVFarm -Manual -FarmName "manualFarmTest" -FarmDisplayName "manualFarmTest" -Description "Manual PS Test" -RdsServers "vm-for-rds.eng.omnissa.com","vm-for-rds-2.eng.omnissa.com" -Confirm:$false
     Creates new manual farm by using rdsServers names
 
 .EXAMPLE
@@ -2182,7 +2182,7 @@ function New-HVFarm {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -2502,7 +2502,7 @@ function New-HVFarm {
 
     #farmSpec.automatedfarmSpec.virtualCenterProvisioningSettings.virtualCenterStorageSettings.viewComposerStorageSettings.spaceReclamationSettings.blackoutTimes
     [Parameter(Mandatory = $false,ParameterSetName = "LINKED_CLONE")]
-    [VMware.Hv.FarmBlackoutTime[]]
+    [Omnissa.Horizon.FarmBlackoutTime[]]
     $BlackoutTimes,
 
     #farmSpec.automatedfarmSpec.customizationSettings.adContainer if LINKED_CLONE, INSTANT_CLONE
@@ -2631,7 +2631,7 @@ function New-HVFarm {
         return
       }
     }
-    $farm_service_helper = New-Object VMware.Hv.FarmService
+    $farm_service_helper = New-Object Omnissa.Horizon.FarmService
     if ($spec) {
       try {
         $jsonObject = Get-JsonObject -specFile $spec
@@ -2720,7 +2720,7 @@ function New-HVFarm {
                 if ($null -ne $jsonObject.AutomatedFarmSpec.VirtualCenterProvisioningSettings.virtualCenterStorageSettings.ViewComposerStorageSettings.SpaceReclamationSettings.blackoutTimes) {
                     $blackoutTimesList = $jsonObject.AutomatedFarmSpec.VirtualCenterProvisioningSettings.virtualCenterStorageSettings.ViewComposerStorageSettings.SpaceReclamationSettings.blackoutTimes
                     foreach ($blackout in $blackoutTimesList) {
-                        $blackoutObj  = New-Object VMware.Hv.DesktopBlackoutTime
+                        $blackoutObj  = New-Object Omnissa.Horizon.DesktopBlackoutTime
                         $blackoutObj.Days = $blackout.Days
                         $blackoutObj.StartTime = $blackout.StartTime
                         $blackoutObj.EndTime = $blackoutObj.EndTime
@@ -2846,9 +2846,9 @@ function New-HVFarm {
           $farmSpecObj.AutomatedFarmSpec.RdsServerNamingSpec.patternNamingSettings.namingPattern = $namingPattern
           $farmSpecObj.AutomatedFarmSpec.RdsServerNamingSpec.patternNamingSettings.maxNumberOfRDSServers = $maximumCount
         } else {
-          $vmNamingSpec = New-Object VMware.Hv.FarmRDSServerNamingSpec
+          $vmNamingSpec = New-Object Omnissa.Horizon.FarmRDSServerNamingSpec
           $vmNamingSpec.NamingMethod = $namingMethod
-          $vmNamingSpec.patternNamingSettings = New-Object VMware.Hv.FarmPatternNamingSettings
+          $vmNamingSpec.patternNamingSettings = New-Object Omnissa.Horizon.FarmPatternNamingSettings
           $vmNamingSpec.patternNamingSettings.namingPattern = $namingPattern
           $vmNamingSpec.patternNamingSettings.maxNumberOfRDSServers = $maximumCount
           $farmSpecObj.AutomatedFarmSpec.RdsServerNamingSpec = $vmNamingSpec
@@ -2864,7 +2864,7 @@ function New-HVFarm {
         try {
           $farmVirtualCenterProvisioningData = Get-HVFarmProvisioningData -vc $virtualCenterID -vmObject $farmVirtualCenterProvisioningData
 
-          $HostOrCluster_helper = New-Object VMware.Hv.HostOrClusterService
+          $HostOrCluster_helper = New-Object Omnissa.Horizon.HostOrClusterService
           $hostClusterIds = (($HostOrCluster_helper.HostOrCluster_GetHostOrClusterTree($services, $farmVirtualCenterProvisioningData.datacenter)).treeContainer.children.info).Id
           $farmVirtualCenterStorageSettings = Get-HVFarmStorageObject -hostclusterIDs $hostClusterIds -storageObject $farmVirtualCenterStorageSettings
           $farmVirtualCenterNetworkingSettings = Get-HVFarmNetworkSetting -networkObject $farmVirtualCenterNetworkingSettings
@@ -2897,7 +2897,7 @@ function New-HVFarm {
     }
 
     $farmData = $farmSpecObj.data
-    $AccessGroup_service_helper = New-Object VMware.Hv.AccessGroupService
+    $AccessGroup_service_helper = New-Object Omnissa.Horizon.AccessGroupService
     $farmData.AccessGroup = Get-HVAccessGroupID $AccessGroup_service_helper.AccessGroup_List($services)
 
     $farmData.name = $farmName
@@ -3064,10 +3064,10 @@ function Test-HVFarmSpec {
 function Get-HVFarmProvisioningData {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.FarmVirtualCenterProvisioningData]$VmObject,
+    [Omnissa.Horizon.FarmVirtualCenterProvisioningData]$VmObject,
 
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID
+    [Omnissa.Horizon.VirtualCenterId]$VcID
   )
   if (!$vmObject) {
     $vmObject = $farmSpecObj.AutomatedFarmSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData
@@ -3089,7 +3089,7 @@ function Get-HVFarmProvisioningData {
     $vmObject.datacenter = $dataCenterID
   }
   if ($snapshotVM) {
-    $BaseImageSnapshot_service_helper = New-Object VMware.Hv.BaseImageSnapshotService
+    $BaseImageSnapshot_service_helper = New-Object Omnissa.Horizon.BaseImageSnapshotService
     $snapshotList = $BaseImageSnapshot_service_helper.BaseImageSnapshot_List($services, $parentVMObj.id)
     $snapshotVMObj = $snapshotList | Where-Object { $_.name -eq $snapshotVM }
     if ($null -eq $snapshotVMObj) {
@@ -3098,7 +3098,7 @@ function Get-HVFarmProvisioningData {
     $vmObject.Snapshot = $snapshotVMObj.id
   }
   if ($vmFolder) {
-    $VmFolder_service_helper = New-Object VMware.Hv.VmFolderService
+    $VmFolder_service_helper = New-Object Omnissa.Horizon.VmFolderService
     $folders = $VmFolder_service_helper.VmFolder_GetVmFolderTree($services, $vmObject.datacenter)
     $folderList = @()
     $folderList += $folders
@@ -3118,14 +3118,14 @@ function Get-HVFarmProvisioningData {
     }
   }
   if ($hostOrCluster) {
-    $HostOrCluster_service_helper = New-Object VMware.Hv.HostOrClusterService
+    $HostOrCluster_service_helper = New-Object Omnissa.Horizon.HostOrClusterService
     $vmObject.HostOrCluster = Get-HVHostOrClusterID $HostOrCluster_service_helper.HostOrCluster_GetHostOrClusterTree($services,$vmobject.datacenter)
     if ($null -eq $vmObject.HostOrCluster) {
       throw "No hostOrCluster found with Name: [$hostOrCluster]"
     }
   }
   if ($resourcePool) {
-    $ResourcePool_service_helper = New-Object VMware.Hv.ResourcePoolService
+    $ResourcePool_service_helper = New-Object Omnissa.Horizon.ResourcePoolService
     $vmObject.ResourcePool = Get-HVResourcePoolID $ResourcePool_service_helper.ResourcePool_GetResourcePoolTree($services,$vmobject.HostOrCluster)
     if ($null -eq $vmObject.ResourcePool) {
       throw "No Resource Pool found with Name: [$resourcePool]"
@@ -3138,15 +3138,15 @@ function Get-HVFarmStorageObject {
   param(
 
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.HostOrClusterId[]]$HostClusterIDs,
+    [Omnissa.Horizon.HostOrClusterId[]]$HostClusterIDs,
 
 	[Parameter(Mandatory = $false)]
-    [VMware.Hv.FarmVirtualCenterStorageSettings]$StorageObject
+    [Omnissa.Horizon.FarmVirtualCenterStorageSettings]$StorageObject
   )
   if (!$storageObject) {
-    $storageObject = New-Object VMware.Hv.FarmVirtualCenterStorageSettings
+    $storageObject = New-Object Omnissa.Horizon.FarmVirtualCenterStorageSettings
 
-    $FarmSpaceReclamationSettings = New-Object VMware.Hv.FarmSpaceReclamationSettings -Property @{ 'reclaimVmDiskSpace' = $false }
+    $FarmSpaceReclamationSettings = New-Object Omnissa.Horizon.FarmSpaceReclamationSettings -Property @{ 'reclaimVmDiskSpace' = $false }
     if ($reclaimVmDiskSpace) {
         $FarmSpaceReclamationSettings.ReclamationThresholdGB = $reclamationThresholdGB
         if ($blackoutTimes) {
@@ -3160,14 +3160,14 @@ function Get-HVFarmStorageObject {
       'spaceReclamationSettings' = $FarmSpaceReclamationSettings;
     }
 
-    $storageObject.ViewComposerStorageSettings = New-Object VMware.Hv.FarmViewComposerStorageSettings -Property $FarmViewComposerStorageSettingsList
+    $storageObject.ViewComposerStorageSettings = New-Object Omnissa.Horizon.FarmViewComposerStorageSettings -Property $FarmViewComposerStorageSettingsList
   }
 
   if ($datastores) {
     if ($StorageOvercommit -and  ($datastores.Length -ne  $StorageOvercommit.Length) ) {
         throw "Parameters datastores length: [$datastores.Length] and StorageOvercommit length: [$StorageOvercommit.Length] should be of same size"
     }
-    $Datastore_service_helper = New-Object VMware.Hv.DatastoreService
+    $Datastore_service_helper = New-Object Omnissa.Horizon.DatastoreService
     foreach ($hostClusterID in $hostClusterIDs) {
         $datastoreList += $Datastore_service_helper.Datastore_ListDatastoresByHostOrCluster($services, $hostClusterID)
     }
@@ -3182,7 +3182,7 @@ function Get-HVFarmStorageObject {
     }
     $StorageOvercommitCnt = 0
     foreach ($ds in $datastoresSelected) {
-      $datastoresObj = New-Object VMware.Hv.FarmVirtualCenterDatastoreSettings
+      $datastoresObj = New-Object Omnissa.Horizon.FarmVirtualCenterDatastoreSettings
       $datastoresObj.Datastore = $ds
       $datastoresObj.StorageOvercommit =  $storageOvercommit[$StorageOvercommitCnt]
       $StorageObject.Datastores += $datastoresObj
@@ -3204,7 +3204,7 @@ function Get-HVFarmStorageObject {
 function Get-HVFarmNetworkSetting {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.FarmVirtualCenterNetworkingSettings]$NetworkObject
+    [Omnissa.Horizon.FarmVirtualCenterNetworkingSettings]$NetworkObject
   )
   if (!$networkObject) {
     $networkObject = $farmSpecObj.AutomatedFarmSpec.VirtualCenterProvisioningSettings.VirtualCenterNetworkingSettings
@@ -3215,15 +3215,15 @@ function Get-HVFarmNetworkSetting {
 function Get-HVFarmCustomizationSetting {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.FarmCustomizationSettings]$CustomObject,
+    [Omnissa.Horizon.FarmCustomizationSettings]$CustomObject,
 
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID
+    [Omnissa.Horizon.VirtualCenterId]$VcID
   )
   if (!$customObject) {
     # View Composer and Instant Clone Engine Active Directory container for QuickPrep and ClonePrep. This must be set for Instant Clone Engine or SVI sourced desktops.
     if ($InstantClone -or $LinkedClone) {
-        $ad_domain_helper = New-Object VMware.Hv.ADDomainService
+        $ad_domain_helper = New-Object Omnissa.Horizon.ADDomainService
         $ADDomains = $ad_domain_helper.ADDomain_List($services)
         if ($netBiosName) {
           $adDomianId = ($ADDomains | Where-Object { $_.NetBiosName -eq $netBiosName } | Select-Object -Property id)
@@ -3236,7 +3236,7 @@ function Get-HVFarmCustomizationSetting {
             throw "No Domain configured in view administrator UI"
           }
         }
-        $ad_container_helper = New-Object VMware.Hv.AdContainerService
+        $ad_container_helper = New-Object Omnissa.Horizon.AdContainerService
         $adContainerId = ($ad_container_helper.ADContainer_ListByDomain($services,$adDomianId.id) | Where-Object { $_.Rdn -eq $adContainer } | Select-Object -Property id).id
         if ($null -eq $adContainerId) {
           throw "No AdContainer found with name: [$adContainer]"
@@ -3246,7 +3246,7 @@ function Get-HVFarmCustomizationSetting {
 
     if ($InstantClone) {
       $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CustomizationType = 'CLONE_PREP'
-      $instantCloneEngineDomainAdministrator_helper = New-Object VMware.Hv.InstantCloneEngineDomainAdministratorService
+      $instantCloneEngineDomainAdministrator_helper = New-Object Omnissa.Horizon.InstantCloneEngineDomainAdministratorService
       $insDomainAdministrators = $instantCloneEngineDomainAdministrator_helper.InstantCloneEngineDomainAdministrator_List($services)
       $strFilterSet = @()
       if (![string]::IsNullOrWhitespace($netBiosName)) {
@@ -3266,7 +3266,7 @@ function Get-HVFarmCustomizationSetting {
       if ($null -eq $instantCloneEngineDomainAdministrator) {
         throw "No Instant Clone Engine Domain Administrator found with netBiosName: [$netBiosName]"
       }
-      $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CloneprepCustomizationSettings = New-Object VMware.Hv.FarmClonePrepCustomizationSettings
+      $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CloneprepCustomizationSettings = New-Object Omnissa.Horizon.FarmClonePrepCustomizationSettings
       $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CloneprepCustomizationSettings.InstantCloneEngineDomainAdministrator = $instantCloneEngineDomainAdministrator
       $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CloneprepCustomizationSettings.powerOffScriptName = $powerOffScriptName
       $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.CloneprepCustomizationSettings.powerOffScriptParameters = $powerOffScriptParameters
@@ -3275,7 +3275,7 @@ function Get-HVFarmCustomizationSetting {
       $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.ReusePreExistingAccounts = $reusePreExistingAccounts
       $customObject = $farmSpecObj.AutomatedFarmSpec.CustomizationSettings
     } elseif ($LinkedClone) {
-      $ViewComposerDomainAdministrator_service_helper = New-Object VMware.Hv.ViewComposerDomainAdministratorService
+      $ViewComposerDomainAdministrator_service_helper = New-Object Omnissa.Horizon.ViewComposerDomainAdministratorService
       $lcDomainAdministrators = $ViewComposerDomainAdministrator_service_helper.ViewComposerDomainAdministrator_List($services, $vcID)
       $strFilterSet = @()
       if (![string]::IsNullOrWhitespace($netBiosName)) {
@@ -3297,11 +3297,11 @@ function Get-HVFarmCustomizationSetting {
       }
 
       #Support only Sysprep Customization
-      $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.SysprepCustomizationSettings = New-Object VMware.Hv.FarmSysprepCustomizationSettings
+      $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.SysprepCustomizationSettings = New-Object Omnissa.Horizon.FarmSysprepCustomizationSettings
       $sysprepCustomizationSettings = $farmSpecObj.AutomatedFarmSpec.CustomizationSettings.SysprepCustomizationSettings
 
       # Get SysPrep CustomizationSpec ID
-      $CustomizationSpec_service_helper = New-Object VMware.Hv.CustomizationSpecService
+      $CustomizationSpec_service_helper = New-Object Omnissa.Horizon.CustomizationSpecService
       $sysPrepIds = $CustomizationSpec_service_helper.CustomizationSpec_List($services, $vcID) | Where-Object { $_.customizationSpecData.name -eq $sysPrepName } | Select-Object -Property id
       if ($sysPrepIds.Count -eq 0) {
         throw "No Sysprep Customization spec found with Name: [$sysPrepName]"
@@ -3330,7 +3330,7 @@ function Get-FarmSpec {
     [string]$NamingMethod
   )
 
-  $farm_helper = New-Object VMware.Hv.FarmService
+  $farm_helper = New-Object Omnissa.Horizon.FarmService
   $farm_spec_helper = $farm_helper.getFarmSpecHelper()
   $farm_spec_helper.setType($farmType)
   if ($farmType -eq 'AUTOMATED') {
@@ -3459,7 +3459,7 @@ function New-HVPool {
     The greater these values are, the more memory will be consumed on the associated ESX hosts.
 
 .PARAMETER EnableHTMLAccess
-    HTML Access, enabled by VMware Blast technology, allows users to connect to View machines from Web browsers.
+    HTML Access, enabled by Omnissa Blast technology, allows users to connect to View machines from Web browsers.
 
 .PARAMETER Quality
     This setting determines the image quality that the flash movie will render. Lower quality results in less bandwidth usage.
@@ -3696,7 +3696,7 @@ function New-HVPool {
     first element from global:DefaultHVServers would be considered in-place of hvServer.
 
 .EXAMPLE
-    New-HVPool -LinkedClone -PoolName 'vmwarepool' -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'vmware' -HostOrCluster 'CS-1' -ResourcePool 'CS-1' -Datastores 'datastore1' -NamingMethod PATTERN -PoolDisplayName 'vmware linkedclone pool' -Description  'created linkedclone pool from ps' -EnableProvisioning $true -StopProvisioningOnError $false -NamingPattern  "vmware2" -MinReady 0 -MaximumCount 1 -SpareCount 1 -ProvisioningTime UP_FRONT -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
+    New-HVPool -LinkedClone -PoolName 'vmwarepool' -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1' -Datastores 'datastore1' -NamingMethod PATTERN -PoolDisplayName 'omnissa linkedclone pool' -Description  'created linkedclone pool from ps' -EnableProvisioning $true -StopProvisioningOnError $false -NamingPattern  "vmware2" -MinReady 0 -MaximumCount 1 -SpareCount 1 -ProvisioningTime UP_FRONT -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
     Create new automated linked clone pool with naming method pattern
 
 .EXAMPLE
@@ -3710,11 +3710,11 @@ function New-HVPool {
    Clones new pool by using existing pool configuration
 
 .EXAMPLE
-  New-HVPool -InstantClone -PoolName "InsPoolvmware" -PoolDisplayName "insPool" -Description "create instant pool" -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'vmware' -HostOrCluster  'CS-1' -ResourcePool 'CS-1' -NamingMethod PATTERN -Datastores 'datastore1' -NamingPattern "inspool2" -NetBiosName 'adviewdev' -DomainAdmin root
+  New-HVPool -InstantClone -PoolName "InsPoolvmware" -PoolDisplayName "insPool" -Description "create instant pool" -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster  'CS-1' -ResourcePool 'CS-1' -NamingMethod PATTERN -Datastores 'datastore1' -NamingPattern "inspool2" -NetBiosName 'adviewdev' -DomainAdmin root
   Create new automated instant clone pool with naming method pattern
 
 .EXAMPLE
-  New-HVPool -FullClone -PoolName "FullClone" -PoolDisplayName "FullClonePra" -Description "create full clone" -UserAssignment DEDICATED -Template 'powerCLI-VM-TEMPLATE' -VmFolder 'vmware' -HostOrCluster 'CS-1' -ResourcePool 'CS-1'  -Datastores 'datastore1' -NamingMethod PATTERN -NamingPattern 'FullCln1' -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
+  New-HVPool -FullClone -PoolName "FullClone" -PoolDisplayName "FullClonePra" -Description "create full clone" -UserAssignment DEDICATED -Template 'powerCLI-VM-TEMPLATE' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1'  -Datastores 'datastore1' -NamingMethod PATTERN -NamingPattern 'FullCln1' -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
   Create new automated full clone pool with naming method pattern
 
 .EXAMPLE
@@ -3722,7 +3722,7 @@ function New-HVPool {
   Create new managed manual pool from virtual center managed VirtualMachines.
 
 .EXAMPLE
-  New-HVPool -MANUAL -PoolName 'unmangedVMWare' -PoolDisplayName 'unMngPl' -Description 'unmanaged Manual Pool creation' -UserAssignment FLOATING -Source UNMANAGED -VM 'myphysicalmachine.vmware.com'
+  New-HVPool -MANUAL -PoolName 'unmangedVMWare' -PoolDisplayName 'unMngPl' -Description 'unmanaged Manual Pool creation' -UserAssignment FLOATING -Source UNMANAGED -VM 'myphysicalmachine.omnissa.com'
   Create new unmanaged manual pool from unmanaged VirtualMachines.
 
 .EXAMPLE
@@ -3734,7 +3734,7 @@ function New-HVPool {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -4171,14 +4171,14 @@ function New-HVPool {
 
     #desktopSpec.automatedDesktopSpec.virtualCenterProvisioningSettings.virtualCenterStorageSettings.viewStorageAcceleratorSettings.blackoutTimes if LINKED_CLONE
     [Parameter(Mandatory = $false,ParameterSetName = "LINKED_CLONE")]
-    [VMware.Hv.DesktopBlackoutTime[]]
+    [Omnissa.Horizon.DesktopBlackoutTime[]]
     $BlackoutTimes,
 
     #desktopSpec.automatedDesktopSpec.virtualCenterProvisioningSettings.virtualCenterNetworkingSettings.nics
     [Parameter(Mandatory = $false,ParameterSetName = "LINKED_CLONE")]
     [Parameter(Mandatory = $false,ParameterSetName = 'INSTANT_CLONE')]
     [Parameter(Mandatory = $false,ParameterSetName = 'FULL_CLONE')]
-    [VMware.Hv.DesktopNetworkInterfaceCardSettings[]]
+    [Omnissa.Horizon.DesktopNetworkInterfaceCardSettings[]]
     $Nics,
 
     #desktopSpec.automatedDesktopSpec.virtualCenterProvisioningSettings.enableProvsioning if LINKED_CLONE, INSTANT_CLONE, FULL_CLONE
@@ -4597,7 +4597,7 @@ function New-HVPool {
                 if ($null -ne $jsonObject.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings.viewStorageAcceleratorSettings.blackoutTimes) {
                     $blackoutTimesList =$jsonObject.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings.viewStorageAcceleratorSettings.blackoutTimes
                     foreach ($blackout in $blackoutTimesList) {
-                        $blackoutObj  = New-Object VMware.Hv.DesktopBlackoutTime
+                        $blackoutObj  = New-Object Omnissa.Horizon.DesktopBlackoutTime
                         $blackoutObj.Days = $blackout.Days
                         $blackoutObj.StartTime = $blackout.StartTime
                         $blackoutObj.EndTime = $blackout.EndTime
@@ -4610,7 +4610,7 @@ function New-HVPool {
         if ($null -ne $jsonObject.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.nics) {
             $nicList = $jsonObject.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.nics
             foreach($nicObj in  $nicList) {
-                $nic = New-Object VMware.Hv.DesktopNetworkInterfaceCardSettings
+                $nic = New-Object Omnissa.Horizon.DesktopNetworkInterfaceCardSettings
             }
         }
         #>
@@ -4832,13 +4832,13 @@ function New-HVPool {
         <#
             Query FarmId from Farm Name
         #>
-        $QueryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+        $QueryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
         $QueryFilterEquals.memberName = 'data.name'
         $QueryFilterEquals.value = $farm
-        $defn = New-Object VMware.Hv.QueryDefinition
+        $defn = New-Object Omnissa.Horizon.QueryDefinition
         $defn.queryEntityType = 'FarmSummaryView'
         $defn.Filter = $QueryFilterEquals
-        $query_service_helper = New-Object VMware.Hv.QueryServiceService
+        $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
         $queryResults = $query_service_helper.QueryService_Query($services,$defn)
         if ($queryResults.results.Count -eq 0) {
           Write-Error "No farm found with name: [$farm]"
@@ -4848,13 +4848,13 @@ function New-HVPool {
         $desktopSpecObj.RdsDesktopSpec.farm = $farmID
       }
       'MANUAL' {
-        [VMware.Hv.MachineId[]]$machineList = $null
+        [Omnissa.Horizon.MachineId[]]$machineList = $null
         $desktopSpecObj.ManualDesktopSpec.source = $source
         if ($source -eq 'VIRTUAL_CENTER') {
           # Get vCenter VMs
           $vmTable = @{}
           $vm | ForEach-Object { $vmTable[$_] = $_ }
-          $virtual_machine_helper = New-Object VMware.Hv.VirtualMachineService
+          $virtual_machine_helper = New-Object Omnissa.Horizon.VirtualMachineService
           $machineId = ($virtual_machine_helper.VirtualMachine_List($services,$virtualCenterId) | Where-Object { $vmTable.Contains($_.name) } | Select-Object -Property Id)
           $machineList += $machineId.id
           $desktopSpecObj.ManualDesktopSpec.VirtualCenter = $virtualCenterID
@@ -4879,22 +4879,22 @@ function New-HVPool {
             if ($provisioningTime -eq 'ON_DEMAND') { $desktopSpecObj.AutomatedDesktopSpec.VmNamingSpec.patternNamingSettings.minNumberOfMachines = $minimumCount }
           } else {
             $desktopSpecifiedName = @()
-            $specificNames | ForEach-Object { $desktopSpecifiedName += New-Object VMware.Hv.DesktopSpecifiedName -Property @{ 'vmName' = $_; } }
+            $specificNames | ForEach-Object { $desktopSpecifiedName += New-Object Omnissa.Horizon.DesktopSpecifiedName -Property @{ 'vmName' = $_; } }
             $desktopSpecObj.AutomatedDesktopSpec.VmNamingSpec.SpecificNamingSpec.specifiedNames = $desktopSpecifiedName
             $desktopSpecObj.AutomatedDesktopSpec.VmNamingSpec.SpecificNamingSpec.startMachinesInMaintenanceMode = $startInMaintenanceMode
             $desktopSpecObj.AutomatedDesktopSpec.VmNamingSpec.SpecificNamingSpec.numUnassignedMachinesKeptPoweredOn = $numUnassignedMachinesKeptPoweredOn
           }
         } else {
-          $vmNamingSpec = New-Object VMware.Hv.DesktopVirtualMachineNamingSpec
+          $vmNamingSpec = New-Object Omnissa.Horizon.DesktopVirtualMachineNamingSpec
           if ($desktopVirtualMachineNamingSpec.NamingMethod -eq 'PATTERN') {
             $vmNamingSpec.NamingMethod = 'PATTERN'
             $vmNamingSpec.patternNamingSettings = $desktopVirtualMachineNamingSpec.patternNamingSettings
             $vmNamingSpec.patternNamingSettings.namingPattern = $namingPattern
           } else {
             $desktopSpecifiedName = @()
-            $specificNames | ForEach-Object { $desktopSpecifiedName += New-Object VMware.Hv.DesktopSpecifiedName -Property @{ 'vmName' = $_; } }
+            $specificNames | ForEach-Object { $desktopSpecifiedName += New-Object Omnissa.Horizon.DesktopSpecifiedName -Property @{ 'vmName' = $_; } }
             $vmNamingSpec.NamingMethod = 'SPECIFIED'
-            $vmNamingSpec.SpecificNamingSpec = New-Object VMware.Hv.DesktopSpecificNamingSpec
+            $vmNamingSpec.SpecificNamingSpec = New-Object Omnissa.Horizon.DesktopSpecificNamingSpec
             $vmNamingSpec.SpecificNamingSpec.numUnassignedMachinesKeptPoweredOn = $desktopVirtualMachineNamingSpec.specificNamingSettings.numUnassignedMachinesKeptPoweredOn
             $vmNamingSpec.SpecificNamingSpec.startMachinesInMaintenanceMode = $desktopVirtualMachineNamingSpec.specificNamingSettings.startMachinesInMaintenanceMode
             $vmNamingSpec.SpecificNamingSpec.specifiedNames = $desktopSpecifiedName
@@ -4936,7 +4936,7 @@ function New-HVPool {
           $DesktopVirtualCenterProvisioningSettings.VirtualCenterNetworkingSettings = $DesktopVirtualCenterNetworkingSettings
           $DesktopVirtualCenterProvisioningSettings.AddVirtualTPM = $AddVirtualTPM
 
-          $DesktopAutomatedDesktopSpec = New-Object VMware.Hv.DesktopAutomatedDesktopSpec
+          $DesktopAutomatedDesktopSpec = New-Object Omnissa.Horizon.DesktopAutomatedDesktopSpec
           $DesktopAutomatedDesktopSpec.ProvisioningType = $provisioningType
           $DesktopAutomatedDesktopSpec.VirtualCenter = $virtualCenterID
           $DesktopAutomatedDesktopSpec.userAssignment = $desktopUserAssignment
@@ -4952,7 +4952,7 @@ function New-HVPool {
       break
     }
     if (!$desktopBase) {
-      $accessGroup_client = New-Object VMware.Hv.AccessGroupService
+      $accessGroup_client = New-Object Omnissa.Horizon.AccessGroupService
       $desktopSpecObj.base.AccessGroup = Get-HVAccessGroupID $accessGroup_client.AccessGroup_List($services)
     } else {
       $desktopSpecObj.base = $desktopBase
@@ -4964,12 +4964,12 @@ function New-HVPool {
     $desktopSpecObj.type = $poolType
 
 	if (! $desktopSettings) {
-        $desktopSettingsService = New-Object VMware.Hv.DesktopService
+        $desktopSettingsService = New-Object Omnissa.Horizon.DesktopService
         $desktopSettingsHelper = $desktopSettingsService.getDesktopSettingsHelper()
         $desktopSettingsHelper.setEnabled($Enable)
         $desktopSettingsHelper.setConnectionServerRestrictions($ConnectionServerRestrictions)
 
-        #$desktopLogoffSettings = New-Object VMware.Hv.DesktopLogoffSettings
+        #$desktopLogoffSettings = New-Object Omnissa.Horizon.DesktopLogoffSettings
         $desktopLogoffSettings = $desktopSettingsService.getDesktopLogoffSettingsHelper()
         if ($InstantClone) {
             $deleteOrRefreshMachineAfterLogoff = "DELETE"
@@ -5033,18 +5033,18 @@ function New-HVPool {
     $desktopSpecObj.DesktopSettings = $desktopSettings
     $info = $services.PodFederation.PodFederation_get()
     if ($globalEntitlement -and ("ENABLED" -eq $info.localPodStatus.status)) {
-        $QueryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+        $QueryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
         $QueryFilterEquals.memberName = 'base.displayName'
         $QueryFilterEquals.value = $globalEntitlement
-        $defn = New-Object VMware.Hv.QueryDefinition
+        $defn = New-Object Omnissa.Horizon.QueryDefinition
         $defn.queryEntityType = 'GlobalEntitlementSummaryView'
         $defn.Filter = $QueryFilterEquals
-        $query_service_helper = New-Object VMware.Hv.QueryServiceService
+        $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
         try {
             $queryResults = $query_service_helper.QueryService_Query($services,$defn)
             $globalEntitlementid = $queryResults.Results.id
             if ($globalEntitlementid.length -eq 1) {
-                $desktopGlobalEntitlementData = New-Object VMware.Hv.DesktopGlobalEntitlementData -Property @{'globalEntitlement'= $globalEntitlementid;}
+                $desktopGlobalEntitlementData = New-Object Omnissa.Horizon.DesktopGlobalEntitlementData -Property @{'globalEntitlement'= $globalEntitlementid;}
             }
         }
         catch {
@@ -5063,7 +5063,7 @@ function New-HVPool {
       $myDebug = convertto-json -InputObject $desktopSpecObj -depth 12
       $myDebug | out-file -filepath c:\temp\copieddesktop.json
     #>
-    $desktop_helper = New-Object VMware.Hv.DesktopService
+    $desktop_helper = New-Object Omnissa.Horizon.DesktopService
     if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($desktopSpecObj.base.name)) {
       $id = $desktop_helper.Desktop_create($services,$desktopSpecObj)
     } else {
@@ -5113,7 +5113,7 @@ function Get-HVResourceStructure {
     }
   }
   process {
-    $vc_service_helper = New-Object VMware.Hv.VirtualCenterService
+    $vc_service_helper = New-Object Omnissa.Horizon.VirtualCenterService
     $vcList = $vc_service_helper.VirtualCenter_List($services)
     foreach ($vc in $vcList) {
       Write-Host vCenter $vc.ServerSpec.ServerName
@@ -5137,7 +5137,7 @@ function Get-HVResourceStructure {
       $hcNodes = @()
       $index = 0
       foreach ($datacenter in $datacenterList.keys) {
-        $HostOrCluster_service_helper = New-Object VMware.Hv.HostOrClusterService
+        $HostOrCluster_service_helper = New-Object Omnissa.Horizon.HostOrClusterService
 	$hcNodes += $HostOrCluster_service_helper.HostOrCluster_GetHostOrClusterTree($services, $datacenterList.$datacenter)
         while ($index -lt $hcNodes.length) {
 	  if ($hcNodes[$index].container) {
@@ -5153,7 +5153,7 @@ function Get-HVResourceStructure {
       $index = 0
       foreach ($hostOrCluster in $hcNodes) {
 	if (-not $hostOrCluster.container) {
-          $ResourcePool_service_helper = New-Object VMware.Hv.ResourcePoolService
+          $ResourcePool_service_helper = New-Object Omnissa.Horizon.ResourcePoolService
           $rpNodes += $ResourcePool_service_helper.ResourcePool_GetResourcePoolTree($services, $hostOrCluster.info.id)
           while ($index -lt $rpNodes.length) {
 	    Write-Host "ResourcePool" $rpNodes[$index].resourcePoolData.name "path" $rpNodes[$index].resourcePoolData.path
@@ -5172,14 +5172,14 @@ function Get-HVResourceStructure {
 function Get-HVPoolProvisioningData {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.DesktopVirtualCenterProvisioningData]$VmObject,
+    [Omnissa.Horizon.DesktopVirtualCenterProvisioningData]$VmObject,
 
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID
+    [Omnissa.Horizon.VirtualCenterId]$VcID
   )
   if (!$vmObject) { $vmObject = $desktopSpecObj.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData }
   if ($template) {
-    $vm_template_helper = New-Object VMware.Hv.VmTemplateService
+    $vm_template_helper = New-Object Omnissa.Horizon.VmTemplateService
     $templateList = $vm_template_helper.VmTemplate_List($services,$vcID)
     $templateVM = $templateList | Where-Object { $_.name -eq $template }
     if ($null -eq $templateVM) {
@@ -5206,7 +5206,7 @@ function Get-HVPoolProvisioningData {
     $vmObject.datacenter = $dataCenterID
   }
   if ($snapshotVM) {
-    $baseImageSnapshot_helper = New-Object VMware.Hv.BaseImageSnapshotService
+    $baseImageSnapshot_helper = New-Object Omnissa.Horizon.BaseImageSnapshotService
     $snapshotList = $baseImageSnapshot_helper.BaseImageSnapshot_List($services,$parentVmObj.id)
     $snapshotVmObj = $snapshotList | Where-Object { $_.name -eq $snapshotVM }
     if ($null -eq $snapshotVmObj) {
@@ -5215,7 +5215,7 @@ function Get-HVPoolProvisioningData {
     $vmObject.Snapshot = $snapshotVmObj.id
   }
   if ($vmFolder) {
-    $vmFolder_helper = New-Object VMware.Hv.VmFolderService
+    $vmFolder_helper = New-Object Omnissa.Horizon.VmFolderService
     $folders = $vmFolder_helper.VmFolder_GetVmFolderTree($services,$vmObject.datacenter)
     $folderList = @()
     $folderList += $folders
@@ -5237,14 +5237,14 @@ function Get-HVPoolProvisioningData {
     }
   }
   if ($hostOrCluster) {
-    $vmFolder_helper = New-Object VMware.Hv.HostOrClusterService
+    $vmFolder_helper = New-Object Omnissa.Horizon.HostOrClusterService
     $vmObject.HostOrCluster = Get-HVHostOrClusterID $vmFolder_helper.HostOrCluster_GetHostOrClusterTree($services,$vmobject.datacenter)
     if ($null -eq $vmObject.HostOrCluster) {
       throw "No hostOrCluster found with Name: [$hostOrCluster]"
     }
   }
   if ($resourcePool) {
-    $resourcePool_helper = New-Object VMware.Hv.ResourcePoolService
+    $resourcePool_helper = New-Object Omnissa.Horizon.ResourcePoolService
     $vmObject.ResourcePool = Get-HVResourcePoolID $resourcePool_helper.ResourcePool_GetResourcePoolTree($services,$vmobject.HostOrCluster)
     if ($null -eq $vmObject.ResourcePool) {
       throw "No Resource Pool found with Name: [$resourcePool]"
@@ -5281,7 +5281,7 @@ function Get-HVHostOrClusterID {
 #>
   param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.HostOrClusterTreeNode]$hoctn
+    [Omnissa.Horizon.HostOrClusterTreeNode]$hoctn
   )
   if ($hoctn.container) {
     foreach ($node in $hoctn.treeContainer.children) {
@@ -5317,7 +5317,7 @@ function Get-HVResourcePoolID {
 #>
    param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.ResourcePoolInfo]$rpi
+    [Omnissa.Horizon.ResourcePoolInfo]$rpi
   )
   if ($rpi.resourcePoolData.path -eq $resourcePool -or $rpi.resourcePoolData.name -eq $resourcePool) {
     return $rpi.id
@@ -5361,7 +5361,7 @@ function Get-HVAccessGroupID {
 #>
    param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.AccessGroupInfo[]]$agi
+    [Omnissa.Horizon.AccessGroupInfo[]]$agi
   )
   foreach ($element in $agi) {
     if ($element.base.name -eq $accessGroup) {
@@ -5380,26 +5380,26 @@ function Get-HVAccessGroupID {
 function Get-HVPoolStorageObject {
   param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.HostOrClusterId[]]$HostClusterIDs,
+    [Omnissa.Horizon.HostOrClusterId[]]$HostClusterIDs,
 
 	[Parameter(Mandatory = $false)]
-    [VMware.Hv.DesktopVirtualCenterStorageSettings]$StorageObject
+    [Omnissa.Horizon.DesktopVirtualCenterStorageSettings]$StorageObject
   )
   $datastoreList = $null
   if (!$storageObject) {
-    $datastore_helper = New-Object VMware.Hv.DatastoreService
+    $datastore_helper = New-Object Omnissa.Horizon.DatastoreService
     foreach ($hostClusterID in $hostClusterIDs){
         $datastoreList += $datastore_helper.Datastore_ListDatastoresByHostOrCluster($services,$hostClusterID)
     }
-    $storageObject = New-Object VMware.Hv.DesktopVirtualCenterStorageSettings
+    $storageObject = New-Object Omnissa.Horizon.DesktopVirtualCenterStorageSettings
     $storageAcceleratorList = @{
       'useViewStorageAccelerator' = $useViewStorageAccelerator
     }
-    $desktopViewStorageAcceleratorSettings = New-Object VMware.Hv.DesktopViewStorageAcceleratorSettings -Property $storageAcceleratorList
+    $desktopViewStorageAcceleratorSettings = New-Object Omnissa.Horizon.DesktopViewStorageAcceleratorSettings -Property $storageAcceleratorList
     $storageObject.viewStorageAcceleratorSettings = $desktopViewStorageAcceleratorSettings
-    $desktopSpaceReclamationSettings = New-Object VMware.Hv.DesktopSpaceReclamationSettings -Property @{ 'reclaimVmDiskSpace' = $reclaimVmDiskSpace; 'reclamationThresholdGB' = $reclamationThresholdGB}
-    $desktopPersistentDiskSettings = New-Object VMware.Hv.DesktopPersistentDiskSettings -Property @{ 'redirectWindowsProfile' = $false }
-    $desktopNonPersistentDiskSettings = New-Object VMware.Hv.DesktopNonPersistentDiskSettings -Property @{ 'redirectDisposableFiles' = $false }
+    $desktopSpaceReclamationSettings = New-Object Omnissa.Horizon.DesktopSpaceReclamationSettings -Property @{ 'reclaimVmDiskSpace' = $reclaimVmDiskSpace; 'reclamationThresholdGB' = $reclamationThresholdGB}
+    $desktopPersistentDiskSettings = New-Object Omnissa.Horizon.DesktopPersistentDiskSettings -Property @{ 'redirectWindowsProfile' = $false }
+    $desktopNonPersistentDiskSettings = New-Object Omnissa.Horizon.DesktopNonPersistentDiskSettings -Property @{ 'redirectDisposableFiles' = $false }
     if ($LinkedClone) {
       if ($blackoutTimes) {
         $storageObject.viewStorageAcceleratorSettings.BlackoutTimes = $blackoutTimes
@@ -5432,7 +5432,7 @@ function Get-HVPoolStorageObject {
       'nonPersistentDiskSettings' = $desktopNonPersistentDiskSettings
     }
     if (!$FullClone) {
-      $storageObject.ViewComposerStorageSettings = New-Object VMware.Hv.DesktopViewComposerStorageSettings -Property $desktopViewComposerStorageSettingsList
+      $storageObject.ViewComposerStorageSettings = New-Object Omnissa.Horizon.DesktopViewComposerStorageSettings -Property $desktopViewComposerStorageSettingsList
     }
   }
   if ($datastores) {
@@ -5455,7 +5455,7 @@ function Get-HVPoolStorageObject {
 function Get-HVDatastore {
   param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.DatastoreInfo[]]
+    [Omnissa.Horizon.DatastoreInfo[]]
     $DatastoreInfoList,
 
     [Parameter(Mandatory = $true)]
@@ -5474,7 +5474,7 @@ function Get-HVDatastore {
   $Datastores = @()
   $StorageOvercommitCnt = 0
   foreach ($ds in $datastoresSelected) {
-    $myDatastores = New-Object VMware.Hv.DesktopVirtualCenterDatastoreSettings
+    $myDatastores = New-Object Omnissa.Horizon.DesktopVirtualCenterDatastoreSettings
     $myDatastores.Datastore = $ds
     if (! $DsStorageOvercommit) {
       $mydatastores.StorageOvercommit = 'UNBOUNDED'
@@ -5490,7 +5490,7 @@ function Get-HVDatastore {
 function Get-HVPoolNetworkSetting {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.DesktopVirtualCenterNetworkingSettings]$NetworkObject
+    [Omnissa.Horizon.DesktopVirtualCenterNetworkingSettings]$NetworkObject
   )
   if (!$networkObject) {
     $networkObject = $desktopSpecObj.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterNetworkingSettings
@@ -5501,15 +5501,15 @@ function Get-HVPoolNetworkSetting {
 function Get-HVPoolCustomizationSetting {
   param(
     [Parameter(Mandatory = $false)]
-    [VMware.Hv.DesktopCustomizationSettings]$CustomObject,
+    [Omnissa.Horizon.DesktopCustomizationSettings]$CustomObject,
 
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID
+    [Omnissa.Horizon.VirtualCenterId]$VcID
   )
   if (!$customObject) {
     # View Composer and Instant Clone Engine Active Directory container for QuickPrep and ClonePrep. This must be set for Instant Clone Engine or SVI sourced desktops.
     if ($InstantClone -or $LinkedClone) {
-        $ad_domain_helper = New-Object VMware.Hv.ADDomainService
+        $ad_domain_helper = New-Object Omnissa.Horizon.ADDomainService
         $ADDomains = $ad_domain_helper.ADDomain_List($services)
         if ($netBiosName) {
           $adDomianId = ($ADDomains | Where-Object { $_.NetBiosName -eq $netBiosName } | Select-Object -Property id)
@@ -5522,7 +5522,7 @@ function Get-HVPoolCustomizationSetting {
             throw "No Domain configured in view administrator UI"
           }
         }
-        $ad_container_helper = New-Object VMware.Hv.AdContainerService
+        $ad_container_helper = New-Object Omnissa.Horizon.AdContainerService
         $adContainerId = ($ad_container_helper.ADContainer_ListByDomain($services,$adDomianId.id) | Where-Object { $_.Rdn -eq $adContainer } | Select-Object -Property id).id
         if ($null -eq $adContainerId) {
           throw "No AdContainer found with name: [$adContainer]"
@@ -5531,7 +5531,7 @@ function Get-HVPoolCustomizationSetting {
     }
     if ($InstantClone) {
       $desktopSpecObj.AutomatedDesktopSpec.CustomizationSettings.CustomizationType = 'CLONE_PREP'
-      $instantCloneEngineDomainAdministrator_helper = New-Object VMware.Hv.InstantCloneEngineDomainAdministratorService
+      $instantCloneEngineDomainAdministrator_helper = New-Object Omnissa.Horizon.InstantCloneEngineDomainAdministratorService
       $insDomainAdministrators = $instantCloneEngineDomainAdministrator_helper.InstantCloneEngineDomainAdministrator_List($services)
       $strFilterSet = @()
       if (![string]::IsNullOrWhitespace($netBiosName)) {
@@ -5561,7 +5561,7 @@ function Get-HVPoolCustomizationSetting {
     }
     else {
       if ($LinkedClone) {
-        $viewComposerDomainAdministrator_helper = New-Object VMware.Hv.ViewComposerDomainAdministratorService
+        $viewComposerDomainAdministrator_helper = New-Object Omnissa.Horizon.ViewComposerDomainAdministratorService
         $lcDomainAdministrators = $viewComposerDomainAdministrator_helper.ViewComposerDomainAdministrator_List($services,$vcID)
         $strFilterSet = @()
         if (![string]::IsNullOrWhitespace($netBiosName)) {
@@ -5586,7 +5586,7 @@ function Get-HVPoolCustomizationSetting {
           $desktopSpecObj.AutomatedDesktopSpec.CustomizationSettings.SysprepCustomizationSettings = Get-CustomizationObject
 
           # Get SysPrep CustomizationSpec ID
-          $customization_spec_helper = New-Object VMware.Hv.CustomizationSpecService
+          $customization_spec_helper = New-Object Omnissa.Horizon.CustomizationSpecService
           $sysPrepIds = $customization_spec_helper.CustomizationSpec_List($services,$vcID) | Where-Object { $_.customizationSpecData.name -eq $sysPrepName } | Select-Object -Property id
           if ($sysPrepIds.Count -eq 0) {
             throw "No Sysprep Customization Spec found with Name: [$sysPrepName]"
@@ -5611,7 +5611,7 @@ function Get-HVPoolCustomizationSetting {
           $desktopSpecObj.AutomatedDesktopSpec.CustomizationSettings.CustomizationType = 'SYS_PREP'
           $desktopSpecObj.AutomatedDesktopSpec.CustomizationSettings.SysprepCustomizationSettings = Get-CustomizationObject
           # Get SysPrep CustomizationSpec ID
-          $customization_spec_helper = New-Object VMware.Hv.CustomizationSpecService
+          $customization_spec_helper = New-Object Omnissa.Horizon.CustomizationSpecService
           $sysPrepIds = $customization_spec_helper.CustomizationSpec_List($services,$vcID) | Where-Object { $_.customizationSpecData.name -eq $sysPrepName } | Select-Object -Property id
           if ($sysPrepIds.Count -eq 0) {
             throw "No Sysprep Customization Spec found with Name: [$sysPrepName]"
@@ -5633,18 +5633,18 @@ function Get-HVPoolCustomizationSetting {
 
 function Get-CustomizationObject {
   if ($InstantClone) {
-    return New-Object VMware.Hv.DesktopCloneprepCustomizationSettings
+    return New-Object Omnissa.Horizon.DesktopCloneprepCustomizationSettings
   } elseIf ($LinkedClone) {
     if ($custType -eq 'QUICK_PREP') {
-      return New-Object VMware.Hv.DesktopQuickPrepCustomizationSettings
+      return New-Object Omnissa.Horizon.DesktopQuickPrepCustomizationSettings
     } else {
-      return New-Object VMware.Hv.DesktopSysPrepCustomizationSettings
+      return New-Object Omnissa.Horizon.DesktopSysPrepCustomizationSettings
     }
   } else {
     if ($custType -eq 'SYS_PREP') {
-      return New-Object VMware.Hv.DesktopSysPrepCustomizationSettings
+      return New-Object Omnissa.Horizon.DesktopSysPrepCustomizationSettings
     } else {
-      return New-Object VMware.Hv.DesktopNoCustomizationSettings
+      return New-Object Omnissa.Horizon.DesktopNoCustomizationSettings
     }
   }
 }
@@ -5661,7 +5661,7 @@ function Get-DesktopSpec {
     [Parameter(Mandatory = $false)]
     [string]$NamingMethod
   )
-  $desktop_helper = New-Object VMware.Hv.DesktopService
+  $desktop_helper = New-Object Omnissa.Horizon.DesktopService
   $desktop_spec_helper = $desktop_helper.getDesktopSpecHelper()
   $desktop_spec_helper.setType($poolType)
   if ($poolType -eq $desktop_spec_helper.TYPE_AUTOMATED) {
@@ -5832,7 +5832,7 @@ function Remove-HVFarm {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -5895,7 +5895,7 @@ function Remove-HVFarm {
         }
       }
     }
-    $farm_service_helper = New-Object VMware.Hv.FarmService
+    $farm_service_helper = New-Object Omnissa.Horizon.FarmService
     foreach ($item in $farmList) {
       if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($item.Name)) {
         $farm_service_helper.Farm_Delete($services, $item.id)
@@ -5949,7 +5949,7 @@ function Remove-HVPool {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -6021,8 +6021,8 @@ function Remove-HVPool {
         }
       }
     }
-    $desktop_service_helper = New-Object VMware.Hv.DesktopService
-    $deleteSpec = New-Object VMware.Hv.DesktopDeleteSpec
+    $desktop_service_helper = New-Object Omnissa.Horizon.DesktopService
+    $deleteSpec = New-Object Omnissa.Horizon.DesktopDeleteSpec
     $deleteSpec.DeleteFromDisk = $deleteFromDisk
     foreach ($item in $poolList) {
       if ($terminateSession) {
@@ -6030,7 +6030,7 @@ function Remove-HVPool {
         $queryResults = Get-HVQueryResult MachineSummaryView (Get-HVQueryFilter base.desktop -eq $item.id)
         $sessions += $queryResults.base.session
         if ($null -ne $sessions) {
-          $session_service_helper = New-Object VMware.Hv.SessionService
+          $session_service_helper = New-Object Omnissa.Horizon.SessionService
           try {
             Write-Host "Terminating Sessions, it may take few seconds..."
             $session_service_helper.Session_LogoffSessionsForced($services,$sessions)
@@ -6116,7 +6116,7 @@ function Set-HVFarm {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -6241,7 +6241,7 @@ function Set-HVFarm {
       $updates += Get-MapEntry -key 'automatedFarmData.virtualCenterProvisioningSettings.enableProvisioning' `
             -value $false
     }
-    $farm_service_helper = New-Object VMware.Hv.FarmService
+    $farm_service_helper = New-Object Omnissa.Horizon.FarmService
     foreach ($item in $farmList.Keys) {
       if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($farmList.$item)) {
         $farm_service_helper.Farm_Update($services,$item,$updates)
@@ -6323,7 +6323,7 @@ function Set-HVPool {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.2
     Updated                     : Mark Elvers <mark.elvers@tunbury.org>
 
@@ -6484,27 +6484,27 @@ function Set-HVPool {
     if ($PSBoundParameters.ContainsKey("ResourcePool")) {
       foreach ($item in $poolList.Keys) {
           $pool = Get-HVPool -PoolName $poolList.$item
-          $ResourcePool_service_helper = New-Object VMware.Hv.ResourcePoolService
+          $ResourcePool_service_helper = New-Object Omnissa.Horizon.ResourcePoolService
           $ResourcePoolID = Get-HVResourcePoolID $ResourcePool_service_helper.ResourcePool_GetResourcePoolTree($services, $pool.AutomatedDesktopData.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData.HostOrCluster)
           $updates += Get-MapEntry -key 'automatedDesktopData.virtualCenterProvisioningSettings.virtualCenterProvisioningData.resourcePool' -value $ResourcePoolID
       }
     }
 
     if ($clearGlobalEntitlement) {
-    	$update = New-Object VMware.Hv.MapEntry
+    	$update = New-Object Omnissa.Horizon.MapEntry
     	$update.key = 'globalEntitlementData.globalEntitlement'
     	$updates += $update
     }
 
     $info = $services.PodFederation.PodFederation_get()
     if ($globalEntitlement -and ("ENABLED" -eq $info.localPodStatus.status)) {
-        $QueryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+        $QueryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
         $QueryFilterEquals.memberName = 'base.displayName'
         $QueryFilterEquals.value = $globalEntitlement
-        $defn = New-Object VMware.Hv.QueryDefinition
+        $defn = New-Object Omnissa.Horizon.QueryDefinition
         $defn.queryEntityType = 'GlobalEntitlementSummaryView'
         $defn.Filter = $QueryFilterEquals
-        $query_service_helper = New-Object VMware.Hv.QueryServiceService
+        $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
         try {
             $queryResults = $query_service_helper.QueryService_Query($services,$defn)
             $globalEntitlementid = $queryResults.Results.id
@@ -6517,7 +6517,7 @@ function Set-HVPool {
         }
     }
 
-    $desktop_helper = New-Object VMware.Hv.DesktopService
+    $desktop_helper = New-Object Omnissa.Horizon.DesktopService
     foreach ($item in $poolList.Keys) {
       Write-Host "Updating the Pool: " $poolList.$item
       if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($poolList.$item)) {
@@ -6638,7 +6638,7 @@ function Start-HVFarm {
 
 .NOTES
     Author                      : praveen mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -6745,7 +6745,7 @@ function Start-HVFarm {
     $farmList = @{}
     $farmType = @{}
     $farmSource = @{}
-    $farm_service_helper = New-Object VMware.Hv.FarmService
+    $farm_service_helper = New-Object Omnissa.Horizon.FarmService
     if ($farm) {
       if ($farm.GetType().name -eq 'FarmInfo') {
         $id = $farm.id
@@ -6807,7 +6807,7 @@ function Start-HVFarm {
             if ($null -eq $serverList) {
               Write-Error "No servers found for the farm [$item]"
             }
-            $spec = New-Object VMware.Hv.FarmRecomposeSpec
+            $spec = New-Object Omnissa.Horizon.FarmRecomposeSpec
             $spec.LogoffSetting = $logoffSetting
             $spec.StopOnFirstError = $stopOnFirstError
             $spec.RdsServers = $serverList
@@ -6834,7 +6834,7 @@ function Start-HVFarm {
             Write-Error "SCHEDULEMAINTENANCE operation is not supported for farm with name [$farmList.$item]. It is only supported for instant-clone farms."
             break
           } else {
-            $spec = New-Object VMware.Hv.FarmMaintenanceSpec
+            $spec = New-Object Omnissa.Horizon.FarmMaintenanceSpec
             $spec.MaintenanceMode = $MaintenanceMode
             if ($startTime) {
               $spec.ScheduledTime = $StartTime
@@ -6842,7 +6842,7 @@ function Start-HVFarm {
             $spec.LogoffSetting = $LogoffSetting
             $spec.StopOnFirstError = $StopOnFirstError
             if ($MaintenanceMode -eq "RECURRING") {
-                $spec.RecurringMaintenanceSettings = New-Object VMware.Hv.FarmRecurringMaintenanceSettings
+                $spec.RecurringMaintenanceSettings = New-Object Omnissa.Horizon.FarmRecurringMaintenanceSettings
                 $spec.RecurringMaintenanceSettings.MaintenancePeriod = $MaintenancePeriod
                 $spec.RecurringMaintenanceSettings.EveryInt = $EveryInt
                 if (!$MaintenanceStartTime) {
@@ -6862,7 +6862,7 @@ function Start-HVFarm {
             }
             #image settings are specified
             if ($ParentVM -and $SnapshotVM) {
-                $spec.ImageMaintenanceSettings = New-Object VMware.Hv.FarmImageMaintenanceSettings
+                $spec.ImageMaintenanceSettings = New-Object Omnissa.Horizon.FarmImageMaintenanceSettings
                 $vcId = Get-VcenterID -services $services -vCenter $Vcenter
                 if ($null -eq $vcId) {
                     Write-Error "VCenter is required if you specify ParentVM name."
@@ -6877,7 +6877,7 @@ function Start-HVFarm {
             }
 
             #set ComputeProfile in a SCHEDULEMAINTENANCE
-            $spec.ComputeProfile = New-Object VMware.Hv.FarmComputeProfileSpec
+            $spec.ComputeProfile = New-Object Omnissa.Horizon.FarmComputeProfileSpec
             $spec.ComputeProfile.NumCPU = $NumCPU
             $spec.ComputeProfile.Ram = $Ram
             $spec.ComputeProfile.CoresPerSocket = $CoresPerSocket
@@ -6903,22 +6903,22 @@ function Start-HVFarm {
 }
 
 function Get-AllRDSServersInFarm ($Services,$Farm,$ServerList) {
-  [VMware.Hv.RDSServerId[]]$servers = @()
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
+  [Omnissa.Horizon.RDSServerId[]]$servers = @()
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
   $remainingCount = 1 # run through loop at least once
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query = New-Object Omnissa.Horizon.QueryDefinition
   $query.queryEntityType = 'RDSServerSummaryView'
-  $farmFilter = New-Object VMware.Hv.QueryFilterEquals -Property @{ 'MemberName' = 'base.farm'; 'value' = $farm }
+  $farmFilter = New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'MemberName' = 'base.farm'; 'value' = $farm }
   if ($serverList) {
-    $serverFilters = [VMware.Hv.queryFilter[]]@()
+    $serverFilters = [Omnissa.Horizon.queryFilter[]]@()
     foreach ($name in $serverList) {
-      $serverFilters += (New-Object VMware.Hv.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $name })
+      $serverFilters += (New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $name })
     }
-    $serverList = New-Object VMware.Hv.QueryFilterOr -Property @{ 'filters' = $serverFilters }
+    $serverList = New-Object Omnissa.Horizon.QueryFilterOr -Property @{ 'filters' = $serverFilters }
     $treeList = @()
     $treeList += $serverList
     $treelist += $farmFilter
-    $query.Filter = New-Object VMware.Hv.QueryFilterAnd -Property @{ 'filters' = $treeList }
+    $query.Filter = New-Object Omnissa.Horizon.QueryFilterAnd -Property @{ 'filters' = $treeList }
   } else {
     $query.Filter = $farmFilter
   }
@@ -6935,7 +6935,7 @@ function Get-AllRDSServersInFarm ($Services,$Farm,$ServerList) {
 function Set-HVFarmSpec {
   param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID,
+    [Omnissa.Horizon.VirtualCenterId]$VcID,
 
     [Parameter(Mandatory = $true)]
     $Spec
@@ -6950,7 +6950,7 @@ function Set-HVFarmSpec {
   }
   if ($snapshotVM) {
     $parentVM = $spec.ParentVm.id
-    $baseImageSnapshot_service_helper = New-Object VMware.Hv.BaseImageSnapshotService
+    $baseImageSnapshot_service_helper = New-Object Omnissa.Horizon.BaseImageSnapshotService
     $snapshotList = $baseImageSnapshot_service_helper.BaseImageSnapshot_List($services, $spec.ParentVm)
     $snapshotVMObj = $snapshotList | Where-Object { $_.name -eq $snapshotVM }
     if ($null -eq $snapshotVMObj) {
@@ -7039,7 +7039,7 @@ function Start-HVPool {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -7184,7 +7184,7 @@ function Start-HVPool {
     foreach ($item in $poolList.Keys) {
       $operation = $PsCmdlet.ParameterSetName
       Write-Host "Performing $operation on" $poolList.$item
-      $desktop_helper = New-Object VMware.Hv.DesktopService
+      $desktop_helper = New-Object Omnissa.Horizon.DesktopService
       switch ($operation) {
         'REBALANCE' {
           $spec = Get-HVTaskSpec -Source $poolSource.$item -poolName $poolList.$item -operation $operation -taskSpecName 'DesktopRebalanceSpec' -desktopId $item
@@ -7231,10 +7231,10 @@ function Start-HVPool {
             Write-Error "$poolList.$item is not a INSTANT CLONE pool"
             break
           } else {
-            $spec = New-Object VMware.Hv.DesktopPushImageSpec
+            $spec = New-Object Omnissa.Horizon.DesktopPushImageSpec
             $vcId = Get-VcenterID -services $services -vCenter $vCenter
             $spec = Set-HVPoolSpec -vcId $vcId -spec $spec
-            $spec.Settings = New-Object VMware.Hv.DesktopPushImageSettings
+            $spec.Settings = New-Object Omnissa.Horizon.DesktopPushImageSettings
             $spec.Settings.LogoffSetting = $logoffSetting
             $spec.Settings.StopOnFirstError = $stopOnFirstError
             $spec.Settings.AddVirtualTPM = ($poolProvisioningSpecs.$item).AddVirtualTPM
@@ -7266,26 +7266,26 @@ function Start-HVPool {
 }
 
 function Get-Machine ($Pool,$MachineList) {
-  [VMware.Hv.MachineId[]]$machines = @()
+  [Omnissa.Horizon.MachineId[]]$machines = @()
   $remainingCount = 1 # run through loop at least once
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query = New-Object Omnissa.Horizon.QueryDefinition
   $query.queryEntityType = 'MachineSummaryView'
-  $poolFilter = New-Object VMware.Hv.QueryFilterEquals -Property @{ 'MemberName' = 'base.desktop'; 'value' = $pool }
+  $poolFilter = New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'MemberName' = 'base.desktop'; 'value' = $pool }
   if ($machineList) {
-    $machineFilters = [vmware.hv.queryFilter[]]@()
+    $machineFilters = [Omnissa.Horizon.queryFilter[]]@()
     foreach ($name in $machineList) {
-      $machineFilters += (New-Object VMware.Hv.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $name })
+      $machineFilters += (New-Object Omnissa.Horizon.QueryFilterEquals -Property @{ 'memberName' = 'base.name'; 'value' = $name })
     }
-    $machineList = New-Object VMware.Hv.QueryFilterOr -Property @{ 'filters' = $machineFilters }
+    $machineList = New-Object Omnissa.Horizon.QueryFilterOr -Property @{ 'filters' = $machineFilters }
     $treeList = @()
     $treeList += $machineList
     $treelist += $poolFilter
-    $query.Filter = New-Object VMware.Hv.QueryFilterAnd -Property @{ 'filters' = $treeList }
+    $query.Filter = New-Object Omnissa.Horizon.QueryFilterAnd -Property @{ 'filters' = $treeList }
   } else {
     $query.Filter = $poolFilter
   }
   while ($remainingCount -ge 1) {
-    $query_service_helper = New-Object VMware.Hv.QueryServiceService
+    $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
     $queryResults = $query_service_helper.QueryService_Query($services, $query)
     $results = $queryResults.results
     $machines += $results.id
@@ -7333,11 +7333,11 @@ function Get-HVBaseImageVM {
     Get-HVBaseImageVM -Name '*WIN10*'
 
   .OUTPUTS
-    Returns array of object type VMware.Hv.BaseImageVmInfo
+    Returns array of object type Omnissa.Horizon.BaseImageVmInfo
 
   .NOTES
       Author                      : Matt Frey.
-      Author email                : mfrey@vmware.com
+      Author email                : mfrey@omnissa.com
       Version                     : 1.0
 
       ===Tested Against Environment====
@@ -7400,7 +7400,7 @@ function Get-HVBaseImageVM {
         $BaseImageVMList = $services.BaseImageVM.BaseImageVM_List($VirtualCenter, $null)
     }
 
-    #For all conditions, see https://vdc-download.vmware.com/vmwb-repository/dcr-public/3721109b-48a5-4ffb-a0ad-6d6a44f2f288/ff45dfca-1050-4265-93ef-4e7d702322e4/vdi.utils.virtualcenter.BaseImageVm.BaseImageVmIncompatibleReasons.html
+    #For all conditions, see https://vdc-download.omnissa.com/vmwb-repository/dcr-public/3721109b-48a5-4ffb-a0ad-6d6a44f2f288/ff45dfca-1050-4265-93ef-4e7d702322e4/vdi.utils.virtualcenter.BaseImageVm.BaseImageVmIncompatibleReasons.html
 
     If ($null -ne $PSBoundParameters.Name) {
       $CompatibleBaseImageVMs = $BaseImageVMList | Where-Object {$_.Name -like $Name}
@@ -7471,11 +7471,11 @@ function Get-HVBaseImageSnapshot {
     Get-HVBaseImageVM -Name 'WIN10-BaseImage' | Get-HVBaseImageSnapshots
 
   .OUTPUTS
-    Array of object type VMware.Hv.BaseImageSnapshotInfo
+    Array of object type Omnissa.Horizon.BaseImageSnapshotInfo
 
   .NOTES
       Author                      : Matt Frey.
-      Author email                : mfrey@vmware.com
+      Author email                : mfrey@omnissa.com
       Version                     : 1.0
 
       ===Tested Against Environment====
@@ -7537,7 +7537,7 @@ function Get-HVBaseImageSnapshot {
 function Set-HVPoolSpec {
   param(
     [Parameter(Mandatory = $true)]
-    [VMware.Hv.VirtualCenterId]$VcID,
+    [Omnissa.Horizon.VirtualCenterId]$VcID,
 
     [Parameter(Mandatory = $true)]
     $Spec
@@ -7548,7 +7548,7 @@ function Set-HVPoolSpec {
     $spec.ParentVm = $parentVMObj.id
   }
   if ($snapshotVM) {
-    $baseimage_snapshot_helper = New-Object VMware.Hv.BaseImageSnapshotService
+    $baseimage_snapshot_helper = New-Object Omnissa.Horizon.BaseImageSnapshotService
     $snapshotList = $baseimage_snapshot_helper.BaseImageSnapshot_List($services,$spec.ParentVm)
     $snapshotVMObj = $snapshotList | Where-Object { $_.name -eq $snapshotVM }
     $spec.Snapshot = $snapshotVMObj.id
@@ -7624,8 +7624,8 @@ function Find-HVMachine {
   }
 
 
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
+  $query = New-Object Omnissa.Horizon.QueryDefinition
 
   $wildCard = $false
   #Only supports wild card '*'
@@ -7639,10 +7639,10 @@ function Find-HVMachine {
   # MachineSummaryView
   $query.queryEntityType = 'MachineNamesView'
   if (! $wildcard) {
-    [VMware.Hv.queryfilter[]]$filterSet = @()
+    [Omnissa.Horizon.queryfilter[]]$filterSet = @()
     foreach ($setting in $machineSelectors.Keys) {
       if ($null -ne $params[$setting]) {
-        $equalsFilter = New-Object VMware.Hv.QueryFilterEquals
+        $equalsFilter = New-Object Omnissa.Horizon.QueryFilterEquals
         $equalsFilter.memberName = $machineSelectors[$setting]
         if ($equalsFilter.memberName -eq 'base.desktop') {
             $equalsFilter.value = $desktopId
@@ -7653,7 +7653,7 @@ function Find-HVMachine {
       }
     }
     if ($filterSet.Count -gt 0) {
-      $andFilter = New-Object VMware.Hv.QueryFilterAnd
+      $andFilter = New-Object Omnissa.Horizon.QueryFilterAnd
       $andFilter.Filters = $filterset
       $query.Filter = $andFilter
     }
@@ -7750,7 +7750,7 @@ function Get-HVMachine {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -7803,7 +7803,7 @@ function Get-HVMachine {
     Write-Host "Get-HVMachine: No Virtual Machine(s) Found with given search parameters"
   }
   $queryResults = @()
-  $desktop_helper = New-Object VMware.Hv.MachineService
+  $desktop_helper = New-Object Omnissa.Horizon.MachineService
   foreach ($id in $machineList.id) {
     $info = $desktop_helper.Machine_Get($services,$id)
     $queryResults += $info
@@ -7870,7 +7870,7 @@ function Get-HVMachineSummary {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -7957,7 +7957,7 @@ function Get-HVPoolSpec {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -7972,7 +7972,7 @@ function Get-HVPoolSpec {
 
   param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
-    [VMware.HV.DesktopInfo]
+    [Omnissa.Horizon.DesktopInfo]
     $DesktopInfo,
 
     [Parameter(Mandatory = $false)]
@@ -7983,13 +7983,13 @@ function Get-HVPoolSpec {
     $HvServer = $null
   )
 
-  $DesktopSpec = New-Object VMware.HV.DesktopSpec
+  $DesktopSpec = New-Object Omnissa.Horizon.DesktopSpec
   $DesktopPsObj = (($DesktopSpec | ConvertTo-Json -Depth 14) | ConvertFrom-Json)
   $DesktopInfoPsObj = (($DesktopInfo | ConvertTo-Json -Depth 14) | ConvertFrom-Json)
   $DesktopPsObj.Type = $DesktopInfoPsObj.Type
   $DesktopPsObj.DesktopSettings = $DesktopInfoPsObj.DesktopSettings
 
-  $entityId = New-Object VMware.HV.EntityId
+  $entityId = New-Object Omnissa.Horizon.EntityId
   $entityId.Id = $DesktopInfoPsObj.Base.AccessGroup.Id
   $DesktopPsObj.Base = New-Object PsObject -Property @{
     name = $DesktopInfoPsObj.Base.Name;
@@ -8153,7 +8153,7 @@ function Get-DataStoreName {
     $datastores
   )
   $dataStoresObj = @()
-  $entityId = New-Object VMware.Hv.EntityId
+  $entityId = New-Object Omnissa.Horizon.EntityId
   $datastores | ForEach-Object {
     $entityId.Id = $_.datastore.Id
     $dataStoresObj += , (New-Object PsObject -Property @{
@@ -8189,7 +8189,7 @@ function Get-HVInternalName {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -8201,17 +8201,17 @@ function Get-HVInternalName {
   param(
     [Parameter(Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
-    [VMware.HV.EntityId]
+    [Omnissa.Horizon.EntityId]
     $EntityId,
 
     [Parameter(Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
-    [VMware.HV.VirtualCenterId]
+    [Omnissa.Horizon.VirtualCenterId]
     $VcId,
 
     [Parameter(Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
-    [VMware.HV.BaseImageVmId]
+    [Omnissa.Horizon.BaseImageVmId]
     $BaseImageVmId,
 
     [Parameter(Mandatory = $false)]
@@ -8229,12 +8229,12 @@ function Get-HVInternalName {
     $serviceName = $tokens[0]
     Switch ($serviceName) {
       'VirtualCenter' {
-         $vc_id = New-Object VMware.HV.VirtualCenterId
+         $vc_id = New-Object Omnissa.Horizon.VirtualCenterId
          $vc_id.Id = $EntityId.Id
          return ($services.VirtualCenter.VirtualCenter_Get($vc_id)).serverSpec.serverName
        }
        'InstantCloneEngineDomainAdministrator' {
-         $Icid = New-Object VMware.HV.InstantCloneEngineDomainAdministratorId
+         $Icid = New-Object Omnissa.Horizon.InstantCloneEngineDomainAdministratorId
          $Icid.Id = $EntityId.Id
          $Info = $services.InstantCloneEngineDomainAdministrator.InstantCloneEngineDomainAdministrator_Get($Icid)
          return $Info.Base.Username
@@ -8256,7 +8256,7 @@ function Get-HVInternalName {
          return $info.name
        }
        'ViewComposerDomainAdministrator' {
-         $AdministratorId = New-Object VMware.HV.ViewComposerDomainAdministratorId
+         $AdministratorId = New-Object Omnissa.Horizon.ViewComposerDomainAdministratorId
          $AdministratorId.id = $EntityId.id
          $info = $services.ViewComposerDomainAdministrator.ViewComposerDomainAdministrator_Get($AdministratorId)
          return $info.base.userName
@@ -8266,7 +8266,7 @@ function Get-HVInternalName {
          return $info.base.displayName
        }
        'GlobalEntitlement' {
-        $GlobalEntitlementID = New-Object VMware.Hv.GlobalEntitlementId
+        $GlobalEntitlementID = New-Object Omnissa.Horizon.GlobalEntitlementId
         $GlobalEntitlementID.Id = $EntityID.Id
         $info = $services.GlobalEntitlement.GlobalEntitlement_Get($GlobalEntitlementID)
         return $info.base.displayname
@@ -8340,7 +8340,7 @@ function New-HVEntitlement {
    first element from global:DefaultHVServers would be considered in-place of hvServer
 
 .EXAMPLE
-   New-HVEntitlement  -User 'administrator@adviewdev.eng.vmware.com' -ResourceName 'InsClnPol' -Confirm:$false
+   New-HVEntitlement  -User 'administrator@adviewdev.eng.omnissa.com' -ResourceName 'InsClnPol' -Confirm:$false
    Associate a user/group with a pool
 
 .EXAMPLE
@@ -8348,11 +8348,11 @@ function New-HVEntitlement {
    Associate a user/group with a application
 
 .EXAMPLE
-   New-HVEntitlement  -User 'adviewdev.eng.vmware.com\administrator' -ResourceName 'UrlSetting1' -ResourceType URLRedirection
+   New-HVEntitlement  -User 'adviewdev.eng.omnissa.com\administrator' -ResourceName 'UrlSetting1' -ResourceType URLRedirection
    Associate a user/group with a URLRedirection settings
 
 .EXAMPLE
-   New-HVEntitlement  -User 'adviewdev.eng.vmware.com\administrator' -ResourceName 'GE1' -ResourceType GlobalEntitlement
+   New-HVEntitlement  -User 'adviewdev.eng.omnissa.com\administrator' -ResourceName 'GE1' -ResourceType GlobalEntitlement
    Associate a user/group with a desktop entitlement
 
 .EXAMPLE
@@ -8366,7 +8366,7 @@ function New-HVEntitlement {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -8541,7 +8541,7 @@ function New-HVEntitlement {
         }
       }
     }
-    $base = New-Object VMware.HV.UserEntitlementBase
+    $base = New-Object Omnissa.Horizon.UserEntitlementBase
     $base.UserOrGroup = $results.id
     Write-host $ResourceObjs.Length " resource(s) will be entitled with UserOrGroup: " $User
     foreach ($ResourceObj in $ResourceObjs) {
@@ -8590,20 +8590,20 @@ function Get-HVEntitlement {
    Gets all the entitlements related to application pool
 
 .EXAMPLE
-   Get-HVEntitlement -User 'adviewdev.eng.vmware.com\administrator' -ResourceName 'calculator' -ResourceType Application
+   Get-HVEntitlement -User 'adviewdev.eng.omnissa.com\administrator' -ResourceName 'calculator' -ResourceType Application
    Gets entitlements specific to user or group name and application resource
 
 .EXAMPLE
-   Get-HVEntitlement -User 'adviewdev.eng.vmware.com\administrator' -ResourceName 'UrlSetting1' -ResourceType URLRedirection
+   Get-HVEntitlement -User 'adviewdev.eng.omnissa.com\administrator' -ResourceName 'UrlSetting1' -ResourceType URLRedirection
    Gets entitlements specific to user or group and URLRedirection resource
 
 .EXAMPLE
-   Get-HVEntitlement -User 'administrator@adviewdev.eng.vmware.com' -ResourceName 'GE1' -ResourceType GlobalEntitlement
+   Get-HVEntitlement -User 'administrator@adviewdev.eng.omnissa.com' -ResourceName 'GE1' -ResourceType GlobalEntitlement
    Gets entitlements specific to user or group and GlobalEntitlement resource
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -8674,7 +8674,7 @@ function Get-HVEntitlement {
             Write-Host "No pool found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'localData.desktops' -Contains ([VMware.Hv.DesktopId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'localData.desktops' -Contains ([Omnissa.Horizon.DesktopId[]]$ResourceObjs.Id)
         }
         $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
         $results = (Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $AndFilter -HvServer $HvServer)
@@ -8688,7 +8688,7 @@ function Get-HVEntitlement {
             Write-Host "No Application found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'localData.applications' -Contains ([VMware.Hv.ApplicationId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'localData.applications' -Contains ([Omnissa.Horizon.ApplicationId[]]$ResourceObjs.Id)
         }
         $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
         $results = (Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $AndFilter -HvServer $HvServer)
@@ -8706,9 +8706,9 @@ function Get-HVEntitlement {
             Write-Host "No URLRedirectionData found with given resourceName: " $ResourceName
             return
           }
-          $localFilter +=  Get-HVQueryFilter 'localData.urlRedirectionSettings' -Contains ([VMware.Hv.URLRedirectionId[]]$ResourceObjs.Id)
+          $localFilter +=  Get-HVQueryFilter 'localData.urlRedirectionSettings' -Contains ([Omnissa.Horizon.URLRedirectionId[]]$ResourceObjs.Id)
           if ($cpaEnabled) {
-            $globalFilter += Get-HVQueryFilter 'globalData.urlRedirectionSettings' -Contains ([VMware.Hv.URLRedirectionId[]]$ResourceObjs.Id)
+            $globalFilter += Get-HVQueryFilter 'globalData.urlRedirectionSettings' -Contains ([Omnissa.Horizon.URLRedirectionId[]]$ResourceObjs.Id)
           }
         }
         $localFilter = Get-HVQueryFilter -And -Filters $localFilter
@@ -8733,7 +8733,7 @@ function Get-HVEntitlement {
             Write-Host "No globalApplicationEntitlementInfo found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'globalData.globalApplicationEntitlements' -Contains ([VMware.Hv.GlobalApplicationEntitlementId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'globalData.globalApplicationEntitlements' -Contains ([Omnissa.Horizon.GlobalApplicationEntitlementId[]]$ResourceObjs.Id)
         }
         $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
         $results = (Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $AndFilter -HvServer $HvServer)
@@ -8751,7 +8751,7 @@ function Get-HVEntitlement {
             Write-Host "No globalEntitlementSummary found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'globalData.globalEntitlements' -Contains ([VMware.Hv.GlobalEntitlementId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'globalData.globalEntitlements' -Contains ([Omnissa.Horizon.GlobalEntitlementId[]]$ResourceObjs.Id)
         }
         $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
         $results = (Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $AndFilter -HvServer $HvServer)
@@ -8810,7 +8810,7 @@ function Remove-HVEntitlement {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -8866,7 +8866,7 @@ function Remove-HVEntitlement {
       $AndFilter += Get-HVQueryFilter 'base.domain' -Eq $userInfo.Domain
     }
     $AndFilter += Get-HVQueryFilter 'base.group' -Eq ($Type -eq 'Group')
-    [VMware.Hv.UserEntitlementId[]] $userEntitlements = $null
+    [Omnissa.Horizon.UserEntitlementId[]] $userEntitlements = $null
     if ($ResourceName) {
       $info = $services.PodFederation.PodFederation_get()
       switch($ResourceType) {
@@ -8876,7 +8876,7 @@ function Remove-HVEntitlement {
             Write-Host "No pool found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'localData.desktops' -Contains ([VMware.HV.DesktopId[]] $ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'localData.desktops' -Contains ([Omnissa.Horizon.DesktopId[]] $ResourceObjs.Id)
           $filters = Get-HVQueryFilter -And -Filters $AndFilter
           $results = Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $filters -HvServer $HvServer
           if ($results) {
@@ -8901,7 +8901,7 @@ function Remove-HVEntitlement {
             Write-Host "No Application found with given resourceName: " $ResourceName
             return
           }
-          $AndFilter += Get-HVQueryFilter 'localData.applications' -Contains ([VMware.HV.ApplicationId[]] $ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'localData.applications' -Contains ([Omnissa.Horizon.ApplicationId[]] $ResourceObjs.Id)
           $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
           $results = Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $AndFilter -HvServer $HvServer
           if ($results) {
@@ -8923,13 +8923,13 @@ function Remove-HVEntitlement {
           }
           $localFilter = @()
           $localFilter += $AndFilter
-          $localFilter +=  (Get-HVQueryFilter 'localData.urlRedirectionSettings' -Contains ([VMware.HV.URLRedirectionId[]]$ResourceObjs.Id))
+          $localFilter +=  (Get-HVQueryFilter 'localData.urlRedirectionSettings' -Contains ([Omnissa.Horizon.URLRedirectionId[]]$ResourceObjs.Id))
           $localFilter = Get-HVQueryFilter -And -Filters $localFilter
           $results = Get-HVQueryResult -EntityType EntitledUserOrGroupLocalSummaryView -Filter $localFilter -HvServer $HvServer
           if ("ENABLED" -eq $info.localPodStatus.status) {
             $globalFilter = @()
             $globalFilter += $AndFilter
-            $globalFilter += Get-HVQueryFilter 'globalData.urlRedirectionSettings' -Contains ([VMware.HV.URLRedirectionId[]]$ResourceObjs.Id)
+            $globalFilter += Get-HVQueryFilter 'globalData.urlRedirectionSettings' -Contains ([Omnissa.Horizon.URLRedirectionId[]]$ResourceObjs.Id)
             $globalFilter = Get-HVQueryFilter -And -Filters $globalFilter
             $results += Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $globalFilter -HvServer $HvServer
           }
@@ -8962,7 +8962,7 @@ function Remove-HVEntitlement {
               Write-Host "No globalApplicationEntitlementInfo found with given resourceName: " $ResourceName
               return
           }
-          $AndFilter += Get-HVQueryFilter 'globalData.globalApplicationEntitlements' -Contains ([VMware.Hv.GlobalApplicationEntitlementId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'globalData.globalApplicationEntitlements' -Contains ([Omnissa.Horizon.GlobalApplicationEntitlementId[]]$ResourceObjs.Id)
           $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
           $results = Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $AndFilter -HvServer $HvServer
           if ($results) {
@@ -8986,7 +8986,7 @@ function Remove-HVEntitlement {
               Write-Host "No globalEntitlementSummary found with given resourceName: " $ResourceName
               return
           }
-          $AndFilter += Get-HVQueryFilter 'globalData.globalEntitlements' -Contains ([VMware.Hv.GlobalEntitlementId[]]$ResourceObjs.Id)
+          $AndFilter += Get-HVQueryFilter 'globalData.globalEntitlements' -Contains ([Omnissa.Horizon.GlobalEntitlementId[]]$ResourceObjs.Id)
           $AndFilter = Get-HVQueryFilter -And -Filters $AndFilter
           $results = Get-HVQueryResult -EntityType EntitledUserOrGroupGlobalSummaryView -Filter $AndFilter -HvServer $HvServer
           if ($results) {
@@ -9062,7 +9062,7 @@ PARAMETER Key
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -9174,7 +9174,7 @@ PARAMETER Key
         $updates += Get-MapEntry -key 'managedMachineData.inMaintenanceMode' -value $false
       }
     }
-    $machine_helper = New-Object VMware.Hv.MachineService
+    $machine_helper = New-Object Omnissa.Horizon.MachineService
     foreach ($item in $machineList.Keys) {
       Write-Host "Updating the Machine: " $machineList.$item
       if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($machineList.$item)) {
@@ -9258,7 +9258,7 @@ function New-HVGlobalEntitlement {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -9352,13 +9352,13 @@ function New-HVGlobalEntitlement {
     }
     $confirmFlag = Get-HVConfirmFlag -keys $PsBoundParameters.Keys
     if ($Type -eq 'DESKTOP_ENTITLEMENT') {
-     $GeService = New-Object VMware.HV.GlobalEntitlementService
+     $GeService = New-Object Omnissa.Horizon.GlobalEntitlementService
      $geBaseHelper = $GeService.getGlobalEntitlementBaseHelper()
      $geBase = $geBaseHelper.getDataObject()
      $geBase.Dedicated = $dedicated
      $geBase.AllowUsersToResetMachines = $AllowUsersToResetMachines
     } else {
-     $GeService = New-Object VMware.Hv.GlobalApplicationEntitlementService
+     $GeService = New-Object Omnissa.Horizon.GlobalApplicationEntitlementService
      $geBaseHelper = $GeService.getGlobalApplicationEntitlementBaseHelper()
      $geBase = $geBaseHelper.getDataObject()
     }
@@ -9409,8 +9409,8 @@ function Find-HVGlobalEntitlement {
 
   $params = $Param
 
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
+  $query = New-Object Omnissa.Horizon.QueryDefinition
 
   $wildCard = $false
   #Only supports wild card '*'
@@ -9421,17 +9421,17 @@ function Find-HVGlobalEntitlement {
   # build the query values
   $query.queryEntityType = $Type
   if (! $wildcard) {
-    [VMware.Hv.queryfilter[]]$filterSet = @()
+    [Omnissa.Horizon.queryfilter[]]$filterSet = @()
     foreach ($setting in $GeSelectors.Keys) {
       if ($null -ne $params[$setting]) {
-        $equalsFilter = New-Object VMware.Hv.QueryFilterEquals
+        $equalsFilter = New-Object Omnissa.Horizon.QueryFilterEquals
         $equalsFilter.memberName = $GeSelectors[$setting]
         $equalsFilter.value = $params[$setting]
         $filterSet += $equalsFilter
       }
     }
     if ($filterSet.Count -gt 0) {
-      $andFilter = New-Object VMware.Hv.QueryFilterAnd
+      $andFilter = New-Object Omnissa.Horizon.QueryFilterAnd
       $andFilter.Filters = $filterset
       $query.Filter = $andFilter
     }
@@ -9488,7 +9488,7 @@ function Get-HVGlobalEntitlement {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -9707,7 +9707,7 @@ function Set-HVGlobalEntitlement {
     	$updates += Get-MapEntry -key 'base.enableHTMLAccess' -value $enableHTMLAccess
     }
 
-    $ge_helper = New-Object VMware.HV.GlobalEntitlementService
+    $ge_helper = New-Object Omnissa.Horizon.GlobalEntitlementService
     foreach ($item in $geList.Keys) {
       Write-Host "Updating the Entitlement: " $geList.$item
       if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($geList.$item)) {
@@ -9750,7 +9750,7 @@ function Remove-HVGlobalEntitlement {
 
 .NOTES
     Author                      : Praveen Mathamsetty.
-    Author email                : pmathamsetty@vmware.com
+    Author email                : pmathamsetty@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -9863,8 +9863,8 @@ if ($null -eq $services) {
   break
 }
 
-$query_service_helper = New-Object VMware.Hv.GlobalSessionQueryServiceService
-$query=new-object vmware.hv.GlobalSessionQueryServiceQuerySpec
+$query_service_helper = New-Object Omnissa.Horizon.GlobalSessionQueryServiceService
+$query=new-object Omnissa.Horizon.GlobalSessionQueryServiceQuerySpec
 
 $SessionList = @()
 foreach ($pod in $services.Pod.Pod_List()) {
@@ -9908,7 +9908,7 @@ function Set-HVApplicationIcon {
 
 .NOTES
     Author                      : Paramesh Oddepally.
-    Author email                : poddepally@vmware.com
+    Author email                : poddepally@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -9966,8 +9966,8 @@ function Set-HVApplicationIcon {
       break
     }
 
-    $spec = New-Object VMware.Hv.ApplicationIconSpec
-    $base = New-Object VMware.Hv.ApplicationIconBase
+    $spec = New-Object Omnissa.Horizon.ApplicationIconSpec
+    $base = New-Object Omnissa.Horizon.ApplicationIconBase
 
     try {
       $fileHash = Get-FileHash -Path $IconPath -Algorithm MD5
@@ -9990,7 +9990,7 @@ function Set-HVApplicationIcon {
     }
 
     If ($Force -or $PSCmdlet.ShouldProcess($ApplicationName)) {
-      $ApplicationIconHelper = New-Object VMware.Hv.ApplicationIconService
+      $ApplicationIconHelper = New-Object Omnissa.Horizon.ApplicationIconService
       try {
         $ApplicationIconId = $ApplicationIconHelper.ApplicationIcon_CreateAndAssociate($services, $spec)
       } catch {
@@ -10037,7 +10037,7 @@ Function Remove-HVApplicationIcon {
 
 .NOTES
     Author                      : Paramesh Oddepally.
-    Author email                : poddepally@vmware.com
+    Author email                : poddepally@omnissa.com
     Version                     : 1.1
 
     ===Tested Against Environment====
@@ -10080,9 +10080,9 @@ Function Remove-HVApplicationIcon {
       break
     }
 
-    [VMware.Hv.ApplicationIconId[]] $icons = $appInfo.Icons
-    [VMware.Hv.ApplicationIconId] $brokerIcon = $null
-    $ApplicationIconHelper = New-Object VMware.Hv.ApplicationIconService
+    [Omnissa.Horizon.ApplicationIconId[]] $icons = $appInfo.Icons
+    [Omnissa.Horizon.ApplicationIconId] $brokerIcon = $null
+    $ApplicationIconHelper = New-Object Omnissa.Horizon.ApplicationIconService
     Foreach ($icon in $icons) {
       $applicationIconInfo = $ApplicationIconHelper.ApplicationIcon_Get($services, $icon)
       if ($applicationIconInfo.Base.IconSource -eq "broker") {
@@ -10129,11 +10129,11 @@ function Get-HVGlobalSettings {
    Get-HVGlobalSettings
 
 .OUTPUTS
-   Returns list of object type VMware.Hv.GlobalSettingsInfo
+   Returns list of object type Omnissa.Horizon.GlobalSettingsInfo
 
 .NOTES
     Author                      : Matt Frey.
-    Author email                : mfrey@vmware.com
+    Author email                : mfrey@omnissa.com
     Version                     : 1.0
 
     ===Tested Against Environment====
@@ -10302,7 +10302,7 @@ function Set-HVGlobalSettings {
 
 .NOTES
     Author                      : Matt Frey.
-    Author email                : mfrey@vmware.com
+    Author email                : mfrey@omnissa.com
     Version                     : 1.0
 
     ===Tested Against Environment====
@@ -10490,7 +10490,7 @@ function Set-HVGlobalSettings {
 
     if ($Force -or $PSCmdlet.ShouldProcess($HVServer.Name)) {
 
-      $global_settings_helper = New-Object VMware.Hv.GlobalSettingsService
+      $global_settings_helper = New-Object Omnissa.Horizon.GlobalSettingsService
 
       $global_settings_helper.GlobalSettings_Update($services,$updates)
 
@@ -10544,8 +10544,8 @@ The Get-HVLocalSession gets all local session by using view API service object(h
     break
   }
 
-  $query_service_helper = New-Object VMware.Hv.QueryServiceService
-  $query = New-Object VMware.Hv.QueryDefinition
+  $query_service_helper = New-Object Omnissa.Horizon.QueryServiceService
+  $query = New-Object Omnissa.Horizon.QueryDefinition
 
   $query.queryEntityType = 'SessionLocalSummaryView'
   $SessionList = @()
@@ -10864,19 +10864,19 @@ function Remove-HVMachine {
     }
 
     #Connect to Query Service
-    $queryService = New-Object 'Vmware.Hv.QueryServiceService'
+    $queryService = New-Object 'Omnissa.Horizon.QueryServiceService'
     #QUery Definition
-    $queryDefinition = New-Object 'Vmware.Hv.QueryDefinition'
+    $queryDefinition = New-Object 'Omnissa.Horizon.QueryDefinition'
     #Query Filter
     $queryDefinition.queryEntityType = 'MachineNamesView'
   }
   Process {
     #Create Filter Set so we can populate it with QueryFilterEquals data
-    [VMware.Hv.queryfilter[]]$filterSet = @()
+    [Omnissa.Horizon.queryfilter[]]$filterSet = @()
     foreach($machine in $machineNames){
 
         #queryfilter values
-        $queryFilterEquals = New-Object VMware.Hv.QueryFilterEquals
+        $queryFilterEquals = New-Object Omnissa.Horizon.QueryFilterEquals
         $queryFilterEquals.memberName = "base.name"
         $queryFilterEquals.value = "$machine"
 
@@ -10884,7 +10884,7 @@ function Remove-HVMachine {
     }
 
     #Or Filter
-    $orFilter = New-Object VMware.Hv.QueryFilterOr
+    $orFilter = New-Object Omnissa.Horizon.QueryFilterOr
     $orFilter.filters = $filterSet
 
     #Set Definition filter to value of $orfilter
@@ -10899,7 +10899,7 @@ function Remove-HVMachine {
     if ($Force -or $PSCmdlet.ShouldProcess($deleteThisMachine)) {
 
       #Machine Service
-      $machineService = new-object VMware.Hv.MachineService
+      $machineService = new-object Omnissa.Horizon.MachineService
 
       #Get Machine Service machine object
       $deleteMachine = $machineService.Machine_GetInfos($services,$deleteThisMachine.Id)
@@ -10916,7 +10916,7 @@ function Remove-HVMachine {
           foreach($session in $deleteMachine.base.session){
 
             $sessions = $null
-            [VMware.Hv.SessionId[]]$sessions += $session
+            [Omnissa.Horizon.SessionId[]]$sessions += $session
 
           }
 
@@ -10925,7 +10925,7 @@ function Remove-HVMachine {
             write-host "`n"
             write-host "Attempting log off of machines"
             write-host "`n"
-            $logOffSession = new-object 'VMware.Hv.SessionService'
+            $logOffSession = new-object 'Omnissa.Horizon.SessionService'
             $logOffSession.Session_LogoffSessionsForced($services,$sessions)
 
             #Wait more for Sessions to end
@@ -10961,7 +10961,7 @@ function Remove-HVMachine {
       }
 
       #Create delete spec for the DeleteMachines method
-      $deleteSpec = [VMware.Hv.MachineDeleteSpec]::new()
+      $deleteSpec = [Omnissa.Horizon.MachineDeleteSpec]::new()
       $deleteSpec.DeleteFromDisk = $DeleteFromDisk
       $deleteSpec.ArchivePersistentDisk = $false
 
@@ -11299,7 +11299,7 @@ function Register-HVPod {
 
 	$temppw = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ADPassword)
   	$PlainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($temppw)
-  	$vcPassword = New-Object VMware.Hv.SecureString
+  	$vcPassword = New-Object Omnissa.Horizon.SecureString
 	$enc = [system.Text.Encoding]::UTF8
 	$vcPassword.Utf8String = $enc.GetBytes($PlainPassword)
 
@@ -11449,7 +11449,7 @@ function Set-HVPodFederation {
 		Write-Error "Could not retrieve ViewApi services from connection object"
 	  break
 	}
-	$podservice=new-object vmware.hv.podfederationservice
+	$podservice=new-object Omnissa.Horizon.podfederationservice
 	$podservicehelper=$podservice.read($services)
 	$podservicehelper.getDatahelper().setdisplayname($name)
 	$podservice.update($services, $podservicehelper)
@@ -11565,7 +11565,7 @@ function New-HVSite {
 	    Write-Error "Could not retrieve ViewApi services from connection object"
 		break
 	}
-    $sitebase=new-object vmware.hv.sitebase
+    $sitebase=new-object Omnissa.Horizon.sitebase
     $sitebase.displayname=$name
     $sitebase.description=$description
     $services.site.site_create($sitebase)
@@ -11638,7 +11638,7 @@ function Set-HVSite {
 		break
     }
     $siteid=$services1.site.site_list() | where-object {$_.base.displayname -like $sitename}
-    $siteservice=new-object vmware.hv.siteservice
+    $siteservice=new-object Omnissa.Horizon.siteservice
     $sitebasehelper=$siteservice.read($services, $siteid.id)
     $sitebasehelper.getbasehelper().setdisplayname($name)
     $sitebasehelper.getbasehelper().setdescription($description)
@@ -11893,7 +11893,7 @@ function New-HVHomeSite {
       Write-host "Unable to find specific group with given search parameters"
       break
     }
-    $userhomesitebase=new-object VMware.Hv.UserHomeSiteBase
+    $userhomesitebase=new-object Omnissa.Horizon.UserHomeSiteBase
     $userhomesitebase.UserOrGroup=$adresults.id
     $userhomesitebase.site=($services.site.site_list() | where-object {$_.base.displayname -eq $site}).id
     if ($globalEntitlement){
@@ -12020,14 +12020,14 @@ function Set-HVEventDatabase {
     }
   $temppw = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
   $PlainevdbPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($temppw)
-  $dbupassword = New-Object VMware.Hv.SecureString
+  $dbupassword = New-Object Omnissa.Horizon.SecureString
   $enc = [system.Text.Encoding]::UTF8
   $dbupassword.Utf8String = $enc.GetBytes($PlainevdbPassword)
 
-  $eventservice=new-object vmware.hv.eventdatabaseservice
+  $eventservice=new-object Omnissa.Horizon.eventdatabaseservice
   $eventservicehelper=$eventservice.getEventDatabaseInfoHelper()
-  $eventsettings=new-object VMware.Hv.EventDatabaseEventSettings
-  $eventdatabase=new-object VMware.Hv.EventDatabaseSettings
+  $eventsettings=new-object Omnissa.Horizon.EventDatabaseEventSettings
+  $eventdatabase=new-object Omnissa.Horizon.EventDatabaseSettings
   $eventsettings.ShowEventsForTime=$eventtime
   $eventsettings.ClassifyEventsAsNewForDays=$eventnewtime
   $eventdatabase.Server=$ServerName
@@ -12382,7 +12382,7 @@ Function Get-HVApplication {
 
 .NOTES
     Author                      : Samiullasha S
-    Author email                : ssami@vmware.com
+    Author email                : ssami@omnissa.com
     Version                     : 1.2
 
     ===Tested Against Environment====
@@ -12452,7 +12452,7 @@ Function Remove-HVApplication {
 
 .NOTES
     Author                      : Samiullasha S
-    Author email                : ssami@vmware.com
+    Author email                : ssami@omnissa.com
     Version                     : 1.2
 
     ===Tested Against Environment====
@@ -12484,7 +12484,7 @@ param (
         Write-Host "Application '$ApplicationName' not found. $_"
         return
     }
-    $AppService= New-Object VMware.Hv.ApplicationService
+    $AppService= New-Object Omnissa.Horizon.ApplicationService
     if ($pscmdlet.ShouldProcess($ApplicationName)) {
       $AppService.Application_Delete($services,$App.Id)
       if ($?) {
@@ -12577,7 +12577,7 @@ Function New-HVManualApplication {
 
 .NOTES
     Author                      : Samiullasha S
-    Author email                : ssami@vmware.com
+    Author email                : ssami@omnissa.com
     Version                     : 1.0.1
 
     ===Tested Against Environment====
@@ -12678,10 +12678,10 @@ Function New-HVManualApplication {
         Write-Host "Application already exists with the name : $Name"
         return
     }
-    $AppData = New-Object VMware.Hv.ApplicationData -Property @{ 'name' = $Name; 'displayName' = $DisplayName; 'description' = $Description; 'enabled' = $Enabled; 'enableAntiAffinityRules' = $EnableAntiAffinityRules; 'antiAffinityPatterns' = $AntiAffinityPatterns; 'antiAffinityCount' = $AntiAffinityCount; 'enablePreLaunch' = $EnablePreLaunch; 'connectionServerRestrictions' = $ConnectionServerRestrictions; 'categoryFolderName' = $CategoryFolderName; 'clientRestrictions' = $ClientRestrictions; 'shortcutLocations' = $ShortcutLocations; 'globalApplicationEntitlement' = $GlobalApplicationEntitlementId; 'multiSessionMode' = $MultiSessionMode; 'maxMultiSessions' = $MaxMultiSessions }
-    $ExecutionData = New-Object VMware.Hv.ApplicationExecutionData -Property @{ 'executablePath' = $ExecutablePath; 'version' = $Version; 'publisher' = $Publisher; 'startFolder' = $StartFolder; 'args' = $Args; 'farm' = $FarmInfo.id; 'autoUpdateFileTypes' = $AutoUpdateFileTypes; 'autoUpdateOtherFileTypes' = $AutoUpdateOtherFileTypes}
-    $AppSpec = New-Object VMware.Hv.ApplicationSpec -Property @{ 'data' = $AppData; 'executionData' = $ExecutionData}
-    $AppService = New-Object VMware.Hv.ApplicationService
+    $AppData = New-Object Omnissa.Horizon.ApplicationData -Property @{ 'name' = $Name; 'displayName' = $DisplayName; 'description' = $Description; 'enabled' = $Enabled; 'enableAntiAffinityRules' = $EnableAntiAffinityRules; 'antiAffinityPatterns' = $AntiAffinityPatterns; 'antiAffinityCount' = $AntiAffinityCount; 'enablePreLaunch' = $EnablePreLaunch; 'connectionServerRestrictions' = $ConnectionServerRestrictions; 'categoryFolderName' = $CategoryFolderName; 'clientRestrictions' = $ClientRestrictions; 'shortcutLocations' = $ShortcutLocations; 'globalApplicationEntitlement' = $GlobalApplicationEntitlementId; 'multiSessionMode' = $MultiSessionMode; 'maxMultiSessions' = $MaxMultiSessions }
+    $ExecutionData = New-Object Omnissa.Horizon.ApplicationExecutionData -Property @{ 'executablePath' = $ExecutablePath; 'version' = $Version; 'publisher' = $Publisher; 'startFolder' = $StartFolder; 'args' = $Args; 'farm' = $FarmInfo.id; 'autoUpdateFileTypes' = $AutoUpdateFileTypes; 'autoUpdateOtherFileTypes' = $AutoUpdateOtherFileTypes}
+    $AppSpec = New-Object Omnissa.Horizon.ApplicationSpec -Property @{ 'data' = $AppData; 'executionData' = $ExecutionData}
+    $AppService = New-Object Omnissa.Horizon.ApplicationService
     $AppService.Application_Create($services,$AppSpec)
     if ($?) {
         Write-Host "Application '$Name' created successfully"
@@ -12717,7 +12717,7 @@ Function Get-HVPreInstalledApplication {
 
 .NOTES
     Author                      : Samiullasha S
-    Author email                : ssami@vmware.com
+    Author email                : ssami@omnissa.com
     Version                     : 1.0
 
     ===Tested Against Environment====
@@ -12745,7 +12745,7 @@ Function Get-HVPreInstalledApplication {
     }
   }
   process {
-    $FarmService = New-Object VMware.Hv.FarmService
+    $FarmService = New-Object Omnissa.Horizon.FarmService
     $Data = $FarmService.Farm_DiscoverInstalledApplications($services,$Farm.Id)
     return $Data
   }
@@ -12806,7 +12806,7 @@ Function New-HVPreInstalledApplication {
 
 .NOTES
     Author                      : Samiullasha S
-    Author email                : ssami@vmware.com
+    Author email                : ssami@omnissa.com
     Version                     : 1.0
 
     ===Tested Against Environment====
@@ -12877,13 +12877,13 @@ Function New-HVPreInstalledApplication {
     foreach($App in ($AppsInRDS)) {
         if($($App.name) -eq ($ApplicationName)) {
             $AppFoundInRDS = $True
-            $ApplicationData = New-Object VMware.Hv.ApplicationData -Property @{ 'Name' = $ApplicationID;
+            $ApplicationData = New-Object Omnissa.Horizon.ApplicationData -Property @{ 'Name' = $ApplicationID;
                             'DisplayName' = $DisplayName;
                             'EnablePreLaunch' = $EnablePreLaunch;
                             'ConnectionServerRestrictions' = $ConnectionServerRestrictions;
                             'CategoryFolderName' = $CategoryFolderName;
                             'ClientRestrictions' = $ClientRestrictions }
-            $ExecutionData = New-object VMware.Hv.ApplicationExecutionData -Property @{ 'ExecutablePath' = $App.ExecutionData.ExecutablePath;
+            $ExecutionData = New-object Omnissa.Horizon.ApplicationExecutionData -Property @{ 'ExecutablePath' = $App.ExecutionData.ExecutablePath;
                             'Version' = $App.ExecutionData.Version;
                             'Publisher' = $App.ExecutionData.Publisher;
                             'Args' = $App.ExecutionData.Args;
@@ -12891,8 +12891,8 @@ Function New-HVPreInstalledApplication {
                             'Farm' = $FarmInfo.Id;
                             'AutoUpdateFileTypes' = $App.ExecutionData.AutoUpdateFileTypes;
                             'AutoUpdateOtherFileTypes' = $App.executionData.AutoUpdateOtherFileTypes }
-            $ApplicationSpec = New-Object VMware.Hv.ApplicationSpec -Property @{ 'Data' = $ApplicationData; 'ExecutionData' = $ExecutionData}
-            $AppService = New-Object VMware.Hv.ApplicationService
+            $ApplicationSpec = New-Object Omnissa.Horizon.ApplicationSpec -Property @{ 'Data' = $ApplicationData; 'ExecutionData' = $ExecutionData}
+            $AppService = New-Object Omnissa.Horizon.ApplicationService
             $AppService.Application_Create($services,$ApplicationSpec)
             if($?) {
                 Write-Host "Application '$ApplicationId' created successfully"
@@ -12988,7 +12988,7 @@ function Set-HVApplication {
 
 .NOTES
     Author                      : Matt Frey
-    Author email                : mfrey@vmware.com
+    Author email                : mfrey@omnissa.com
     Version                     : 1.0
 
     ===Tested Against Environment====
@@ -13136,12 +13136,12 @@ param (
     }
 
     if ($clearGlobalEntitlement) {
-    	$update = New-Object VMware.Hv.MapEntry
+    	$update = New-Object Omnissa.Horizon.MapEntry
     	$update.key = 'data.globalApplicationEntitlement'
     	$updates += $update
     }
 
-    $AppService = New-Object VMware.Hv.ApplicationService
+    $AppService = New-Object Omnissa.Horizon.ApplicationService
     $AppService.Application_Update($services,$App.Id,$updates)
     if ($?) {
         Write-Host "Application '$Name' updated successfully"
@@ -13188,7 +13188,7 @@ Function Get-HVNetworkLabels {
     param (
 
         [Parameter(Mandatory = $True) ]
-        [VMware.Hv.HostOrClusterId]$HostOrClusterID
+        [Omnissa.Horizon.HostOrClusterId]$HostOrClusterID
 
     )
 
@@ -13204,9 +13204,9 @@ Function Get-HVNetworkLabels {
 
     Process {
 
-        $NetworkLabelSpec = new-object vmware.hv.NetworkLabelSpec
+        $NetworkLabelSpec = new-object Omnissa.Horizon.NetworkLabelSpec
         $NetworkLabelSpec.HostOrClusterId = $HostOrClusterID
-        $NetworkLabelService = New-Object VMware.Hv.NetworkLabelService
+        $NetworkLabelService = New-Object Omnissa.Horizon.NetworkLabelService
         $NetworkLabels = $NetworkLabelService.NetworkLabel_ListByNetworkLabelSpec($Services,$NetworkLabelSpec)
 
         $Result = $Networklabels | Foreach {
@@ -13239,7 +13239,7 @@ function Get-HVSyslog {
     Displays the udpData settings
 
   .OUTPUTS
-    Returns object of type VMware.Hv.SyslogInfo which contains objects for both file and UDP Syslog settgs
+    Returns object of type Omnissa.Horizon.SyslogInfo which contains objects for both file and UDP Syslog settgs
 
 .NOTES
     Author : Mark Elvers <mark.elvers@tunbury.org>
@@ -13262,7 +13262,7 @@ function Get-HVSyslog {
   }
 
   process {
-    $syslog_helper = New-Object VMware.Hv.SyslogService
+    $syslog_helper = New-Object Omnissa.Horizon.SyslogService
     $syslog_helper.Syslog_Get($services)
   }
 
@@ -13333,7 +13333,7 @@ function Set-HVSyslog {
   }
 
   process {
-    $syslog_helper = New-Object VMware.Hv.SyslogService
+    $syslog_helper = New-Object Omnissa.Horizon.SyslogService
     $updates = @()
     $updates += Get-MapEntry -key 'udpData.enabled' -value ([bool]$enabled)
     if ($servers.count) {
