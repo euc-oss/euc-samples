@@ -6,7 +6,7 @@
 # Developed by: Matt Zaske, Leon Letto and others
 # July 2022
 #
-# revision 13.2 (May 14, 2024)
+# revision 14 (October 14, 2024)
 #
 # macOS Updater Utility (mUU):
 # Designed to keep macOS devices on the desired OS version
@@ -687,6 +687,7 @@ dlCheck() {
             ;;
         "14")
             # Checking for Sonoma
+            dirCount=$(find /System/Library/AssetsV2/com_apple_MobileAsset_MacSoftwareUpdate -maxdepth 1 -type d | /usr/bin/wc -l)
             if [ -d "/Applications/Install macOS Sonoma.app" ]; then
               #verify version matches
               installerVersion=$(/usr/libexec/PlistBuddy -c "Print :DTPlatformVersion" "/Applications/Install macOS Sonoma.app/Contents/Info.plist")
@@ -698,7 +699,40 @@ dlCheck() {
                 echo "no"
               fi
             #also check same way as minor for delta update
+            elif [[ "$dirCount" -gt 1 ]]; then
+              #check for matching OS version
+              index=1
+              while [ $index -lt $dirCount ]; do
+                  index=$((index + 1))
+                  updateDir=$(find /System/Library/AssetsV2/com_apple_MobileAsset_MacSoftwareUpdate -maxdepth 1 -type d | /usr/bin/awk 'NR=='$index'{print}')
+                  msuPlist="$updateDir/Info.plist"
+                  msuOSVersion=$(/usr/libexec/PlistBuddy -c "Print :MobileAssetProperties:OSVersion" "$msuPlist")
+                  if [[ $(version $msuOSVersion) -eq $(version $desiredOS) ]]; then
+                      log_info "Download found"
+                      echo "yes"
+                      return
+                  fi
+              done
+              log_error "Download found but not correct"
+              log_debug "desiredOS: $desiredOS msuOSVersion: $msuOSVersion"
+              echo "no"
+            else echo "no"; fi
+
+            ;;
+        "15")
+            # Checking for Sequoia
             dirCount=$(find /System/Library/AssetsV2/com_apple_MobileAsset_MacSoftwareUpdate -maxdepth 1 -type d | /usr/bin/wc -l)
+            if [ -d "/Applications/Install macOS Sequoia.app" ]; then
+              #verify version matches
+              installerVersion=$(/usr/libexec/PlistBuddy -c "Print :DTPlatformVersion" "/Applications/Install macOS Sequoia.app/Contents/Info.plist")
+              if [[ $(version $installerVersion) -eq $(version $desiredOS) ]]; then
+                echo "yes"
+              else
+                log_info "update found but wrong version. deleting wrong version"
+                rm -rf "/Applications/Install macOS Sequoia.app"
+                echo "no"
+              fi
+            #also check same way as minor for delta update
             elif [[ "$dirCount" -gt 1 ]]; then
               #check for matching OS version
               index=1
@@ -793,11 +827,11 @@ dlInstaller() {
         if [[ "$currentMajor" -ge "12" ]]; then
             #use productVersion
             log_info "mdmCommand Default ProductVersion $desiredOS"
-            mdmCommand "Default" "ProductVersion" "$desiredOS"
+            mdmCommand "DownloadOnly" "ProductVersion" "$desiredOS"
         else
             #use productKey
             log_info "mdmCommand Default ProductKey $desiredProductKey"
-            mdmCommand "Default" "ProductKey" "$desiredProductKey"
+            mdmCommand "DownloadOnly" "ProductKey" "$desiredProductKey"
         fi
     else
         #check if need to use ProductKey or ProductVersion (macOS 12+) in MDM command
@@ -954,6 +988,11 @@ installUpdate() {
                     /Applications/Install\ macOS\ Sonoma.app/Contents/Resources/startosinstall --agreetolicense --nointeraction --forcequitapps &
 
                     ;;
+                "15")
+                    log_info "running startosinstall for Sequoia"
+                    /Applications/Install\ macOS\ Sequoia.app/Contents/Resources/startosinstall --agreetolicense --nointeraction --forcequitapps &
+
+                    ;;
                 *)
                     log_error "cpuType: $cpuType desiredMajor: $desiredMajor  Unsupported macOS version $currentOS"
                     echo "unknown major version"
@@ -1008,7 +1047,7 @@ log_to_screen false
 
 log_info "===== Launching macOS Updater Utility $(date)============"
 #log "===== Launching macOS Updater Utility ====="
-log_info "  --- Revision 13.2 ---  "
+log_info "  --- Revision 14 ---  "
 
 
 #Setup ManagePlist
@@ -1136,10 +1175,31 @@ if ge "$(version "$currentOS")" "$(version "$desiredOS")"; then
 fi
 log_info "upgrade needed - currentOS: $currentOS : desiredOS: $desiredOS"
 
-#check if properties file has been created, if not create it
+#check if counter file exists, if not create it
+mUUhash=$(/sbin/md5 "$managedPlist" | /usr/bin/cut -f2 -d "=" | /usr/bin/sed 's/^[[:space:]]*//')
 if [ ! -f "$counterFile" ]; then
+    log_info "Counter file not present - creating"
+    #get current hash
     /usr/bin/defaults write "$counterFile" deferralCount -int 0
-    /usr/bin/defaults write "$counterFile" startDate -int "$(date +%s)"
+    /usr/bin/defaults write "$counterFile" startDate -int "$(/bin/date +%s)"
+    /usr/bin/defaults write "$counterFile" profileHash -string "$mUUhash"
+else
+    #check if updated from last run
+    log_info "Checking if mUU Profile has been updated"
+    #read hash value from counter
+    currentHash=$(/usr/libexec/PlistBuddy -c "Print :profileHash" "$counterFile")
+    #compare hash values
+    if [[ "$currentHash" == $"$mUUhash" ]]; then
+        log_info "Profile unchanged - proceeding"
+    else
+        #if different, delete counter file and readd hash value
+        log_info "Profile changed - resetting counter file"
+        /bin/rm -f "$counterFile"
+        sleep 2
+        /usr/bin/defaults write "$counterFile" deferralCount -int 0
+        /usr/bin/defaults write "$counterFile" startDate -int "$(/bin/date +%s)"
+        /usr/bin/defaults write "$counterFile" profileHash -string "$mUUhash"
+    fi
 fi
 
 #check if using deferrals or deadline date
@@ -1191,22 +1251,28 @@ fi
 downloadCheck=$(dlCheck "$updateType")
 log_info "downloadCheck: $downloadCheck"
 if [[ "$downloadCheck" = "no" ]]; then
+    #check if download was triggered previously
+    dlStarted=$(/usr/libexec/PlistBuddy -c "Print :dlStarted" "$counterFile" 2>/dev/null || :)
+    if [[ $dlStarted == 1 ]]; then
+        #having trouble downloading installer - restart softwareupdate
+        log_info "Failed to download update previously - restarting SUS"
+        defaults delete /Library/Preferences/com.apple.Softwareupdate.plist > /dev/null 2>&1
+        launchctl kickstart -k system/com.apple.softwareupdated
+        sleep 10
+        launchctl kickstart -k system/com.apple.mobile.softwareupdated
+        sleep 10
+    fi
     #differentiate between major and minor
     if [[ "$updateType" = "major" ]]; then
         #download major OS Installer
         (set -m; /usr/sbin/softwareupdate --fetch-full-installer --full-installer-version "$desiredOS" &)
-        dlStarted=$(/usr/libexec/PlistBuddy -c "Print :dlStarted" "$counterFile" 2>/dev/null || :)
-        if [[ "$desiredMajor" -ge "13" && $dlStarted = "" ]]; then
+        if [[ "$desiredMajor" -ge "13" ]]; then
             response=$(dlInstaller "$updateType")
             if [[ "$response" == "no" ]]; then
                 log_info "HubCLI command to download installer failed, exiting....."
             else
-                log_info "major update installer download started via MDM command"
-                #set a flag so we only do this once
-                /usr/bin/defaults write "$counterFile" dlStarted -int 1
+                log_info "major update installer download started with MDM command, exiting....."
             fi
-        else
-            sudo launchctl kickstart -k system/com.apple.softwareupdated
         fi
         log_info "major update installer download started, exiting....."
     else
@@ -1217,6 +1283,8 @@ if [[ "$downloadCheck" = "no" ]]; then
             log_info "minor update installer download started, exiting....."
         fi
     fi
+    #set a flag that we have started download
+    /usr/bin/defaults write "$counterFile" dlStarted -int 1
     gatherLogs
     exit 0
 fi
