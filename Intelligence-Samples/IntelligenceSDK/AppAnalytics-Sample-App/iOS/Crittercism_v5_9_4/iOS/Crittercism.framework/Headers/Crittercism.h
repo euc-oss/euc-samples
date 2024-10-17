@@ -2,7 +2,7 @@
  *@header  Crittercism.h
  *  Crittercism iOS Library
  *
- *@copyright  Copyright © 2019 VMWare. All rights reserved.
+ *@copyright  Copyright © 2019 Omnissa, LLC. All rights reserved.
 */
 #import <Foundation/Foundation.h>
 #import "CrittercismDelegate.h"

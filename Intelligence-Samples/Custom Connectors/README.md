@@ -36,7 +36,7 @@ In order to create your own Postman collections, the following is required:
 In order to create a valid Collection to Import as a Custom Connector you need to:
 
 1. Download the latest version of [Postman](https://www.getpostman.com) 
-2. Create a collection using the process outlined in [Use Postman for Custom Connections](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-8A79C3A5-6061-47D3-BE85-4AD4593872EB.html#GUID-8A79C3A5-6061-47D3-BE85-4AD4593872EB)
+2. Create a collection using the process outlined in [Use Postman for Custom Connections](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-8A79C3A5-6061-47D3-BE85-4AD4593872EB.html#GUID-8A79C3A5-6061-47D3-BE85-4AD4593872EB)
 3. It is important to save the tested response of each Postman request as an Example, as the Open API specification requires this step. To do this, follow instructions on the [Postman Responses Documenation](https://learning.getpostman.com/docs/postman/sending_api_requests/responses).
 * *Note:* All samples included in this repository already have saved responses so you can use them as-is. However, if you add new requests they should be tested and responses saved to prevent import issues.
 4. Export the Collection as **Collection v2.1**
@@ -46,6 +46,6 @@ Note: Consider adding headers as `Content-Type: application/json`. If you do not
 
 
 ## Additional Resources
-[Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
-[Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+[Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
+[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
 [Postman Resources](https://www.getpostman.com)

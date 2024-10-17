@@ -255,11 +255,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
+      "projectUniqueName": "/Users/helmlingp/euc-oss/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
       "projectName": "APIEventNotification",
-      "projectPath": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
+      "projectPath": "/Users/helmlingp/euc-oss/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
       "packagesPath": "/Users/helmlingp/.nuget/packages/",
-      "outputPath": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/",
+      "outputPath": "/Users/helmlingp/euc-oss/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/helmlingp/.nuget/NuGet/NuGet.Config"

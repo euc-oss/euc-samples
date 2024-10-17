@@ -39,7 +39,7 @@ import java.util.Map;
 import static net.openid.appauth.Utils.*;
 
 /**
- * To support the flow of registering devices dynamically with VMware Identity Manager.
+ * To support the flow of registering devices dynamically with Workspace ONE Access.
  */
 public class DeviceAuthorizationService extends AuthorizationService {
 

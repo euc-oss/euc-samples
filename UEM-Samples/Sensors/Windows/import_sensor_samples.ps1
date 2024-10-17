@@ -6,11 +6,11 @@
   .NOTES
     Created:   	    January, 2021
     Created by:	    Josue Negron, jnegron@vmware.com, 
-    Contributors:   Chris Halstead, chealstead@vmware.com; Phil Helmling, helmlingp@vmware.com
+    Contributors:   Chris Halstead, Omnissa; Phil Helmling, Omnissa
     Organization:   VMware, Inc.
     Filename:       import_sensor_samples.ps1
     Updated:        January, 2023, helmlingp@vmware.com
-    Github:         https://github.com/vmware-samples/euc-samples/tree/master/UEM-Samples/Sensors
+    Github:         https://github.com/euc-oss/euc-samples/tree/master/UEM-Samples/Sensors
 
 
   .DESCRIPTION

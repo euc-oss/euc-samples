@@ -59,7 +59,7 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 
     /**
      * This endpoint requires the user to be authenticated: this /user endpoint is now secured with cookies created
-     * when the user authenticates through VMware Identity Manager.
+     * when the user authenticates through Workspace ONE Access.
      * Spring will populate the "Principal" object with the logged-in user's information.
      */
     @RequestMapping("/user")
@@ -86,7 +86,7 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Register the filter OAuth2ClientContextFilter that will handle the redirect to VMware Identity Manager
+     * Register the filter OAuth2ClientContextFilter that will handle the redirect to Workspace ONE Access
      * if the user is not authenticated.
      */
     @Bean

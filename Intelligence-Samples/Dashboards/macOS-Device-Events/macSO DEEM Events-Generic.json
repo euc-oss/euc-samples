@@ -1,0 +1,1154 @@
+{
+    "name": "DEEM macOS Events",
+    "widgets": [
+        {
+            "name": "User Actions",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.user_actions.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.user_actions.event_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.user_actions._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.user_actions._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "user_actions"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.user_actions.event_name",
+                    "employee_experience.user_actions._event_id"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.user_actions._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.user_actions._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 6,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 8,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "OS Updates Events",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.os_updates.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.os_updates.event_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.os_updates._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.os_updates._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "os_updates"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.os_updates._event_id",
+                    "employee_experience.os_updates.event_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.os_updates._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.os_updates._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 8,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 10,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Service Data",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.services.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.services.event_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.services._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.services._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "services"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.services._event_id",
+                    "employee_experience.services.event_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.services._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.services._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 6,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 8,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "App Usage",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps._application_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps.duration_millis",
+                        "aggregation_function": "SUM"
+                    }
+                ],
+                "filter": "employee_experience.apps._device_platform IN ( 'Apple macOS' )  AND  employee_experience.apps.event_name IN ( 'Application Foreground' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.apps.duration_millis",
+                    "employee_experience.apps._application_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Application Foreground"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Apple macOS"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Application Foreground"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                }
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Device Events",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.devices.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.devices.event_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.devices._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.devices._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "devices"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.devices._event_id",
+                    "employee_experience.devices.event_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.devices._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.devices._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Devices with RAM < 8GB",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "SNAPSHOT",
+                "bucketing_attributes": [
+                    "employee_experience.asset_info.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.asset_info.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.asset_info._device_platform IN ( 'Apple macOS' )  AND  employee_experience.asset_info.physical_memory_bytes < 8589934592",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "asset_info"
+                    ]
+                },
+                "cardinality": 500,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.asset_info.device_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.asset_info._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.asset_info.physical_memory_bytes",
+                            "operator": "<",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "LONG",
+                                    "value": 8589934592
+                                }
+                            ],
+                            "operand_collection_present": false
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.asset_info._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Apple macOS"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.asset_info.physical_memory_bytes",
+                        "operator": "<",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "LONG",
+                                "value": 8589934592
+                            }
+                        ],
+                        "operand_collection_present": false
+                    }
+                }
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 6
+            },
+            "chart_type": "TABLE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "App Crashes",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps._application_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.apps.event_name IN ( 'Application Crash' )  AND  employee_experience.apps._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.apps._application_name",
+                    "employee_experience.apps._event_id"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Application Crash"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Application Crash"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Apple macOS"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "App Hang",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps._application_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.apps.event_name IN ( 'Application Hang' )  AND  employee_experience.apps._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.apps._application_name",
+                    "employee_experience.apps._event_id"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Application Hang"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Application Hang"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.apps._device_platform",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Apple macOS"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                }
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Number of macOS Devices sending DEEM data",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps.device_name",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "employee_experience.apps._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.apps.device_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.apps._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 8,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 10,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Apps Events",
+            "description": "Create a widget from scratch",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 7,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.apps.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.apps.event_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.apps._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.apps._device_platform IN ( 'Apple macOS' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "apps"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.apps.event_name",
+                    "employee_experience.apps._event_id"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.apps._device_platform",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Apple macOS"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "employee_experience.apps._device_platform",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Apple macOS"
+                        }
+                    ],
+                    "operand_collection_present": true
+                }
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Failed Logon",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "employee_experience.user_actions.event_timestamp",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "employee_experience.user_actions.device_name"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "employee_experience.user_actions.event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "employee_experience.user_actions.event_name IN ( 'Logon' )  AND  employee_experience.user_actions.result IN ( 'failed' )",
+                "entities_by_integration": {
+                    "employee_experience": [
+                        "user_actions"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "all_report_column_attributes": [
+                    "employee_experience.user_actions.event_id",
+                    "employee_experience.user_actions.device_name"
+                ],
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.user_actions.event_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Logon"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "employee_experience.user_actions.result",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "failed"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.user_actions.event_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Logon"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "employee_experience.user_actions.result",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "failed"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                }
+            },
+            "top_left": {
+                "row_number": 10,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 12,
+                "column_number": 6
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2021-07-20T19:50:50.172Z"
+}

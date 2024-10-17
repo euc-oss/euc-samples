@@ -45,6 +45,6 @@ To configure this connector in Intelligence, select the *No Authentication* type
 
 ## Additional Resources
 [Slack Webhook Documentation](https://api.slack.com/messaging/webhooks)
-[Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
-[Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
+[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+[Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
 [Postman Resources](https://www.getpostman.com)

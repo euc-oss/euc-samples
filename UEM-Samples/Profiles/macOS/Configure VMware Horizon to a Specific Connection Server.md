@@ -1,4 +1,4 @@
-## Configure VMware Horizon to a Specific Connection Server
+## Configure Omnissa Horizon to a Specific Connection Server
 
 Add the following Custom Settings Payload in a macOS profile.
 

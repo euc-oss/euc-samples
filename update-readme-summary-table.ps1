@@ -5,7 +5,7 @@
   .NOTES
     Created:   	    August, 2024
     Created by:	    Richard Croft
-    Contributors:   Phil Helmling
+    Contributors:   Phil Helmling, Omnissa
     Organization:   Omnissa, LLC
     Github:         https://github.com/euc-oss/euc-samples
 

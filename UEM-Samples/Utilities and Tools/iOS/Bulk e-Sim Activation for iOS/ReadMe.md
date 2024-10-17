@@ -3,7 +3,7 @@
 ## Overview
 
 - **Authors**: Robert Terakedis, Christopher Burns
-- **Email**: rterakedis@vmware.com, burnsc@vmware.com
+- **Email**: rterakedis@omnissa.com, burnsc@vmware.com
 - **Date Created**: 2020-08-28
 - **Supported Platforms**: Workspace ONE UEM 1908
 - **Tested on macOS Versions**: macOS High Sierra

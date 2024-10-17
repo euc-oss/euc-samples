@@ -4,7 +4,7 @@ Workspace ONE Access (IDM) API Examples
 
 .NOTES
   Version:        1.0
-  Author:         Chris Halstead - chalstead@vmware.com
+  Author:         Chris Halstead, Omnissa
   Creation Date:  8/20/2019
   Purpose/Change: Initial script development
   
@@ -205,7 +205,7 @@ $theuser = $user.resources.id
 
 try {
   #Sends a message with a button and URL  
-  $JSONMessage = '{"header": {"title": "' + $title + '"},"body": {"description": "' + $description +'"},"actions":[{"id":"' + $guid +'","label":"Notification API Docs","completed_label": "Page Visited","type":"POST", "primary": true,"allow_repeated": false,"url":{"href":"https://code.vmware.com/apis/402/workspace-one-notifications"},"action_key":"OPEN_IN"}]}'
+  $JSONMessage = '{"header": {"title": "' + $title + '"},"body": {"description": "' + $description +'"},"actions":[{"id":"' + $guid +'","label":"Notification API Docs","completed_label": "Page Visited","type":"POST", "primary": true,"allow_repeated": false,"url":{"href":"https://code.omnissa.com/apis/402/workspace-one-notifications"},"action_key":"OPEN_IN"}]}'
   $message = Invoke-RestMethod -Method Post -Uri "https://$idmserver/ws1notifications/api/v1/users/$theuser/notifications" -Headers $headers -Body $JSONMessage -ContentType "application/json"               
 }
                                    

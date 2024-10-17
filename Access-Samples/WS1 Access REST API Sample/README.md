@@ -1,7 +1,7 @@
 # Workspace ONE Access (IDM) API Examples 
 
 Version:        1.0  
-Author:         Chris Halstead - chalstead@vmware.com  
+Author:         Chris Halstead, Omnissa 
 Creation Date:  8/20/2019  
 Purpose/Change: Initial script development  
 

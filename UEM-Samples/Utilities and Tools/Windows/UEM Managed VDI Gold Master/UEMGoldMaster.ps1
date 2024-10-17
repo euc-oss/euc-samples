@@ -5,7 +5,7 @@
     Created:        April 2022
     Created by:     Max Fox
     Updated by:	    Max Fox
-    Organization:   VMware, Inc.
+    Organization:   Omnissa, LLC.
     Filename:       UEMGoldMaster.ps1
 .DESCRIPTION
     Enrolls the machine to Workspace ONE Unified Endpoint Management. Then makes sure that all assigned apps and profiles are on the device, before installing all available windows updates. After this, it unenrolls the device, leaving the previously installed apps and updates on the device, so that we can seal the device as a Gold Master image. After this the device will be deleted from the Workspace ONE Unified Endpoint Management console.

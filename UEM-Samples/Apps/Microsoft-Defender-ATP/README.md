@@ -1,9 +1,9 @@
 # Microsoft Defender ATP #
-Deploying MS Defender ATP macOS with vmWare WorkspaceOne UEM
+Deploying MS Defender ATP macOS with WorkspaceOne UEM
 
 ## Overview
 - **Authors**: Robert Terakedis, Christian Rüppel
-- **Email**: rterakedis@vmware.com, christian.rueppel@me.com
+- **Email**: rterakedis@omnissa.com, christian.rueppel@me.com
 - **Date Created**: 2/12/2020
 - **Supported Platforms**: WorkspaceOne UEM version 19.09
 - **Tested on macOS Versions**: macOS Catalina (10.15.3)

@@ -2,7 +2,7 @@
 
 ## Overview
 - **Authors**:Bhavya Bandi, Varun Murthy, Josue Negron, Brooks Peppin, Aaron Black, Mike Nelson, Chris Halstead, Justin Sheets, Andreano Lanusse, Adarsh Kesari, Saurabh Jhunjhunwala, Robert Terakedis, Phil Helmling
-- **Email**: bbandi@vmware.com, vmurthy@vmware.com, jnegron@vmware.com, bpeppin@vmware.com, aaronb@vmware.com, miken@vmware.com, chalstead@vmware.com, jsheets@vmware.com, aguedesrocha@vmware.com, kesaria@vmware.com, sjhunjhunwal@vmware.com, rterakedis@vmware.com, helmlingp@vmware.com
+- **Email**: bbandi@vmware.com, vmurthy@vmware.com, jnegron@vmware.com, bpeppin@vmware.com, aaronb@vmware.com, miken@vmware.com, chalstead@vmware.com, jsheets@vmware.com, aguedesrocha@vmware.com, kesaria@vmware.com, sjhunjhunwal@vmware.com, rterakedis@omnissa.com, helmlingp@vmware.com
 - **Date Created**: 11/14/2018
 - **Updated**: 05/14/2024
 - **Supported Platforms**: Workspace ONE 1811+
@@ -206,8 +206,8 @@ and you will find the key in the **API Key** field.  If it is not there you may 
 **-USER_SWITCH** (OPTIONAL) When using **Event** as **TriggerType**
 
 ## Resources 
-- [macOS Custom Attributes to Sensors Migration Script](https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples/Tools/CustomAttributesToSensorsMigration)
-- [macOS Custom Attributes Repo](https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples/CustomAttributes)
+- [macOS Custom Attributes to Sensors Migration Script](https://github.com/euc-oss/euc-samples/tree/master/macOS-Samples/Tools/CustomAttributesToSensorsMigration)
+- [macOS Custom Attributes Repo](https://github.com/euc-oss/euc-samples/tree/master/macOS-Samples/CustomAttributes)
 
 ## Change Log
 - 05/14/2024 - Update import_sensor_samples.ps1 with logic changes to Update and Assign Sensors as well as clearer status messages. Updated README.md to reflect changes.

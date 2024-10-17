@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AdapterKinds>  
+<AdapterKind adapterKindKey="V4V">    
+<ResourceKind resourceKindKey="User">      
+<Metric red="10" orange="0" yellow="0" label="Desktop Launched Application" attrkey="session|desktop_launched_application" /> 
+<Metric red="10" orange="0" yellow="0" label="Remote IP Address" attrkey="session|broker_remote_ip_address" />
+<Metric red="10" orange="0" yellow="0" label="Desktop Pool" attrkey="session|desktop_pool" />
+<Metric red="10" orange="0" yellow="0" label="Application Pool" attrkey="session|launched_application" />
+<Metric red="10" orange="0" yellow="0" label="User's Machine Name" attrkey="session|machine_name" />
+<Metric red="10" orange="0" yellow="0" label="Assigned Desktop Name" attrkey="session|desktop_assigned" />
+<Metric red="10" orange="0" yellow="0" label="Session Logon Time" attrkey="session|logon_time" />
+<Metric red="10" orange="0" yellow="0" label="User's Machine Name" attrkey="session|client_ip_address" />
+<Metric red="250" orange="200" yellow="185" label="Avg Desktop Latency" attrkey="Super Metric|sm_b261d049-588b-44bf-bb5c-f4a3a64eed4d"/>
+<Metric red="250" orange="200" yellow="185" label="Avg App Latency" attrkey="Super Metric|sm_ba27eca2-e098-4816-9b6f-b7fc71570a42"/>
+</ResourceKind>  
+</AdapterKind>
+</AdapterKinds>

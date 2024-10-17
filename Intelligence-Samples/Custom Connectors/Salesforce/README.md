@@ -49,6 +49,6 @@ For more information on Salesforce REST APIs, please check the API Explorer on S
 
 ## Additional Resources
 [ServiceNow API Documentation](https://developer.servicenow.com/app.do#!/rest_api_doc?v=madrid&id=r_TableAPI-POST)
-[Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
-[Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
+[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+[Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
 [Postman Resources](https://www.getpostman.com)

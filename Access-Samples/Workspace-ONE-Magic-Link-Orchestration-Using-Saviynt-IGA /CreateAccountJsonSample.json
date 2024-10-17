@@ -1,0 +1,43 @@
+{
+  "accountIdPath": "accountName",
+  "call": [
+    {
+      "name": "call1",
+      "callOrder": 1,
+      "connection": "wsAuth ",
+      "url": "${((user?.email!=null) && (user?.customproperty1!=null) && (user?.customproperty2!=null))?('https://yourcompany.yourdomain.com/SAAS/jersey/manager/api/token/auth/state'):('')}",
+      "httpMethod": "POST",
+      "httpHeaders": {
+        "Authorization": "${access_token}",
+        "Accept": "application/vnd.vmware.horizon.manager.tokenauth.link.response+json",
+        "Content-Type": "application/vnd.vmware.horizon.manager.tokenauth.generation.request+json"
+      },
+      "httpContentType": "application/vnd.vmware.horizon.manager.tokenauth.generation.request+json",
+      "httpParams": "{\"domain\" : \"yourdomain.com\",\"userName\" : \"${user.customproperty2}\"}",
+      "successResponses": {
+        "statusCode": [
+          200
+        ]
+      }
+    },
+    {
+      "name": "call2",
+      "callOrder": 2,
+      "connection": "emailServiceAuth ",
+      "url": "${((response.call1.status.equals('Success')) && (user?.email!=null) && (user?.customproperty1!=null) && (user?.customproperty2!=null))?('https://youremailservice.yourdomain.com/yourapipath'):('')}",
+      "httpMethod": "POST",
+      "httpParams": "{\"basicAttributes\": {\"from\": \"someemail@yourdomain.com\",\"to\": [\"${user.customproperty1}\"],\"subject\": \"Action Required: Complete Onboarding Steps\"}, \"templateAttributes\": {\"template\": \"Saviynt-PreHireMagicLinkDistribution-Template\",\"locale\": \"en\"},\"parameters\": [{\"name\": \"firstname\",\"value\": \"${user.firstname}\"}, {\"name\": \"magiclink\",\"value\": \"${response.call1.message.loginLink}\"},{\"name\": \"username\",\"value\": \"${user.customproperty2}\"}, {\"name\": \"email\",\"value\": \"${user.email}\"}]}",
+      "httpHeaders": {
+        "Authorization": "${access_token}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "httpContentType": "application/json",
+      "successResponses": {
+        "statusCode": [
+          200
+        ]
+      }
+    }
+  ]
+}

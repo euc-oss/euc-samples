@@ -65,7 +65,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 /**
- * A sample activity to serve as a client to the Native OAuth library, using VMware Identity Manager as the IDP.
+ * A sample activity to serve as a client to the Native OAuth library, using Workspace ONE Access as the IDP.
  * Based on the demo app of AppAuth.
  */
 public class TokenActivity extends AppCompatActivity {

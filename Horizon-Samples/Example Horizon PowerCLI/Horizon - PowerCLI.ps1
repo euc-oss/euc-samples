@@ -4,7 +4,11 @@ Samples Scripts Using the Omnissa Horizon API via PowerCLI
 	
 .NOTES
   Version:        1.0
+<<<<<<< Updated upstream
   Author:         Chris Halstead - chalstead@omnissa.com
+=======
+  Author:         Chris Halstead, Omnissa
+>>>>>>> Stashed changes
   Creation Date:  7/18/2019
   Purpose/Change: Initial script development
  #>

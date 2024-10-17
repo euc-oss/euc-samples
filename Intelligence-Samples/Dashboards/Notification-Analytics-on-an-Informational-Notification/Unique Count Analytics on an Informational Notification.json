@@ -1,0 +1,816 @@
+{
+    "name": "Notification Analytics on an Informational Notification",
+    "description": "View user engagement analytics on a specific informational notification. Ensure that each widget reflects the notification name that is of interest.",
+    "widgets": [
+        {
+            "name": "Total Sent",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "hub.notification_action.status IN ( 'success' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.status",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "success"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.status",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "success"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action._event_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 4
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Views by Platform",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 14,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "hub.notification_action.platform"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action.user_guid",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "hub.notification_action.action_type IN ( 'viewed' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.action_type",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "viewed"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.action_type",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "viewed"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action.platform",
+                    "hub.notification_action.user_guid"
+                ]
+            },
+            "top_left": {
+                "row_number": 2,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 4,
+                "column_number": 12
+            },
+            "chart_type": "VERTICAL",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Total Dismissed",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action.user_guid",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "hub.notification_action.action_type IN ( 'dismissed' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.action_type",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "dismissed"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.action_type",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "dismissed"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action.user_guid"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 8
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 12
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Total Viewed",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action.user_guid",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "hub.notification_action.action_type IN ( 'viewed' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.action_type",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "viewed"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.action_type",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "viewed"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action.user_guid"
+                ]
+            },
+            "top_left": {
+                "row_number": 1,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 6
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Total Opened",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action.user_guid",
+                        "aggregation_function": "COUNT_DISTINCT"
+                    }
+                ],
+                "filter": "hub.notification_action.action_type IN ( 'opened' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.action_type",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "opened"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.action_type",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "opened"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action.user_guid"
+                ]
+            },
+            "top_left": {
+                "row_number": 1,
+                "column_number": 6
+            },
+            "bottom_right": {
+                "row_number": 2,
+                "column_number": 12
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Activity Timeline",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "sampling_frequency": {
+                        "duration": 1,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [
+                    "hub.notification_action.action_type"
+                ],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "attribute": "hub.notification_action.notification_name",
+                    "operator": "IN",
+                    "operands": [
+                        {
+                            "operand_type": "BasicOperand",
+                            "data_type": "STRING",
+                            "value": "Notification Name"
+                        }
+                    ],
+                    "operand_collection_present": true
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action._event_id",
+                    "hub.notification_action.action_type"
+                ]
+            },
+            "top_left": {
+                "row_number": 4,
+                "column_number": 0
+            },
+            "bottom_right": {
+                "row_number": 6,
+                "column_number": 12
+            },
+            "chart_type": "LINE",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        },
+        {
+            "name": "Total Failed to Send",
+            "trend_definition": {
+                "trend_mode": "HISTORICAL",
+                "date_range": {
+                    "trend_span": {
+                        "duration": 28,
+                        "unit": "DAYS"
+                    },
+                    "start_date_millis": 0,
+                    "end_date_millis": 0,
+                    "date_attribute_name": "hub.notification_action.adp_modified_at",
+                    "date_range_order": "DESC"
+                },
+                "bucketing_attributes": [],
+                "counter_definitions": [
+                    {
+                        "aggregate_attribute": "hub.notification_action._event_id",
+                        "aggregation_function": "COUNT"
+                    }
+                ],
+                "filter": "hub.notification_action.status IN ( 'failed' )  AND  hub.notification_action.notification_name IN ( 'Notification Name' )",
+                "entities_by_integration": {
+                    "hub": [
+                        "notification_action"
+                    ]
+                },
+                "cardinality": 10,
+                "accumulate": false,
+                "ignore_case": false,
+                "filter_condition": {
+                    "parenthesized": false,
+                    "nested_attribute": false,
+                    "custom_attribute": false,
+                    "operand_collection_present": false,
+                    "logical_operator": "AND",
+                    "lhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.status",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "failed"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    },
+                    "rhs": {
+                        "parenthesized": false,
+                        "nested_attribute": false,
+                        "custom_attribute": false,
+                        "attribute": "hub.notification_action.notification_name",
+                        "operator": "IN",
+                        "operands": [
+                            {
+                                "operand_type": "BasicOperand",
+                                "data_type": "STRING",
+                                "value": "Notification Name"
+                            }
+                        ],
+                        "operand_collection_present": true
+                    }
+                },
+                "filter_condition_nested_rules": {
+                    "type": "RuleSet",
+                    "logical_operator": "AND",
+                    "rules": [
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.status",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "failed"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        },
+                        {
+                            "type": "Rule",
+                            "nested_attribute": false,
+                            "custom_attribute": false,
+                            "attribute": "hub.notification_action.notification_name",
+                            "operator": "IN",
+                            "operands": [
+                                {
+                                    "operand_type": "BasicOperand",
+                                    "data_type": "STRING",
+                                    "value": "Notification Name"
+                                }
+                            ],
+                            "operand_collection_present": true
+                        }
+                    ]
+                },
+                "all_report_column_attributes": [
+                    "hub.notification_action._event_id"
+                ]
+            },
+            "top_left": {
+                "row_number": 0,
+                "column_number": 4
+            },
+            "bottom_right": {
+                "row_number": 1,
+                "column_number": 8
+            },
+            "chart_type": "METRIC",
+            "enabled": true,
+            "included_in_default_dashboard": false
+        }
+    ],
+    "created_at": "2022-09-12T20:25:56.091Z"
+}

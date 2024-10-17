@@ -6,7 +6,7 @@
   .NOTES
     Created:   	    January, 2021
     Created by:	    Josue Negron, jnegron@vmware.com, 
-    Contributors:   Chris Halstead, chealstead@vmware.com; Phil Helmling, helmlingp@vmware.com
+    Contributors:   Chris Halstead, Omnissa; Phil Helmling, Omnissa
     Organization:   VMware, Inc.
     Filename:       import_sensor_samples.ps1
     Updated:        May 2024, helmlingp@vmware.com

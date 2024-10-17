@@ -2,7 +2,7 @@
 
 ## Overview
 - **Authors**: Robert Terakedis
-- **Email**: rterakedis@vmware.com
+- **Email**: rterakedis@omnissa.com
 - **Date Created**: 12/2/2016
 - **Supported Platforms**: AirWatch version 9.1
 - **Tested on macOS Versions**: macOS Yosemite
@@ -20,6 +20,6 @@ None
 
 
 ## Additional Resources
-- [macOS - Shell Script to Install Microsoft Office 2016](https://code.vmware.com/samples/1447/macos---shell-script-to-install-microsoft-office-2016-for-mac)
+- [macOS - Shell Script to Install Microsoft Office 2016](https://code.omnissa.com/samples/1447/macos---shell-script-to-install-microsoft-office-2016-for-mac)
 
 

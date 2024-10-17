@@ -2,7 +2,7 @@
 <!-- Summary Start -->
 This is a helper for the Workspace ONE Intelligent Hub for macOS feature for blocking apps and processes. 
 <!-- Summary End -->
-[VMware Docs for Apps and Process Restrictions for macOS](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/macOS_Platform/GUID-1457AF26-9546-49E5-8D63-6D9162604456.html?hWord=N4IghgNiBcIEoFMDOAXATgSwMYoAQFswsB5AZVwEEAHKibMFDAewDslcAyXABTSa2RJkIAL5A) 
+[Docs for Apps and Process Restrictions for macOS](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/macOS_Platform/GUID-1457AF26-9546-49E5-8D63-6D9162604456.html?hWord=N4IghgNiBcIEoFMDOAXATgSwMYoAQFswsB5AZVwEEAHKibMFDAewDslcAyXABTSa2RJkIAL5A) 
 
 ## Installation
 
@@ -33,7 +33,7 @@ Bundle ID: com.apple.podcasts
 Code Requirement: identifier "com.apple.podcasts" and anchor apple
 ```
 ## Contributing
-Changes and improvements welcome. Please follow the VMware Contribution guide for this repository. 
+Changes and improvements welcome. Please follow the Contribution guide for this repository. 
 
 ## License
-[BSD 3-Clause License](https://github.com/vmware-samples/euc-samples/blob/master/LICENSE)
+[BSD 3-Clause License](https://github.com/euc-oss/euc-samples/blob/master/LICENSE)

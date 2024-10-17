@@ -3,7 +3,7 @@
 //  Crittercism-iOS
 //
 //  Created by Sean Hermany on 10/19/12.
-//  Copyright © 2019 VMWare. All rights reserved.
+//  Copyright © 2019 Omnissa, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

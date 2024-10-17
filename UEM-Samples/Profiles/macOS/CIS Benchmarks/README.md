@@ -4,7 +4,7 @@ https://www.cisecurity.org/cis-benchmarks/
 ## Overview
 
 - **Authors**: Matt Zaske
-- **Email**: mzaske@vmware.com
+- **Email**: mzaske@Omnissa.com
 - **Date Created**: 6/9/2022
 - **Supported Platforms**: Workspace ONE UEM v2203
 - **Tested on macOS Versions**: macOS Big Sur
@@ -13,7 +13,7 @@ https://www.cisecurity.org/cis-benchmarks/
 
 The following requirements can be achieved using Custom Settings profiles with Workspace ONE UEM. Most of these files are attached as samples in this repo:
 
-- 2.2.1 & 2.2.2 - Enable "Set time and date automatically" & Ensure time set is within appropriate limits: https://github.com/vmware-samples/euc-samples/blob/master/UEM-Samples/Profiles/macOS/Set_NTP_Server.md
+- 2.2.1 & 2.2.2 - Enable "Set time and date automatically" & Ensure time set is within appropriate limits: https://github.com/euc-oss/euc-samples/blob/master/UEM-Samples/Profiles/macOS/Set_NTP_Server.md
 - 2.3.3 - Familiarize users with screen lock tools or corner to Start Screen Saver: Hot Corner Setup.xml
 - 2.5.2.2 & 2.5.2.3 - Enable Firewall & Enable Firewall Stealth Mode: CIS-firewall.xml
 - 2.10 - Enable Secure Keyboard Entry in terminal.app: CIS-TerminalSecureKeyboard.xml

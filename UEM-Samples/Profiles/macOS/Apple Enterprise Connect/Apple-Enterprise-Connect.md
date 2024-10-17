@@ -1,6 +1,6 @@
 ## Apple Enterprise Connect Custom XML Payloads ##
 
-* Author Name:  Robert Terakedis (rterakedis@vmware.com)
+* Author Name:  Robert Terakedis (rterakedis@omnissa.com)
 * Date:  3/2/2017 
 * Minimal/High Level Description:    Custom XML Payload to configure Apple Enterprise Connect.  
 * Tested Version:   AirWatch version 9.0

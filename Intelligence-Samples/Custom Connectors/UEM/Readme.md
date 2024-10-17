@@ -2,7 +2,7 @@
 
 ## Overview
 - **Author**: Robert Terakedis
-- **Email**: rterakedis@vmware.com
+- **Email**: rterakedis@omnissa.com
 - **Date Created**: 2021-09-27
 
 ## Purpose
@@ -36,7 +36,7 @@ This collection is a sample for use within Workspace ONE Intelligence.  Please b
 6. Right-Click on the **Custom UEM API Calls** collection and click **Export**
 7. Save the collection export as Postman version 2.1 to your device.
 
-> NOTE:  The *aw-tenant-code* (or API Key) is only necessary if you'll be using basic authentication for Intelligence to authenticate to UEM.   If you plan to use [oAuth](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2), the API key is disregarded as it is already part of the oAuth token.
+> NOTE:  The *aw-tenant-code* (or API Key) is only necessary if you'll be using basic authentication for Intelligence to authenticate to UEM.   If you plan to use [oAuth](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2), the API key is disregarded as it is already part of the oAuth token.
 
 ## Build a Workspace ONE Intelligence Custom Connector
 
@@ -108,10 +108,10 @@ If you use Postman to create a collection of additional UEM API calls to use in 
 
 
 ## Additional Resources
-* [Workspace ONE UEM API Reference](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html)
-* [Workspace ONE UEM Rest API oAuth Reference](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2)
-* [Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
-* [Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/intelligence-documentation/GUID-27_intel_custom_connectors.html)
+* [Workspace ONE UEM API Reference](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html)
+* [Workspace ONE UEM Rest API oAuth Reference](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2)
+* [Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+* [Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/intelligence-documentation/GUID-27_intel_custom_connectors.html)
 * [Postman Documentation](https://learning.postman.com/docs/getting-started/introduction/)
 * [RecommendationCadence Documentation](https://developer.apple.com/documentation/devicemanagement/settingscommand/command/settings/softwareupdatesettings) and [WWDC Video](https://developer.apple.com/wwdc21/10129)
 

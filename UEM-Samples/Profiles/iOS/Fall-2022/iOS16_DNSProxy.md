@@ -1,6 +1,6 @@
 # iOS 16 DNS Proxy profile #
 
-Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Settings payload](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/iOS_Platform/GUID-AWT-PROFILECUSTOMSETTS.html) in Workspace ONE UEM.
+Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Settings payload](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/2011/iOS_Platform/GUID-AWT-PROFILECUSTOMSETTS.html) in Workspace ONE UEM.
 
 ```xml
 <dict>

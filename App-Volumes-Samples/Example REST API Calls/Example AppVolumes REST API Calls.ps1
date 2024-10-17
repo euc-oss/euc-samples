@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-  Sample script for VMware App Volumes REST API
+  Sample script for App Volumes REST API
 	
 .NOTES
   Version:        1.0
-  Author:         Chris Halstead - chalstead@vmware.com
+  Author:         Chris Halstead, Omnissa
   Creation Date:  8/21/2019
   Purpose/Change: Initial script development
   
@@ -244,7 +244,7 @@ Function Get_Online {
 function Show-Menu
   {
     param (
-          [string]$Title = 'VMware App Volumes API Menu'
+          [string]$Title = 'App Volumes API Menu'
           )
        Clear-Host
        Write-Host "================ $Title ================"

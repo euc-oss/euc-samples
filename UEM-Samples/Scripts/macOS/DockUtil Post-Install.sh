@@ -8,7 +8,7 @@
 
 # ## Additional Resources
 # * [dockutil by Kyle Crawford](https://github.com/kcrawford/dockutil)
-# * [Operational Tutorial - Deploying Third-Party macOS Applications](https://techzone.vmware.com/deploying-third-party-macos-applications-vmware-workspace-one-operational-tutorial)
+# * [Operational Tutorial - Deploying Third-Party macOS Applications](https://techzone.omnissa.com/deploying-third-party-macos-applications-vmware-workspace-one-operational-tutorial)
 # * [VMware Code](https://code.vmware.com/home)
 # * [VMware Developer Community](https://communities.vmware.com/community/vmtn/developer)
 

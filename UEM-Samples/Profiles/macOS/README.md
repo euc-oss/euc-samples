@@ -2,7 +2,7 @@
 
 ## macOS-Samples \ CustomXMLProfiles
 <!-- Summary Start -->
-This section of the **EUC-samples** repository contains samples relating to profile snippets which can be used in the "Custom Settings" or "Custom XML" payload in Workspace ONE UEM for macOS management.  Custom XML samples are typically used to manage key-value pairs in macOS preference domains.  For more information on Custom XML, refer to [Custom XML Preferences - VMware EUC Blog](https://blogs.vmware.com/euc/2017/06/xml-preferences.html) and the [Custom XML Template](https://github.com/vmware-samples/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md).
+This section of the **EUC-samples** repository contains samples relating to profile snippets which can be used in the "Custom Settings" or "Custom XML" payload in Workspace ONE UEM for macOS management.  Custom XML samples are typically used to manage key-value pairs in macOS preference domains.  For more information on Custom XML, refer to [Custom XML Preferences - Omnissa EUC Blog](https://blogs.Omnissa.com/euc/2017/06/xml-preferences.html) and the [Custom XML Template](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md).
 x<!-- Summary End -->
 
 Please feel free to submit any scripts you wish to share with the community!
@@ -22,7 +22,7 @@ The following information must be included in the README.md or in the sample doc
 
 ### Suggested Information
 The following information should be included when possible. Inclusion of information provides valuable information to consumers of the resource.
-* VMWare Workspace ONE UEM version against which the sample was developed/tested
+* Omnissa Workspace ONE UEM version against which the sample was developed/tested
 * Client Operating System version against which the sample was developed/tested (e.g. Windows Build number, or macOS Version and Build Number)
 * Language (Bash/Python/Powershell) version against which the sample was developed/tested
 
@@ -52,17 +52,17 @@ Any bugs or other issues should be filed within GitHub by way of the repositoryâ
 ### Resolving Issues
 Any community member can resolve issues within the repository, however only the board member can approve the update. Once approved, assuming the resolution involves a pull request, only a board member will be able to merge and close the request.
 
-### VMware Sample Exchange
-It is highly recommended to add any and all submitted samples to the VMware Sample Exchange:  <https://code.vmware.com/samples>
+### Omnissa Sample Exchange
+It is highly recommended to add any and all submitted samples to the EUC Sample Exchange:  <https://github.com/euc-oss/euc-samples>.
 
-Sample Exchange can be allowed to access your GitHub resources, by way of a linking process, where they can be indexed and searched by the community. There are VMware social media accounts which will advertise resources posted to the site and there's no additional accounts needed, as the VMware Sample Exchange uses MyVMware credentials.
+Sample Exchange can be allowed to access your GitHub resources, by way of a linking process, where they can be indexed and searched by the community. There are Omnissa social media accounts which will advertise resources posted to the site and there's no additional accounts needed, as the Omnissa Sample Exchange uses MyOmnissa credentials.
 
 
-## VMware Resources
-* [Custom XML Preferences - VMware EUC Blog](https://blogs.vmware.com/euc/2017/06/xml-preferences.html)
-* [Custom XML Template for NSUserDefaults and CFPreferences](https://github.com/vmware-samples/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md)
-* [Tech Zone macOS Activity Path](https://techzone.vmware.com/understanding-macos-management)
-* [VMware Code](https://code.vmware.com/home)
-* [VMware Tech Zone](https://techzone.vmware.com)
-* [VMware End-User Computing Blog](https://blogs.vmware.com/euc)
-* [VMware Developer Community](https://communities.vmware.com/community/vmtn/developer)
+## Omnissa Resources
+* [Custom XML Preferences - Omnissa EUC Blog](https://blogs.Omnissa.com/euc/2017/06/xml-preferences.html)
+* [Custom XML Template for NSUserDefaults and CFPreferences](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md)
+* [Tech Zone macOS Activity Path](https://techzone.omnissa.com/understanding-macos-management)
+* [Omnissa Code](https://code.Omnissa.com/home)
+* [Omnissa Tech Zone](https://techzone.Omnissa.com)
+* [Omnissa End-User Computing Blog](https://blogs.Omnissa.com/euc)
+* [Omnissa Developer Community](https://communities.Omnissa.com/community/vmtn/developer)

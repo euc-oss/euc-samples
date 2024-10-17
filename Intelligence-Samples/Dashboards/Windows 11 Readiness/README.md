@@ -1,9 +1,8 @@
-# Windows 11 Readiness
+# Windows 11 Readiness Dashboard
 
-## Overview
-- **Author**: Phil Helmling
-- **Email**: helmlingp@vmware.com
-- **Date Created**: 05/10/2021
+Author: Phil Helmling, Omnissa
+Last Edit: Oct 5, 2021
+Version 1.0
 
 ## Purpose
 <!-- Summary Start -->

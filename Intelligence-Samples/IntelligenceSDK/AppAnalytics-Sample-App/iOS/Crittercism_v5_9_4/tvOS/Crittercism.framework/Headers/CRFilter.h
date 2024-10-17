@@ -2,7 +2,7 @@
 *@header  CRFilter.h
 *Crittercism iOS Library
 *@author  Created by Sean Hermany on 7/16/13.
-* Copyright © 2019 VMWare. All rights reserved.
+* Copyright © 2019 Omnissa, LLC. All rights reserved.
 */
 
 #import <Foundation/Foundation.h>

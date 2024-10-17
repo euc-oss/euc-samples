@@ -3,7 +3,7 @@
 ## Overview
 
 - **Authors**: John Richards, Robert Terakedis, Paul Evans
-- **Email**: jrichards@vmware.com, rterakedis@vmware.com, pevans@vmware.com
+- **Email**: jrichards@vmware.com, rterakedis@omnissa.com, pevans@vmware.com
 - **Date Created**: 2020-04-24
 - **Supported Platforms**: Workspace ONE UEM 2004
 - **Tested on macOS Versions**: macOS Catalina

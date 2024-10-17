@@ -1,4 +1,4 @@
-# Search for the VMware Unified Access Gateway Master Appliance
+# Search for the Unified Access Gateway Master Appliance
 
 ## Overview
 - **Author**: Andreano Lanusse
@@ -39,4 +39,4 @@ Example:
 
 
 ## Additional Resources
-* [Unified Access Gateway Documentation](https://docs.vmware.com/en/Unified-Access-Gateway/)
+* [Unified Access Gateway Documentation](https://docs.omnissa.com/en/Unified-Access-Gateway/)

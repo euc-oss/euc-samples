@@ -69,7 +69,7 @@ In order to ensure the device is enrolled to the proper user in the destination 
 	- This will prompt the user to provide their username (or email address) during the migration process
 	- When using this option be sure to also use `--user-prompt` to set what value to request from the user (username or email)
 3. none
-	- No registration will happen as part of migration process. Use this method if you plan to preregister devices to users in Workspace ONE using a CSV [batch import](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-AWT-BATCHIMPORTFEATURE.html). 
+	- No registration will happen as part of migration process. Use this method if you plan to preregister devices to users in Workspace ONE using a CSV [batch import](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-AWT-BATCHIMPORTFEATURE.html). 
 
 #### Example Configurations (Launch Daemon)
 Custom (other MDM provider) to Workspace ONE with local username used to register the device to the user in WS1:

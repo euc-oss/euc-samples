@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Use this script to update the certificate of your Identity Provider (i.e. VMware Identity Manager) in the keystore
+# Use this script to update the certificate of your Identity Provider (i.e. Workspace ONE Access) in the keystore
 # './src/main/resources/saml/samlKeystore.jks' file
 # Run:
 # $ ./src/main/resources/saml/update-certificate.sh

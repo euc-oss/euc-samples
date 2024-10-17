@@ -2,7 +2,7 @@
  *@header  CrittercismConstants.h
  *  Crittercism iOS Library
  *@author  Created by Vera Lukman on 8/3/16.
- *@copyright  Copyright © 2019 VMWare. All rights reserved.
+ *@copyright  Copyright © 2019 Omnissa, LLC. All rights reserved.
  */
 
 #import <Foundation/Foundation.h>

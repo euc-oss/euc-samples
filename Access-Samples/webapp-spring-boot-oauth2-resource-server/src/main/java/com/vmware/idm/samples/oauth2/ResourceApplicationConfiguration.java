@@ -50,7 +50,7 @@ public class ResourceApplicationConfiguration extends ResourceServerConfigurerAd
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
-        // VMware Identity Manager does not allow to populate the audience field of the access token
+        // Workspace ONE Access does not allow to populate the audience field of the access token
         // with a different resource server then itself right now, so the "id" defined in application.yml
         // must be "https://<tenant url>/SAAS/auth/oauthtoken"
         resources.resourceId(vmware().getResource().getResourceId());
@@ -78,7 +78,7 @@ public class ResourceApplicationConfiguration extends ResourceServerConfigurerAd
 
     /**
      * Configure the bean responsible for loading/decoding our access tokens.
-     * We need the public key of VMware Identity Manager during the creation of the bean as Spring will not be able to decode the token
+     * We need the public key of Workspace ONE Access during the creation of the bean as Spring will not be able to decode the token
      * if the signature verification is failing.
      */
     @Bean
@@ -107,7 +107,7 @@ public class ResourceApplicationConfiguration extends ResourceServerConfigurerAd
     }
 
     /**
-     * To validate the incoming token by either validating locally or by using the VMware Identity Manager check token endpoint.
+     * To validate the incoming token by either validating locally or by using the Workspace ONE Access check token endpoint.
      */
     @Bean
     public ResourceServerTokenServices remoteTokenServices() throws Exception {
@@ -131,7 +131,7 @@ public class ResourceApplicationConfiguration extends ResourceServerConfigurerAd
         private boolean performLocalValidation;
 
         /**
-         * VMware Identity Manager does not provide a check_token endpoint yet,
+         * Workspace ONE Access does not provide a check_token endpoint yet,
          * but provides an endpoint to validate the access token.
          */
         @Value("${vmware.resource.checkTokenUri}")
@@ -151,8 +151,8 @@ public class ResourceApplicationConfiguration extends ResourceServerConfigurerAd
     }
 
     /**
-     * Extract some more information from the VMware Identity Manager Access Token: the principal.
-     * (The default implementation looks for "user_name" but VMware Identity Manager does not include such key.
+     * Extract some more information from the Workspace ONE Access Access Token: the principal.
+     * (The default implementation looks for "user_name" but Workspace ONE Access does not include such key.
      * It includes "user_id" which can be used to fetch information back or - here - we just use "prn" to extract principal.
      */
     private class VMwareUserAuthenticationConverter extends DefaultUserAuthenticationConverter {

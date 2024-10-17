@@ -1,7 +1,7 @@
 # Example App Volumes REST API Calls
 
 Version:        1.0
-Author:         Chris Halstead - chalstead@vmware.com
+Author:         Chris Halstead, Omnissa
 Creation Date:  8/21/2019
 
 ## Overview

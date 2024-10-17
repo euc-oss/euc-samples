@@ -40,6 +40,6 @@ This collection comes with a sample of how to create a ticket. To further custom
 
 ## Additional Resources
 [Zendesk API Reference](https://developer.zendesk.com/rest_api/docs/support/tickets#create-ticket)
-[Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
-[Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
+[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+[Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
 [Postman Resources](https://www.getpostman.com)

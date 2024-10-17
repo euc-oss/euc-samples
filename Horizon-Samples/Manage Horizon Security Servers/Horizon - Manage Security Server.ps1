@@ -5,7 +5,11 @@ Script to update existing Horizon Security Servers
 	
 .NOTES
   Version:        1.0
+<<<<<<< Updated upstream
   Author:         Chris Halstead - chalstead@omnissa.com
+=======
+  Author:         Chris Halstead, Omnissa
+>>>>>>> Stashed changes
                   with lots of help from Andrew Morgan Twitter: @andyjmorgan
   Creation Date:  11/2/2020
   Purpose/Change: Initial script development

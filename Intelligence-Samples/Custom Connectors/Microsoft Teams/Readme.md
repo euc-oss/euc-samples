@@ -43,6 +43,6 @@ To configure this connector in Intelligence, select the *No Authentication* type
 ## Additional Resources
 [Generating a Microsoft Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/connectors/connectors-using#setting-up-a-custom-incoming-webhook)
 [Microsoft Teams Card Reference](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/cards/cards-reference)
-[Workspace ONE Intelligence User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
-[Custom Connector User Guide](https://docs.vmware.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
+[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)
+[Custom Connector User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-54333CCC-0E6D-4871-8DEA-3AFAB8378EEC.html)
 [Postman Resources](https://www.getpostman.com)

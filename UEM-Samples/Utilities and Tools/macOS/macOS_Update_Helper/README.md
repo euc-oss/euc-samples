@@ -13,7 +13,7 @@ Currently, this process leverages the ```startosinstall``` command in order to d
 
 The overall flow of the tool is as follows:
 
-1. The "Install macOS {version}.app" application is deployed to the device, as well as the macOS Update Helper pkg.  The "Install macOS {version}.app" file can be deployed using the options outlined in [Managing Major OS Updates for Mac: VMware Workspace ONE Operational Tutorial](https://techzone.vmware.com/managing-major-os-updates-mac-vmware-workspace-one-operational-tutorial).  Alternately, this readme will include instructions on including the app as part of the macOS Update Helper pkg.
+1. The "Install macOS {version}.app" application is deployed to the device, as well as the macOS Update Helper pkg.  The "Install macOS {version}.app" file can be deployed using the options outlined in [Managing Major OS Updates for Mac: VMware Workspace ONE Operational Tutorial](https://techzone.omnissa.com/managing-major-os-updates-mac-vmware-workspace-one-operational-tutorial).  Alternately, this readme will include instructions on including the app as part of the macOS Update Helper pkg.
 
 2. Administrators can allow users to defer the deployment of the update by specifying a number of deferrals allowed and/or a go-live date, after which the deployment will continue automatically.
 ![deferral_notification.png?raw=true](/macOS-Samples/Tools/macOS_Update_Helper/bin/deferral_notification.png)
@@ -89,6 +89,6 @@ When deploying the macOS Update Helper to devices through Workspace ONE UEM, you
 
 ## How to include the "Install macOS X.app" with macOS Update Helper
 
-1. Download the "Install macOS X.app" file using one of the processes outlined in [Managing Major OS Updates for Mac: VMware Workspace ONE Operational Tutorial](https://techzone.vmware.com/managing-major-os-updates-mac-vmware-workspace-one-operational-tutorial).
+1. Download the "Install macOS X.app" file using one of the processes outlined in [Managing Major OS Updates for Mac: VMware Workspace ONE Operational Tutorial](https://techzone.omnissa.com/managing-major-os-updates-mac-vmware-workspace-one-operational-tutorial).
 2. Copy the .app file into the ```./payload/Applications/``` folder of the project.
 3. Build the pkg as outlined above.

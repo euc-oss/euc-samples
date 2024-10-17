@@ -3,7 +3,7 @@
 ## Overview
 
 - **Authors**: Robert Terakedis
-- **Email**: rterakedis@vmware.com
+- **Email**: rterakedis@omnissa.com
 - **Date Created**: 2020-01-25
 - **Tested on macOS Versions**: macOS Catalina 10.15.2
 
@@ -15,7 +15,7 @@ Manage Microsoft Edge Preferences/Settings via Workspace ONE:
 2) Create a Custom Settings profile payload that contains any settings you wish to manage (link below in [Resources](#Additional-Resources))
 3) Deploy the Microsoft Edge browser app in order to leverage the policies configured in the preferences (via Custom XML)
 
-## Notes Regarding VMware Identity Manager Cert-based Authentication
+## Notes Regarding Workspace ONE Access Cert-based Authentication
 
 To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Identity Manager Instance:
 

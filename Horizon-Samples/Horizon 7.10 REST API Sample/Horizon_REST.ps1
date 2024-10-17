@@ -5,7 +5,7 @@ Only works on Horizon 7.10 and later
 
 .NOTES
   Version:        1.0
-  Author:         Chris Halstead - chalstead@vmware.com
+  Author:         Chris Halstead, Omnissa
   Creation Date:  10/9/2019
   Purpose/Change: Initial script development
   

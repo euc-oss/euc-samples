@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
- * Unit tests for the device registration request against VMware Identity Manager.
+ * Unit tests for the device registration request against Workspace ONE Access.
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = com.vmware.idm.samples.appauth.BuildConfig.class, sdk = 16)

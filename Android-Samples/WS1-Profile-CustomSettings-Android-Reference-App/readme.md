@@ -42,7 +42,7 @@ https://developer.android.com/reference/android/content/RestrictionsManager.html
 
 I/System.out: Here is the Environment: PROD
 
-I/System.out: Here is the URL: https://www.vmware.com
+I/System.out: Here is the URL: https://www.omnissa.com
 
 I/System.out: Here is the Example Value: ExampleValue
 
@@ -52,7 +52,7 @@ I/System.out: Here is the User: Maui
 
 I/EUCPSO: Here is the Environment: PROD
 
-I/EUCPSO: Here is the URL: https://www.vmware.com
+I/EUCPSO: Here is the URL: https://www.omnissa.com
 
 I/EUCPSO: Here is the Example Value: ExampleValue
 

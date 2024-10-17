@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * Validates an Access Token issued by VMware Identity Manager and populates user's logged-in information (by reading the access token content).
+ * Validates an Access Token issued by Workspace ONE Access and populates user's logged-in information (by reading the access token content).
  * <p>
  * It will validate either locally or using the API on Identity Manager.
  */

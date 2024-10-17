@@ -201,7 +201,7 @@ Now that the compliance script is present on the device, we can utilize it take 
 
 ### Sensors
 
-First things first, if you are on an older version of Workspace ONE UEM and do not see Sensors in your environment, you can accomplish everything we are doing here using [Custom Attributes profiles](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/ProdProv_All/GUID-BFEAAE97-D112-4B19-8DAB-E0C681F57DDF.html). Using Sensors we will be triggering the complaince scan to run on a periodic basis as well as collecting data from the device. The data I will be collecting is:
+First things first, if you are on an older version of Workspace ONE UEM and do not see Sensors in your environment, you can accomplish everything we are doing here using [Custom Attributes profiles](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/services/ProdProv_All/GUID-BFEAAE97-D112-4B19-8DAB-E0C681F57DDF.html). Using Sensors we will be triggering the complaince scan to run on a periodic basis as well as collecting data from the device. The data I will be collecting is:
 - Non-compliant rule count
 - Last compliance scan date/time
 

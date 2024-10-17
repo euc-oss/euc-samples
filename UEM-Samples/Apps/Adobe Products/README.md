@@ -2,7 +2,7 @@
 
 ## Overview
 - **Authors**: Robert Terakedis, Daniel Machin
-- **Email**: rterakedis@vmware.com, [@drmachin](https://twitter.com/drmachin)
+- **Email**: rterakedis@omnissa.com, [@drmachin](https://twitter.com/drmachin)
 - **Date Created**: 8/29/2018
 - **Supported Platforms**: AirWatch version 9.6
 - **Tested on macOS Versions**: macOS High Sierra (10.13.6)
@@ -50,7 +50,7 @@ From the Creative Cloud Packager:
 
 ## Using Adobe Packages with Workspace ONE UEM ##
 
-1. From within the "Build" folder of the CCP output, take the installer PKG file and parse it with the VMware AirWatch Admin Assistant app.   The Admin Assistant should generate a folder in Documents: `~/Documents/VMware AirWatch Admin Assistant/AdobePhotoshop-19.1.6.398`
+1. From within the "Build" folder of the CCP output, take the installer PKG file and parse it with the AirWatch Admin Assistant app.   The Admin Assistant should generate a folder in Documents: `~/Documents/AirWatch Admin Assistant/AdobePhotoshop-19.1.6.398`
 
     *__NOTE: Not all of the Adobe packages (ex. Acrobat DC) include the necessary information for the pkginfo and will produce a folder with "(Please edit me!).  If this happens, you may need to edit the string value for the `<key>version</key>` key as follows:__*
     ```xml

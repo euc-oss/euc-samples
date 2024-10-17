@@ -1,0 +1,230 @@
+{
+  "name":"Horizon 8 App Insights",
+  "namespace":"net.chickasaw.horizon8-app-insights",
+  "contentPackId":"net.chickasaw.horizon8-app-insights",
+  "framework":"#9c4",
+  "version":"2.4",
+  "extractedFields":[ {
+    "displayName":"vmw_horizon_Client_IP",
+    "preContext":"ClientIpAddress=\"",
+    "postContext":"\" ForwardedClientIpAddress",
+    "regexValue":"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_Forwarded_Client_IP",
+    "preContext":"ForwardedClientIpAddress=\"",
+    "postContext":"\" ApplicationId",
+    "regexValue":"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_application",
+    "preContext":"ApplicationId=\"",
+    "postContext":"\"\\] User",
+    "regexValue":"\\w+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_desktop_id",
+    "preContext":"DesktopId=\"",
+    "postContext":"\" DesktopDisplayName",
+    "regexValue":"\\S+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwizltnn2g64c7nfsa0000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_module",
+    "preContext":"Module=\"",
+    "postContext":"\" EventType",
+    "regexValue":"\\w+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_node",
+    "preContext":"Node=",
+    "postContext":"\\, Severity",
+    "regexValue":"\\S+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw433emu000000",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_pool_id",
+    "preContext":"PoolId=\"",
+    "postContext":"\" MachineId",
+    "regexValue":"\\S+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_pool_machine",
+    "preContext":"MachineName=\"",
+    "postContext":"\" MachineDnsName",
+    "regexValue":"\\S+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpw2yldnbuw4zi0",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_session_type",
+    "preContext":"SessionType=\"",
+    "postContext":"\" ",
+    "regexValue":"\\w+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxgzltonuw63s7or4xazi0",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_severity",
+    "preContext":"Severity=\"",
+    "postContext":"\" Module",
+    "regexValue":"\\w+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxgzlwmvzgs5dz",
+    "constraints":null,
+    "info":null
+  }, {
+    "displayName":"vmw_horizon_user",
+    "preContext":"User ",
+    "postContext":" requested",
+    "regexValue":"\\S+",
+    "internalName":"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000",
+    "constraints":null,
+    "info":null
+  } ],
+  "queries":[ ],
+  "alerts":[ ],
+  "dashboardSections":[ {
+    "views":[ {
+      "name":"Horizon App Insights",
+      "constraints":[ ],
+      "rows":[ {
+        "widgets":[ {
+          "name":"Horizon App Launches",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\",\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1626887633149,\"endTimeMillis\":1626891233148,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_application\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_user\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_horizon_application\",\"preContext\":\"ApplicationId=\\\"\",\"postContext\":\"\\\"\\\\] User\",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"constraints\":null},{\"displayName\":\"vmw_horizon_user\",\"preContext\":\"User \",\"postContext\":\" requested\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Horizon Desktop Launches",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1627923991510,\"endTimeMillis\":1627924291509,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwizltnn2g64c7nfsa0000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_desktop_id\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwizltnn2g64c7nfsa0000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_user\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_pool_id\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_pool_machine\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpw2yldnbuw4zi0\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_desktop_id\",\"preContext\":\"DesktopId=\\\"\",\"postContext\":\"\\\" DesktopDisplayName\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwizltnn2g64c7nfsa0000\",\"constraints\":null},{\"displayName\":\"vmw_horizon_pool_id\",\"preContext\":\"PoolId=\\\"\",\"postContext\":\"\\\" MachineId\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"constraints\":null},{\"displayName\":\"vmw_horizon_pool_machine\",\"preContext\":\"MachineName=\\\"\",\"postContext\":\"\\\" MachineDnsName\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpw2yldnbuw4zi0\",\"constraints\":null},{\"displayName\":\"vmw_horizon_user\",\"preContext\":\"User \",\"postContext\":\" requested\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Top users by app launch count",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1627063130024,\"endTimeMillis\":1627667930023,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_user\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_horizon_application\",\"preContext\":\"ApplicationId=\\\"\",\"postContext\":\"\\\"\\\\] User\",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"constraints\":null},{\"displayName\":\"vmw_horizon_user\",\"preContext\":\"User \",\"postContext\":\" requested\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Top Applications by launch count",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1627063130024,\"endTimeMillis\":1627667930023,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_application\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_horizon_application\",\"preContext\":\"ApplicationId=\\\"\",\"postContext\":\"\\\"\\\\] User\",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpwc4dqnruwgylunfxw4000\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Top Users by Client IP",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\",\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624328582068,\"endTimeMillis\":1627923137528,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_user\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_Client_IP\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_Client_IP\",\"preContext\":\"ClientIpAddress=\\\"\",\"postContext\":\"\\\" ForwardedClientIpAddress\",\"regexValue\":\"\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"constraints\":null},{\"displayName\":\"vmw_horizon_user\",\"preContext\":\"User \",\"postContext\":\" requested\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Top Client IPs",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624328582068,\"endTimeMillis\":1627923185872,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_Client_IP\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_Client_IP\",\"preContext\":\"ClientIpAddress=\\\"\",\"postContext\":\"\\\" ForwardedClientIpAddress\",\"regexValue\":\"\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpug3djmvxhix2jka000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Top Users by Forwarded IP",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\",\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1627647428795,\"endTimeMillis\":1627669028794,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_Forwarded_Client_IP\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_horizon_user\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_Forwarded_Client_IP\",\"preContext\":\"ForwardedClientIpAddress=\\\"\",\"postContext\":\"\\\" ApplicationId\",\"regexValue\":\"\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"constraints\":null},{\"displayName\":\"vmw_horizon_user\",\"preContext\":\"User \",\"postContext\":\" requested\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxk43foi000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Top Forwarded Client IPs",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1627647428795,\"endTimeMillis\":1627669028794,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_Forwarded_Client_IP\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_Forwarded_Client_IP\",\"preContext\":\"ForwardedClientIpAddress=\\\"\",\"postContext\":\"\\\" ApplicationId\",\"regexValue\":\"\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpum33so5qxezdfmrpug3djmvxhix2jka000000\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Top Nodes (Connection Servers)",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624328582068,\"endTimeMillis\":1627923367209,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000\",\"operator\":\"CONTAINS\",\"value\":\"broker\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"hostname\",\"internalName\":\"hostname\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_module\",\"preContext\":\"Module=\\\"\",\"postContext\":\"\\\" EventType\",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Top Pool Machines",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624325714657,\"endTimeMillis\":1627922435662,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_pool_machine\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpw2yldnbuw4zi0\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_pool_id\",\"preContext\":\"PoolId=\\\"\",\"postContext\":\"\\\" MachineId\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"constraints\":null},{\"displayName\":\"vmw_horizon_pool_machine\",\"preContext\":\"MachineName=\\\"\",\"postContext\":\"\\\" MachineDnsName\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpw2yldnbuw4zi0\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Top Pools",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624325714657,\"endTimeMillis\":1627922435662,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_pool_id\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_pool_id\",\"preContext\":\"PoolId=\\\"\",\"postContext\":\"\\\" MachineId\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxa33pnrpwsza0\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Session Types",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624328582068,\"endTimeMillis\":1627923314614,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxgzltonuw63s7or4xazi0\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_session_type\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxgzltonuw63s7or4xazi0\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_session_type\",\"preContext\":\"SessionType=\\\"\",\"postContext\":\"\\\" \",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpxgzltonuw63s7or4xazi0\",\"constraints\":null}]}",
+          "messageQuery":""
+        }, {
+          "name":"Module",
+          "info":"",
+          "chartType":"pie",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624328582068,\"endTimeMillis\":1627923231027,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":false,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_horizon_module\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[{\"name\":\"General\",\"namespace\":\"com.vmware.loginsight.general\"}],\"extractedFields\":[{\"displayName\":\"vmw_horizon_module\",\"preContext\":\"Module=\\\"\",\"postContext\":\"\\\" EventType\",\"regexValue\":\"\\\\w+\",\"internalName\":\"ibadgnk7nzsxiltdnbuwg23bonqxoltin5zgs6tpny4c2ylqoawws3ttnftwq5dtozwxox3in5zgs6tpnzpw233eovwgk000\",\"constraints\":null}]}",
+          "messageQuery":""
+        } ]
+      } ]
+    } ],
+    "header":""
+  } ],
+  "aliasFields":[ ],
+  "aliasRules":[ ],
+  "author":"Scott Horton",
+  "url":"",
+  "contentVersion":"1.0",
+  "info":"While deploying Horizon 8 Apps we found that the existing content pack for horizon was lacking some information on application launches. I've built a few extractors and a single dashboard to provide this information.",
+  "instructions":"From the Horizon 8 administration page go to<span style=\"font-weight: bold;\"> Settings > Event Configuration</span> and add log insight as a syslog server.",
+  "icon":"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"
+}

@@ -1,10 +1,10 @@
-* **Author Name:**  Robert Terakedis (rterakedis@vmware.com)
+* **Author Name:**  Robert Terakedis (rterakedis@omnissa.com)
 * **Date:**  2020-02-22
 * **Minimal/High Level Description:**    Notes on Deploying Microsoft Office for Mac
 
 ## Determining A Deployment Method
 <!-- Summary Start -->
-Microsoft Office for Mac can be distributed in one of two ways:  App Store and non-Store (via Office.com downloads).  In general, VMware recommends deploying Microsoft Office from the Mac App Store (via device-based licensing through Apple Business Manager) unless any of the following apply: 
+Microsoft Office for Mac can be distributed in one of two ways:  App Store and non-Store (via Office.com downloads).  In general, Omnissa recommends deploying Microsoft Office from the Mac App Store (via device-based licensing through Apple Business Manager) unless any of the following apply: 
 <!-- Summary End -->
 1. You are not licensing users via Office 365 (such as using Volume Licensing).   (The Mac App Store version requires Office 365 licensing.)
 2. You have strict version requirements around deployed Office apps.   (The Mac App Store only delivers the latest version of Office.)
@@ -15,7 +15,7 @@ Microsoft Office for Mac can be distributed in one of two ways:  App Store and n
 1. Create a Nofifications payload (via [Custom Settings XML](https://aka.ms/office-notifications-payload)) -- Pre-Authorize Office apps to generate notifications to end-users
 2. Create additional Custom Settings XML as necessary:
   - [Paul Bowden's MobileConfigs](https://github.com/pbowden-msft/MobileConfigs)
-  - [Microsoft Office Preferences at EUC-Samples](https://github.com/vmware-samples/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md)
+  - [Microsoft Office Preferences at EUC-Samples](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md)
 3. Grant Terminal and Workspace ONE Hub PPPC permissions to control MS AutoUpdate. 
   - [See Code Below](#PPPC-for-AutoUpdate)
 
@@ -35,7 +35,7 @@ You have three different options in this scenario:
 * PROS:  No required maintenance, small update sizes, user-centric experience
 * CONS:  Limited control over update frequency (default 12 hours), limited ability to enforce deadlines.
 
-To go this route, there's nothing to really configure here except to deploy the Office apps.   Since AutoUpdate is built in and automatic, you only get [minor customization](https://github.com/vmware-samples/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md) through a Custom Settings payload.
+To go this route, there's nothing to really configure here except to deploy the Office apps.   Since AutoUpdate is built in and automatic, you only get [minor customization](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md) through a Custom Settings payload.
 
 ### Push Update Packages As Internal Apps
 
@@ -45,7 +45,7 @@ To go this route, there's nothing to really configure here except to deploy the 
 In this scenario, you'll want to follow the basic high level steps: 
 
 1. Obtain the full Office installer from Office.com (or [macadmins.software](https://macadmins.software))
-2. Parse the installer with the VMware AirWatch Admin Assistant to generate metadata.plist
+2. Parse the installer with the AirWatch Admin Assistant to generate metadata.plist
 3. Upload both the installer and plist into Workspace ONE UEM
 4. Assign the installel
 

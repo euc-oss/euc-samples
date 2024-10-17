@@ -1,0 +1,51 @@
+{
+  "authentications": {
+    "wsAuth": {
+      "authType": "oauth2",
+      "url": "https://yourcompany.yourdomain.com/SAAS/auth/oauthtoken",
+      "httpMethod": "POST",
+      "httpParams": {
+        "grant_type": "client_credentials",
+        "client_secret": "<<INSERT YOUR CLIENT SECRET HERE>>",
+        "client_id": "<<INSERT YOUR CLIENT ID HERE>>",
+        "scope": "admin"
+      },
+      "httpHeaders": {
+        "contentType": "application/x-www-form-urlencoded",
+        "Accept": "application/json"
+      },
+      "httpContentType": "application/x-www-form-urlencoded",
+      "errorPath": "error",
+      "maxRefreshTryCount": 5,
+      "tokenResponsePath": "access_token",
+      "tokenType": "Bearer",
+      "accessToken": "Bearer placeholder.accesstoken",
+      "retryFailureStatusCode": [
+        401,
+        400,
+        403
+      ]
+    },
+    "emailServiceAuth": {
+      "authType": "Basic",
+      "url": "https://youremailservice.yourdomain.com/yourapipath",
+      "httpMethod": "POST",
+      "httpParams": {},
+      "httpHeaders": {
+        "contentType": "application/json",
+        "Accept": "application/json"
+      },
+      "properties": {
+        "userName": "yourusername",
+        "password": "yourpassword"
+      },
+      "httpContentType": "application/json",
+      "errorPath": "error",
+      "maxRefreshTryCount": 5,
+      "tokenResponsePath": "access_token",
+      "tokenType": "Basic",
+      "accessToken": "Basic xxxxxxxxxxxxxxxxxx",
+      "retryFailureStatusCode": []
+    }
+  }
+}

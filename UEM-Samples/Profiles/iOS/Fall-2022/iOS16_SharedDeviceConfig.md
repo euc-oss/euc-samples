@@ -1,6 +1,6 @@
 # iOS 16 Shared Device Configuration command #
 
-Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/tvOS_Platform/GUID-AWT-CUST-COMMAND.html) prompt in Workspace ONE UEM.
+Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/2011/tvOS_Platform/GUID-AWT-CUST-COMMAND.html) prompt in Workspace ONE UEM.
 
 ```xml
 <dict>

@@ -27,7 +27,7 @@
 
         <!-- Callback from device registration screen -->
         <activity android:name="net.openid.appauth.RedirectUriRegistrationReceiverActivity">
-            <!-- redirect URI for VMware Identity Manager -->
+            <!-- redirect URI for Workspace ONE Access -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 

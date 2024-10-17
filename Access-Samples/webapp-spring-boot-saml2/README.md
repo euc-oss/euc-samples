@@ -1,17 +1,17 @@
-Log in with VMware Identity Manager
+Log in with Workspace ONE Access
 ===================================
 <!-- Summary Start -->
-This demo application shows how to use Spring Boot and the Spring security SAML2 extensions to let a user authenticate with VMware Identity Manager™, using the SAML2 protocol.
+This demo application shows how to use Spring Boot and the Spring security SAML2 extensions to let a user authenticate with Workspace ONE Access™, using the SAML2 protocol.
 <!-- Summary End -->
 This application is based on the [Spring SAML2 Demo application](https://github.com/vdenotaris/spring-boot-security-saml-sample)
-and has been modified to integrate VMware Identity Manager as an identity provider (IdP).
+and has been modified to integrate Workspace ONE Access as an identity provider (IdP).
 
 Building the project
 --------------------
 
 ### Prerequisites
 
--   You need a [VMware Identity Manager](http://www.air-watch.com/vmware-identity-manager-free-trial)
+-   You need a [Workspace ONE Access](http://www.air-watch.com/vmware-identity-manager-free-trial)
     tenant, like https://dev.vmwareidentity.asia, where you have
     **admin** access (if you want to add your own application). You can
     test the application as is, as it is configured by default on an
@@ -45,7 +45,7 @@ You can now select the "SSO Login Page" and the first IdP and click
 ### Configure the Demo Application
 
 If you want to configure the application to log in users from your own
-VMware Identity Manager organization, you need to add and configure that
+Workspace ONE Access organization, you need to add and configure that
 SAML2 application in your Identity Manager catalog.
 
 1.  Edit the local `./src/main/resources/application.properties`
@@ -55,7 +55,7 @@ SAML2 application in your Identity Manager catalog.
     ```
     and run the application: `$ ./gradlew bootRun.`
 
-2.  Login to your VMware Identity Manager organization (https://<your VMware IDM URL>)) as an
+2.  Login to your Workspace ONE Access organization (https://<your VMware IDM URL>)) as an
     administrator
 
 3.  Create a new SAML2 application, by clicking on the `Catalog` tab,
@@ -78,5 +78,5 @@ Then edit the name, description and icon of the application. Click
     application to all users in your system.
 
 You can now log in to your application from http://localhost:8080, and
-you can also launch your application from the VMware Identity Manager
+you can also launch your application from the Workspace ONE Access
 end user catalog.

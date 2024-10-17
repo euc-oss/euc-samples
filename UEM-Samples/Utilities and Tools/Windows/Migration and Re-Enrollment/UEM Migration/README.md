@@ -53,4 +53,4 @@ The script will check for a network connection prior to beginning the enrollment
 
 ## Additional Resources
 * [API Setup Documentation](https://cn135.awmdm.com/api/help/InitialSetup.html)
-* [Command Line Enrollment - How to guide](https://techzone.vmware.com/onboarding-windows-10-using-command-line-enrollment-vmware-workspace-one-operational-tutorial)
+* [Command Line Enrollment - How to guide](https://techzone.omnissa.com/onboarding-windows-10-using-command-line-enrollment-vmware-workspace-one-operational-tutorial)

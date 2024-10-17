@@ -55,7 +55,7 @@ Example:
 
 .\runsample.ps1
 
-Additional details on the concept and use cases to apply this script, check out this blog post on Tech Zone [Automating Keytab Rotation for Identity Bridging on VMware Unified Access Gateway](https://techzone.vmware.com/blog/automating-keytab-rotation-identity-bridging-vmware-unified-access-gateway)
+Additional details on the concept and use cases to apply this script, check out this blog post on Tech Zone [Automating Keytab Rotation for Identity Bridging on Omnissa Unified Access Gateway](https://techzone.omnissa.com/blog/automating-keytab-rotation-identity-bridging-vmware-unified-access-gateway)
 
 
 
@@ -63,5 +63,5 @@ Additional details on the concept and use cases to apply this script, check out 
 
 
 ## Additional Resources
-* [Unified Access Gateway Tech Zone Learning Path](https://techzone.vmware.com/mastering-unified-access-gateway/)
-* [Unified Access Gateway Documentation](https://docs.vmware.com/en/Unified-Access-Gateway/)
+* [Unified Access Gateway Tech Zone Learning Path](https://techzone.omnissa.com/mastering-unified-access-gateway/)
+* [Unified Access Gateway Documentation](https://docs.omnissa.com/en/Unified-Access-Gateway/)

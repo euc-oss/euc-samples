@@ -141,7 +141,7 @@ if ($confirmation -eq 'y')
 	{
 		
 		Write-Host "Downloading autounattend.xml..."
-		Invoke-WebRequest -Uri https://raw.githubusercontent.com/vmware-samples/euc-samples/master/UEM-Samples/Utilities%20and%20Tools/Windows/Windows%2010%20Automated%20Setup%20Media/autounattend.xml -OutFile $USB_Boot\autounattend.xml
+		Invoke-WebRequest -Uri https://raw.githubusercontent.com/euc-oss/euc-samples/master/UEM-Samples/Utilities%20and%20Tools/Windows/Windows%2010%20Automated%20Setup%20Media/autounattend.xml -OutFile $USB_Boot\autounattend.xml
 	}
 	catch
 	{

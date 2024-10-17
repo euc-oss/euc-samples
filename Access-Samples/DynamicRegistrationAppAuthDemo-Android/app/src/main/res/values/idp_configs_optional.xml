@@ -6,14 +6,14 @@
     -->
     <eat-comment />
 
-    <!-- Defines the VMware Identity Manager name displayed on the UI. -->
+    <!-- Defines the Workspace ONE Access name displayed on the UI. -->
     <string name="vmware_name">VMware</string>
 
     <!-- Authorize and token endpoints as defined in the OAUth2.0 specifications. -->
     <string name="vmware_token_endpoint_uri" translatable="false">SAAS/auth/oauthtoken</string>
     <string name="vmware_auth_endpoint_uri" translatable="false">SAAS/auth/oauth2/authorize</string>
 
-    <!-- Use the device register endpoint to dynamically register the device using VMware Identity Manager flow  (VMware specific). -->
+    <!-- Use the device register endpoint to dynamically register the device using Workspace ONE Access flow  (VMware specific). -->
     <string name="vmware_registration_endpoint_uri" translatable="false">SAAS/auth/device/register</string>
     <!-- The activation endpoint (VMware specific) to get the credentials. -->
     <string name="vmware_activation_endpoint_uri" translatable="false">SAAS/API/1.0/REST/oauth2/activate</string>

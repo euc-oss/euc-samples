@@ -6,10 +6,10 @@
     -->
     <eat-comment/>
 
-    <!-- Enables VMware Identity Manager configuration. -->
+    <!-- Enables Workspace ONE Access configuration. -->
     <bool name="vmware_enabled">true</bool>
 
-    <!-- Your VMware Identity Manager organization URL. -->
+    <!-- Your Workspace ONE Access organization URL. -->
     <string name="vmware_url" translatable="false">https://dev.vmwareidentity.asia</string>
 
     <!-- The information below must match the template information defined in the admin interface. -->

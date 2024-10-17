@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eubm/vB+wQIMLA9O89ZPvp1ttaZ96zcd6cZvTXPxeckjmrchG9qOqhnHTnNU/eKzZ/zGzAoPsW9wZy3W4UEeGQ==",
+  "dgSpecHash": "GlBgJLmTOuccBdRpFwjLCF8SRyi7zlWyfmXC5bEXWNKfXF4hLQ05i7FwQ/gTmxdWaXzscWsoquA7tChm17YUkw==",
   "success": true,
-  "projectFilePath": "/Users/helmlingp/euc-dev/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
+  "projectFilePath": "/Users/helmlingp/euc-oss/euc-samples/UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/APIEventNotification.csproj",
   "expectedPackageFiles": [
     "/Users/helmlingp/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/helmlingp/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",

@@ -6,11 +6,11 @@
   .NOTES
     Created:   	    January, 2021
     Created by:	    Josue Negron, jnegron@vmware.com
-    Contributors:   Chris Halstead, chealstead@vmware.com; Phil Helmling, helmlingp@vmware.com
+    Contributors:   Chris Halstead, Omnissa; Phil Helmling, Omnissa
     Organization:   VMware, Inc.
     Filename:       import_script_samples.ps1
     Updated:        May, 2023, helmlingp@vmware.com
-    Github:         https://github.com/vmware-samples/euc-samples/tree/master/UEM-Samples/Scripts
+    Github:         https://github.com/euc-oss/euc-samples/tree/master/UEM-Samples/Scripts
 
   .DESCRIPTION
     Place this PowerShell script in the same directory of all of your samples (.ps1, .sh, .zsh, .py files) or use the -ScriptsDirectory parameter to 

@@ -29,8 +29,8 @@
 			powershell -executionpolicy bypass -file Re-enroll-ws1.ps1 -Server company.awmdm.com -LGName Prod -UPN staging@prod.com -Password 11111
 		If deployment as an SCCM Package
 			%WINDIR%\Sysnative\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -file .\Re-enroll-ws1.ps1 -Server company.awmdm.com -LGName Prod -UPN staging@prod.com -Password 11111
-        Full Command line options for airwatchagent.msi: https://docs.vmware.com/en/VMware-AirWatch/9.3/vmware-airwatch-guides-93/GUID-AW93-Enroll_SilentCommands.html
-		Complete Onboarding Windows 10 devices using CLI guide: https://techzone.vmware.com/onboarding-windows-10-using-command-line-enrollment-vmware-workspace-one-operational-tutorial
+        Full Command line options for airwatchagent.msi: https://docs.omnissa.com/en/VMware-AirWatch/9.3/vmware-airwatch-guides-93/GUID-AW93-Enroll_SilentCommands.html
+		Complete Onboarding Windows 10 devices using CLI guide: https://techzone.omnissa.com/onboarding-windows-10-using-command-line-enrollment-vmware-workspace-one-operational-tutorial
 
 #>
 

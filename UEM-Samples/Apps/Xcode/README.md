@@ -3,7 +3,7 @@
 ## Overview
 
 - **Authors**: Robert Terakedis
-- **Email**: rterakedis@vmware.com
+- **Email**: rterakedis@omnissa.com
 - **Date Created**: 07/27/2021
 
 <!-- Summary Start -->

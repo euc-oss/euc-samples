@@ -49,7 +49,7 @@ cat << EOF > /Applications/Firefox.app/Contents/Resources/distribution/policies.
         "Bookmarks": [
             {"Title": "VMware TechZone",
              "URL": "https://techzone.vmware.com",
-             "Favicon": "https://techzone.vmware.com/favicon.ico",
+             "Favicon": "https://techzone.omnissa.com/favicon.ico",
              "Placement": "toolbar",
              "Folder": "Bookmarks"
             }

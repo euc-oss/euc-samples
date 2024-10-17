@@ -37,7 +37,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Tests of the calls to perform VMware Identity Manager mobile dynamic registration.
+ * Tests of the calls to perform Workspace ONE Access mobile dynamic registration.
  * Based on @{link AuthorizationServiceTest}.
  */
 @RunWith(RobolectricGradleTestRunner.class)

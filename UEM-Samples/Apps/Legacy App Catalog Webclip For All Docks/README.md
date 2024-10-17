@@ -52,7 +52,7 @@ To deploy this package via **macOS Software Distribution**, upload the .pkg file
 
 To deploy this package via **Product Provisioning**, create a macOS File/Action to drop the pkg in a file location, and then use the `Install` action to install it. Requires AW 8.4+ and Agent 2.2+
 
-If signed, this pkg can be distributed through **Bootstrap Package** feature. [See more info here](https://github.com/vmwaresamples/AirWatch-samples/tree/master/macOS-Samples/BootstrapPackage). Requires AW 9.2+
+If signed, this pkg can be distributed through **Bootstrap Package** feature. [See more info here](https://github.com/euc-oss/euc-samples/tree/master/macOS-Samples/BootstrapPackage). Requires AW 9.2+
 
 
 

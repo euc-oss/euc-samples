@@ -9,7 +9,12 @@ Version 1.0
 Gets information on Instant Clone Pool VMs. Returns information on Horizon Instant Clone pool VMs, including space consumed, and hierarchy of Parent, Replica, Template, Snapshot, and Master. Identifies VMs that are potentially orphaned/abandoned by Horizon. Array of VM objects containing data on their associated IC VMs and a status.
 <!-- Summary End -->
 ## Requirements
+<<<<<<< Updated upstream
 PowerCLI, Omnissa.Horizon.Helper ,and Powershell 5. Omnissa.Horizon.Helper module is not yet supported in Powershell Core
+=======
+PowerCLI, Omnissa.Hv.Helper ,and Powershell 5. Omnissa.Hv.Helper module is not yet supported in Powershell Core
+For instructions on installing Omnissa.Hv.Helper, see https://blogs.omnissa.com/euc/2020/01/vmware-horizon-7-powercli.html
+>>>>>>> Stashed changes
 
 ## Usage
 Load function in order to call function  

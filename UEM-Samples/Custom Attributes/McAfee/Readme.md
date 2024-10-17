@@ -2,7 +2,7 @@
 
 ## Overview
 - **Authors**: Robert Terakedis, John Richards
-- **Email**: rterakedis@vmware.com, jrichards@vmware.com
+- **Email**: rterakedis@omnissa.com, jrichards@vmware.com
 - **Date Created**: 6/8/2017
 - **Supported Platforms**: AirWatch version 9.0+
 - **Tested on macOS Versions**: macOS El Capitan, macOS Sierra

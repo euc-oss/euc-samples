@@ -1,6 +1,6 @@
 # iOS 16 ACME Certificate profile #
 
-Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Settings payload](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/iOS_Platform/GUID-AWT-PROFILECUSTOMSETTS.html) in Workspace ONE UEM. *Note that the payload must be configured with a valid ACME server that supports the following [draft RFC](https://datatracker.ietf.org/doc/draft-bweeks-acme-device-attest/).*
+Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Settings payload](https://docs.omnissa.com/en/VMware-Workspace-ONE-UEM/2011/iOS_Platform/GUID-AWT-PROFILECUSTOMSETTS.html) in Workspace ONE UEM. *Note that the payload must be configured with a valid ACME server that supports the following [draft RFC](https://datatracker.ietf.org/doc/draft-bweeks-acme-device-attest/).*
 
 ```xml
 <dict>

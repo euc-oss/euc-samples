@@ -1,4 +1,4 @@
-* **Author Name:**  Robert Terakedis (rterakedis@vmware.com)
+* **Author Name:**  Robert Terakedis (rterakedis@omnissa.com)
 * **Date:**  11/30/2016 
 * **Updated:** 10/2/2018 
 * **Minimal/High Level Description:**    Custom XML Payloads to customize the Microsoft Office 2016/2019 Experience.  Paste each individual section into a separate Custom XML payload.  Adapted from information available at https://docs.google.com/spreadsheets/d/1ESX5td0y0OP3jdzZ-C2SItm-TUi-iA_bcHCBvaoCumw/edit#gid=0

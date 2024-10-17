@@ -3,7 +3,7 @@
 ## Overview
 
 - **Author(s)**: Robert Terakedis
-- **Email(s)**: rterakedis@vmware.com
+- **Email(s)**: rterakedis@Omnissa.com
 - **Date Created**: 11/8/2018
 - **Supported Platforms**: Workspace ONE UEM version 1810
 - **Tested on macOS Versions**: macOS Mojave (10.14+)
@@ -21,9 +21,9 @@
 
 ## Purpose
 
-With macOS Mojave, User Consent for Data Access can be managed via MDM through the "Privacy Preferences Policy Control" (PPPC) payload.  The settings established through the PPPC payload affect the Transparency Consent and Control (TCC) database, allowing administrators to grant consent to data on behalf of the user for User-Approved MDM enrollments.  More details about User Consent for Data Access can be found on [VMware's TechZone](https://techzone.vmware.com/blog/vmware-workspace-one-uem-apple-macos-mojave-user-consent-data-access)
+With macOS Mojave, User Consent for Data Access can be managed via MDM through the "Privacy Preferences Policy Control" (PPPC) payload.  The settings established through the PPPC payload affect the Transparency Consent and Control (TCC) database, allowing administrators to grant consent to data on behalf of the user for User-Approved MDM enrollments.  More details about User Consent for Data Access can be found on [Omnissa's TechZone](https://techzone.omnissa.com/blog/Omnissa-workspace-one-uem-apple-macos-mojave-user-consent-data-access)
 
-Since it's introduction in the macOS Mojave betas, a number of resources have emerged on the Internet aimed at helping macOS admins discover and track the various PPPC rules they may need in their environment.   The goal of this VMware Sample is to bring together those various resources into a single reference point.
+Since it's introduction in the macOS Mojave betas, a number of resources have emerged on the Internet aimed at helping macOS admins discover and track the various PPPC rules they may need in their environment.   The goal of this Omnissa Sample is to bring together those various resources into a single reference point.
 
 > **Please feel free to send us pull requests for updates and add any TCC whitelists for apps that you've discovered!**
 
@@ -33,7 +33,7 @@ The following outlines some basic, high-level steps to help you determine what P
 
 ### Testing Methodology
 
-1. Start with a clean/fresh installation of macOS Mojave (such as a VMware Fusion VM freshly installed with a snapshot taken)
+1. Start with a clean/fresh installation of macOS Mojave (such as a Omnissa Fusion VM freshly installed with a snapshot taken)
 2. Install the software you need to verify and use the software for common workflows
 3. Note the permission requests that pop up and the type of permissions required (User data, Accessibility, Apple Events, etc)
 4. If necessary, you can run the following commands to help discover the requested permissions from the Unified Log:
@@ -93,9 +93,9 @@ The following list of binaries should be common for most admins leveraging UEM a
 | **Allow Terminal.app relevant permissions for access and Eventing** | `com.apple.Terminal` (bundle ID) | `identifier “com.apple.Terminal” and anchor apple` | <ul><li>SystemPolicyAllFiles</li><li>Accessibility</li><li>SysAdminFiles</li></ul> | <ul><li>`com.apple.systemuiserver` (bundle id) ++ `identifier “com.apple.systemuiserver” and anchor apple`</li><li>`com.apple.systemevents` (bundle id) ++ `identifier “com.apple.systemevents” and anchor apple`</ul> |
 | **Allow AppleEvents control for osascript (AppleScript)** | `/usr/bin/osascript` (path) | `identifier “com.apple.osascript” and anchor apple` | <ul><li>None</li></ul> | <ul><li>`com.apple.systemuiserver` (bundle id) ++ `identifier “com.apple.systemuiserver” and anchor apple`</li><li>`com.apple.systemevents` (bundle id) ++ `identifier “com.apple.systemevents” and anchor apple`</li><li>`com.apple.finder` (bundle id) ++ `identifier “com.apple.finder” and anchor apple`</li><li>`com.microsoft.Outlook` (bundle id) ++ `identifier "com.microsoft.Outlook" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = UBF8T346G9`</li></ul> |
 | **Allow Events and Access for Installer** | `/usr/bin/installer` (path) | `identifier “com.apple.installer” and anchor apple` | <ul><li>SysAdminFiles</li></ul> | <ul><li>`com.apple.systemevents` (bundle id) ++ `identifier “com.apple.systemevents” and anchor apple`</li></ul> |
-| **VMware Horizon Client** | `com.vmware.horizon` (bundle ID)| `identifier "com.vmware.horizon" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
-| **VMware Fusion 11 (1 of 2)** | `com.vmware.fusion` (bundle ID) | `identifier "com.vmware.fusion" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
-| **VMware Fusion 11 (2 of 2)** | `com.vmware.vmware-vmx` (bundle ID) | `identifier "com.vmware.vmware-vmx" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
+| **Omnissa Horizon Client** | `com.Omnissa.horizon` (bundle ID)| `identifier "com.Omnissa.horizon" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
+| **Omnissa Fusion 11 (1 of 2)** | `com.Omnissa.fusion` (bundle ID) | `identifier "com.Omnissa.fusion" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
+| **Omnissa Fusion 11 (2 of 2)** | `com.Omnissa.Omnissa-vmx` (bundle ID) | `identifier "com.Omnissa.Omnissa-vmx" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
 | **Adobe Photoshop** | `com.adobe.Photoshop` (bundle ID) | `identifier "com.adobe.Photoshop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JQ525L2MZD` | <ul><li>Accessibility</li></ul> | ------------------------------------------ |
 | **Bomgar SCC** | `com.bomgar.bomgar-scc` (bundle ID) | `identifier "com.bomgar.bomgar-scc" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = B65TM49E24` | <ul><li>Accessibility</li><li>PostEvent</li></ul> | <ul><li>`com.apple.systemevents` (bundle id) ++ `identifier “com.apple.systemevents” and anchor apple`</li></ul> |
 | **Citrix Receiver (1 of 2)** | `com.citrix.receiver.nomas` (bundle ID) | `anchor apple generic and identifier "com.citrix.receiver.nomas" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = S272Y5R93J)` | <ul><li>Accessibility</li></ul> | <ul><li>`com.apple.systempreferences` (bundle ID) ++ `identifier "com.apple.systempreferences" and anchor apple`</li><li>`com.citrix.XenAppViewer` (bundle ID) ++ `identifier "com.citrix.XenAppViewer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = S272Y5R93J`</li><li>`com.citrix.CitrixReceiverLauncher` (bundle ID) ++ `anchor apple generic and identifier "com.citrix.CitrixReceiverLauncher" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = S272Y5R93J)`</li><li>`com.apple.systemuiserver` (bundle id) ++ `identifier “com.apple.systemuiserver” and anchor apple`</li><li>`com.apple.systemevents` (bundle id) ++ `identifier “com.apple.systemevents” and anchor apple`</li><li>`com.apple.finder` (bundle id) ++ `identifier “com.apple.finder” and anchor apple`</li></ul> |
@@ -123,7 +123,7 @@ More binaries can be found at the following community pages:
 
 ## Additional Resources
 
-- [Workspace ONE UEM and User Consent for Data Access](https://techzone.vmware.com/blog/vmware-workspace-one-uem-apple-macos-mojave-user-consent-data-access)
+- [Workspace ONE UEM and User Consent for Data Access](https://techzone.omnissa.com/blog/Omnissa-workspace-one-uem-apple-macos-mojave-user-consent-data-access)
 - [Diagnosing Privacy Protection Problems in Catalina](https://eclecticlight.co/2020/01/07/diagnosing-privacy-protection-problems-in-catalina/)
 - [Helping your users reset TCC Privacy Policy Decisions](https://www.macblog.org/post/reset-tcc-privacy/)
 - [Carl Ashley's `tccprofile` project](https://github.com/carlashley/tccprofile)

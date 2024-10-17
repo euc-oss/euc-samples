@@ -9,8 +9,8 @@
 - **Email**: mzaske@vmware.com
 - **Date Created**: 7/22/2022
 - **Supported Platforms**:
-    - VMware Workspace ONE UEM (22.10+) with Freestyle Workflow Engine (Scripts engine required)
-    - VMware Workspace ONE Intelligent Hub for macOS (22.12+)
+    - Workspace ONE UEM (22.10+) with Freestyle Workflow Engine (Scripts engine required)
+    - Workspace ONE Intelligent Hub for macOS (22.12+)
 - **Tested on macOS Versions**: macOS 11+ (Intel and Apple Silicon CPU)
 
 ## Purpose
@@ -37,7 +37,7 @@ Read more to find out how to deploy this solution using Workspace ONE UEM.
 ## Prerequisites for mUU
 - macOS Version 11.0 (Big Sur) or higher recommended. This tool has not been tested on anything previous to Big Sur.
 - Intelligent Hub for macOS v22.12 or higher
-- UEM v22.10 or higher with Freestyle Orchestrator is recommended in order to utilize "Scripts" engine. See more information here: https://kb.vmware.com/s/article/81163
+- UEM v22.10 or higher with Freestyle Orchestrator is recommended in order to utilize "Scripts" engine. See more information here: https://kb.omnissa.com/s/article/81163
 
 #### ~~API Credentials~~
 No longer required with revision 13. The tool now utilizes hubCLI to make the request to Workspace ONE. 

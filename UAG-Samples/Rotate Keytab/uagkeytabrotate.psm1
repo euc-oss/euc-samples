@@ -99,7 +99,7 @@ function Connect-UAG { param([Parameter(Mandatory=$true)][string] $username,
     $systemapi = (Get-BaseUrl) + "config/system" 
 
     try {
-      LogInfo "Authenticating against VMware Unified Access Gateway"
+      LogInfo "Authenticating against Unified Access Gateway"
       $response = Invoke-RestMethod -Uri $systemapi -Headers (Get-AuthHeader) -Method Get 
       
       LogSuccess ("Connected to " + $response.uagName)
@@ -131,7 +131,7 @@ function Import-KeyTab { param([string] $keytabfile, [string] $principalname)
   try
   {
     PutAPICall "config/kerberos/keytab" $body
-    LogSuccess "KeyTab uploaded to VMware Unfied Access Gateway"
+    LogSuccess "KeyTab uploaded to Unfied Access Gateway"
   } 
   catch {
     LogError "Erro importing KeyTab", $_.Exception.Message

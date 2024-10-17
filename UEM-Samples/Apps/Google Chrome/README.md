@@ -3,7 +3,7 @@
 ## Overview
 
 - **Authors**: Robert Terakedis, John Richards, Adam Matthews
-- **Email**: rterakedis@vmware.com, jrichards@vmware.com
+- **Email**: rterakedis@omnissa.com, jrichards@vmware.com
 - **Date Created**: 4/17/2018
 - **Supported Platforms**: AirWatch version 9.3
 - **Tested on macOS Versions**: macOS High Sierra
@@ -17,7 +17,7 @@ Manage Google Chrome Settings as Supported by Google via Workspace ONE:
 3) The Custom XML file in this folder is derived from the *com.google.Chrome.plist* file in the Enterprise Bundle (GoogleChromeEnterpriseBundle64/Configuration/com.google.Chrome.plist).  Review and modify as needed for your organization as based on the Chrome Policy List
 4) Deploy the Chrome Browser for Enterprise app in order to leverage the policies configured in the preferences (via Custom XML)
 
-## Notes Regarding VMware Identity Manager Cert-based Authentication
+## Notes Regarding Workspace ONE Access Cert-based Authentication
 
 To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Identity Manager Instance:
 
