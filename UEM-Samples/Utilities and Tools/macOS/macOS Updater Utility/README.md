@@ -147,5 +147,9 @@ Here is a breakdown of the keys and their meaning:
         -  macOS Sonoma logic
 - 2023-10-17: Revision 13.1:
     - Fix for displaying deadline date on user prompt screen
-- 2023-10-17: Revision 13.2:
+- 2024-5-14: Revision 13.2:
     - Fix for users not being prompted on major upgrades
+- 2024-10-17: Revision 14:
+    - Added support for macOS Sequoia
+    - Additional fix for users not being prompted on major upgrades
+    - Enhanced logic to reset counters (deferrals or deadline timer) on mUU profile reinstallation
