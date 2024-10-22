@@ -6,7 +6,7 @@
 # Developed by: Matt Zaske, Leon Letto and others
 # July 2022
 #
-# revision 14 (October 14, 2024)
+# revision 14.1 (October 18, 2024)
 #
 # macOS Updater Utility (mUU):
 # Designed to keep macOS devices on the desired OS version
@@ -488,7 +488,6 @@ uuid=$(ioreg -c IOPlatformExpertDevice -d 2 | awk -F\" '/IOPlatformUUID/{print $
 #convert version number to individual
 function version { echo "$@" | /usr/bin/awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; }
 
-
 # Logging Function for reporting actions
 log() {
     DATE=$(date +%Y-%m-%d\ %H:%M:%S)
@@ -571,7 +570,7 @@ getProductKey() {
 
       if [ "$desiredProductKey" = "" ]; then
           log_info "No product key found, kickstarting softwareupdate and will retry on the next run"
-          sudo launchctl kickstart -k system/com.apple.softwareupdated
+          defaults delete /Library/Preferences/com.apple.Softwareupdate.plist > /dev/null 2>&1
       fi
     else
         # osBuild=$(/usr/bin/plutil -p /Library/Updates/ProductMetadata.plist | /usr/bin/grep -w -B 1 "$desiredOS" | /usr/bin/awk 'NR==1{print $3}' | /usr/bin/tr -d '"')
@@ -601,7 +600,7 @@ getProductKey() {
             osBuild=$(/usr/bin/plutil -p /Library/Updates/ProductMetadata.plist | /usr/bin/grep -w -B 1 "$desiredOS" | /usr/bin/awk 'NR==1{print $3}' | /usr/bin/tr -d '"')
             desiredProductKey="MSU_UPDATE_"$osBuild"_patch_"$desiredOS
             log_info "product created for $updateVersion: $desiredProductKey"
-            sudo launchctl kickstart -k system/com.apple.softwareupdated
+            defaults delete /Library/Preferences/com.apple.Softwareupdate.plist > /dev/null 2>&1
         fi
     fi
     echo "$desiredProductKey"
@@ -1047,7 +1046,7 @@ log_to_screen false
 
 log_info "===== Launching macOS Updater Utility $(date)============"
 #log "===== Launching macOS Updater Utility ====="
-log_info "  --- Revision 14 ---  "
+log_info "  --- Revision 14.1 ---  "
 
 
 #Setup ManagePlist
@@ -1257,10 +1256,6 @@ if [[ "$downloadCheck" = "no" ]]; then
         #having trouble downloading installer - restart softwareupdate
         log_info "Failed to download update previously - restarting SUS"
         defaults delete /Library/Preferences/com.apple.Softwareupdate.plist > /dev/null 2>&1
-        launchctl kickstart -k system/com.apple.softwareupdated
-        sleep 10
-        launchctl kickstart -k system/com.apple.mobile.softwareupdated
-        sleep 10
     fi
     #differentiate between major and minor
     if [[ "$updateType" = "major" ]]; then

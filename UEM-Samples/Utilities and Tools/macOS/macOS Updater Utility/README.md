@@ -50,7 +50,7 @@ No longer required with revision 13. The tool now utilizes hubCLI to make the re
 4. On the "Details" tab you will do the following:
     1. Leave the "Language" as Bash and "Execution Context" as System
     2. The timeout will need to be set to 30 seconds longer than "promptTimer" which is explained in the [Profile](#profile) section below
-    3. Upload or copy/paste the contents of the `macOSupdater.sh` [file](https://github.com/mzaske3/euc-samples/blob/master/UEM-Samples/Utilities%20and%20Tools/macOS/macOS%20Updater%20Utility/macOSupdater.sh)
+    3. Upload or copy/paste the contents of the `macOSupdater.sh` [file](https://github.com/euc-oss/euc-samples/blob/631a8b41efe1f7f2127192424a07bcdf3f3285fc/UEM-Samples/Utilities%20and%20Tools/macOS/macOS%20Updater%20Utility/macOSupdater.sh)
 5. After selecting "Next" you will see the "Variables" screen. There is nothing you need to configre here (new in revision 13).
 6. Then select "Save" and you will be taken back to the Scripts List View. Here you will select the bubble the left of your Script and select "Assign"
 7. Selct "New Assignement" and fill in the "Definition" tab as needed. Ensure to scope the assignment to only devices intended to upgrade using proper smart group.
@@ -64,7 +64,7 @@ The behavior the end user experiences is controlled by a configuration profile t
 1. Click **Add > Profile > macOS > Device** and complete the General information
     1. Ideally you would assign this profile to the same smart group that you assigned the Script to.
 2. Select the "Custom Settings" payload and select "Add" or "Configure"
-3. Paste in the XML content from the `macOSupdaterSettings.xml` [file](https://github.com/mzaske3/euc-samples/blob/master/UEM-Samples/Utilities%20and%20Tools/macOS/macOS%20Updater%20Utility/macOSupdaterSettings.xml)
+3. Paste in the XML content from the `macOSupdaterSettings.xml` [file](https://github.com/euc-oss/euc-samples/blob/631a8b41efe1f7f2127192424a07bcdf3f3285fc/UEM-Samples/Utilities%20and%20Tools/macOS/macOS%20Updater%20Utility/macOSupdaterSettings.xml)
     1. Make any modifications as you see fit to the customizable options shown below.
 4. Save and Publish the profile once completed.
 
@@ -153,3 +153,5 @@ Here is a breakdown of the keys and their meaning:
     - Added support for macOS Sequoia
     - Additional fix for users not being prompted on major upgrades
     - Enhanced logic to reset counters (deferrals or deadline timer) on mUU profile reinstallation
+- 2024-10-21: Revision 14.1:
+    - Syntax fix for cleaning up softwareupdated
