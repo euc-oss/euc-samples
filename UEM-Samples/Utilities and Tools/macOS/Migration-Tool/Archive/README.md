@@ -1,5 +1,7 @@
 # Safepassage to Workspace ONE UEM for macOS
-
+<!-- Summary Start -->
+This Tools is deprecated.
+<!-- Summary End -->
 This tool is designed to be flexible to fit many different use cases and enrollment requirements. There is no default mode, so you must understand how the tool works in order to configure it for your needs.
 
 This tool is designed to work with DEPNotify for an easy-to-configure UI. Understanding the many capabilities of DEPNotify and how to configure it is highly recommended to create a great migration experience.

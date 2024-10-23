@@ -17,7 +17,9 @@
    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Purpose
+<!-- Summary Start -->
 These Workspace ONE Sensor samples contain PowerShell, BASH and Shell scripts that can be used in a **Resources > Sensors** payload to report back information about the Windows, macOS or Linux device back to Workspace ONE.
+<!-- Summary End -->
 
 ## Description 
 There are Sensor samples, templates, and a script `import_sensor_samples.ps1` to populate your environment with all of the samples.

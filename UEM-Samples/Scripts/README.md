@@ -9,7 +9,9 @@
 - **Tested on**: Windows 10 Pro/Enterprise 20H2+
 
 ## Purpose
+<!-- Summary Start -->
 These Workspace ONE Script samples contain command lines or scripts that can be used in a **Resources > Scripts** payload to execute commands on managed Windows 10 or macOS devices and report execution status back to Workspace ONE.
+<!-- Summary End -->
 
 ## Description 
 There are Script samples, templates, and a script `import_script_samples.ps1` to populate your environment with all of the samples.    
