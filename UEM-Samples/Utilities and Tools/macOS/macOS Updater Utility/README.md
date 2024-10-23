@@ -155,3 +155,5 @@ Here is a breakdown of the keys and their meaning:
     - Enhanced logic to reset counters (deferrals or deadline timer) on mUU profile reinstallation
 - 2024-10-21: Revision 14.1:
     - Syntax fix for cleaning up softwareupdated
+- 2024-10-22: Revision 14.2:
+    - Bug fix for upgrade from rev13 to 14
