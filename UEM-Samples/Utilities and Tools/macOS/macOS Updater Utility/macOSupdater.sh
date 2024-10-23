@@ -6,7 +6,7 @@
 # Developed by: Matt Zaske, Leon Letto and others
 # July 2022
 #
-# revision 14.1 (October 18, 2024)
+# revision 14.2 (October 22, 2024)
 #
 # macOS Updater Utility (mUU):
 # Designed to keep macOS devices on the desired OS version
@@ -1046,7 +1046,7 @@ log_to_screen false
 
 log_info "===== Launching macOS Updater Utility $(date)============"
 #log "===== Launching macOS Updater Utility ====="
-log_info "  --- Revision 14.1 ---  "
+log_info "  --- Revision 14.2 ---  "
 
 
 #Setup ManagePlist
@@ -1186,7 +1186,7 @@ else
     #check if updated from last run
     log_info "Checking if mUU Profile has been updated"
     #read hash value from counter
-    currentHash=$(/usr/libexec/PlistBuddy -c "Print :profileHash" "$counterFile")
+    currentHash=$(/usr/libexec/PlistBuddy -c "Print :profileHash" "$counterFile" 2>/dev/null || :)
     #compare hash values
     if [[ "$currentHash" == $"$mUUhash" ]]; then
         log_info "Profile unchanged - proceeding"
