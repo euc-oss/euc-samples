@@ -6,7 +6,7 @@
 # Developed by: Matt Zaske, Leon Letto and others
 # July 2022
 #
-# revision 14.2 (October 22, 2024)
+# revision 14.3 (October 31, 2024)
 #
 # macOS Updater Utility (mUU):
 # Designed to keep macOS devices on the desired OS version
@@ -1046,7 +1046,7 @@ log_to_screen false
 
 log_info "===== Launching macOS Updater Utility $(date)============"
 #log "===== Launching macOS Updater Utility ====="
-log_info "  --- Revision 14.2 ---  "
+log_info "  --- Revision 14.3 ---  "
 
 
 #Setup ManagePlist
@@ -1111,7 +1111,7 @@ if [[ "$desiredOS" == "latest" ]]; then
   /usr/bin/curl "https://gdmf.apple.com/v2/pmv" -o "/private/var/macOSupdater/appleOS.json"
   /usr/bin/plutil -convert xml1 "/private/var/macOSupdater/appleOS.json" -o "/private/var/macOSupdater/OS.plist"
   currentMajor=$(echo $currentOS | /usr/bin/cut -f1 -d ".")
-  desiredOS=$(/usr/libexec/PlistBuddy -c "Print :PublicAssetSets:macOS" "/private/var/macOSupdater/OS.plist" | /usr/bin/grep "ProductVersion = $currentMajor" | /usr/bin/awk '{print $3}')
+  desiredOS=$(/usr/libexec/PlistBuddy -c "Print :PublicAssetSets:macOS" "/private/var/macOSupdater/OS.plist" | /usr/bin/grep -m1 "ProductVersion = $currentMajor" | /usr/bin/awk '{print $3}')
   log_info "latest mode - desiredOS set to: $desiredOS"
 #check if RSR is being requested
 elif [[ "${desiredOS: -1}" == ")" ]]; then
