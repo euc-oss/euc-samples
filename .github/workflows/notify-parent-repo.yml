@@ -1,0 +1,31 @@
+name: Notify parent repo of submodule updates
+
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          repository: ${{ secrets.PARENT_ORG }}/${{ secrets.PARENT_REPO }}
+          token: ${{ secrets.PRIVATE_TOKEN }}
+          submodules: true
+
+      - name: Pull and recursively update submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote
+
+      - name: Commit submodule updates
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions - update submodules"
+          git add --all
+          git commit -m "Update submodules, triggered by ${GITHUB_REPOSITORY}" || echo "No changes to commit"
+          git push
