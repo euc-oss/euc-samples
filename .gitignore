@@ -12,3 +12,7 @@ IntelligenceSDK-Samples/AppAnalytics-Sample-App/iOS/OptimizationProfiles/
 API-Samples/CODE1458U API Samples/.vscode/launch.json
 bin
 obj
+UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/APIEventNotification.csproj.nuget.dgspec.json
+UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/APIEventNotification.csproj.nuget.g.props
+UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/project.assets.json
+UEM-Samples/Utilities and Tools/Generic/UEM API Event Notifications/APIEventNotification/obj/project.nuget.cache
