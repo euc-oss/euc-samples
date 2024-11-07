@@ -8,9 +8,9 @@
 
 
 ## Purpose
-
+<!-- Summary Start -->
 Workspace ONE Intelligence Automation provides the ability for you to use your own API services in addition to the out-of-the box connectors.  You can easily add any REST API service as a Custom Connector by importing Postman Collections.
-
+<!-- Summary End -->
 Included in this repository is a list of Postman Collection samples that can be immediately imported into Intelligence and used in Automation workflows, with the added benefit of demonstrating how you can create Collections with your own REST API enabled services.
 
 * VMware Carbon Black - perform device quarantine action

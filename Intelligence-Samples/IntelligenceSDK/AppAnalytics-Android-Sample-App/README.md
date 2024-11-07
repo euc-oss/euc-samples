@@ -9,7 +9,7 @@
 
 ## Purpose
 <!-- Summary Start -->
-This sample includes the complete source code of an iOS sample app that integrates with Workspace ONE Intelligence SDK (previously Apteligent SDK).
+This sample includes the complete source code of an Android sample app that integrates with Workspace ONE Intelligence SDK (previously Apteligent SDK).
 <!-- Summary End -->
 The app allows the user to generate App Loads, User Flows, Network Insight, Crash and Exception Handled events, which will be sent to Workspace ONE Intelligence and Apteligent Console based on the AppID configured to deploy the app.
 
@@ -21,8 +21,6 @@ In order to compile this app the following requirements are needed:
 
 1. Android Studio 3.3+
 2. Workspace ONE Intelligence SDK jar file
-
-
 
 ## How to compile the App and execute
 
