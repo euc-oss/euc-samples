@@ -8,7 +8,6 @@ hide:
 
 ## Code Samples
 
-
 This is an index of Code Samples within the App-Volumes-Samples area.
 
 ## App Volumes Samples

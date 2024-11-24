@@ -33,10 +33,10 @@ It is therefore important that when contributing samples, that the appropriate t
 
 ## Sample Indexes 
 
-* [Workspace ONE Access Samples](./Access-Samples/index.md)
+* [Omnissa Access Samples](./Access-Samples/index.md)
 * [App Volumes Samples](./App-Volumes-Samples/index.md)
 * [Horizon Samples](./Horizon-Samples/index.md)
-* [Workspace ONE Intelligence Samples](./Intelligence-Samples/index.md)
+* [Omnissa Intelligence Samples](./Intelligence-Samples/index.md)
 * [Unified Access Gateway Samples](./UAG-Samples/index.md)
 * [Workspace ONE UEM Samples](./UEM-Samples/index.md)
 * [Workspace ONE UEM Scripts Samples](./UEM-Samples/scripts-index.md)
