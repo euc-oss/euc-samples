@@ -3,6 +3,7 @@ In Workspace ONE UEM console, create a custom profile and paste the below code i
 
 Configuration reference: https://learn.microsoft.com/en-us/deployoffice/mac/set-preference-macro-security-office-for-mac
 
+```
 <dict>
 	<key>PayloadDisplayName</key>
 	<string>Microsoft Office settings</string>
@@ -19,3 +20,4 @@ Configuration reference: https://learn.microsoft.com/en-us/deployoffice/mac/set-
 	<key>VisualBasicMacroExecutionState</key>
 	<string>DisabledWithoutWarnings</string>
 </dict>
+```
