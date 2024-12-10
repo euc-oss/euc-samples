@@ -1,0 +1,53 @@
+{
+    "admin" : {
+        "refresh_token" : "",
+        "provider_name" : "",
+        "org_id" : "",
+        "edge_name": "",
+        "edge_fqdn": "",
+        "location": {
+            "city" : "",
+            "state" : "",
+            "country" : ""
+        }
+    },
+    "connection_server" : {
+        "connection_server_url": "",
+        "connection_server_username": "",
+        "connection_server_password" : "",
+        "connection_server_domain": ""
+    },
+    "azure" : {
+        "credentials" : {
+            "client_id" : "",
+            "client_secret" : "",
+            "tenant_id" : "",
+            "subscription_id" : ""
+        },
+        "region" : "",
+        "network" : {
+            "virtual_network" : "",
+            "subnet" : "",
+            "resource_group" : ""
+        },
+        "storage_container" : {
+            "storage_account": "",
+            "container" : "",
+            "resource_group" : ""
+        },
+        "image" : {
+            "name" : "",
+            "resource_group" : ""
+        },
+        "vm" : {
+            "managed_disk_type" : "",
+            "resource_group" : "",
+            "vm_size" : "",
+            "private_ip_address" : "",
+            "credentials" : {
+                "admin_username" : "ccadmin",
+                "admin_password" : ""
+            }
+        }
+    }
+}
