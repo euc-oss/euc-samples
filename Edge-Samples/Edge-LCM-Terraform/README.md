@@ -58,20 +58,24 @@ Change to the Edge-LCM-Terraform/provider/azure directory:
     
 ### 2. Initialize Terraform: 
 Run the following command to initialize Terraform:
-    
 
+    ```sh
     terraform init 
+    ```
 
 ### 3. Run Terraform Plan:
 Execute the terraform plan command. Make sure to pass the operation as "create" and specify the path to the updated azure-config.json file using the config_file variable:
- 
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/env1_config.json"
- 
+
+    ```sh 
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/azure-config.json"
+    ```
 
 ### 4. Run Terraform Apply:
 Run the terraform apply command with the same configuration as used in the plan step:
  
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/env1_config.json"
+    ```sh
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/azure-config.json"
+    ```
  
 The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
 
