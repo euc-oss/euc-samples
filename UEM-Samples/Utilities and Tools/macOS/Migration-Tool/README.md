@@ -1,4 +1,7 @@
 # Migrate macOS Devices to Workspace ONE UEM
+<p align="center">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/1b21eee2-a395-4712-9d42-6c4d554d7c58" />
+</p>
 <!-- Summary Start -->
 This tool provides a better user experience when migrating macOS devices to Workspace ONE.
 <!-- Summary End -->
@@ -50,8 +53,8 @@ This tool installs a launchdaemon that executes a bash script to perform the mig
 | --origin-apiurl | Yes, if origin = wsone | https://as1380.awmdm.com | The WS1 API URL of source environment |
 | --origin-auth | Yes, if origin = wsone | Basic ABCD1234WXYZ9876==  | Base64 encoded API credentials for the source WS1 tenant |
 | --origin-token | Yes, if origin = wsone | ABCDEFG1234567+COJnXFNZM6uZxXLVVTAUuUheXI= | REST API token for the source WS1 tenant |
-| --removal-script | Yes, if origin = custom and different than example | /Library/Application Support/VMware/MigratorResources/removemdm.sh | Full absolute path of the script containing the steps to remove the prior MDM. You can put this script wherever you want, but it's recommended to use the same directory as in the example |
-| --enrollment-profile-path | Yes if different than example | /Library/Application Support/VMware/MigratorResources/enroll.mobileconfig | Full absolute path of the mobileconfig file that is used to enroll device to destination WS1 tenant. |
+| --removal-script | Yes, if origin = custom and different than example | /Library/Application Support/WS1/MigratorResources/removemdm.sh | Full absolute path of the script containing the steps to remove the prior MDM. You can put this script wherever you want, but it's recommended to use the same directory as in the example |
+| --enrollment-profile-path | Yes if different than example | /Library/Application Support/WS1/MigratorResources/enroll.mobileconfig | Full absolute path of the mobileconfig file that is used to enroll device to destination WS1 tenant. Not applicable if using ABM devices. |
 | --registration-type | Yes if different than 'none' | local, prompt or none | The method used to retrieve username of the Mac being migrated. More details [here](#registration-types) |
 | --dest-baseurl | Yes if registration-type is not 'none' | https://ds1688.awmdm.com | The WS1 Device Services URL of destination environment |
 | --dest-auth | Yes if registration-type is not 'none' or using DEP | Basic ABCD1234WXYZ9876== | Base64 encoded API credentials for the destination WS1 tenant |
@@ -77,11 +80,11 @@ Custom (other MDM provider) to Workspace ONE with local username used to registe
 <key>ProgramArguments</key>
 <array>
 	<string>/bin/bash</string>
-	<string>/Library/Application Support/VMware/migrator.sh</string>
+	<string>/Library/Application Support/WS1/migrator.sh</string>
 	<string>--origin</string>
 	<string>custom</string>
 	<string>--removal-script</string>
-	<string>/Library/Application Support/VMware/MigratorResources/removemdm.sh</string>
+	<string>/Library/Application Support/WS1/MigratorResources/removemdm.sh</string>
 	<string>--registration-type</string>
 	<string>local</string>
 	<string>--dest-baseurl</string>
@@ -102,7 +105,7 @@ Workspace ONE to Workspace ONE with no registration:
 <key>ProgramArguments</key>
 <array>
 	<string>/bin/bash</string>
-	<string>/Library/Application Support/VMware/migrator.sh</string>
+	<string>/Library/Application Support/WS1/migrator.sh</string>
 	<string>--origin</string>
 	<string>wsone</string>
 	<string>--origin-apiurl</string>
@@ -121,32 +124,34 @@ Workspace ONE to Workspace ONE with no registration:
 The tool can also be further customized through the use of add-on scripts. You will find these scripts within the `payload` directory and below are quick definitions of how they might be used if you choose to do so. These are not required for the tool to function, but give flexibility to add to user experience or handle any other tasks. These scripts must belong at the designated path in the chart. 
 | Name | Purpose | Path |
 |---|---|---|
-| Pre-DEPNotify | Script to run before DEPNotify is opened. This is where you should add all DEPNotify customizations like branding and content. | /Library/Application Support/VMware/MigratorResources/predepnotify.sh |
-| Pre-Migration | Script to run after DEPNotify has opened, but right before the Origin MDM removal step is performed. This is where you should add DEPNotify customizations that should occur before the migration begins. | /Library/Application Support/VMware/MigratorResources/premigration.sh |
-| Mid-Migration | Script to run after the origin MDM has been removed but before starting the process of obtaining & installing the destination MDM profile. This is where you should add DEPNotify customizations (like progress indicators to the user). | /Library/Application Support/VMware/MigratorResources/midmigration.sh |
-| Post-Migration | Script to run after destination MDM profile has been installed. This is where you should add final DEPNotify customizations and inform the user of the migration completion. | /Library/Application Support/VMware/MigratorResources/postmigration.sh |
+| Pre-DEPNotify | Script to run before DEPNotify is opened. This is where you should add all DEPNotify customizations like branding and content. | /Library/Application Support/WS1/MigratorResources/predepnotify.sh |
+| Pre-Migration | Script to run after DEPNotify has opened, but right before the Origin MDM removal step is performed. This is where you should add DEPNotify customizations that should occur before the migration begins. | /Library/Application Support/WS1/MigratorResources/premigration.sh |
+| Mid-Migration | Script to run after the origin MDM has been removed but before starting the process of obtaining & installing the destination MDM profile. This is where you should add DEPNotify customizations (like progress indicators to the user). | /Library/Application Support/WS1/MigratorResources/midmigration.sh |
+| Post-Migration | Script to run after destination MDM profile has been installed. This is where you should add final DEPNotify customizations and inform the user of the migration completion. | /Library/Application Support/WS1/MigratorResources/postmigration.sh |
 
 ### Building the pkg
-1. Download the files needed to build the pkg by clicking the zip file at the top of this page `migrationToolWS1.zip` and then selecting "Download" option
+1. Download the files needed to build the pkg by clicking the zip file at the top of this page `migrationToolWS1_revX.zip` and then selecting "Download" option
 2. Make any edits needed such as:
 	1. Placing enroll.mobileconfig file in MigratorResources directory (see [appendix for instructions](#retrieve-automated-enrollment-profile) on how to retrieve this profile)
-	2. Configuring `com.vmware.migrator.plist` with desired options
+	2. Configuring `com.ws1.migrator.plist` with desired options
 	3. Editing any of the customization scripts
 3. Open up Terminal and cd to the migrationToolWS1 directory that was downloaded
 4. Build the pkg using the following command - edit the pkg name to help keep track of version history as needed:
-`pkgbuild --install-location / --identifier "com.vmware.migrator" --version "1.0" --root ./payload/ --scripts ./scripts/ ./build/migrator_v1.pkg`
+`pkgbuild --install-location / --identifier "com.ws1.migrator" --version "1.0" --root ./payload/ --scripts ./scripts/ ./build/migrator_v1.pkg`
 5. The pkg will then be able to be retrieved from the `build` directory
 
 ## Notes
 - Logging:
-	- The tool will log to `/var/log/vmw_migrator.log`
+	- The tool will log to `/var/log/ws1_migrator.log`
 - Workspace ONE Intelligent Hub
 	- At the end of the migration the tool will download and install the Hub for the user
 	- There is an option to supply the Hub pkg in the migrator pkg to avoid the download if needed
-		- Place the hub pkg at the following location: `/Library/Application Support/VMware/MigratorResources/hub.pkg`
+		- Place the hub pkg at the following location: `/Library/Application Support/WS1/MigratorResources/hub.pkg`
 - Admin privileges
 	- In order to install and approve the MDM profile to enroll to Workspace ONE, the user on the Mac must have admin privileges
 	- As part of the migrator tool, it will promote any standard user to admin to complete this and then revert back to standard when done
+ - DEP (ADE) Devices
+	- The tool will detect if the device is elgible for ADE by looking for the device synced from ABM to your UEM tenant
 	
 ## Appendix
 ### Retrieve Automated Enrollment Profile
@@ -177,4 +182,9 @@ The tool can also be further customized through the use of add-on scripts. You w
    	 - Updated zip file
    	 - Logic enhancement to checking if device is DEP eligible
   	 - Logic enhancement to pulling Hub download location
-   	 - Adding button to registration flow	 
+   	 - Adding button to registration flow
+- 2024-12-11: Revision 4:
+   - Number of minor fixes and rebranding:
+  	 - DEPNotify location aligninment/permissions
+   	 - Updated zip file
+   	 - Fix for user input for registration flow
