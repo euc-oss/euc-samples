@@ -3,8 +3,11 @@
 ## Overview
 
 •	Author: Leonardo Valente
+
 •	Email: valentel@omnissa.com
+
 •	Date Created: 12/23/2024
+
 •	Date Updated: 12/17/2024
 
 ## Latest Updates
