@@ -1,4 +1,4 @@
-﻿#Use this script if necessary to retrieve device notes added in WS1 UEM console. The script uses a CSV file to feed the Serial numbers of the devices whose passwords require to be clered.
+﻿#Use this script if necessary to retrieve device notes added in WS1 UEM console. The script uses a CSV file to feed the Serial numbers of the devices whose notes must be retrieved.
 #The following parameters are required for the script to work:
 #1 - A WS1 UEM Adming credentials (username and password) with privileges to execute API commands
 #2 - Your WS1 API URL, for exemple ASXXXX.awmdm.com, where XXXX is your tenant number
