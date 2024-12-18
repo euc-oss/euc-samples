@@ -45,15 +45,21 @@ Mandatory parameter. The path to the CSV file containing the devices’ serial n
 ## OUTPUTS
 
 The script will output to the PS shell the line:
+
 “Processing device serial number: 'device serial number'"
+
 for every device
+
 When the passcode clear command is sent successfully the script will output the PS shell the line:
+
 “Passcode clearing command sent successfully for serial number: 'device serial number'”
 
 When there is an error sending the command to the device in question the script will output to the PS shell the line:
 
 “Error: 'the exception message returned by PS'”
+
 for example:
+
 “Error: The remote server returned an error: (400) Bad Request.”
 
 ## EXAMPLES
