@@ -27,19 +27,19 @@ Open a PowerShell instance and run the script .\ClearPasscode.ps1 -apiUrl 'api-u
 
 ## PARAMETERS
 
-**-apiURL
+### -apiURL
 Mandatory parameter for the WS1 UEM API Server, for example ASXXXX.awmdm.com (omit https://).
 
-**-username
+### -username
 Mandatory parameter, the Administrator account’s user name to be used by the script.
 
-**-password
+### -password
 Mandatory parameter, the Administrator account’s password to be used by the script.
 
-**-authToken
+### -authToken
 Mandatory parameter for the API key that is required for the script to connect via REST API to your server. These keys are per OG and are found under All Settings > System > Advanced > API > REST API.
 
-**-CsvFilePath
+### -CsvFilePath
 Mandatory parameter. The path to the CSV file containing the devices’ serial numbers
 
 ## OUTPUTS
