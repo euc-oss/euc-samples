@@ -54,6 +54,7 @@ The script will output to the PS shell the line:
 for every device
 
 If the device has notes added to its record in the WS1 UEM console the script will output the PS shell the line:
+
 “Retrieving notes from Device: 'device serial number'”
 
 When there is an error sending the command to the device in question the script will output to the PS shell the line:
