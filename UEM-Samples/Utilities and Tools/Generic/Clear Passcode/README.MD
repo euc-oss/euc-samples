@@ -23,7 +23,7 @@ The script uses a CSV file as input with the devices’ serial numbers.
 3.	WS1 UEM REST API Key
 
 ## Instructions
-Open a PowerShell instance and run the script .\ClearPasscode.ps1 -apiUrl <api-url> -username <username> -password <password> -authToken <auth-token> -CsvFilePath <CsvFilePath>
+Open a PowerShell instance and run the script .\ClearPasscode.ps1 -apiUrl 'api-url' -username 'username' -password 'password' -authToken 'auth-token' -CsvFilePath 'CsvFilePath'
 
 ## PARAMETERS
 
@@ -45,18 +45,18 @@ Mandatory parameter. The path to the CSV file containing the devices’ serial n
 ## OUTPUTS
 
 The script will output to the PS shell the line:
-“Processing device serial number: <device serial number>” 
+“Processing device serial number: 'device serial number'"
 for every device
 When the passcode clear command is sent successfully the script will output the PS shell the line:
 “Passcode clearing command sent successfully for serial number: 'device serial number'”
 
 When there is an error sending the command to the device in question the script will output to the PS shell the line:
 
-“Error: <the exception message returned by PS>”
+“Error: 'the exception message returned by PS'”
 for example:
 “Error: The remote server returned an error: (400) Bad Request.”
 
 ## EXAMPLES
 
-Usage: .\ClearPasscode.ps1 -apiUrl <api-url> -username <username> -password <password> -authToken <auth-token> -CsvFilePath <CsvFilePath>
+Usage: .\ClearPasscode.ps1 -apiUrl 'api-url' -username 'username' -password 'password' -authToken 'auth-token' -CsvFilePath 'CsvFilePath'
 
