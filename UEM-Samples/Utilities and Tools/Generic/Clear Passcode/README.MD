@@ -23,7 +23,7 @@ The script uses a CSV file as input with the devices’ serial numbers.
 3.	WS1 UEM REST API Key
 
 ## Instructions
-Open a PowerShell instance and run the script .\ClearPasscode.ps1 -apiUrl '<api-url>' -username '<username>' -password '<password>' -authToken '<auth-token>' -CsvFilePath '<CsvFilePath>'
+Open a PowerShell instance and run the script .\ClearPasscode.ps1 -apiUrl <api-url> -username <username> -password <password> -authToken <auth-token> -CsvFilePath <CsvFilePath>
 
 ## PARAMETERS
 
@@ -58,5 +58,5 @@ for example:
 
 ## EXAMPLES
 
-Usage: .\ClearPasscode.ps1 -apiUrl '<api-url>' -username '<username>' -password '<password>' -authToken '<auth-token>' -CsvFilePath '<CsvFilePath>'
+Usage: .\ClearPasscode.ps1 -apiUrl <api-url> -username <username> -password <password> -authToken <auth-token> -CsvFilePath <CsvFilePath>
 
