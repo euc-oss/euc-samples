@@ -48,7 +48,7 @@ The script will output to the PS shell the line:
 “Processing device serial number: <device serial number>” 
 for every device
 When the passcode clear command is sent successfully the script will output the PS shell the line:
-“Passcode clearing command sent successfully for serial number:<device serial number>”
+“Passcode clearing command sent successfully for serial number: 'device serial number'”
 
 When there is an error sending the command to the device in question the script will output to the PS shell the line:
 
