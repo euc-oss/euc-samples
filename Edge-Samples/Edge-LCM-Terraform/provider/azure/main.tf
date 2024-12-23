@@ -28,3 +28,5 @@ module "azure_create" {
   temp_dir = local.temp_dir
 } 
 
+
+
