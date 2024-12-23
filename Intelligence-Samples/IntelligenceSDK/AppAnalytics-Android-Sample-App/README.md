@@ -2,7 +2,7 @@
 
 ## Overview
 - **Author**: Andreano Lanusse
-- **Email**: alanusse@vmware.com
+- **Email**: alanusse@omnissa.com
 - **Date Created**: 05/01/2019
 - **Supported Platforms**: Workspace ONE Intelligence SDK 5.8.11+
 
@@ -35,5 +35,9 @@ In order to execute this app on your device or an emulator you need to:
 ## Change Log
 
 ## Additional Resources
-[Workspace ONE Intelligence User Guide](https://docs.omnissa.com/en/VMware-Workspace-ONE/services/Intelligence/GUID-AWT-WS1INT-OVERVIEW.html)  
-[Apteligent Android Guide](https://docs.apteligent.com/android/android.html)
+[Workspace ONE Intelligence Product Page](https://www.omnissa.com/workspace-one-intelligence/)  
+[Workspace ONE Intelligence SDK Overview](https://developer.omnissa.com/ws1-intelligence-sdk/)
+[Android Guide](https://developer.omnissa.com/ws1-intelligence-sdk/Android/)
+
+
+

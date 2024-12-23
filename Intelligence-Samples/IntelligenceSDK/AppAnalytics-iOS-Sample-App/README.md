@@ -2,7 +2,7 @@
 
 ## Overview
 - **Author**: Andreano Lanusse
-- **Email**: alanusse@vmware.com
+- **Email**: alanusse@omnissa.com
 - **Date Created**: 05/01/2019
 - **Supported Platforms**: Workspace ONE Intelligence SDK 5.9.1+
 
@@ -39,4 +39,6 @@ In order to execute this app on your device or an emulator you need to:
 
 ## Additional Resources
 [Workspace ONE Intelligence Product Page](https://www.omnissa.com/workspace-one-intelligence/)  
-[Workspace ONE Intelligence SDK Overview](https://developer.omnissa.com/ws1-sdk-intelligence/)
+[Workspace ONE Intelligence SDK Overview](https://developer.omnissa.com/ws1-intelligence-sdk/)
+[iOS Guide](https://developer.omnissa.com/ws1-intelligence-sdk/Apple/)
+
