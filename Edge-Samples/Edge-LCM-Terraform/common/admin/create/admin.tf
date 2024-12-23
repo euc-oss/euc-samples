@@ -211,23 +211,34 @@ resource "null_resource" "download_edge_image" {
 }
 
 locals {
-  unarchiver_command = (
-    var.temp_dir == var.windows_temp_dir ?
-    "powershell -Command \"Expand-Archive -Path ${var.temp_dir}${local.edge_image_data.name} -DestinationPath ${var.temp_dir} -Force\"" : "unzip -o  ${var.temp_dir}${local.edge_image_data.name} -d ${var.temp_dir}"
-  )
+  #unarchiver_command = (
+  #var.temp_dir == var.windows_temp_dir ?
+  #"powershell -Command \"Expand-Archive -Path ${var.temp_dir}${local.edge_image_data.name} -DestinationPath ${var.temp_dir} -Force\"" : "unzip -o  ${var.temp_dir}${local.edge_image_data.name} -d ${var.temp_dir}"
+  #)
 
-  final_command = (
-    var.platform == "azure" ? local.unarchiver_command : "echo 'skipping extraction'"
-  )
+  #unarchiver_command = "unzip -o  ${var.temp_dir}${local.edge_image_data.name} -d ${var.temp_dir}"
+  #final_command = (
+  #  var.platform == "azure" ? local.unarchiver_command : "echo 'skipping extraction'"
+  #)
 }
 
 # Use unarchiver_command to extract the archive if it is vhd.zip (azure only)
 resource "null_resource" "extract_zip" {
   depends_on = [resource.null_resource.download_edge_image]
   provisioner "local-exec" {
-    command = local.final_command
+    #command = local.final_command
+    command = <<EOT
+        if [ ! -f "${var.temp_dir}${local.download_image_name}" ] && [ "${var.platform}" == "azure" ]; then
+          echo "vhd does not exist. Extracting..."
+          unzip -o  ${var.temp_dir}${local.edge_image_data.name} -d ${var.temp_dir}
+        else
+          echo "vhd file already exists or platform not azure. Skipping extraction."
+        fi
+    EOT
+
   }
 }
+
 
 #fetch the token again as the token is short lived
 resource "null_resource" "get_token_request1" {
