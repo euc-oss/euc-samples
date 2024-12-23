@@ -1,6 +1,0 @@
-framework module Crittercism {
-  umbrella header "Crittercism.h"
-
-  export *
-  module * { export * }
-}
