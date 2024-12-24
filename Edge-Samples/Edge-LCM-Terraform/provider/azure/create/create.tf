@@ -10,11 +10,6 @@ module "admin_create" {
   temp_dir = var.temp_dir
 }
 
-
-output "admin_create_out_token" {
-  value = module.admin_create.token1
-} 
-
 output "output_provider" {
   value =  module.admin_create.output_provider
 }
@@ -25,7 +20,7 @@ output "output_edge" {
 
 locals {
   depends_on = [module.admin_create.output_edge]
-  token = module.admin_create.token1
+  token = module.admin_create.new_token
   provider_id = module.admin_create.output_provider.id
   edge_id = module.admin_create.output_edge.id
 }
@@ -196,7 +191,7 @@ resource "azurerm_virtual_machine_run_command" "run_command" {
   location = var.config_data.azure.region
     source {
       script = <<SCRIPT_BLOCK
-      sudo /opt/vmware/bin/pair-edge.sh ${local.pairing_code}
+      sudo /opt/horizon/bin/pair-edge.sh ${local.pairing_code}
       SCRIPT_BLOCK
     }
 }
@@ -209,7 +204,7 @@ module "post_deployment" {
   platform = var.platform
   operation = var.operation
   temp_dir = var.temp_dir
-  token = module.admin_create.token1
+  token = module.admin_create.new_token
   edge_id = local.edge_id
   provider_id = local.provider_id
   depends_on = [resource.azurerm_virtual_machine_run_command.run_command]

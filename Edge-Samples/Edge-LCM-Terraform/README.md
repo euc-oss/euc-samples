@@ -1,13 +1,13 @@
 # Horizon Edge Lifecycle Management using Terraform
 
-Version:        0.1
+Version:        0.2
 Author:         Srinivas Pinjala, Nancy Jain 
-Creation Date:  12/10/2024
+Creation Date:  12/23/2024
 
 ## Overview
 
 <!-- Summary Start -->
-The Terraform automation samples included in this beta release can be used to create and configure Horizon Edge on Microsoft Azure and AWS EC2
+The Terraform automation samples included in this beta release can be used to create and configure Horizon Edge on Microsoft Azure, AWS EC2 and vSphere
 <!-- Summary End -->
 
 ## Prerequisites for Azure
@@ -37,7 +37,7 @@ A static IP address is required for the Edge VM.
 
 ### 4. Configuration File Setup
 
-Copy the sample `azure-config.json` file and update it according to your environment.  
+Copy the sample `config-azure.json` file and update it according to your environment.  
 This configuration template must include the following details:
 
 * [Refresh token](https://developer.omnissa.com/horizon-apis/horizon-cloud-nextgen/)
@@ -63,20 +63,100 @@ Change to the `Edge-LCM-Terraform/provider/azure` directory:
     cd provider/azure
     ```
     
-### 2. Initialize Terraform
+### 2. Initialize Terraform 
 
 Run the following command to initialize Terraform:
-
+    
     ```sh
     terraform init 
     ```
 
 ### 3. Run Terraform Plan
 
-Execute the terraform plan command. Make sure to pass the operation as "create" and specify the path to the updated `azure-config.json` file using the config_file variable:
+Execute the terraform plan command. Make sure to pass the operation as "create" and specify the path to the updated `config-azure.json` file using the config_file variable:
 
-    ```sh 
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/azure-config.json"
+    ```sh
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-azure.json"
+    ```
+
+### 4. Run Terraform Apply
+
+Run the terraform apply command with the same configuration as used in the plan step:
+ 
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-azure.json"
+
+The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
+
+## Prerequisites for AWS EC2
+
+### 1.Machine Requirements
+
+A machine running a Linux operating system with the following tools installed:
+
+* Terraform
+* Python 3
+* pip3
+* curl 
+
+### 2. Install Python Dependencies
+
+The requests package is required for the Python scripts. Install it using the following command:
+
+    ```sh
+    pip3 install requests
+    ```
+
+### 3. Role and Policy creation in AWS
+
+ Refer to this [document](https://docs.omnissa.com/bundle/HorizonCloudServicesUsingNextGenGuide/page/Horizon8Pods-FederatedArchitecturewithCloudonAWSDownloadandDeploytheHorizonEdgeGatewayintoYourEnvironmentinHorizonCloudService-next-gen.html) for creating a role and a policy. After creation, attach the policy to the role.
+
+### 4. Static IP Requirement
+
+A static IP address is required for the Edge VM.
+
+### 5. Configuration File Setup
+
+Copy the sample `config-aws.json` file and update it according to your environment.
+This configuration template must include the following details:
+
+* [Refresh token](https://developer.omnissa.com/horizon-apis/horizon-cloud-nextgen/)
+* Amazon AWS credentials
+* Network and storage information
+* Connection Server credentials
+* Name of the provider instance 
+* Name and fully qualified domain name of the Edge
+
+After deployment, ensure DNS records are [configured](https://docs.omnissa.com/bundle/HorizonCloudServicesUsingNextGenGuide/page/ConfigureRequiredDNSRecordsAfterDeployingHorizonEdgeGatewayandUnifiedAccessGateway.html)
+
+
+### 6. Network Connectivity
+
+Ensure network connectivity is available on the machine running this automation.
+
+## Steps to run this automation for AWS
+
+### 1. Navigate to directory
+
+Change to the `Edge-LCM-Terraform/provider/aws` directory:
+
+    ```sh    
+    cd provider/aws
+    ```
+    
+### 2. Initialize Terraform
+
+Run the following command to initialize Terraform:
+    
+    ```sh
+    terraform init
+    ```
+
+### 3. Run Terraform Plan
+
+Execute the terraform plan command. Make sure to pass the operation as "create" and specify the path to the updated `config-aws.json` file using the config_file variable:
+ 
+    ```sh
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-aws.json"
     ```
 
 ### 4. Run Terraform Apply
@@ -84,9 +164,87 @@ Execute the terraform plan command. Make sure to pass the operation as "create" 
 Run the terraform apply command with the same configuration as used in the plan step:
  
     ```sh
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/azure-config.json"
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-aws.json"
     ```
+
+The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
+
+## Prerequisites for vSphere
+
+### 1.Machine Requirements
+
+A machine running a Linux operating system with the following tools installed:
+
+* Terraform
+* Python 3
+* pip3
+* curl 
+
+### 2. Install Python Dependencies
+
+The requests package is required for the Python scripts. Install it using the following command:
+
+    ```sh
+    pip3 install requests
+    ```
+
+### 3. Static IP Requirement
+
+A static IP address is required for the Edge VM.
+
+### 4. Configuration File Setup
+
+Copy the sample `config-vsphere.json` file and update it according to your environment.
+This configuration template must include the following details:
+
+* [Refresh token](https://developer.omnissa.com/horizon-apis/horizon-cloud-nextgen/)
+* vCenter Server credentials
+* Network and storage information
+* Connection Server credentials
+* Name of the provider instance 
+* Name and fully qualified domain name of the Edge
+
+After deployment, ensure DNS records are [configured](https://docs.omnissa.com/bundle/HorizonCloudServicesUsingNextGenGuide/page/ConfigureRequiredDNSRecordsAfterDeployingHorizonEdgeGatewayandUnifiedAccessGateway.html)
+
+
+### 6. Network Connectivity
+
+Ensure network connectivity is available on the machine running this automation.
+
+## Steps to run this automation for vSphere
+
+### 1. Navigate to directory 
+
+Change to the `Edge-LCM-Terraform/provider/vsphere` directory:
+
+    ```sh
+    cd provider/vsphere
+    ```
+    
+### 2. Initialize Terraform
+
+Run the following command to initialize Terraform:
+    
+    ```sh
+    terraform init
+    ```
+
+### 3. Run Terraform Plan
+
+Execute the terraform plan command. Make sure to pass the operation as "create" and specify the path to the updated `config-vsphere.json` file using the config_file variable:
+    
+    ```sh 
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-vsphere.json"
+    ```
+
+Note: Terraform's `vsphere_virtual_machine` resource creation expects the ova to be available during the plan phase for validations. Hence, the ova is downloaded during the plan phase.
+
+### 4. Run Terraform Apply
+
+Run the terraform apply command with the same configuration as used in the plan step:
  
+    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-vsphere.json"
+
 The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
 
 ## Known Limitations

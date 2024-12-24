@@ -6,20 +6,18 @@ locals {
 
 locals {
   config_data = jsondecode(file(var.config_file))
-  platform = "ec2"
+  platform = "vsphere"
 }
 
-provider "aws" {
-  region = local.config_data.aws.region
-  access_key = local.config_data.aws.credentials.access_key
-  secret_key = local.config_data.aws.credentials.secret_key
-  assume_role {
-    role_arn     = local.config_data.aws.credentials.role_arn
-  }
+provider "vsphere" {
+  user                 = local.config_data.vsphere.credentials.user
+  password             = local.config_data.vsphere.credentials.password
+  vsphere_server       = local.config_data.vsphere.credentials.vsphere_server
+  allow_unverified_ssl = local.config_data.vsphere.credentials.allow_unverified_ssl
 }
 
 # call the aws create module if the is operation is create
-module "aws_create" {
+module "vsphere_create" {
   source = "./create"
   count = (var.operation == "create") ? 1 : 0
   config_data = local.config_data
