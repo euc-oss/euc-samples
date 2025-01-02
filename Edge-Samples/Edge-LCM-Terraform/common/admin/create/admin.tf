@@ -227,8 +227,9 @@ resource "null_resource" "extract_zip" {
   depends_on = [resource.null_resource.download_edge_image]
   provisioner "local-exec" {
     #command = local.final_command
+    interpreter = ["/bin/bash", "-c"]
     command = <<EOT
-        if [ ! -f "${var.temp_dir}${local.download_image_name}" ] && [ "${var.platform}" == "azure" ]; then
+        if [ ! -f "${var.temp_dir}${local.download_image_name}" ] && [[ "${var.platform}" == "azure" ]]; then
           echo "vhd does not exist. Extracting..."
           unzip -o  ${var.temp_dir}${local.edge_image_data.name} -d ${var.temp_dir}
         else
