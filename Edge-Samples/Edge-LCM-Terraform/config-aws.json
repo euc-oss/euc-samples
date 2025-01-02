@@ -1,0 +1,49 @@
+{
+    "admin" : {
+    "refresh_token" : "",
+    "provider_name" : "",
+    "provider_type" : "AWS",
+    "is_federated" : "true",
+    "org_id" : "",
+    "edge_name": "",
+    "edge_fqdn": "",
+    "location": {
+        "city" : "",
+        "state" : "",
+        "country" : ""
+    }
+    },
+
+    "connection_server" : {
+    "connection_server_url": "",
+    "connection_server_username": "",
+    "connection_server_password" : "",
+    "connection_server_domain": ""
+    },
+    "aws" : {
+        "credentials" : {
+            "access_key" : "",
+            "secret_key" : "",
+            "role_arn" : ""
+        },
+        "region" : "",
+        "role_name" : "vmimport",
+        "s3_bucket" : "",
+        "network" : {
+            "aws_vpc" : "",
+            "aws_subnet" : ""
+        },
+        "ami" : {
+            "name" : ""
+        },
+        "security_group" : "",
+        "ec2" : { 
+            "name" : "",
+            "instance_type" : "",
+            "username" : "ccadmin",
+            "password" : "",
+            "private_ip" : "",
+            "associate_public_ip_address" : false
+        }
+    }
+}

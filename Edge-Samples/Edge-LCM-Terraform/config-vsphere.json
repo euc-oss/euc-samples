@@ -1,0 +1,58 @@
+{
+    "admin" : {
+    "refresh_token" : "",
+    "provider_name" : "",
+    "provider_type" : "ON_PREM",
+    "is_federated" : "false",
+    "org_id" : "",
+    "edge_name": "",
+    "edge_fqdn": "",
+    "location": {
+        "city" : "",
+        "state" : "",
+        "country" : ""
+    }
+    },
+
+    "connection_server" : {
+    "connection_server_url": "",
+    "connection_server_username": "",
+    "connection_server_password" : "",
+    "connection_server_domain": ""
+    },
+
+    "vsphere" : {
+        "credentials" : {
+            "user" : "",        
+            "password" : "",
+            "vsphere_server" : "",     
+            "allow_unverified_ssl" : true
+        },
+        "datacenter": "",
+        "datastore": "", 
+        "cluster": "",
+        "resource_pool": "",
+        "network" : "",
+        "adapter_type" : "",
+        "host": "",
+        "vm" : {
+            "name" : "",
+            "hostname" : "",
+            "domain" : "",
+            "num_cpus" : 8,
+            "memory" : 16384,
+            "credentials" : {
+                "root_password" : "" 
+            },
+            "ip_details" : {
+                "ipaddress" : "",
+                "netmask" : "",
+                "gateway" : "",
+                "dns" : ""
+            }
+        }
+
+    }
+    
+
+}

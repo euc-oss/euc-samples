@@ -8,9 +8,9 @@ terraform {
       source  = "hashicorp/null"
       version = "~> 3.0"
     }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
+    vsphere = {
+      source  = "hashicorp/vsphere"
+      version = "~> 2.0.2"
     }
   }
 }
