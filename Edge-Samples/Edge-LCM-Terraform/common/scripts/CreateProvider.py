@@ -8,6 +8,8 @@ org_id = sys.argv[3]
 geo_location_lat = sys.argv[4]
 geo_location_long = sys.argv[5]
 name = sys.argv[6]
+provider_type = sys.argv[7]
+is_federated = sys.argv[8]
 
 
 create_provider_payload = {
@@ -18,8 +20,8 @@ create_provider_payload = {
     "providerDetails": {
         "method": "ByViewConnectionServerCredentials",
         "data": {
-            "viewProviderType": "AZURE",
-            "isFederatedArchitectureType": "true",
+            "viewProviderType": provider_type,
+            "isFederatedArchitectureType": is_federated,
             "geoLocationLat": geo_location_lat,
             "geoLocationLong": geo_location_long,
         }

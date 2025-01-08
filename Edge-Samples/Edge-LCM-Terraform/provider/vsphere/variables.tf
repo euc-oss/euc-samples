@@ -1,7 +1,7 @@
 variable "platform" {
   type        = string
   description = "Enter the platform: azure"
-  default = "ec2"
+  default = "vsphere"
 }
 
 variable "operation" {
@@ -23,7 +23,7 @@ variable "config_file" {
 }
 
 variable "api_endpoints" {
-  type = map(any)
+  type = any
 }
 
 variable "config_data" {
