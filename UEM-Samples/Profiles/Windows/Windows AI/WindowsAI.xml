@@ -1,0 +1,89 @@
+<Replace>
+  <CmdID>1</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/AllowRecallEnablement</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>0</Data>
+  </Item>
+</Replace>
+<Replace>
+  <CmdID>2</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableAIDataAnalysis</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Replace>
+<Replace>
+  <CmdID>3</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableCocreator</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Replace>
+<Replace>
+  <CmdID>4</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableImageCreator</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Replace>
+
+<Delete>
+  <CmdID>1</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/AllowRecallEnablement</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>0</Data>
+  </Item>
+</Delete>
+<Delete>
+  <CmdID>2</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableAIDataAnalysis</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Delete>
+<Delete>
+  <CmdID>3</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableCocreator</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Delete>
+<Delete>
+  <CmdID>4</CmdID>
+  <Item>
+    <Target><LocURI>./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableImageCreator</LocURI></Target>
+        <Meta>
+      <Format xmlns="syncml:metinf">int</Format>
+      <Type>text/plain</Type>
+    </Meta>
+    <Data>1</Data>
+  </Item>
+</Delete>
