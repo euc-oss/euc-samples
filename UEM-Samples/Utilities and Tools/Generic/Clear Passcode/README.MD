@@ -13,7 +13,10 @@
 ## Latest Updates
 
 ## Description
+
+<!-- Summary Start -->
 This script connects to your Omnissa Workspace ONE UEM environment API in order to clear your devices passcodes using the serial numbers to select the devices which passcodes are required to be cleared.
+<!-- Summary End -->
 This script is useful when you have several devices that need their passcodes to be clear that are too many to be performed one by one in the Workspace One console UI.
 The script uses a CSV file as input with the devices’ serial numbers.
 
