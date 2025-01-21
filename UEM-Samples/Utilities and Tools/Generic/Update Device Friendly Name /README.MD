@@ -13,9 +13,9 @@
 ## Latest Updates
 
 ## Description
-	
+<!-- Summary Start -->	
 This script connects to your VMware Workspace ONE UEM environment API and update your devices' friendly name in bulk WS1 UEM. The script uses a CSV file to feed the Serial numbers of the devices whose friendly name need to be updated. In this specific scenario the devices friendly names are required to have the Asset Number values added to the original friendly name. 
-
+<!-- Summary End -->
 The script uses a CSV file as input with the devices’ serial numbers which need the friendly name to be updated.
 
 ## Requirements
