@@ -13,8 +13,10 @@
 ## Latest Updates
 
 ## Description
-	
-This script connects to your VMware Workspace ONE UEM environment API and retrieve the devices notes. When this script was created the device Notes attribute was not included in console reports. This script is useful when an organization uses the Devices Notes tab in WS1 UEM to add specific information about the device lifecycle such as when it was serviced last, where it is located in a building etc... and wishes to export all of the devices notes in to a csv file for reporting and auditing.
+<!-- Summary Start -->	
+This script connects to your VMware Workspace ONE UEM environment API and retrieve the devices notes. When this script was created the device Notes attribute was not included in console reports. 
+<!-- Summary End -->
+This script is useful when an organization uses the Devices Notes tab in WS1 UEM to add specific information about the device lifecycle such as when it was serviced last, where it is located in a building etc... and wishes to export all of the devices notes in to a csv file for reporting and auditing.
 
 The script uses a CSV file as input with the devices’ serial numbers in order to extract the devices notes.
 
