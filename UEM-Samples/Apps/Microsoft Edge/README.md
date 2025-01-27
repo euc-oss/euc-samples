@@ -17,7 +17,7 @@ Manage Microsoft Edge Preferences/Settings via Workspace ONE:
 
 ## Notes Regarding Workspace ONE Access Cert-based Authentication
 
-To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Workspace ONE Access Instance:
+To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Omnissa Access Instance:
 
 - *.workspaceoneaccess.com = <https://cas.workspaceoneaccess.com/>
 - *.vidmpreview.com = <https://cas.vidmpreview.com/>
