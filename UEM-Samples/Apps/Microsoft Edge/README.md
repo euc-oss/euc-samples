@@ -17,10 +17,9 @@ Manage Microsoft Edge Preferences/Settings via Workspace ONE:
 
 ## Notes Regarding Workspace ONE Access Cert-based Authentication
 
-To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Identity Manager Instance:
+To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Omnissa Access Instance:
 
-- *.vmwareidentity.com = <https://cas-aws.vmwareidentity.com/>
-- *.vmwareidentity.eu = <https://cas-aws.vmwareidentity.eu/>
+- *.workspaceoneaccess.com = <https://cas.workspaceoneaccess.com/>
 - *.vidmpreview.com = <https://cas.vidmpreview.com/>
 
 The Issuer needs to be the Issuer of your CA. So if your Issuer is CA is **CN=lab-ad01-CA**, use **lab-ad01-CA**.
@@ -111,6 +110,7 @@ None
 
 ## Change Log
 
+- 2025/01/27 - Change of the AutoSelectCertificateForUrls examples from cas-aws to cas after env change, will change again with TLS 1.3 update
 - 2020/02/19 - Initial Upload
 
 ## Additional Resources
