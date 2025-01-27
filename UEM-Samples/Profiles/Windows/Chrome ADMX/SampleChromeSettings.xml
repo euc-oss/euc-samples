@@ -6,7 +6,7 @@
 
 <Replace><CmdID>4</CmdID><Item><Target><LocURI>./Device/Vendor/MSFT/Policy/Config/Chrome~Policy~googlechrome~Extensions/ExtensionInstallBlacklist</LocURI></Target><Data><![CDATA[<enabled/><data id="ExtensionInstallBlacklistDesc" value="1&#xf000;jmjjnhpacphpjmnnlnccpfmhkcloaade"/>]]></Data></Item></Replace>
 
-<Replace><CmdID>5</CmdID><Item><Target><LocURI>./Device/Vendor/MSFT/Policy/Config/Chrome~Policy~googlechrome~ContentSettings/AutoSelectCertificateForUrls</LocURI></Target><Data><![CDATA[<enabled/><data id='AutoSelectCertificateForUrlsDesc' value='1&#xf000;{"pattern":"https://cas-aws.vmwareidentity.de","filter":{"ISSUER":{"CN":"CAcertCN"}}}'/>]]></Data></Item></Replace>
+<Replace><CmdID>5</CmdID><Item><Target><LocURI>./Device/Vendor/MSFT/Policy/Config/Chrome~Policy~googlechrome~ContentSettings/AutoSelectCertificateForUrls</LocURI></Target><Data><![CDATA[<enabled/><data id='AutoSelectCertificateForUrlsDesc' value='1&#xf000;{"pattern":"https://cas.workspaceoneaccess.com","filter":{"ISSUER":{"CN":"CAcertCN"}}}'/>]]></Data></Item></Replace>
 
 <Delete><CmdID>1</CmdID><Item><Target><LocURI>./Device/Vendor/MSFT/Policy/Config/Chrome~Policy~googlechrome~GoogleCast/EnableMediaRouter</LocURI></Target><Data></Data></Item></Delete>
 
