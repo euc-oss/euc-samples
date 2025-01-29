@@ -83,7 +83,7 @@ Execute the terraform plan command. Make sure to pass the operation as "create" 
 
 Run the terraform apply command with the same configuration as used in the plan step:
  
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-azure.json"
+    terraform apply -var="operation=create" -var="config_file=/home/testuser/config-azure.json"
 
 The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
 
@@ -164,7 +164,7 @@ Execute the terraform plan command. Make sure to pass the operation as "create" 
 Run the terraform apply command with the same configuration as used in the plan step:
  
     ```sh
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-aws.json"
+    terraform apply -var="operation=create" -var="config_file=/home/testuser/config-aws.json"
     ```
 
 The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
@@ -243,7 +243,7 @@ Note: Terraform's `vsphere_virtual_machine` resource creation expects the ova to
 
 Run the terraform apply command with the same configuration as used in the plan step:
  
-    terraform plan -var="operation=create" -var="config_file=/home/testuser/config-vsphere.json"
+    terraform apply -var="operation=create" -var="config_file=/home/testuser/config-vsphere.json"
 
 The apply phase may take 45-60 minutes to complete. For example, the "get_edge_status" step can take up to 30 minutes.
 
