@@ -1,6 +1,7 @@
 # macOS-Samples \ CustomXMLProfiles
 <!-- Summary Start -->
-This section of the **EUC-samples** repository contains samples relating to profile snippets which can be used in the "Custom Settings" or "Custom XML" payload in Workspace ONE UEM for macOS management.  Custom XML samples are typically used to manage key-value pairs in macOS preference domains.  For more information on Custom XML, refer to [Custom XML Preferences - Omnissa EUC Blog](https://blogs.Omnissa.com/euc/2017/06/xml-preferences.html) and the [Custom XML Template](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md).
+This section of the **EUC-samples** repository contains samples relating to profile snippets which can be used in the "Custom Settings" or "Custom XML" payload in Workspace ONE UEM for macOS management.  Custom XML samples are typically used to manage key-value pairs in macOS preference domains.  For more information on Custom XML, refer to [Custom XML Preferences - Omnissa EUC Blog](https://blogs.Omnissa.com/euc/2017/06/xml-preferences.html) and the [Custom XML Template](https://github.com/euc-oss/euc-samples/blob/main/UEM-Samples/Profiles/macOS/CustomXMLTemplate.md).
+
 <!-- Summary End -->
 
 Please feel free to submit any scripts you wish to share with the community!
@@ -55,10 +56,9 @@ It is highly recommended to add any and all submitted samples to the EUC Sample 
 
 Sample Exchange can be allowed to access your GitHub resources, by way of a linking process, where they can be indexed and searched by the community. There are Omnissa social media accounts which will advertise resources posted to the site and there's no additional accounts needed, as the Omnissa Sample Exchange uses MyOmnissa credentials.
 
-
 ## Omnissa Resources
 * [Custom XML Preferences - Omnissa EUC Blog](https://blogs.Omnissa.com/euc/2017/06/xml-preferences.html)
-* [Custom XML Template for NSUserDefaults and CFPreferences](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md)
+* [Custom XML Template for NSUserDefaults and CFPreferences](https://github.com/euc-oss/euc-samples/blob/main/UEM-Samples/Profiles/macOS/CustomXMLTemplate.md)
 * [Tech Zone macOS Activity Path](https://techzone.omnissa.com/understanding-macos-management)
 * [Omnissa Code](https://code.Omnissa.com/home)
 * [Omnissa Tech Zone](https://techzone.Omnissa.com)

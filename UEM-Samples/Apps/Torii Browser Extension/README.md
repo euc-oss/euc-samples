@@ -66,7 +66,7 @@ Create a new [Custom Settings](https://docs.omnissa.com/en/VMware-Workspace-ONE-
 If you already manage Google Chrome for macOS Settings using an existing Custom Settings payload, you'll need to modify the content of that payload to enforce the new Extension.
 
 1) Open your existing Custom Settings profile and click *Add Version*
-2) Click on the *Custom Settings* payload and examine the content of the custom settings.  Depending on how it was configured, it may look like MCX settings (similar to the settings in the downloaded mobileconfig), or it may look like [UserDefaults](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/3rd-Party_Software_Guidance/Google%20Chrome/com.google.Chrome.txt).
+2) Click on the *Custom Settings* payload and examine the content of the custom settings.  Depending on how it was configured, it may look like MCX settings (similar to the settings in the downloaded mobileconfig), or it may look like [UserDefaults](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Apps/Google%20Chrome/com.google.Chrome.txt).
 3) In either case, look for a pre-existing `ExtensionInstallForcelist` key:
 
 * If the key exists, add the `<string>khfhkedhhdbejcbapdicgagbljimakai;http://clients2.google.com/service/update2/crx</string>` line between `<array>...</array>`
@@ -95,7 +95,7 @@ If you've deployed a Custom Settings payload which forces Chrome management via 
 
 ## Deploy Torii Extension for Microsoft Edge
 
-The process for [deploying the Torii extension for Microsoft Edge](https://help.toriihq.com/en/articles/3645503-deploy-the-edge-extension) is very similar to Chrome. You'll need to deploy or modify an existing Custom Settings payload for Microsoft Edge settings.  Our GitHub includes an [example Custom Settings payload for Microsoft Edge](https://github.com/euc-oss/euc-samples/tree/master/macOS-Samples/3rd-Party_Software_Guidance/Microsoft%20Edge).
+The process for [deploying the Torii extension for Microsoft Edge](https://help.toriihq.com/en/articles/3645503-deploy-the-edge-extension) is very similar to Chrome. You'll need to deploy or modify an existing Custom Settings payload for Microsoft Edge settings.  Our GitHub includes an [example Custom Settings payload for Microsoft Edge](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Apps/Microsoft%20Edge).
 
 Similar to Chrome, Edge uses the `ExtensionInstallForcelist` key (refer to the [Browser Policy Reference](https://docs.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#extensioninstallforcelist)).   As such, you'll need to either add the key and array values, or add a new string value to an existing array:
 
