@@ -1,13 +1,14 @@
-# Horizon Edge Lifecycle Management using a Terraform Module
+# Horizon Edge Lifecycle Management using a Terraform Module using existing images
 
 Version:        0.1
 Author:         Srinivas Pinjala, Nancy Jain 
-Creation Date:  01/28/2025
+Creation Date:  02/12/2025
 
 ## Overview
 
 <!-- Summary Start -->
-The Terraform automation samples included in this beta release provides a module that can be used to create and configure Horizon Edge on Microsoft Azure.
+The Terraform automation samples included in this beta release provides a module that can be used to create and configure Horizon Edge on Microsoft Azure using the existing Edge image present in the Compute Gallery.
+This automation assumes Azure Provider is already initialized and Edge image is present in the Compute Gallery. 
 <!-- Summary End -->
 
 ## Prerequisites for Azure
@@ -19,10 +20,6 @@ A machine running a Linux operating system with the following tools installed:
 * Terraform
 * Python 3
 * pip3
-* curl
-* unzip
-* [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?tabs=dnf)
-* Ensure at least 50GB of free disk space is available
 
 ### 2. Install Python Dependencies
 The requests package is required for the Python scripts. Install it using the following command:
@@ -41,7 +38,6 @@ A static IP address is required for the Edge VM.
 The parameters include :
 
 * [Refresh token](https://developer.omnissa.com/horizon-apis/horizon-cloud-nextgen/)
-* Microsoft Azure subscription details
 * Network and storage information
 * Connection Server credentials
 * Name of the provider instance 
@@ -57,13 +53,13 @@ Ensure network connectivity is available on the machine running this automation.
 
 ### 1. Navigate to directory
 
-Change to the `Edge-Terrafom-Modules/azure/example` directory:
+Change to the `Edge-Terraform-Module-Using-Images/azure/example` directory:
 
     ```sh
-    cd Edge-Terrafom-Modules/azure/example
+    cd Edge-Terraform-Module-Using-Images/azure/example
     ```
 
-### 2. Update the parameters in `main.tf` by referring to `Edge-Terrafom-Modules/azure/create_edge_module/variables.tf`
+### 2. Update the parameters in `main.tf` by referring to `Edge-Terraform-Module-Using-Images/azure/create_edge_module/variables.tf`
 
     
 ### 3. Initialize Terraform 
