@@ -7,7 +7,7 @@ variable "operation" {
   type        = string
   description = "Enter the operation: create"
   default     = "create"
-   
+
 }
 variable "poll_iterations" {
   description = "Number of polling iterations"
@@ -115,23 +115,8 @@ variable "azure_network_resource_group" {
   type        = string
 }
 
-variable "azure_image_name" {
-  description = "Azure image name in compute gallery"
-  type        = string
-}
-
-variable "azure_image_gallery_name" {
-  description = "Image gallery name"
-  type        = string
-}
-
-variable "azure_image_resource_group" {
-  description = "Image resource group"
-  type        = string
-}
-
-variable "azure_image_version" {
-  description = "Image version"
+variable "azure_image_id" {
+  description = "Azure image id in compute gallery"
   type        = string
 }
 

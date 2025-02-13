@@ -5,7 +5,7 @@ provider "azurerm" {
 }
 
 module "azure" {
-  
+
   source = "../create_edge_module"
 
   # refer to ../create_edge_module/variables.tf to set the below parameters
@@ -28,10 +28,7 @@ module "azure" {
   azure_virtual_network =  ""
   azure_subnet =  ""
   azure_network_resource_group = ""
-  azure_image_name = ""
-  azure_image_gallery_name = ""
-  azure_image_resource_group = ""
-  azure_image_version = ""
+  azure_image_id = ""
   vm_managed_disk_type =  ""
   vm_resource_group = ""
   vm_size =  ""
