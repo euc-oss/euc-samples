@@ -97,7 +97,7 @@ resource "restapi_object" "create_provider" {
       }
     }
   })
-  
+
   id_attribute = "id"
   create_method = "POST"
 }
@@ -172,17 +172,9 @@ data "azurerm_subnet" "subnet" {
   resource_group_name  = var.azure_network_resource_group
 }
 
-# Shared image 
-data "azurerm_shared_image" "image" {
-depends_on = [data.http.get_pairing_code]
-  name                = var.azure_image_name
-  gallery_name        = var.azure_image_gallery_name
-  resource_group_name = var.azure_image_resource_group
-}
-
 # Create nic for the Azure VM
 resource "azurerm_network_interface" "nic" {
-  depends_on = [data.azurerm_shared_image.image]
+  depends_on = [data.azurerm_subnet.subnet]
   name                = var.edge_name
   location            = var.azure_region
   resource_group_name = var.vm_resource_group
@@ -204,9 +196,9 @@ resource "azurerm_virtual_machine" "vm" {
   network_interface_ids = [resource.azurerm_network_interface.nic.id]
   vm_size               = var.vm_size
 
-# Use the existing image
+  # Use the existing image
   storage_image_reference {
-    id = data.azurerm_shared_image.image.id
+    id = var.azure_image_id
   }
 
   storage_os_disk {
@@ -225,7 +217,7 @@ resource "azurerm_virtual_machine" "vm" {
     disable_password_authentication = false
   }
 
-  lifecycle { 
+  lifecycle {
     prevent_destroy = true
   }
 }
@@ -240,11 +232,11 @@ resource "azurerm_virtual_machine_run_command" "run_command" {
   name = var.edge_name
   virtual_machine_id = resource.azurerm_virtual_machine.vm.id
   location = var.azure_region
-    source {
-      script = <<SCRIPT_BLOCK
+  source {
+    script = <<SCRIPT_BLOCK
       sudo /opt/horizon/bin/pair-edge.sh ${local.pairing_code}
       SCRIPT_BLOCK
-    }
+  }
 }
 
 # Get the access token.
