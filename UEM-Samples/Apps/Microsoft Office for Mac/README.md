@@ -15,7 +15,7 @@ Microsoft Office for Mac can be distributed in one of two ways:  App Store and n
 1. Create a Nofifications payload (via [Custom Settings XML](https://aka.ms/office-notifications-payload)) -- Pre-Authorize Office apps to generate notifications to end-users
 2. Create additional Custom Settings XML as necessary:
   - [Paul Bowden's MobileConfigs](https://github.com/pbowden-msft/MobileConfigs)
-  - [Microsoft Office Preferences at EUC-Samples](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md)
+  - [Microsoft Office Preferences at EUC-Samples](https://github.com/euc-oss/euc-samples/blob/main/UEM-Samples/Profiles/macOS/Microsoft%20Office%202016/Microsoft-Office-2016.md)
 3. Grant Terminal and Workspace ONE Hub PPPC permissions to control MS AutoUpdate. 
   - [See Code Below](#PPPC-for-AutoUpdate)
 
@@ -35,7 +35,7 @@ You have three different options in this scenario:
 * PROS:  No required maintenance, small update sizes, user-centric experience
 * CONS:  Limited control over update frequency (default 12 hours), limited ability to enforce deadlines.
 
-To go this route, there's nothing to really configure here except to deploy the Office apps.   Since AutoUpdate is built in and automatic, you only get [minor customization](https://github.com/euc-oss/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/Microsoft%20Office%202016/Microsoft-Office-2016.md) through a Custom Settings payload.
+To go this route, there's nothing to really configure here except to deploy the Office apps.   Since AutoUpdate is built in and automatic, you only get [minor customization](https://github.com/euc-oss/euc-samples/blob/main/UEM-Samples/Profiles/macOS/Microsoft%20Office%202016/Microsoft-Office-2016.md) through a Custom Settings payload.
 
 ### Push Update Packages As Internal Apps
 
