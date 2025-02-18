@@ -125,8 +125,8 @@ function updateMainIndexes {
 }
 
 function updateSensorScriptIndexes {
-    $paths = @("Scripts",
-    "Sensors")
+    $paths = @("scripts",
+    "sensors")
     
 
     
