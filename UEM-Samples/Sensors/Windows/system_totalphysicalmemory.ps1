@@ -4,5 +4,5 @@
 # Return Type: INTEGER
 
 $totalphysicalmemory = (Get-WmiObject -Class win32_computersystem).TotalPhysicalMemory
-$ram = [math]::Round([math]::Round(([decimal]($totalphysicalmemory)/1GB),2))
+$ram = [int]($totalphysicalmemory/1GB)
 return $ram
