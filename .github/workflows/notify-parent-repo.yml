@@ -18,6 +18,10 @@ jobs:
           token: ${{ secrets.PRIVATE_TOKEN }}
           submodules: true
 
+      - name: Script
+        run: ./update-readme-summary-table.ps1
+        shell: pwsh
+
       - name: Pull and recursively update submodules
         run: |
           git submodule update --init --recursive

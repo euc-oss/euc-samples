@@ -1,9 +1,6 @@
 name: update-readme-summary-table
-on:
-  push:
-    branches: 
-      - main
-  workflow_dispatch:
+
+on: [workflow_dispatch]
 
 jobs:
     update:
