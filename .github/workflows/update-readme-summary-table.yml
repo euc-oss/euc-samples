@@ -1,9 +1,13 @@
 name: update-readme-summary-table
-on: [workflow_dispatch]
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
 
 jobs:
-    build:
-      name: Run Script
+    update:
+      if: github.repository == 'euc-oss/euc-samples'
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v1
