@@ -152,7 +152,7 @@ function updateSensorScriptIndexes {
         }
         
         #Write the results to the index file after the table header, replacing everything previous
-        $docpath = "docs/UEM-Samples/$p-index.md"
+        $docpath = "./docs/UEM-Samples/$p-index.md"
         $file = Get-ChildItem -Path $docpath
         ReplaceScriptSensorMarkdownTableContent $file $results
 
