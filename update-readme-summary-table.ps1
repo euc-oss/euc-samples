@@ -138,6 +138,7 @@ function updateSensorScriptIndexes {
         $files = Get-ChildItem -Path "UEM-Samples/$p" -Recurse -File | Where-Object Name -NotMatch $ExcludedTemplates
 
         foreach ($f in $files) {
+            Write-Host $f
             $match = Get-Description -filePath $f.FullName
             $summary = $match.Trim()
             $fname = $f.Name

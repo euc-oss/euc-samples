@@ -1,8 +1,7 @@
-# Disable Microsoft Office VBA macros on Windows via a PowerShell script.
-# In Workspace ONE UEM console, create a script and paste the below code into the code field.
-
-# Name: Disable VBA for Office
-# Run: System context
+# Description: Disable Microsoft Office VBA macros on Windows via a PowerShell script.
+# Execution Context: System
+# Execution Architecture: EITHER64OR32BIT
+# Timeout: 120
 
 # Disabling VBA for all office apps
 # Define VBA variables

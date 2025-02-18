@@ -1,8 +1,7 @@
-# Report on Microsoft Office VBA macros status on Windows via a PowerShell script.
-# In Workspace ONE UEM console, create a sensor and paste the below code into the code field.
-
-# Name: win_office_vbamacros_status
-# Run: System context
+# Description: Report on Microsoft Office VBA macros status on Windows via a PowerShell script.
+# Execution Context: SYSTEM
+# Execution Architecture: EITHER64OR32BIT
+# Return Type: STRING
 
 # This script checks the status of the vbaoff setting on Windows
 # Define the registry key variables
@@ -16,9 +15,9 @@ $value = Get-ItemProperty -Path $keyPath -Name $valueName -ErrorAction SilentlyC
 # Check if the value is not null (i.e., the value exists)
 if ($value -ne $null) {
 # Check if the value is set to 1
-    if ($value.$valueName -eq 1) { Write-Output "Disabled" }
-    else { Write-Output "Enabled" }
+    if ($value.$valueName -eq 1) { return "Disabled" }
+    else { return "Enabled" }
 }
-else { Write-Output "Not set" }
+else { return "Not set" }
 }
-else { Write-Output "Not set" }
+else { return "Not set" }

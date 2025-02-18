@@ -1,8 +1,7 @@
-# Disable Microsoft Office VBA macros notifications on Windows via a PowerShell script.
-# In Workspace ONE UEM console, create a script and paste the below code into the code field.
-
-# Name: Disable VBA notifications for Office
-# Run: User context with admin right
+# Description: Disable Microsoft Office VBA macros notifications on Windows via a PowerShell script.
+# Execution Context: User
+# Execution Architecture: EITHER64OR32BIT
+# Timeout: 120
 
 # Disabling macros notifications in office apps
 # Define the registry key path for each Office application
