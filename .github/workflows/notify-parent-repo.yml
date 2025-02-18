@@ -10,6 +10,10 @@ jobs:
   update:
     if: github.repository == 'euc-oss/euc-samples'
     runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./
+          
 
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +23,9 @@ jobs:
           submodules: true
 
       - name: Show the path
-        run: echo ${{ github.workspace }}
+        run: |
+          pwd
+          echo ${{ github.workspace }}
 
       - name: Script
         run: Invoke-Command -FilePath ${{ github.workspace }}/update-readme-summary-table.ps1
