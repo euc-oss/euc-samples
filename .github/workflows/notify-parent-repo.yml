@@ -10,9 +10,6 @@ jobs:
   update:
     if: github.repository == 'euc-oss/euc-samples'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./scripts
 
     steps:
       - name: Checkout repo to the runner
@@ -25,8 +22,10 @@ jobs:
       - name: Show the path
         run: |
           pwd
-          echo ${{ github.workspace }}
-      
+          ls -l ./
+          ${{ github.workspace }}
+          ls -l ${{ github.workspace }}
+
       - name: Script
         run: ./update-readme-summary-table.ps1
         shell: pwsh

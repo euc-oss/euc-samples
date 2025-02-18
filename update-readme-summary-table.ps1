@@ -128,8 +128,6 @@ function updateSensorScriptIndexes {
     $paths = @("scripts",
     "sensors")
     
-
-    
     # find README.md files under each sample directory
     foreach ($p in $paths) {
 
