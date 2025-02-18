@@ -28,7 +28,7 @@ jobs:
           echo ${{ github.workspace }}
       
       - name: Script
-        run: Invoke-Command -FilePath ${{ github.workspace }}/update-readme-summary-table.ps1
+        run: ./update-readme-summary-table.ps1
         shell: pwsh
 
       - name: Pull and recursively update submodules
