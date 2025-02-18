@@ -10,13 +10,13 @@ jobs:
   update:
     if: github.repository == 'euc-oss/euc-samples'
     runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: ./
-          
+    defaults:
+      run:
+        working-directory: ./scripts
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo to the runner
+        uses: actions/checkout@v4
         with: 
           repository: ${{ secrets.PARENT_ORG }}/${{ secrets.PARENT_REPO }}
           token: ${{ secrets.PRIVATE_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
         run: |
           pwd
           echo ${{ github.workspace }}
-
+      
       - name: Script
         run: Invoke-Command -FilePath ${{ github.workspace }}/update-readme-summary-table.ps1
         shell: pwsh
