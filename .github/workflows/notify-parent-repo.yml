@@ -18,8 +18,11 @@ jobs:
           token: ${{ secrets.PRIVATE_TOKEN }}
           submodules: true
 
+      - name: Show the path
+        run: echo ${{ github.workspace }}
+
       - name: Script
-        run: ./update-readme-summary-table.ps1
+        run: ${{ github.workspace }}/update-readme-summary-table.ps1
         shell: pwsh
 
       - name: Pull and recursively update submodules
