@@ -28,7 +28,7 @@ jobs:
         - name: Commit updates
           run: |
             git config user.email "actions@github.com"
-            git config user.name "GitHub Actions - update-readme-summary-table"
+            git config user.name "GitHub Actions"
             git add --all
             git commit -m "update-readme-summary-table, triggered by ${GITHUB_REPOSITORY}" || echo "No changes to commit"
             git push origin HEAD:main
