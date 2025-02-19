@@ -1,6 +1,11 @@
 name: update-readme-summary-table
 
-on: [workflow_dispatch]
+# on: [workflow_dispatch]
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
 
 jobs:
     update:
@@ -9,9 +14,18 @@ jobs:
 
       steps:
         - uses: actions/checkout@v1
-        - name: Script
+
+        - name: Show the path
+          run: |
+            pwd
+            ls -l ./
+            ${{ github.workspace }}
+            ls -l ${{ github.workspace }}
+
+        - name: Run update-readme-summary-table.ps1 Script
           run: ./update-readme-summary-table.ps1
           shell: pwsh
+
         - name: Commit updates
           run: |
             git config user.email "actions@github.com"

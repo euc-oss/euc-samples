@@ -1,11 +1,17 @@
 name: Notify parent repo of submodule updates
 
+# on:
+#   push:
+#     branches: 
+#       - main
+#   workflow_dispatch:
 on:
-  push:
-    branches: 
+  workflow_run:
+    workflows: ["update-readme-summary-table"]
+    types: [completed]
+    branches:
       - main
-  workflow_dispatch:
-
+      
 jobs:
   update:
     if: github.repository == 'euc-oss/euc-samples'
@@ -18,17 +24,6 @@ jobs:
           repository: ${{ secrets.PARENT_ORG }}/${{ secrets.PARENT_REPO }}
           token: ${{ secrets.PRIVATE_TOKEN }}
           submodules: true
-
-      - name: Show the path
-        run: |
-          pwd
-          ls -l ./
-          ${{ github.workspace }}
-          ls -l ${{ github.workspace }}
-
-      - name: Script
-        run: ./update-readme-summary-table.ps1
-        shell: pwsh
 
       - name: Pull and recursively update submodules
         run: |
