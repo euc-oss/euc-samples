@@ -21,7 +21,7 @@ jobs:
         - name: Checkout repo to the runner
           uses: actions/checkout@v4
           with: 
-            token: ${{ secrets.PRIVATE_TOKEN }}
+            token: ${{ secrets.PRIVATE_TOKEN_EUC-OSS }}
 
         - name: Run update-readme-summary-table.ps1 Script
           run: ./update-readme-summary-table.ps1
