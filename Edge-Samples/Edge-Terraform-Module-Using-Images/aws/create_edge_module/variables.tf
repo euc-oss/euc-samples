@@ -1,24 +1,18 @@
 variable "platform" {
   type        = string
-  description = "Enter the platform: azure"
-  default = "azure"
+  description = "Enter the platform: aws"
+  default = "aws"
 }
 variable "operation" {
   type        = string
   description = "Enter the operation: create"
   default     = "create"
-   
+
 }
 variable "poll_iterations" {
   description = "Number of polling iterations"
   type = number
   default = 12
-}
-
-variable "work_dir" {
-  description = "Path to the temporary directory"
-  type = string
-  default = "/tmp"
 }
 
 variable "wait_time" {
@@ -41,13 +35,13 @@ variable "provider_name" {
 variable "provider_type" {
   description = "Type of the provider"
   type        = string
-  default = "AZURE"
+  default = "AWS"
 }
 
 variable "is_federated" {
   description = "Is this a federated edge. Refer to the Product documentation"
-  type        = bool
-  default = true
+  type        = string
+  default = "true"
 }
 
 variable "org_id" {
@@ -85,7 +79,6 @@ variable "connection_server_url" {
   type        = string
 }
 
-
 variable "connection_server_username" {
   description = "Admin user name of the connection server"
   type        = string
@@ -102,104 +95,66 @@ variable "connection_server_domain" {
   type        = string
 }
 
-variable "azure_client_id" {
-  description = "API Client id of the Azure subscription"
-  type        = string
-  sensitive = true
-}
-
-variable "azure_client_secret" {
-  description = "Client Secret of the Azure subscription"
-  type        = string
-  sensitive = true
-}
-
-variable "azure_tenant_id" {
-  description = "Directory id of the Azure subscription"
-  type        = string
-  sensitive = true
-}
-
-variable "azure_subscription_id" {
-  description = "Azure subscription id"
-  type        = string
-  sensitive = true
-}
-
-variable "azure_region" {
-  description = "Azure reqion to work on"
+variable "static_ip_address" {
+  description = "Static ip address of the Edge VM"
   type        = string
 }
 
-variable "azure_virtual_network" {
-  description = "Name of the Azure virtual network to be used"
+variable "aws_vpc" {
+  description = "Name of the AWS vpc to be used"
   type        = string
 }
 
-variable "azure_subnet" {
-  description = "Name of the subnet to use"
+variable "aws_subnet_id" {
+  description = "ID of the subnet to use"
   type        = string
 }
 
-variable "azure_network_resource_group" {
-  description = "Name of the network resource group to be used"
+variable "aws_security_group" {
+  description = "Name of the security group to be used"
   type        = string
 }
 
-variable "azure_storage_account" {
-  description = "Name of the storage account to be used"
+variable "aws_ami_id" {
+  description = "AWS ami id"
   type        = string
 }
 
-variable "azure_container" {
-  description = "Name of the storage container to be used"
-  type        = string
-}
-
-variable "azure_storage_resource_group" {
-  description = "Name of the storage resource group to be used"
-  type        = string
-}
-
-variable "azure_image_name" {
-  description = "Name of the image that will be created"
-  type        = string
-}
-
-variable "azure_image_resource_group" {
-  description = "Path to the linux temporary directory"
-  type        = string
-}
-
-variable "vm_admin_username" {
-  description = "Edge VM user name"
+variable "aws_ec2_username" {
+  description = "Edge VM EC2 user name"
   type        = string
   default = "ccadmin"
 }
 
-variable "vm_admin_password" {
+variable "aws_ec2_password" {
   description = "Admin password for the edge vm"
   type        = string
   sensitive = true
 }
 
-variable "vm_managed_disk_type" {
-  description = "Type of the managed disk. eg Standard_LRS."
+variable "ec2_instance_type" {
+  description = "Instance type of EC2 VM. eg c5.2xlarge."
   type        = string
 }
 
-variable "vm_resource_group" {
-  description = "Name of the resource group where the edge vm will be created."
+
+variable "ec2_associate_public_ip_address" {
+  description = "Boolean to determine whether a public IP will be attached to the VM. Value has to be either true or false"
+  type        = bool
+}
+
+variable "volume_size" {
+  description = "Size of OS volume in GB"
   type        = string
 }
 
-variable "vm_size" {
-  description = "VM sizing for the Edge vM"
+variable "volume_type" {
+  description = "OS volume type"
   type        = string
 }
 
-variable "private_ip_address" {
-  description = "Static ip address of the Edge VM"
+variable "instance_profile" {
+  description = "Instance profile for the VM"
   type        = string
 }
 
@@ -214,4 +169,5 @@ variable api_endpoints {
     cs_configure_url = "https://cloud-sg.horizon.omnissa.com/admin/v3/providers/instances"
     provider_url = "https://cloud-sg.horizon.omnissa.com/admin/v3/providers/instances?include_health_details=false"
   }
+
 }
