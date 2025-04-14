@@ -10,7 +10,7 @@ on:
     workflows: ["update-readme-summary-table"]
     types: [completed]
     branches:
-      - main
+      - staging
       
 jobs:
   update:
