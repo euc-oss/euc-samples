@@ -35,6 +35,7 @@ It is therefore important that when contributing samples, that the appropriate t
 
 * [Omnissa Access Samples](./Access-Samples/index.md)
 * [App Volumes Samples](./App-Volumes-Samples/index.md)
+* [DEEM Samples](./DEEM-Samples/index.md)
 * [Horizon Samples](./Horizon-Samples/index.md)
 * [Omnissa Intelligence Samples](./Intelligence-Samples/index.md)
 * [Unified Access Gateway Samples](./UAG-Samples/index.md)
