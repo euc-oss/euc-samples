@@ -131,7 +131,7 @@ function updateMainIndexes {
         #Write the results to the index file after the table header, replacing everything previous
         $docpath = "docs/$p/index.md"
         $file = Get-ChildItem -Path $docpath
-        ReplaceMarkdownTableContent $file $results
+        ReplaceMarkdownTableContent -filePath $file -tableData $results
 
     }
 }
@@ -165,7 +165,7 @@ function updateSensorScriptIndexes {
         #Write the results to the index file after the table header, replacing everything previous
         $docpath = "docs/UEM-Samples/$p-index.md"
         $file = Get-ChildItem -Path $docpath
-        ReplaceScriptSensorMarkdownTableContent $file $results
+        ReplaceScriptSensorMarkdownTableContent -filePath $file -tableData $results
 
     }
 }
