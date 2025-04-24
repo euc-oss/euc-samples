@@ -21,7 +21,7 @@ Some examples of items found in this repository are:
 * Application deployment scripts and how-to guides
 * Markdown Documents describing suggested best practices or procedures that may be outside the realm of typical documentation
 
-Each area listed below, has an index page that provides the name, summary and link to the provided samples. The UEM-Samples index also includes Sensor and Scripts within the [UEM-Samples/Scripts](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Scripts) and [UEM-Samples/Sensors](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Sensors) folders respectively.
+Each product has an index page that provides the name, summary and link to the provided samples. The UEM-Samples index also includes Sensor and Scripts within the [UEM-Samples/Scripts](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Scripts) and [UEM-Samples/Sensors](https://github.com/euc-oss/euc-samples/tree/main/UEM-Samples/Sensors) folders respectively.
 
 ## Contributing to Samples
 
