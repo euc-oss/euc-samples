@@ -98,7 +98,6 @@ function updateMainIndexes {
     $paths = @("Access-Samples",
     "Android-Samples",
     "App-Volumes-Samples",
-    "DEEM-Samples",
     "Horizon-Samples",
     "Intelligence-Samples",
     "UAG-Samples",
