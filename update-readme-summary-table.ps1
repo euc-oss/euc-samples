@@ -14,6 +14,7 @@
     * Access-Samples
     * Android-Samples
     * App-Volumes-Samples
+    * DEEM-Samples
     * Horizon-Samples
     * Intelligence-Samples
     * UAG-Samples
@@ -109,13 +110,13 @@ function updateMainIndexes {
 
     # find README.md files under each sample directory
     foreach ($p in $paths) {
-        Write-Host("Working on $p") -ForegroundColor Green
+        #Write-Host("Working on $p") -ForegroundColor Green
         $results = @()
         $files = Get-ChildItem -Path $p -Recurse -Include 'readme.md' -File
         $filecount = ($files | Measure-Object ).Count
 
         if($filecount -ge 1) {
-            Write-Host ("Number of files being processed: $filecount") -ForegroundColor White
+            #Write-Host ("Number of files being processed: $filecount") -ForegroundColor White
             foreach ($f in $files) {
                 #Write-Host("Working on $f") -ForegroundColor Green
                 $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
@@ -128,7 +129,6 @@ function updateMainIndexes {
                 $URI = $repopath,$newpath -join ""
                 $link = [uri]::EscapeUriString($URI)
                 $results += "| $dirname | $summary | [Link]($link) |"
-                $results = $results.Trim()
             }
             
             if($null -ne $results) {
@@ -153,7 +153,6 @@ function updateSensorScriptIndexes {
         $files = Get-ChildItem -Path "UEM-Samples/$p" -Recurse -File | Where-Object Name -NotMatch $ExcludedTemplates
 
         foreach ($f in $files) {
-            #Write-Host $f
             $match = Get-Description -filePath $f.FullName
             $summary = $match.Trim()
             $fname = $f.Name
@@ -164,7 +163,6 @@ function updateSensorScriptIndexes {
             $URI = $repopath,$newpath -join ""
             $link = [uri]::EscapeUriString($URI)
             $results += "| $dirname | $fname | $summary | [$fname]($link) |"
-            #Write-Host "| $dirname | $fname | $summary | [$fname]($link) |"
         }
         
         #Write the results to the index file after the table header, replacing everything previous
