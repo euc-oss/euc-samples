@@ -98,6 +98,7 @@ function updateMainIndexes {
     $paths = @("Access-Samples",
     "Android-Samples",
     "App-Volumes-Samples",
+    "DEEM-Samples",
     "Horizon-Samples",
     "Intelligence-Samples",
     "UAG-Samples",
@@ -108,30 +109,35 @@ function updateMainIndexes {
 
     # find README.md files under each sample directory
     foreach ($p in $paths) {
-
+        Write-Host("Working on $p") -ForegroundColor Green
         $results = @()
         $files = Get-ChildItem -Path $p -Recurse -Include 'readme.md' -File
+        $filecount = ($files | Measure-Object ).Count
 
-        foreach ($f in $files) {
-            #Write-Host("Working on $f") -ForegroundColor Green
-            $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
+        if($filecount -ge 1) {
+            Write-Host ("Number of files being processed: $filecount") -ForegroundColor White
+            foreach ($f in $files) {
+                #Write-Host("Working on $f") -ForegroundColor Green
+                $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
+                
+                $summary = $match.Trim()
+                $fulldirname = $f.DirectoryName
+                $newpath = $fulldirname.Replace($current_path,"")
+                $dirname = $f.Directory.Name
+                
+                $URI = $repopath,$newpath -join ""
+                $link = [uri]::EscapeUriString($URI)
+                $results += "| $dirname | $summary | [Link]($link) |"
+                $results = $results.Trim()
+            }
             
-            $summary = $match.Trim()
-            $fulldirname = $f.DirectoryName
-            $newpath = $fulldirname.Replace($current_path,"")
-            $dirname = $f.Directory.Name
-            
-            $URI = $repopath,$newpath -join ""
-            $link = [uri]::EscapeUriString($URI)
-            $results += "| $dirname | $summary | [Link]($link) |"
-
+            if($null -ne $results) {
+                #Write the results to the index file after the table header, replacing everything previous
+                $docpath = "docs/$p/index.md"
+                $file = Get-ChildItem -Path $docpath
+                ReplaceMarkdownTableContent -filePath $file -tableData $results
+            }
         }
-        
-        #Write the results to the index file after the table header, replacing everything previous
-        $docpath = "docs/$p/index.md"
-        $file = Get-ChildItem -Path $docpath
-        ReplaceMarkdownTableContent -filePath $file -tableData $results
-
     }
 }
 
