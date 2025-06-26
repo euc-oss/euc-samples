@@ -110,7 +110,7 @@ Function GetApps {
 Write-Host "Getting apps on: $idmserver"
 $bearerAuthValue = "Bearer $IDMToken"
 $headers = @{Authorization = $bearerAuthValue
-             Accept = "application/vnd.vmware.horizon.manager.catalog.item.list+json"
+             Accept = "application/json"
             }  
           
 try {
@@ -134,7 +134,7 @@ try {
     "rootResource": false
   }'
   
-$apps = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/catalogitems/search?startIndex=0&pageSize=50" -Headers $headers -Body $json -ContentType "application/vnd.vmware.horizon.manager.catalog.search+json"
+$apps = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/catalogitems/search/summarylist?startIndex=0&pageSize=50" -Headers $headers -Body $json -ContentType "application/json"
 
     }
                   
@@ -156,11 +156,11 @@ Write-Host "Getting categories on: $idmserver"
 #Constuct header with oAuth2 Token
 $bearerAuthValue = "Bearer $IDMToken"
 $headers = @{Authorization = $bearerAuthValue 
-Accept = "application/vnd.vmware.horizon.manager.labels+json"}  
+Accept = "application/json"}
                         
 try {
                
-    $cats = Invoke-RestMethod -Method Get -Uri "https://$idmserver/SAAS/jersey/manager/api/labels" -Headers $headers -ContentType "application/vnd.vmware.horizon.manager.labels+json;charset=UTF-8"
+    $cats = Invoke-RestMethod -Method Get -Uri "https://$idmserver/SAAS/jersey/manager/api/labels" -Headers $headers -ContentType "application/json;charset=UTF-8"
               
     }
                                 
@@ -222,7 +222,7 @@ Function New_Category {
 
   $bearerAuthValue = "Bearer $IDMToken"
   $headers = @{Authorization = $bearerAuthValue
-               Accept = "application/vnd.vmware.horizon.manager.label+json"
+               Accept = "application/json"
                }  
  
 $newcatname = Read-Host -Prompt 'Enter the Category Name' 
@@ -231,7 +231,7 @@ $newcatname = Read-Host -Prompt 'Enter the Category Name'
                
 $json = '{"name":"' + $newcatname + '"}'
 
-    $cats = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/labels" -Headers $headers -Body $json -ContentType "application/vnd.vmware.horizon.manager.label+json;charset=UTF-8"
+    $cats = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/labels" -Headers $headers -Body $json -ContentType "application/json;charset=UTF-8"
               
         }
                                 
