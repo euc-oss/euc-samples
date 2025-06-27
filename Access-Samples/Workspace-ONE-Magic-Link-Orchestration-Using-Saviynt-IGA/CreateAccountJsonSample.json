@@ -5,14 +5,14 @@
       "name": "call1",
       "callOrder": 1,
       "connection": "wsAuth ",
-      "url": "${((user?.email!=null) && (user?.customproperty1!=null) && (user?.customproperty2!=null))?('https://yourcompany.yourdomain.com/SAAS/jersey/manager/api/token/auth/state'):('')}",
+      "url": "${((user?.email!=null) && (user?.customproperty1!=null) && (user?.customproperty2!=null))?('https://yourcompany.yourdomain.com/SAAS/jersey/manager/api/token/auth/state/email'):('')}",
       "httpMethod": "POST",
       "httpHeaders": {
         "Authorization": "${access_token}",
-        "Accept": "application/vnd.vmware.horizon.manager.tokenauth.link.response+json",
-        "Content-Type": "application/vnd.vmware.horizon.manager.tokenauth.generation.request+json"
+        "Accept": "application/json",
+        "Content-Type": "application/json"
       },
-      "httpContentType": "application/vnd.vmware.horizon.manager.tokenauth.generation.request+json",
+      "httpContentType": "application/json",
       "httpParams": "{\"domain\" : \"yourdomain.com\",\"userName\" : \"${user.customproperty2}\"}",
       "successResponses": {
         "statusCode": [
