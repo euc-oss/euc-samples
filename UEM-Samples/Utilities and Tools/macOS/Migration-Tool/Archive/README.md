@@ -1,6 +1,6 @@
 # Safepassage to Workspace ONE UEM for macOS
 <!-- Summary Start -->
-This Tools is deprecated.
+Archive of previous versions of the Workspace ONE UEM Migration Tool for macOS.
 <!-- Summary End -->
 This tool is designed to be flexible to fit many different use cases and enrollment requirements. There is no default mode, so you must understand how the tool works in order to configure it for your needs.
 
