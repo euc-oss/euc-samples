@@ -6,6 +6,8 @@ chmod +x /Library/Application\ Support/WS1/MigratorResources/*
 chmod +x /Applications/Utilities/DEPNotify.app/Contents/MacOS/DEPNotify
 /bin/chmod -R 555 /Library/Application\ Support/WS1
 xattr -dr com.apple.quarantine /usr/local/bin/jq
+xattr -dr com.apple.quarantine /Applications/Utilities/DEPNotify.app
+xattr -dr com.apple.quarantine /Applications/Utilities/DEPNotify.app/Contents/MacOS/DEPNotify
 
 sleep 1
 

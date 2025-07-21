@@ -14,6 +14,7 @@
     * Access-Samples
     * Android-Samples
     * App-Volumes-Samples
+    * DEEM-Samples
     * Horizon-Samples
     * Intelligence-Samples
     * UAG-Samples
@@ -23,7 +24,13 @@
 
 #>
 
-function Get-TextBetweenTwoStrings ([string]$startPattern, [string]$endPattern, [string]$filePath){
+function Get-TextBetweenTwoStrings {
+    param(
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $startPattern,
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $endPattern,
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $filePath
+    )
+    
     # Get content from the input file
     $fileContent = Get-Content -Path $filePath -Raw
     # Regular expression (Regex) of the given start and end patterns
@@ -32,7 +39,12 @@ function Get-TextBetweenTwoStrings ([string]$startPattern, [string]$endPattern, 
     return [regex]::Match($fileContent,$pattern).Groups[1].Value.ToString()
 }
 
-function Get-Description ([string]$filePath){
+#function Get-Description ([string]$filePath){
+function Get-Description {
+    param(
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $filePath
+    )
+    
     $fileContent = Get-Content -Path $filePath
     
     $d = $fileContent | Select-String -Pattern 'Description: ' -Raw -ErrorAction SilentlyContinue
@@ -43,8 +55,8 @@ function Get-Description ([string]$filePath){
 
 function ReplaceMarkdownTableContent {
     param(
-        [string]$filePath,
-        [string[]]$tableData
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $filePath,
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string[]] $tableData
     )
 
     $newContent = $null
@@ -62,8 +74,8 @@ function ReplaceMarkdownTableContent {
 
 function ReplaceScriptSensorMarkdownTableContent {
     param(
-        [string]$filePath,
-        [string[]]$tableData
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string] $filePath,
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)] [ValidateNotNullOrEmpty()] [string[]] $tableData
     )
 
     $newContent = $null
@@ -87,6 +99,7 @@ function updateMainIndexes {
     $paths = @("Access-Samples",
     "Android-Samples",
     "App-Volumes-Samples",
+    "DEEM-Samples",
     "Horizon-Samples",
     "Intelligence-Samples",
     "UAG-Samples",
@@ -97,30 +110,34 @@ function updateMainIndexes {
 
     # find README.md files under each sample directory
     foreach ($p in $paths) {
-
+        #Write-Host("Working on $p") -ForegroundColor Green
         $results = @()
         $files = Get-ChildItem -Path $p -Recurse -Include 'readme.md' -File
+        $filecount = ($files | Measure-Object ).Count
 
-        foreach ($f in $files) {
-            #Write-Host("Working on $f") -ForegroundColor Green
-            $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
+        if($filecount -ge 1) {
+            #Write-Host ("Number of files being processed: $filecount") -ForegroundColor White
+            foreach ($f in $files) {
+                #Write-Host("Working on $f") -ForegroundColor Green
+                $match = Get-TextBetweenTwoStrings -startPattern $startPattern -endPattern $endPattern -filePath $f.FullName
+                
+                $summary = $match.Trim()
+                $fulldirname = $f.DirectoryName
+                $newpath = $fulldirname.Replace($current_path,"")
+                $dirname = $f.Directory.Name
+                
+                $URI = $repopath,$newpath -join ""
+                $link = [uri]::EscapeUriString($URI)
+                $results += "| $dirname | $summary | [Link]($link) |"
+            }
             
-            $summary = $match.Trim()
-            $fulldirname = $f.DirectoryName
-            $newpath = $fulldirname.Replace($current_path,"")
-            $dirname = $f.Directory.Name
-            
-            $URI = $repopath,$newpath -join ""
-            $link = [uri]::EscapeUriString($URI)
-            $results += "| $dirname | $summary | [Link]($link) |"
-
+            if($null -ne $results) {
+                #Write the results to the index file after the table header, replacing everything previous
+                $docpath = "docs/$p/index.md"
+                $file = Get-ChildItem -Path $docpath
+                ReplaceMarkdownTableContent -filePath $file -tableData $results
+            }
         }
-        
-        #Write the results to the index file after the table header, replacing everything previous
-        $docpath = "docs/$p/index.md"
-        $file = Get-ChildItem -Path $docpath
-        ReplaceMarkdownTableContent $file $results
-
     }
 }
 
@@ -136,7 +153,6 @@ function updateSensorScriptIndexes {
         $files = Get-ChildItem -Path "UEM-Samples/$p" -Recurse -File | Where-Object Name -NotMatch $ExcludedTemplates
 
         foreach ($f in $files) {
-            Write-Host $f
             $match = Get-Description -filePath $f.FullName
             $summary = $match.Trim()
             $fname = $f.Name
@@ -150,9 +166,9 @@ function updateSensorScriptIndexes {
         }
         
         #Write the results to the index file after the table header, replacing everything previous
-        $docpath = "./docs/UEM-Samples/$p-index.md"
+        $docpath = "docs/UEM-Samples/$p-index.md"
         $file = Get-ChildItem -Path $docpath
-        ReplaceScriptSensorMarkdownTableContent $file $results
+        ReplaceScriptSensorMarkdownTableContent -filePath $file -tableData $results
 
     }
 }
