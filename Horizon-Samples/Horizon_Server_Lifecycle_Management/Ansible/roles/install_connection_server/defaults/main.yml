@@ -4,8 +4,8 @@ api_endpoints:
   install_connection_server: "/config/v1/connection-servers/action/install-connection-server"
 
 install_parameters:
-  domain: "horizoncte"
-  password: "B!9#leph@nt"
+  domain: "domain"
+  password: "password"
   server_msi_install_spec:
     admin_sid: "S-1-5-32-544"
     deployment_type: "GENERAL"

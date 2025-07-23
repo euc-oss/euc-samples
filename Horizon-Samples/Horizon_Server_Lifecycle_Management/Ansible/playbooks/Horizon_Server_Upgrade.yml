@@ -64,13 +64,9 @@
         token: "{{ api_auth_token }}"
         package_list: "{{ package_list_output }}"
 
-    - name: Authenticate and get token
-      include_role:
-        name: ../roles/horizon_server_api_auth
-
-    - name: Print token in playbook before calling roles API
-      debug:
-        msg: "Token in playbook is: {{ api_auth_token }}"
+    - name: Pause for 3 minutes
+      ansible.builtin.pause:
+        minutes: 3
 
     - name: Call role ldap precheck
       include_role:

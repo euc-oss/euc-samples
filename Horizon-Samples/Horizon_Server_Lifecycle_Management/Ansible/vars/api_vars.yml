@@ -1,11 +1,72 @@
 api_base_url: "https://<Horizon_Server_Fqdn>/rest"
 
-connection_server: 
+connection_server:
   - ConnectionServer.yourdomain.com
-  
+
 replica_servers:
   - ReplicaServer1.yourdomain.com
   - ReplicaServer2.yourdomain.com
 
 enrollment_servers:
   - EnrollmentServer1.yourdomain.com
+
+#You can specify the parameters for each role under respective var file or you can override the same at the playbook level by adding it here
+# Example
+#api_endpoints:
+#  login: "/login"
+#  list_roles: "/config/v1/roles"
+#  create_roles: "/config/v1/roles"
+#  register: "/config/v1/server-installer-packages/action/register"
+#  list_permissions : "/config/v1/permissions"
+#  assign_permissions: "/config/v1/permissions"
+#  install_connection_server: "/config/v1/connection-servers/action/install-connection-server"
+#  upgrade_connection_server: "/config/v1/connection-servers/action/upgrade-connection-server"
+#  install_status: "/config/v1/connection-servers/action/retrieve-installer-status"
+#  validate_ldap_requirements : "/config/v1/connection-servers/action/validate-ldap-requirements"
+#  validate_ad_requirements : "/config/v1/connection-servers/action/validate-ad-requirements"
+#  validate_system_requirements : "/config/v1/connection-servers/action/validate-system-requirements"
+#  validate_vCenter_requirements : "/config/v1/connection-servers/action/validate-virtual-center-requirements"
+
+#precheck:
+# cs_version: 2503
+# ad:
+#   fqdn : "Your Domain FQDN"
+#vc:
+#   fqdn : "Your VC FQDN"
+#   version: 8.0.3
+
+#max_retries: 300
+#retry_delay: 60
+
+#create_role:
+# description: "Horizon Server Lifecycle Management Administrators"
+# name: "LCM Admin"
+# privileges: ["LCM_MANAGEMENT"]
+
+#assign_permissons:
+# ad_user_or_group_id: "Add GUID specific to your environment"
+# local_access_group_id: "Add GUID specific to your environment"
+
+#server_installer:
+# file_url: "https://<YourWebserver>/Omnissa-Horizon-Connection-Server-x86_64-2506-8.16.0-15552271139.exe"
+# build_number: "15552271139"
+# checksum: "ee77fe7a7d447d1f3918aeda8252894b5ec2876b1a7c9a68ea99c11e1d803ed4"
+# display_name: "Omnissa Horizon Connection Server"
+# file_size_in_bytes: "405295848"
+# filename: "Omnissa-Horizon-Connection-Server-x86_64-2506-8.16.0-15552271139.exe"
+# version: "8.16.0"
+
+#install_parameters:
+#  domain: "horizoncte"
+#  password: "B!9#leph@nt"
+#  server_msi_install_spec:
+#    admin_sid: "S-1-5-32-544"
+#    deployment_type: "GENERAL"
+#    fips_enabled: false
+#    fw_choice: true
+#    html_access: true
+#    install_directory: "%ProgramFiles%\\Omnissa\\Horizon\\Server"
+#    server_recovery_pwd: "c"
+#    server_recovery_pwd_reminder: "c"
+#    vdm_ipprotocol_usage: "IPv4"
+#  user_name: "Administrator"
