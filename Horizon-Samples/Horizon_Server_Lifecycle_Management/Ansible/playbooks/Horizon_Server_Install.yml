@@ -72,6 +72,10 @@
       debug:
         msg: "Token in playbook is: {{ api_auth_token }}"
 
+    - name: Pause for 3 minutes
+      ansible.builtin.pause:
+        minutes: 3
+
     - name: Call role ldap precheck
       include_role:
         name: ../roles/precheck
