@@ -1,0 +1,24 @@
+- name: List permissions using API token
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.list_permissions }}"
+    method: GET
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    body_format: json
+    validate_certs: no
+  register: permissions_list_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+
+- name: Show raw permissions_list_response
+  debug:
+    var: permissions_list_response.json
+
+- name: Print type and value of permissions_list_response.json
+  debug:
+    msg:
+      - "Type: {{ permissions_list_response.json | type_debug }}"
+      - "Value: {{ permissions_list_response.json }}"
+

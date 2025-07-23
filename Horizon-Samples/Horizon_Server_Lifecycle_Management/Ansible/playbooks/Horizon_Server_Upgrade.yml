@@ -1,0 +1,122 @@
+- name: Authenticate and invoke role APIs
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  vars_files:
+    - ../vars/secure_vars.yml
+    - ../vars/api_vars.yml
+
+  tasks:
+    - name: Authenticate and get token
+      include_role:
+        name: ../roles/horizon_server_api_auth
+
+    - name: Print token in playbook before calling roles API
+      debug:
+        msg: "Token in playbook is: {{ api_auth_token }}"
+
+    - name: Call role list API
+      include_role:
+        name: ../roles/config_roles
+        tasks_from: list
+      vars:
+        token: "{{ api_auth_token }}"
+      register: role_list_output
+
+    - name: Call role create API
+      include_role:
+        name: ../roles/config_roles
+        tasks_from: create
+      vars:
+        token: "{{ api_auth_token }}"
+        roles_list: "{{ role_list_output }}"
+
+    - name: Call permissions list API
+      include_role:
+        name: ../roles/permissions
+        tasks_from: list
+      vars:
+        token: "{{ api_auth_token }}"
+      register: permissions_list_output
+
+    - name: Call permission assign API
+      include_role:
+        name: ../roles/permissions
+        tasks_from: assign
+      vars:
+        token: "{{ api_auth_token }}"
+        role_id: "{{ created_role_id }}"
+      register: "{{ permissions_list_output }}"
+
+    - name: Call package list API
+      include_role:
+        name: ../roles/server_installer_packages
+        tasks_from: list
+      vars:
+        token: "{{ api_auth_token }}"
+      register: package_list_output
+
+    - name: Invoke Package Register API
+      include_role:
+        name: ../roles/server_installer_packages
+        tasks_from: register
+      vars:
+        token: "{{ api_auth_token }}"
+        package_list: "{{ package_list_output }}"
+
+    - name: Authenticate and get token
+      include_role:
+        name: ../roles/horizon_server_api_auth
+
+    - name: Print token in playbook before calling roles API
+      debug:
+        msg: "Token in playbook is: {{ api_auth_token }}"
+
+    - name: Call role ldap precheck
+      include_role:
+        name: ../roles/precheck
+        tasks_from: ldap
+      vars:
+        token: "{{ api_auth_token }}"
+        target_servers: "{{ connection_server }}"
+
+    - name: Call role vCenter precheck
+      include_role:
+        name: ../roles/precheck
+        tasks_from: vcenter
+      vars:
+        token: "{{ api_auth_token }}"
+        target_servers: "{{ connection_server }}"
+
+    - name: Call role ad precheck
+      include_role:
+        name: ../roles/precheck
+        tasks_from: ad
+      vars:
+        token: "{{ api_auth_token }}"
+        target_servers: "{{ connection_server }}"
+
+    - name: Call role system precheck
+      include_role:
+        name: ../roles/precheck
+        tasks_from: system
+      vars:
+        token: "{{ api_auth_token }}"
+        target_servers: "{{ connection_server + replica_servers + enrollment_servers}}"
+
+    - name: Invoke Server upgrade
+      include_role:
+        name: ../roles/upgrade_connection_server
+      vars:
+        target_servers: "{{ connection_server + replica_servers + enrollment_servers}}"
+        token: "{{ api_auth_token }}"
+        role_id: "{{ package_id }}"
+
+    - name: Check server upgrade status
+      include_role:
+        name: ../roles/install_status_check
+        tasks_from: poll_status
+      vars:
+        target_servers: "{{ connection_server + replica_servers + enrollment_servers}}"
+        token: "{{ api_auth_token }}"
+        expected_status: "UPGRADE_SUCCESS"

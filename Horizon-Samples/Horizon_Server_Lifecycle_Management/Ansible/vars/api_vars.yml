@@ -1,0 +1,11 @@
+api_base_url: "https://<Horizon_Server_Fqdn>/rest"
+
+connection_server: 
+  - ConnectionServer.yourdomain.com
+  
+replica_servers:
+  - ReplicaServer1.yourdomain.com
+  - ReplicaServer2.yourdomain.com
+
+enrollment_servers:
+  - EnrollmentServer1.yourdomain.com

@@ -1,0 +1,4 @@
+---
+# defaults file for horizon_server_auth
+api_endpoints:
+  login: "/login"

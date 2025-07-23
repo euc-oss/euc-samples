@@ -1,0 +1,9 @@
+---
+# defaults file for upgrade_connection_server
+api_endpoints:
+  upgrade_connection_server: "/config/v1/connection-servers/action/upgrade-connection-server"
+
+install_parameters:
+  domain: "yourdomain"
+  password: "password"
+  user_name: "username"

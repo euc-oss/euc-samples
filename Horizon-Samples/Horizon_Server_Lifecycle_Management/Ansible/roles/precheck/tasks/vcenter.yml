@@ -1,0 +1,51 @@
+---
+# tasks file for precheck
+- name: Call vCenter precheck APIs and register results
+  vars:
+    query_params:
+      target_server_fqdn: "{{ item }}"
+      target_cs_version: "{{ precheck.cs_version }}"
+      vcenter_fqdn: "{{ precheck.vc.fqdn }}"
+      vcenter_version: "{{ precheck.vc.version }}"
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.validate_vCenter_requirements }}?{{ query_params | urlencode }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    validate_certs: no
+    status_code : 200
+  loop: "{{ target_servers }}"
+  loop_control:
+    label: "{{ item }}"
+  register: vcenter_precheck_response_status
+
+- name: Set unauthorized fact if any 401 found in loop results
+  set_fact:
+    api_call_unauthorized: >-
+      {{
+        vcenter_precheck_response_status.results
+        | selectattr('status', 'eq', 401)
+        | list
+        | length > 0
+      }}
+
+- name: Check vcenter validation API responses
+  set_fact:
+    failed_servers: >-
+      {{
+        failed_servers | default([]) + 
+        [item.item] if
+        (item.json | selectattr('response_status', 'ne', 'PASS') | list | length) > 0
+        else failed_servers | default([])
+      }}
+  loop: "{{ vcenter_precheck_response_status.results }}"
+
+- name: Fail if any server has failed checks
+  fail:
+    msg: "vCenter pre check validation failed for the following servers: {{ failed_servers }}"
+  when: failed_servers | length > 0
+
+- name: Continue only if all checks passed
+  debug:
+    msg: "All target servers passed the vCenter pre checks."

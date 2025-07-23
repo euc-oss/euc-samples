@@ -1,0 +1,30 @@
+- name: Debug list role request URL
+  debug:
+    msg: 
+      - "Calling: {{ api_base_url }}{{ api_endpoints.list_roles }}"
+      - "With token: {{ token }}"
+
+- name: List roles using API token
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.list_roles }}"
+    method: GET
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    body_format: json
+    validate_certs: no
+  register: roles_list_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+
+- name: Show raw roles_list_response
+  debug:
+    var: roles_list_response.json
+
+- name: Print type and value of roles_list_response.json
+  debug:
+    msg:
+      - "Type: {{ roles_list_response.json | type_debug }}"
+      - "Value: {{ roles_list_response.json }}"
+

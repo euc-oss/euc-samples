@@ -1,0 +1,44 @@
+---
+# tasks file for install_connection_server
+- name: Invoke Install Connection Server
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.upgrade_connection_server }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    body_format: json
+    body: >-
+      {{
+        {
+          "domain": install_parameters.domain,
+          "password": install_parameters.password,
+          "server_installer_package_id": package_id,
+          "target_server_fqdn": item,
+          "user_name": install_parameters.user_name
+        }
+      }}
+    status_code: 204
+    validate_certs: no
+  register: install_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+  loop: "{{ target_servers }}"
+  loop_control:
+    label: "{{ item }}"
+
+- name: Assert response code is 204
+  assert:
+    that:
+      - item.status == 204
+    fail_msg: "upgrade failed for {{ item.item }}: expected status 204, got {{ item.status }}"
+    success_msg: "upgrade API call for {{ item.item }} succeeded with status 204"
+  loop: "{{ install_response.results }}"
+  loop_control:
+    label: "{{ item.item }}"
+
+- name: Set fact for failed upgrades
+  set_fact:
+    failed_servers: "{{ failed_servers | default([]) + [item.item] }}"
+  when: item.status != 204
+  loop: "{{ install_response.results }}"

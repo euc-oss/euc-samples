@@ -1,0 +1,14 @@
+---
+# defaults file for ServerInstallerPackages
+api_endpoints:
+  register: "/config/v1/server-installer-packages/action/register"
+  list_packages: "/config/v1/server-installer-packages"
+
+server_installer:
+  file_url: "<https:/webserver/Omnissa-Horizon-Connection-Server-x86_64-2506-8.16.0-15763090940.exe>"
+  build_number: "15763090940"
+  checksum: "5386e4e0d95592dce87108b064d1f7a29afa1a8a4b0ed584a8977471ae098750"
+  display_name: "Omnissa Horizon Connection Server"
+  file_size_in_bytes: "403905776"
+  filename: "Omnissa-Horizon-Connection-Server-x86_64-2506-8.16.0-15763090940.exe"
+  version: "8.16.0"

@@ -1,0 +1,15 @@
+---
+# defaults file for precheck
+api_endpoints:
+  validate_ldap_requirements : "/config/v1/connection-servers/action/validate-ldap-requirements"
+  validate_ad_requirements : "/config/v1/connection-servers/action/validate-ad-requirements"
+  validate_system_requirements : "/config/v1/connection-servers/action/validate-system-requirements"
+  validate_vCenter_requirements : "/config/v1/connection-servers/action/validate-virtual-center-requirements"
+
+precheck:
+ cs_version: 2506
+ ad:
+   fqdn : "AD_FQDN"
+ vc:
+   fqdn : "vCenter_FQDN"
+   version: vCenter_Version
