@@ -1,10 +1,17 @@
-Horizon Server Lifecycle Management
+# Horizon Server Lifecycle Management
+
+Author: Guruprasad B S, Omnissa
+Last Edit: July 24,2025
+Version 1.0 
+
+<!-- Summary Start -->
 
 Horizon server lifecycle management refers to the automation and simplification of installing and upgrading Omnissa Horizon Connection Server and Enrollment Server instances using Lifecycle Management (LCM) APIs. 
-
 These APIs, introduced in Horizon 8 version 2406, allow administrators to automate these processes and manage the server's lifecycle more efficiently. 
 
 Documentation : https://docs.omnissa.com/bundle/Horizon8InstallUpgrade/page/AutomatingUpgradesofConnectionServerWithLCMAPIs.html
+
+<!-- Summary End -->
 
 Key aspects of Horizon server lifecycle management include:
 ----------------------------------------------------------
@@ -40,8 +47,10 @@ Horizon_Server_Lifecycle_Managemnt --|
 Note: You can define the necessary parameters for each role in the corresponding "roles/<role name>/defaults/main.yml" file. Alternatively, you have the option to override these parameters at the playbook level by including them in the vars/api_vars.yml file.
 
 Command to execute upgrade flow:
+-------------------------------
 Change directory to playbooks and execute - ansible-playbook Horizon_Server_Upgrade.yml
 
 Command to execute Install flow:
+-------------------------------
 Change directory to playbooks and execute - ansible-playbook Horizon_Server_Install.yml
                                                                    
