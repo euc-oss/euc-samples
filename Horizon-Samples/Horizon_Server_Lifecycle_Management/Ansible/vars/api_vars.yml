@@ -10,7 +10,8 @@ replica_servers:
 enrollment_servers:
   - EnrollmentServer1.yourdomain.com
 
-#You can specify the parameters for each role under respective var file or you can override the same at the playbook level by adding it here
+# You can specify the parameters required for each role under the respective "roles/<role name>/defaults/main.yml" file
+# or you can override the same at the playbook level by adding it at vars/api_vars.yml
 # Example
 #api_endpoints:
 #  login: "/login"
@@ -57,8 +58,8 @@ enrollment_servers:
 # version: "8.16.0"
 
 #install_parameters:
-#  domain: "horizoncte"
-#  password: "B!9#leph@nt"
+#  domain: "domain"
+#  password: "password"
 #  server_msi_install_spec:
 #    admin_sid: "S-1-5-32-544"
 #    deployment_type: "GENERAL"
