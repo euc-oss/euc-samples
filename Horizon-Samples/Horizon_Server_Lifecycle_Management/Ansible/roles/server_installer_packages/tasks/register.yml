@@ -1,0 +1,87 @@
+---
+# tasks file for server_installer_packages
+- name: Debug response type and sample entry
+  debug:
+    msg:
+      - "Type: {{ package_list_response.json | type_debug }}"
+      - "Sample first package: {{ package_list_response.json[0] | default('No package found') }}"
+
+- name: Set existing_package list
+  set_fact:
+    existing_package: "{{ package_list_response.json }}"
+
+- name: Find existing package by build_number
+  set_fact:
+    matching_package: >-
+      {{ existing_package
+         | selectattr('build_number', 'equalto', server_installer.build_number)
+         | list
+         | first | default({}) }}
+
+- name: Set package_id from already registered package
+  set_fact:
+    package_id: "{{ matching_package.id }}"
+  when: "'id' in matching_package"
+
+- name: Debug matching package if found
+  debug:
+    msg: "Server installer package build '{{ server_installer.build_number }}' already registered with package ID {{ matching_package.id }}"
+  when: "'id' in matching_package"
+
+- name: Skip registration if package is already registered
+  debug:
+    msg: "Skipping registration. Package build '{{ server_installer.build_number }}' already registered with ID {{ matching_package.id }}"
+  when: "'id' in matching_package"
+
+- name: Create roles using API token
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.register }}?fileUrl={{ server_installer.file_url | urlencode }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    body_format: json
+    body: "{{ {
+      'build_number': server_installer.build_number,
+      'checksum': server_installer.checksum,
+      'display_name': server_installer.display_name,
+      'file_size_in_bytes': server_installer.file_size_in_bytes | int,
+      'filename': server_installer.filename,
+      'version': server_installer.version,
+    } }}"
+    return_content: yes
+    validate_certs: no
+    status_code: 200
+  register: register_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+  when: "'id' not in matching_package"
+
+- name: Assert response code is 200
+  assert:
+    that:
+      - register_response.status == 200
+    fail_msg: "Expected status 200, got {{ register_response.status }}"
+    success_msg: "Package registration successful with status 200"
+  when: "'id' not in matching_package"
+
+- name: Set package_id from already registered package
+  set_fact:
+    package_id: "{{ matching_package.id }}"
+  when: "'id' in matching_package"
+
+- name: Set package_id from response
+  set_fact:
+    package_id: "{{ register_response.json.server_installer_package_id }}"
+  when: "'id' not in matching_package"
+
+- name: Show full response if registration failed
+  debug:
+    var: register_response
+  when:
+    - register_response is defined
+    - register_response.status is defined
+    - register_response.status != 200
+    - "'id' not in matching_package"
+
+

@@ -1,0 +1,10 @@
+---
+# defaults file for config_roles
+api_endpoints:
+  list_roles: "/config/v1/roles"
+  create_roles: "/config/v1/roles"
+
+create_role:
+ description: "Horizon Server Lifecycle Management Administrators"
+ name: "LCM Admin"
+ privileges: ["LCM_MANAGEMENT"]

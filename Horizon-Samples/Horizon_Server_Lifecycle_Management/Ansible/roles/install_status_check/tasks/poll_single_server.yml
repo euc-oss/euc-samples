@@ -1,0 +1,77 @@
+---
+- name: Check API status for server {{ server }}
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.install_status }}?fqdn={{ server }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    status_code: 200
+    validate_certs: no
+  register: api_response
+  failed_when: false
+
+- name: Debug full api_response (before retry)
+  debug:
+    var: api_response
+
+- name: Re-authenticate if 401 Unauthorized
+  include_role:
+    name: horizon_server_api_auth
+  when: api_response.status == 401
+
+- name: Retry API status for server {{ server }} with new token
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.install_status }}?fqdn={{ server }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    status_code: 200
+    validate_certs: no
+  register: api_response_retry
+  failed_when: false
+  when: api_response.status == 401
+
+- name: Use retried response if present and not skipped
+  set_fact:
+    api_response: "{{ api_response_retry }}"
+  when:
+    - api_response_retry is defined
+    - api_response_retry is mapping
+    - api_response_retry.skipped is not defined
+
+- name: Debug full api_response (after retry if any)
+  debug:
+    var: api_response
+
+- name: Print status for server {{ server }}
+  debug:
+    msg: >-
+      Server {{ server }} status:
+      {{ api_response.json.status | default('unknown') }}
+      {% if api_response.json.error_message is defined and api_response.json.error_message != "" %}
+      with error: {{ api_response.json.error_message }}
+      {% endif %}
+
+- name: Evaluate if server {{ server }} is in terminal state
+  set_fact:
+    server_complete: >-
+      {{
+        (api_response.json is defined and api_response.json.status is defined and api_response.json.status == expected_status)
+        or
+        (api_response.json is defined and api_response.json.error_message is defined and api_response.json.error_message != "")
+      }}
+
+- name: Mark server {{ server }} for removal if complete
+  set_fact:
+    servers_to_remove: "{{ servers_to_remove + [ server ] }}"
+  when: server_complete
+
+- name: Save API status result for server
+  set_fact:
+    install_status_results: "{{ (install_status_results | default({})) | combine({ server: (api_response.json['status'] if (api_response.json is defined and 'status' in api_response.json) else 'unknown') }) }}"
+
+- name: Pause 60 seconds before processing next server
+  pause:
+    seconds: 60

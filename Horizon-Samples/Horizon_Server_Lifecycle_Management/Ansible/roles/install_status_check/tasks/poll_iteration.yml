@@ -1,0 +1,26 @@
+---
+# roles/install_status_check/tasks/poll_iteration.yml
+
+- name: Initialize list for completed servers in this iteration
+  set_fact:
+    servers_to_remove: []
+
+- name: Process each pending server
+  include_tasks: poll_single_server.yml
+  loop: "{{ pending_servers }}"
+  loop_control:
+    loop_var: server
+
+- name: Update pending servers list
+  set_fact:
+    pending_servers: "{{ pending_servers | difference(servers_to_remove) }}"
+
+- name: Display remaining servers
+  debug:
+    msg: "Remaining servers to poll: {{ pending_servers }}"
+
+- name: Continue polling for remaining servers
+  include_tasks: poll_iteration.yml
+  when: pending_servers | length > 0
+
+

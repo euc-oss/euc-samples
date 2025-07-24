@@ -1,0 +1,82 @@
+#task assign permission
+- name: Debug assign permission request role id
+  debug:
+    msg:
+      - "Calling assign permission with role id : {{ role_id }}"
+
+- set_fact:
+    existing_permissions: "{{ permissions_list_response.json }}"
+
+- name: Set existing_role if found
+  set_fact:
+    permission: "{{ item }}"
+  when: item.role_id == '{{ role_id }}'
+  loop: "{{ permissions_list_response.json }}"
+
+- name: Skip assign if permissions exists
+  debug:
+    msg: "Role '{{ role_id}}' already assigned"
+  when: permission is defined
+
+- name: Build base permission entry
+  set_fact:
+    permission_entry:
+      ad_user_or_group_id: "{{ assign_permissions.ad_user_or_group_id }}"
+      local_access_group_id: "{{ assign_permissions.local_access_group_id }}"
+      role_id: "{{ role_id }}"
+  when: permission is not defined
+
+- name: Conditionally add federation_access_group_id to permission_entry
+  set_fact:
+    permission_entry: >-
+      {{
+        permission_entry | combine(
+          {'federation_access_group_id': assign_permissions.federation_access_group_id}
+        )
+      }}
+  when:
+    - assign_permissions.federation_access_group_id is defined
+    - assign_permissions.federation_access_group_id | length > 0
+  
+- name: Build request body as list
+  set_fact:
+    assign_permission_payload: [ "{{ permission_entry }}" ]
+  when: permission is not defined
+
+- name: Assign permission
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.assign_permissions }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    body_format: json
+    body: "{{ assign_permission_payload }}"
+    return_content: yes
+    status_code: 200
+    validate_certs: no
+  register: assign_permission_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+  when: permission is not defined
+
+- name: Show full assign_permission_response structure
+  debug:
+    var: assign_permission_response
+
+- name: Assert response code is 200
+  assert:
+    that:
+      - assign_permission_response.status == 200
+    fail_msg: "Expected status 200, got {{ assign_permission_response.status }}"
+    success_msg: "Role successfully created with status 200"
+  when: permission is not defined
+
+- name: Show full response if permission assign fails
+  debug:
+    var: assign_permission_response
+  when: 
+    - assign_permission_response is defined
+    - assign_permission_response.status is defined
+    - assign_permission_response.status != 200
+    - permission is not defined

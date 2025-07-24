@@ -1,0 +1,23 @@
+- name: Login to REST API
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.login }}"
+    method: POST
+    validate_certs: no
+    body_format: json
+    body:
+      username: "{{ api_username }}"
+      password: "{{ api_password }}"
+      domain: "{{ api_domain }}"
+    headers:
+      Content-Type: "application/json"
+    return_content: yes
+  register: login_response
+
+- name: Set auth token as fact
+  set_fact:
+    api_auth_token: "{{ login_response.json.access_token }}"
+
+- name: Debug token inside auth role
+  debug:
+    msg: "Auth token (inside auth role) is: {{ api_auth_token }}"
+

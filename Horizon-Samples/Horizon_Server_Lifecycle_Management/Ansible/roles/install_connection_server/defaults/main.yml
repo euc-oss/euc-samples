@@ -1,0 +1,19 @@
+---
+# defaults file for install_connection_server
+api_endpoints:
+  install_connection_server: "/config/v1/connection-servers/action/install-connection-server"
+
+install_parameters:
+  domain: "domain"
+  password: "password"
+  server_msi_install_spec:
+    admin_sid: "S-1-5-32-544"
+    deployment_type: "GENERAL"
+    fips_enabled: false
+    fw_choice: true
+    html_access: true
+    install_directory: "%ProgramFiles%\\Omnissa\\Horizon\\Server"
+    server_recovery_pwd: "c"
+    server_recovery_pwd_reminder: "c"
+    vdm_ipprotocol_usage: "IPv4"
+  user_name: "administrator"
