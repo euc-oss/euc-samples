@@ -1,0 +1,8 @@
+---
+# defaults file for installer_ststus_check
+api_endpoints:
+  install_status: "/config/v1/connection-servers/action/retrieve-installer-status"
+
+
+max_retries: 300
+retry_delay: 60
