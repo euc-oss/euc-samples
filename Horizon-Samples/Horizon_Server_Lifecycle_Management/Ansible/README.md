@@ -37,12 +37,8 @@ The standard prerequisites apply when using LCM APIs with the Ansible.
 
 Folder Structure:
 ----------------
-Horizon_Server_Lifecycle_Managemnt --|
-                                     |--- inventory 			
-					                           |--- playbooks (Install and Upgrade playbooks)
-                                     |--- vars  (Parameters required for playbook execution)
-                                     |--- roles (role to invoke LCM API endpoints.)
-                                     |--- ansible.cfg (config file)                                                                
+<img width="817" height="150" alt="image" src="https://github.com/user-attachments/assets/9c805545-430a-4b7a-a23f-716ea47fefd5" />
+
 
 Note: You can define the necessary parameters for each role in the corresponding "roles/<role name>/defaults/main.yml" file. Alternatively, you have the option to override these parameters at the playbook level by including them in the vars/api_vars.yml file.
 
