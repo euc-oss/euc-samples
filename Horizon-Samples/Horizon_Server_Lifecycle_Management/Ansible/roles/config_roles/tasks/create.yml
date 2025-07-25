@@ -1,0 +1,83 @@
+- name: Debug create role request URL
+  debug:
+    msg:
+      - "Calling: {{ api_base_url }}{{ api_endpoints.create_roles }}"
+      - "With token: {{ token }}"
+
+- debug:
+    msg:
+      - "Type: {{ roles_list_response.json | type_debug }}"
+      - "Sample first role: {{ roles_list_response.json[0] }}"
+
+- set_fact:
+    existing_roles: "{{ roles_list_response.json }}"
+
+- name: Set existing_role if found
+  set_fact:
+    existing_role: "{{ item }}"
+  when: item.name == '{{ create_role.name }}'
+  loop: "{{ roles_list_response.json }}"
+
+- name: Skip creation if role exists
+  debug:
+    msg: "Role '{{ create_role.name }}' already exists with ID {{ existing_role.id }}"
+  when: existing_role is defined
+
+- name: Create roles using API token
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.create_roles }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    body_format: json
+    body:
+      description: "{{ create_role.description }}"
+      name: "{{ create_role.name }}"
+      privileges: "{{ create_role.privileges }}"
+    return_content: yes
+    validate_certs: no
+    status_code: 201
+  register: roles_create_response
+  environment:
+    CURL_CA_BUNDLE: ""
+    REQUESTS_CA_BUNDLE: ""
+  when: existing_role is not defined
+
+- name: Assert response code is 201
+  assert:
+    that:
+      - roles_create_response.status == 201
+    fail_msg: "Expected status 201, got {{ roles_create_response.status }}"
+    success_msg: "Role successfully created with status 201"
+  when: existing_role is not defined
+
+- name: Set created_role_id from existing role
+  set_fact:
+    created_role_id: "{{ existing_role.id }}"
+  when: existing_role is defined
+
+- name: Set created_role_id from location
+  set_fact:
+    created_role_id: "{{ roles_create_response.location | regex_replace('.*/', '') }}"
+  when:
+    - roles_create_response.location is defined
+    - existing_role is not defined
+
+- name: Fail if role ID could not be found
+  fail:
+    msg: "Could not determine created_role_id"
+  when: created_role_id is not defined
+
+- name: Print role id
+  debug:
+    msg: "role id {{ created_role_id }}" 
+  when: created_role_id is defined
+
+- name: Show full response if creation failed
+  debug:
+    var: roles_create_response
+  when: 
+    - roles_create_response is defined
+    - roles_create_response.status is defined
+    - roles_create_response.status != 201
+    - existing_role is not defined

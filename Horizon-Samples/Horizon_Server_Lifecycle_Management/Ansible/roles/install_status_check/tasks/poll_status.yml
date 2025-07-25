@@ -1,0 +1,12 @@
+---
+# roles/install_status_check/tasks/poll_status.yml
+
+- name: Initialize pending servers list
+  set_fact:
+    pending_servers: "{{ target_servers }}"
+
+- name: Begin polling process
+  include_tasks: poll_iteration.yml
+  when: pending_servers | length > 0
+
+

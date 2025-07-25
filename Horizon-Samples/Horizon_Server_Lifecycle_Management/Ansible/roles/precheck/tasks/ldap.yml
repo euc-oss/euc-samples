@@ -1,0 +1,46 @@
+---
+# tasks file for precheck
+- name: Call all precheck APIs and register results
+  uri:
+    url: "{{ api_base_url }}{{ api_endpoints.validate_ldap_requirements }}"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ token }}"
+    return_content: yes
+    validate_certs: no
+    status_code : 200
+  loop: "{{ target_servers }}"
+  loop_control:
+    label: item 
+  register: ldap_precheck_response_status
+
+
+- name: Set unauthorized fact if any 401 found in loop results
+  set_fact:
+    api_call_unauthorized: >-
+      {{
+        ldap_precheck_response_status.results
+        | selectattr('status', 'eq', 401)
+        | list
+        | length > 0
+      }}
+
+- name: Check API responses for all servers
+  set_fact:
+    failed_servers: >-
+      {{
+        failed_servers | default([]) + 
+        [item.item] if
+        (item.json | selectattr('response_status', 'ne', 'PASS') | list | length) > 0
+        else failed_servers | default([])
+      }}
+  loop: "{{ ldap_precheck_response_status.results }}"
+
+- name: Fail if any server has failed checks
+  fail:
+    msg: "Verification failed for the following servers: {{ failed_servers }}"
+  when: failed_servers | length > 0
+
+- name: Continue only if all checks passed
+  debug:
+    msg: "All target servers passed the checks."
