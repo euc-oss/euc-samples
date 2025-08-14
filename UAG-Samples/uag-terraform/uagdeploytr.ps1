@@ -1,11 +1,4 @@
 #
-# Copyright (c) 2025 Omnissa, LLC.
-# -- Omnissa Public
-#
-
-
-
-#
 # Load the dependent PowerShell Module
 #
 

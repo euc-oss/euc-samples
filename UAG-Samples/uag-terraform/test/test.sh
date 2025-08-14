@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#
-# Copyright (c) 2025 Omnissa, LLC.
-# -- Omnissa Public
-#
-
 set -e
 exec 2> >(tee -a uagterraform.log >&1)
 

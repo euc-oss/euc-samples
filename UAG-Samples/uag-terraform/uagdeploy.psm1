@@ -1,8 +1,3 @@
-#
-# Copyright (c) 2015-2024 Omnissa, LLC.
-# -- Omnissa Public
-#
-
 param(
 	[Parameter(Mandatory=$false)] [string] $awAPIServerPwd,
 	[Parameter(Mandatory=$false)] [string] $awTunnelGatewayAPIServerPwd,

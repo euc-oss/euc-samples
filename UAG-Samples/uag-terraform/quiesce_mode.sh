@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#
-# Copyright (c) 2025 Omnissa, LLC.
-# -- Omnissa Public
-#
-
 prefix_name=$1
 admin_passwd=$2
 if [ -z "$prefix_name" ]
