@@ -1,2 +1,2 @@
-requests==2.31.0
+requests==2.32.4
 six==1.11.0
