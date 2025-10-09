@@ -18,6 +18,8 @@ Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](http
       </array>
       <key>OnlineAuthenticationGracePeriod</key>
       <integer>5</integer>
+      <key>SkipLanguageAndLocaleSetupForNewUsers</key>
+      <true/>
     </dict>
   </array>
 </dict>
@@ -27,5 +29,6 @@ Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](http
 
 | Key              | type      | Presence   | Description                      |
 |------------------|-----------|------------|----------------------------------|
-|`ManagedAppleIDDefaultDomains`   | [string]   | optional | A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID. If this list contains more than 3 domains, the system picks 3 at random for display.Available in iOS 16 and later.      |
-|`OnlineAuthenticationGracePeriod`   |  integer   | optional | A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user’s passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple’s identity server) after the number of days specified by this setting. Setting this value to 0 enforces online authentication every time. Available in iOS 16 and later.      |
+|`ManagedAppleIDDefaultDomains`   | [string]   | optional | A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID. If this list contains more than 3 domains, the system picks 3 at random for display. Available in iOS 16 and later.      |
+|`OnlineAuthenticationGracePeriod`   |  [integer]   | optional | A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user’s passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple’s identity server) after the number of days specified by this setting. Setting this value to 0 enforces online authentication every time. Available in iOS 16 and later.      |
+|`SkipLanguageAndLocaleSetupForNewUsers`   |  [boolean]   | optional | If true, the system picks the system language and locale automatically for the new Shared iPad user. Available in iOS 16.2 and later.      |
