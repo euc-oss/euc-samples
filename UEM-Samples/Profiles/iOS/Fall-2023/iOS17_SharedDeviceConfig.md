@@ -9,6 +9,11 @@ Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](http
   <key>Settings</key>
   <array>
     <dict>
+      <key>AwaitUserConfiguration</key>
+      <dict>
+        <key>Enabled</key>
+        <true/>
+      </dict>
       <key>Item</key>
       <string>SharedDeviceConfiguration</string>
       <key>QuotaSize</key>
@@ -29,6 +34,7 @@ Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](http
 
 | Key              | type      | Presence   | Description                      |
 |------------------|-----------|------------|----------------------------------|
+|`AwaitUserConfiguration`   | [boolean]   | optional | If enabled, the Shared iPad device enters Setup Assistant after the user triggers a login. The MDM server has a chance to configure the device and user. After configuration, the server needs to send a User Configured command to the user channel to unblock the login. This feature requires the device to have network access during the login process. Available in iOS 17 and later.      |
 |`QuotaSize`   | [integer]   | optional | The quota size, in megabytes (MB), for each user on the shared device, or if the quota size is too small, the minimum quota size. Available to Temporary Sessions Only guest users on iOS 17+.      |
 |`AutoLockTime`   |  [integer]   | optional | The number of seconds before a device goes to sleep after being idle. The minimum value for this setting is 120 seconds. Available on iOS 17+.      |
 |`PasscodeLockGracePeriod`   |  [integer]   | optional | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is 0 seconds and the maximum value is 14400 seconds. If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode. If the value is less than one of the known values, the device uses the next lowest value. For example a value of 299 results in an effective setting of 60. This setting won't take effect if TemporarySessionOnly is true because there's no passcode for a temporary session. Possible Values: 0, 60, 300, 900, 3600, 14400. Available on iOS 17+.      |
