@@ -13,13 +13,13 @@ Paste the entire XML snippet (`<dict>...</dict>`) into the [Custom Command](http
       <string>SharedDeviceConfiguration</string>
       <key>QuotaSize</key>
       <integer>2048</integer>
-			<key>PasscodePolicy</key>
-			<dict>
-				<key>AutoLockTime</key>
-				<integer>300</integer>
-				<key>PasscodeLockGracePeriod</key>
-				<integer>14400</integer>
-			</dict>
+      <key>PasscodePolicy</key>
+      <dict>
+        <key>AutoLockTime</key>
+        <integer>300</integer>
+        <key>PasscodeLockGracePeriod</key>
+        <integer>14400</integer>
+      </dict>
     </dict>
   </array>
 </dict>
