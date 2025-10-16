@@ -22,7 +22,13 @@ Manage Google Chrome Settings as Supported by Google via Workspace ONE:
 To manage the Certicficate Picker, use the **AutoSelectCertificateForUrls** key and set the Pattern URL to the CAS URL of your Omnissa Access Instance:
 
 - *.workspaceoneaccess.com = <https://cas.workspaceoneaccess.com/>
+- *.workspaceoneaccess.com = <https://somecompany.cas.workspaceoneaccess.com/>
+- *.workspaceoneaccess.com = <https://somecompany-cert.cas.workspaceoneaccess.com/>
+- *.workspaceoneaccess.com = <https://somecompany-amsso.cas.workspaceoneaccess.com/>
 - *.vidmpreview.com = <https://cas.vidmpreview.com/>
+- *.vidmpreview.com = <https://somecompany.cas.vidmpreview.com/>
+- *.vidmpreview.com = <https://somecompany-cert.cas.vidmpreview.com/>
+- *.vidmpreview.com = <https://somecompany-amsso.cas.vidmpreview.com/>
 
 The Issuer needs to be the Issuer of your CA. So if your Issuer is CA is **CN=lab-ad01-CA** use **lab-ad01-CA**. 
 
@@ -52,6 +58,9 @@ To enable Chrome Browser Cloud Management for macOS, add the following two lines
     <key>AutoSelectCertificateForUrls</key>
     <array>
     <string>{"pattern":"https://cas.vidmpreview.com","filter":{"ISSUER":{"CN":”TMApple"}}}</string>
+    <string>{"pattern":"https://somecompany-cert.cas.vidmpreview.com","filter":{"ISSUER":{"CN":”TMApple"}}}</string>
+    <string>{"pattern":"https://somecompany-amsso.cas.vidmpreview.com","filter":{"ISSUER":{"CN":”TMApple"}}}</string>
+    <string>{"pattern":"https://somecompany.cas.vidmpreview.com","filter":{"ISSUER":{"CN":”TMApple"}}}</string>
     </array>
      <key>BuiltInDnsClientEnabled</key>
     <false />
@@ -80,6 +89,7 @@ None
 
 ## Change Log
 
+- 2025/10/15: Change of the AutoSelectCertificateForUrls examples to include new hostnames (somecompany-cert.cas, somecompany-amsso.cas, somecompany.cas) for TLS 1.3 update
 - 2025/01/27: Change of the AutoSelectCertificateForUrls examples from cas-aws to cas after env change, will change again with TLS 1.3 update
 - 2020-02-27: Added Notes Regarding Chrome Browser Cloud Management
 - 2020-01-21: Updated Google Chrome Policies Location
