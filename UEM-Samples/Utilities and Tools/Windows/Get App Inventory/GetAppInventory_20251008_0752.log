@@ -1,0 +1,36 @@
+************************************************************************
+
+	WS1 App Inventory Report
+
+	Wednesday, October 8, 2025 7:53 AM
+
+************************************************************************
+
+Selected OG: helmlingp (66b4f61d-497e-4426-91f4-6258c0e45b88)
+Existing Apps in OG: 15
+
+Application                               Version      File Name                             File Size Supported Models Min OS Version          Dependency Apps Assigned SGs
+-----------                               -------      ---------                             --------- ---------------- --------------          --------------- ------------                 
+7-Zip                                     16.4.0.0     7z1604-x64.msi                             1629 Desktop, Server  Windows 10 (10.0.10240) dummy.exe                                    
+7-Zip                                     19.0.0.0     7z1900-x64.msi                             1707 Desktop, Server  Windows 10 (10.0.10240) dummy.exe       App Exc                      
+7-Zip                                     23.1.0.0     7z2301-x64.msi                             1888 Desktop, Server  Windows 10 (10.0.10240)                 dkWin11, Windows Desktops, A…
+7-Zip                                     24.9.0.0     7z2409-x64.msi                             1941 Desktop, Server  Windows 10 (10.0.10240)                                              
+Brave                                     137.1.79.126 BraveBrowserStandaloneSilentSetup.exe    134109 Desktop          Windows 10 (10.0.10240)                                              
+CrowdStrike Windows Sensor                7.28.20006.0 FalconSensor_Windows.zip                 110351 Desktop, Server  Windows 10 (10.0.10240)                 Windows Desktops             
+Firefox (English US) (x64)                141.0.0.299  2208_Firefox Setup 141.0.exe              80026 Desktop                                                                               
+Mozilla Firefox                           137.0.0.0    Firefox Setup 137.0.msi                   70224 Desktop, Server  Windows 10 (10.0.10240)                                              
+Mozilla Firefox                           138.0.0.0    Firefox Setup 138.0.msi                   70584 Desktop          Windows 10 (10.0.10240)                                              
+NDP481-x86-x64-AllOS-ENU.exe              4.8.1.0      NDP481-x86-x64-AllOS-ENU.exe              75867 Desktop          Windows 10 (10.0.10240)                 Windows Desktops, dkwin10    
+Notepad++                                 8.6.1.0      npp.8.6.1.Installer.x64.exe                4729 Desktop, Server  Windows 10 (10.0.10240)                 Server2019, Server2022, Serv…
+Notepad++                                 8.6.7.0      npp.8.6.7.Installer.x64.exe                4740 Desktop, Server  Windows 10 (10.0.10240)                 App Exc, Windows Desktops    
+Notepad++                                 8.7.4.0      npp.8.7.4.Installer.x64.exe                6496 Desktop, Server  Windows 10 (10.0.10240)                 Windows Desktops, dkWin11, d…
+Visual Studio Code (User Installer) (x64) 1.101.2.0    12377_VSCodeUserSetup-x64-1.101.2.exe    108708 Desktop                                                  dkwin10                      
+Workspace ONE Intelligent Hub             23.2.0.7     AirwatchAgent.msi                        290848 Desktop                                                                               
+
+
+************************************************************************
+
+	End of Report
+
+************************************************************************
+

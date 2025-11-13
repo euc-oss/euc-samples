@@ -1,0 +1,579 @@
+/* UUID Resolver Chrome Extension Styles */
+
+/* Loading indicator */
+.uuid-resolver-loading {
+  color: #007acc;
+  font-size: 0.85em;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.uuid-resolver-loading .loading-spinner {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Resolved entity information */
+.uuid-resolver-info {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  font-size: 0.9em;
+  position: relative;
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.uuid-resolver-name {
+  color: #0078d4;
+  font-weight: 600;
+  background-color: #f3f9ff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #c7e0f4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  flex-shrink: 0;
+}
+
+.uuid-resolver-type {
+  color: #666;
+  font-size: 0.8em;
+  background-color: #f5f5f5;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-left: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Entity type specific colors */
+.uuid-resolver-info[data-type="tag"] .uuid-resolver-name {
+  background-color: #fff4e6;
+  border-color: #ffc947;
+  color: #cc7a00;
+}
+
+.uuid-resolver-info[data-type="application"] .uuid-resolver-name {
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+  color: #1890ff;
+}
+
+.uuid-resolver-info[data-type="profile"] .uuid-resolver-name {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+  color: #52c41a;
+}
+
+.uuid-resolver-info[data-type="organization-group"] .uuid-resolver-name {
+  background-color: #f9f0ff;
+  border-color: #d3adf7;
+  color: #722ed1;
+}
+
+.uuid-resolver-info[data-type="script"] .uuid-resolver-name {
+  background-color: #fff7e6;
+  border-color: #ffd591;
+  color: #fa8c16;
+}
+
+.uuid-resolver-info[data-type="product"] .uuid-resolver-name {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+  color: #389e0d;
+}
+
+/* Tooltip */
+.uuid-resolver-tooltip {
+  display: none;
+  position: fixed;
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  z-index: 10000;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* Tooltip positioning variants */
+.uuid-resolver-tooltip.tooltip-top {
+  margin-bottom: 8px;
+}
+
+.uuid-resolver-tooltip.tooltip-bottom {
+  margin-top: 8px;
+}
+
+.uuid-resolver-tooltip.tooltip-left {
+  margin-right: 8px;
+}
+
+.uuid-resolver-tooltip.tooltip-right {
+  margin-left: 8px;
+}
+
+.tooltip-header {
+  border-bottom: 1px solid #555;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tooltip-header strong {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.entity-type {
+  background-color: #555;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+/* Application type specific styling */
+.entity-type.internal {
+  background-color: #0078d4; /* Blue for internal apps */
+}
+
+.entity-type.public {
+  background-color: #16537e; /* Dark blue for public apps */
+}
+
+.entity-type.purchased {
+  background-color: #107c10; /* Green for purchased apps */
+}
+
+.entity-type.general {
+  background-color: #5c5c5c; /* Gray for general apps */
+}
+
+.tooltip-description {
+  color: #ccc;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.tooltip-version,
+.tooltip-platform,
+.tooltip-criteria,
+.tooltip-color,
+.tooltip-bundle,
+.tooltip-category,
+.tooltip-managed,
+.tooltip-status,
+.tooltip-actionable {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-bottom: 4px;
+}
+
+.tooltip-uuid {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: #888;
+  border-top: 1px solid #555;
+  padding-top: 8px;
+  margin-top: 8px;
+  word-break: break-all;
+}
+
+/* Error indicator */
+.uuid-resolver-error {
+  color: #d73527;
+  font-size: 0.85em;
+  margin-left: 4px;
+}
+
+.uuid-resolver-error .error-icon {
+  font-weight: bold;
+}
+
+/* Hover effects */
+.uuid-resolver-name:hover {
+  opacity: 0.8;
+  cursor: help;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .uuid-resolver-tooltip {
+    min-width: 200px;
+    max-width: 90vw;
+    font-size: 0.8em;
+  }
+  
+  .uuid-resolver-info {
+    font-size: 0.85em;
+    max-width: 100%;
+  }
+  
+  .uuid-resolver-name {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uuid-resolver-tooltip {
+    min-width: 180px;
+    max-width: 95vw;
+    font-size: 0.75em;
+    padding: 10px;
+  }
+  
+  .uuid-resolver-info {
+    font-size: 0.8em;
+    margin-left: 2px;
+  }
+  
+  .uuid-resolver-name {
+    max-width: 120px;
+    padding: 1px 4px;
+  }
+  
+  .uuid-resolver-type {
+    font-size: 0.7em;
+    margin-left: 2px;
+  }
+}
+
+/* Container-aware styling */
+.uuid-resolver-info.in-narrow-container {
+  display: block;
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+.uuid-resolver-info.in-narrow-container .uuid-resolver-name {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.uuid-resolver-info.in-narrow-container .uuid-resolver-type {
+  margin-left: 0;
+  display: block;
+}
+
+/* Input field specific styling */
+.uuid-resolver-info.in-input-field {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 4px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2px 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border: 1px solid #e0e0e0;
+  font-size: 0.85em;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.uuid-resolver-info.in-input-field .uuid-resolver-name {
+  max-width: 200px;
+  display: inline-block;
+  margin-bottom: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.uuid-resolver-info.in-input-field .uuid-resolver-type {
+  margin-left: 4px;
+  display: inline-block;
+  background: transparent;
+  padding: 0;
+  font-size: 0.9em;
+}
+
+.uuid-resolver-info.in-input-field::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 8px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.95);
+}
+
+/* Wide input field styling (for product fields and other wide inputs) */
+.uuid-resolver-info.in-wide-input-field {
+  min-width: 250px;
+  max-width: 500px;
+  left: 0;
+  right: auto;
+}
+
+.uuid-resolver-info.in-wide-input-field .uuid-resolver-name {
+  max-width: 300px;
+}
+
+/* Product field specific styling */
+.uuid-resolver-info.in-product-field {
+  background: rgba(246, 255, 237, 0.95);
+  border-color: #b7eb8f;
+}
+
+.uuid-resolver-info.in-product-field .uuid-resolver-name {
+  color: #389e0d;
+  font-weight: 600;
+}
+
+.uuid-resolver-info.in-product-field::before {
+  border-bottom-color: rgba(246, 255, 237, 0.95);
+}
+
+/* Form field specific styling */
+.uuid-resolver-info.in-form-field {
+  position: relative;
+  z-index: 999;
+}
+
+/* Dark theme support for input fields */
+@media (prefers-color-scheme: dark) {
+  .uuid-resolver-info.in-input-field {
+    background: rgba(45, 45, 45, 0.95);
+    border-color: #444;
+  }
+  
+  .uuid-resolver-info.in-input-field::before {
+    border-bottom-color: rgba(45, 45, 45, 0.95);
+  }
+  
+  .uuid-resolver-info.in-product-field {
+    background: rgba(30, 45, 30, 0.95);
+    border-color: #52c41a;
+  }
+  
+  .uuid-resolver-info.in-product-field::before {
+    border-bottom-color: rgba(30, 45, 30, 0.95);
+  }
+}
+
+/* Wide container handling */
+.uuid-resolver-info.in-wide-container {
+  max-width: none;
+}
+
+.uuid-resolver-info.in-wide-container .uuid-resolver-name {
+  max-width: 300px;
+}
+
+/* Overflow container handling */
+.uuid-resolver-info.in-overflow-container {
+  position: relative;
+  z-index: 1;
+}
+
+.uuid-resolver-info.in-overflow-container .uuid-resolver-name {
+  max-width: 150px;
+}
+
+.uuid-resolver-info.in-overflow-container .uuid-resolver-tooltip {
+  position: fixed;
+  z-index: 10001;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .uuid-resolver-name {
+    background-color: #1e1e1e;
+    border-color: #444;
+    color: #4fc3f7;
+  }
+  
+  .uuid-resolver-type {
+    background-color: #2d2d2d;
+    color: #ccc;
+  }
+  
+  .uuid-resolver-tooltip {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+  }
+}
+
+/* Animation for newly added elements */
+.uuid-resolver-info {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accessibility improvements */
+.uuid-resolver-info:focus {
+  outline: 2px solid #0078d4;
+  outline-offset: 2px;
+}
+
+/* Utility classes for text handling */
+.uuid-resolver-name.truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uuid-resolver-info.multiline {
+  display: block;
+  line-height: 1.4;
+}
+
+.uuid-resolver-info.multiline .uuid-resolver-name,
+.uuid-resolver-info.multiline .uuid-resolver-type {
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+/* Prevent layout shifts */
+.uuid-resolver-info {
+  contain: layout style;
+}
+
+/* Enhanced tooltip arrow */
+.uuid-resolver-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.uuid-resolver-tooltip.tooltip-bottom::before {
+  top: -6px;
+  left: 20px;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #333 transparent;
+}
+
+.uuid-resolver-tooltip.tooltip-top::before {
+  bottom: -6px;
+  left: 20px;
+  border-width: 6px 6px 0 6px;
+  border-color: #333 transparent transparent transparent;
+}
+
+.uuid-resolver-tooltip.tooltip-left::before {
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #333;
+}
+
+.uuid-resolver-tooltip.tooltip-right::before {
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent #333 transparent transparent;
+}
+
+/* Print styles */
+@media print {
+  .uuid-resolver-loading,
+  .uuid-resolver-error {
+    display: none;
+  }
+  
+  .uuid-resolver-tooltip {
+    display: none !important;
+  }
+}
+
+/* Angular-specific styles for lookup variable inputs */
+.uuid-resolver-angular-overlay {
+  /* Base positioning styles - additional styles applied via JavaScript */
+  display: block;
+  visibility: visible;
+}
+
+.uuid-resolver-info.in-angular-lookup-input {
+  /* Ensure proper display in Angular lookup inputs */
+  display: flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.uuid-resolver-info.in-angular-lookup-input .uuid-resolver-name {
+  max-width: 180px;
+  font-size: 12px;
+  padding: 3px 6px;
+  margin-right: 6px;
+}
+
+.uuid-resolver-info.in-angular-lookup-input .uuid-resolver-type {
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
+.uuid-resolver-info.in-connector-card {
+  /* Special handling for connector action cards */
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.uuid-resolver-info.in-product-field {
+  /* Special styling for product UUID fields */
+  background: rgba(232, 245, 233, 0.9);
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+
+.uuid-resolver-info.in-product-field .uuid-resolver-name {
+  color: #2e7d32;
+  background-color: #e8f5e8;
+  border-color: #4caf50;
+  font-weight: 600;
+}
+
+/* Ensure Angular overlays are visible above other content */
+.uuid-resolver-angular-overlay {
+  z-index: 9999 !important;
+  position: absolute !important;
+}
+
+/* Improved tooltip visibility for Angular components */
+.uuid-resolver-tooltip {
+  z-index: 10001 !important;
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+}

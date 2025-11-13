@@ -321,7 +321,12 @@ function Main{
   
   #Get Existing Apps
   $getApps = Get-Apps -groupid $OG.GroupId
-  Write-2Report -Path $Script:Path -Message "Existing Apps in OG: $($getApps.Count)" -Level "Header"
+  $getAppsCount = $getApps.Count
+  if($getAppsCount -ge 500){
+    Write-2Report -Path $Script:Path -Message "Existing Apps in OG: >= 500" -Level "Header"
+  }else{
+    Write-2Report -Path $Script:Path -Message "Existing Apps in OG: $($getApps.Count)" -Level "Header"
+  }
 
   $appList = @()
   #Iterate through apps to add dependency apps info

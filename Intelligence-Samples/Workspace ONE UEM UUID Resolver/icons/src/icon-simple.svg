@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Lighter Navy Background -->
+  <rect x="0" y="0" width="512" height="512" rx="96" ry="96" fill="#2F4C8A"/>
+
+  <!-- 70% arc (Magenta), end at right -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#E11D48" stroke-width="40" stroke-linecap="round"
+          stroke-dasharray="792 339"/>
+  <!-- Bigger arrowhead on right center for legibility -->
+  <polygon points="452,256 388,216 388,296" fill="#E11D48"/>
+
+  <!-- Hex string (two lines, centered) -->
+  <text x="256" y="215" fill="#FFFFFF" font-family="Inter,Segoe UI,Roboto,Arial,sans-serif" font-size="128" font-weight="900" letter-spacing="4" text-anchor="middle">a3f9</text>
+  <text x="256" y="330" fill="#FFFFFF" font-family="Inter,Segoe UI,Roboto,Arial,sans-serif" font-size="128" font-weight="900" letter-spacing="4" text-anchor="middle">1b2c</text>
+</svg>

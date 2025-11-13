@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UUID Resolver Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="title-section">
+          <h1>
+            <span class="icon">🔍</span>
+            UUID Resolver Settings
+          </h1>
+          <p class="subtitle">Configure Workspace ONE UEM UUID resolution</p>
+        </div>
+        <div class="status-section">
+          <div class="connection-status">
+            <span class="status-dot" id="statusDot"></span>
+            <span class="status-text" id="statusText">Checking connection...</span>
+          </div>
+          <div class="save-indicator">
+            <span class="unsaved-indicator" id="unsavedIndicator">●</span>
+            <span class="save-text" id="saveText">All changes saved</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Statistics Dashboard -->
+      <section class="stats-dashboard">
+        <h2>Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="uuidCount">0</div>
+            <div class="stat-label">UUIDs Found</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="resolvedCount">0</div>
+            <div class="stat-label">Resolved</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="successRate">0%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+          <button id="testConnectionBtn" class="action-btn primary">
+            <span class="btn-icon">🔧</span>
+            Test Connection
+          </button>
+          <button id="refreshBtn" class="action-btn secondary">
+            <span class="btn-icon">🔄</span>
+            Refresh Current Page
+          </button>
+          <button id="exportSettingsBtn" class="action-btn secondary">
+            <span class="btn-icon">📥</span>
+            Export Settings
+          </button>
+        </div>
+        <div class="test-result" id="testResult"></div>
+      </section>
+
+      <!-- Settings Sections -->
+      <div class="settings-grid">
+        <!-- Server Configuration -->
+        <section class="settings-section">
+          <h2>Server Configuration</h2>
+          
+          <div class="form-group">
+            <label for="serverUrl">UEM API Base URL</label>
+            <input type="url" id="serverUrl" placeholder="https://your-server.data.workspaceone.com">
+            <small>Enter your Workspace ONE UEM API base URL</small>
+          </div>
+
+          <div class="form-group">
+            <label for="organizationGroupId">Organization Group ID</label>
+            <input type="number" id="organizationGroupId" placeholder="1234">
+            <small>Enter your Organization Group ID (required for API calls)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="authType">Authentication Type</label>
+            <select id="authType">
+              <option value="basic">Basic Authentication</option>
+              <option value="oauth">OAuth 2.0</option>
+            </select>
+            <small>Choose your preferred authentication method</small>
+          </div>
+        </section>
+
+        <!-- Authentication Settings -->
+        <section class="settings-section">
+          <h2>Authentication</h2>
+          
+          <!-- Basic Authentication -->
+          <div class="auth-section" id="basicAuthSection">
+            <h3>Basic Authentication</h3>
+            
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="admin">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+              <label for="apiKey">API Key (Tenant Code) — Required</label>
+              <input type="text" id="apiKey" placeholder="e.g. your-tenant-code" required>
+              <small>The API key (tenant code) is required for Basic auth and will be sent in the aw-tenant-code header.</small>
+            </div>
+          </div>
+
+          <!-- OAuth Authentication -->
+          <div class="auth-section" id="oauthSection" style="display: none;">
+            <h3>OAuth 2.0 Configuration</h3>
+            
+            <div class="form-group">
+              <label for="clientId">Client ID</label>
+              <input type="text" id="clientId" placeholder="your-client-id">
+            </div>
+
+            <div class="form-group">
+              <label for="clientSecret">Client Secret</label>
+              <input type="password" id="clientSecret" placeholder="your-client-secret">
+            </div>
+
+            <div class="form-group">
+              <label for="tokenUrl">Token URL</label>
+              <input type="url" id="tokenUrl" placeholder="https://your-identity-server.com/oauth/token">
+            </div>
+
+            <div class="form-group">
+              <label for="authToken">Current Token</label>
+              <input type="text" id="authToken" readonly placeholder="Token will appear here after connection test">
+              <small>This token is automatically managed</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- General Settings -->
+        <section class="settings-section">
+          <h2>General Settings</h2>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="showTooltips">
+              <span class="checkmark"></span>
+              <div class="checkbox-content">
+                <div class="checkbox-title">Show extra fields in success toast</div>
+                <div class="checkbox-description">Include version, platform, and other details in the green toast</div>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- Entity Types -->
+        <section class="settings-section">
+          <h2>Entity Types</h2>
+          <p class="section-description">Select which types of entities to resolve</p>
+          
+          <div class="entity-grid">
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityTag" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">🏷️</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Tags</div>
+                    <div class="entity-description">Device tags</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityApplication" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">📱</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Applications</div>
+                    <div class="entity-description">Mobile and desktop apps (Internal, Public, and Purchased)</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityProfile" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">⚙️</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Profiles</div>
+                    <div class="entity-description">Configuration profiles</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityScript" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">📜</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Scripts</div>
+                    <div class="entity-description">Scripts assigned to desktop devices</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityProduct" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">📦</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Products</div>
+                    <div class="entity-description">Product Provisioning</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="entity-card">
+              <label class="checkbox-label">
+                <input type="checkbox" id="entityOrganizationGroup" checked>
+                <span class="checkmark"></span>
+                <div class="entity-content">
+                  <div class="entity-icon">🏢</div>
+                  <div class="entity-info">
+                    <div class="entity-title">Organization Groups</div>
+                    <div class="entity-description">Organization Group in UEM</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Advanced Settings -->
+        <section class="settings-section">
+          <h2>Advanced Settings</h2>
+          
+          <div class="form-group">
+            <label for="apiTimeout">API Timeout (seconds)</label>
+            <input type="number" id="apiTimeout" min="5" max="60" value="30">
+            <small>Maximum time to wait for API responses</small>
+          </div>
+
+          <div class="form-group">
+            <label for="maxConcurrentRequests">Max Concurrent Requests</label>
+            <input type="number" id="maxConcurrentRequests" min="1" max="10" value="5">
+            <small>Maximum number of simultaneous API requests</small>
+          </div>
+
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="debugMode">
+              <span class="checkmark"></span>
+              <div class="checkbox-content">
+                <div class="checkbox-title">Debug Mode</div>
+                <div class="checkbox-description">Enable detailed logging in browser console</div>
+              </div>
+            </label>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p>UUID Resolver v1.0.0 for Workspace ONE UEM</p>
+          <p>Automatically resolves UUIDs to human-readable names in automation workflows</p>
+        </div>
+        <div class="footer-actions">
+          <button id="resetSettingsBtn" class="footer-btn">Reset to Defaults</button>
+          <button id="openOptionsBtn" class="footer-btn">Chrome Extensions</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

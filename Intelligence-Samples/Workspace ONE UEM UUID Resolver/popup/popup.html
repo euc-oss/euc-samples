@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UUID Resolver</title>
+  <link rel="stylesheet" href="popup-simple.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="header-title">
+        <img src="../icons/icon-32.png" alt="UUID Resolver" class="header-icon">
+        <h1>UUID Resolver</h1>
+      </div>
+    </header>
+
+    <!-- Last Resolved UUID Section -->
+    <section class="last-resolved-section" id="lastResolvedSection" style="display: none;">
+      <h2>Last Resolved UUID</h2>
+      <div class="entity-card">
+        <div class="entity-name" id="entityName"></div>
+        <div class="entity-type" id="entityType"></div>
+        <div class="entity-uuid" id="entityUuid"></div>
+        <div class="entity-description" id="entityDescription" style="display: none;"></div>
+        <div class="entity-details" id="entityDetails" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section class="instructions-section" id="instructionsSection">
+      <h2>How to use UUID Resolver</h2>
+      <div class="instructions">
+        <ol>
+          <li>📋 Select text containing a UUID on any Workspace ONE UEM page</li>
+          <li>🖱️ Right-click and select <strong>"Resolve UUID"</strong></li>
+          <li>✅ The extension will automatically identify and display the entity details</li>
+        </ol>
+        
+        <div class="entity-types">
+          <h3>Supported entity types (in order of resolution):</h3>
+          <ul>
+            <li>🏷️ Tags</li>
+            <li>📜 Scripts/Workflows</li>
+            <li>🏢 Organization Groups</li>
+            <li>📱 Applications</li>
+            <li>📦 Products</li>
+            <li>⚙️ Profiles</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Section -->
+    <section class="status-section">
+      <div class="status-item">
+        <span class="status-label">Configuration:</span>
+        <span class="status-value" id="configStatus">Not configured</span>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <button id="optionsBtn" class="footer-btn">⚙️ Settings</button>
+      <button id="clearBtn" class="footer-btn" id="clearLastResolved" style="display: none;">🗑️ Clear</button>
+    </footer>
+  </div>
+
+  <script src="popup-simple.js"></script>
+</body>
+</html>
