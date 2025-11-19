@@ -5185,6 +5185,9 @@ function Get-HVPoolProvisioningData {
     if ($null -eq $templateVM) {
       throw "No template VM found with Name: [$template]"
     }
+	if (-not $vmObject) {
+		$vmObject = New-Object Omnissa.Horizon.DesktopVirtualCenterProvisioningData
+	}
     $vmObject.Template = $templateVM.id
     $dataCenterID = $templateVM.datacenter
     if ($dataCenter -and $dataCenterID) {
