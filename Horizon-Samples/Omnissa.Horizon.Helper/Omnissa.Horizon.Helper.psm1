@@ -21,6 +21,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 
+
+
 function Get-HVObject {
   param(
     [Parameter(Mandatory = $true)]
@@ -2162,11 +2164,11 @@ function New-HVFarm {
     Creates new linkedClone farm by using naming pattern
 
 .EXAMPLE
-    New-HVFarm -Spec C:\VMWare\Specs\LinkedClone.json -Confirm:$false
+    New-HVFarm -Spec C:\Omnissa\Specs\LinkedClone.json -Confirm:$false
     Creates new linkedClone farm by using json file
 
 .EXAMPLE
-    New-HVFarm -Spec C:\VMWare\Specs\InstantCloneFarm.json -Confirm:$false
+    New-HVFarm -Spec C:\Omnissa\Specs\InstantCloneFarm.json -Confirm:$false
     Creates new instantClone farm by using json file
 
 .EXAMPLE
@@ -2174,7 +2176,7 @@ function New-HVFarm {
     Creates new manual farm by using rdsServers names
 
 .EXAMPLE
-    New-HVFarm -Spec C:\VMWare\Specs\AutomatedInstantCloneFarm.json -FarmName 'InsPool' -NamingPattern 'InsFarm-'
+    New-HVFarm -Spec C:\Omnissa\Specs\AutomatedInstantCloneFarm.json -FarmName 'InsPool' -NamingPattern 'InsFarm-'
     Creates new instant clone farm by reading few parameters from json and few parameters from command line.
 
 .OUTPUTS
@@ -3696,33 +3698,33 @@ function New-HVPool {
     first element from global:DefaultHVServers would be considered in-place of hvServer.
 
 .EXAMPLE
-    New-HVPool -LinkedClone -PoolName 'vmwarepool' -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1' -Datastores 'datastore1' -NamingMethod PATTERN -PoolDisplayName 'omnissa linkedclone pool' -Description  'created linkedclone pool from ps' -EnableProvisioning $true -StopProvisioningOnError $false -NamingPattern  "vmware2" -MinReady 0 -MaximumCount 1 -SpareCount 1 -ProvisioningTime UP_FRONT -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
+    New-HVPool -LinkedClone -PoolName 'omnissapool' -UserAssignment FLOATING -ParentVM 'Agent_omnissa' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1' -Datastores 'datastore1' -NamingMethod PATTERN -PoolDisplayName 'omnissa linkedclone pool' -Description  'created linkedclone pool from ps' -EnableProvisioning $true -StopProvisioningOnError $false -NamingPattern  "omnissa2" -MinReady 0 -MaximumCount 1 -SpareCount 1 -ProvisioningTime UP_FRONT -SysPrepName omnissacust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
     Create new automated linked clone pool with naming method pattern
 
 .EXAMPLE
-    New-HVPool -Spec C:\VMWare\Specs\LinkedClone.json -Confirm:$false
+    New-HVPool -Spec C:\Omnissa\Specs\LinkedClone.json -Confirm:$false
     Create new automated linked clone pool by using JSON spec file
 
 .EXAMPLE
-   Get-HVPool -PoolName 'vmwarepool' | New-HVPool -PoolName 'clonedPool' -NamingPattern 'clonelnk1';
+   Get-HVPool -PoolName 'omnissapool' | New-HVPool -PoolName 'clonedPool' -NamingPattern 'clonelnk1';
    (OR)
-   $vmwarepool = Get-HVPool -PoolName 'vmwarepool';  New-HVPool -ClonePool $vmwarepool -PoolName 'clonedPool' -NamingPattern 'clonelnk1';
+   $omnissapool = Get-HVPool -PoolName 'omnissapool';  New-HVPool -ClonePool $omnissapool -PoolName 'clonedPool' -NamingPattern 'clonelnk1';
    Clones new pool by using existing pool configuration
 
 .EXAMPLE
-  New-HVPool -InstantClone -PoolName "InsPoolvmware" -PoolDisplayName "insPool" -Description "create instant pool" -UserAssignment FLOATING -ParentVM 'Agent_vmware' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster  'CS-1' -ResourcePool 'CS-1' -NamingMethod PATTERN -Datastores 'datastore1' -NamingPattern "inspool2" -NetBiosName 'adviewdev' -DomainAdmin root
+  New-HVPool -InstantClone -PoolName "InsPoolomnissa" -PoolDisplayName "insPool" -Description "create instant pool" -UserAssignment FLOATING -ParentVM 'Agent_omnissa' -SnapshotVM 'kb-hotfix' -VmFolder 'omnissa' -HostOrCluster  'CS-1' -ResourcePool 'CS-1' -NamingMethod PATTERN -Datastores 'datastore1' -NamingPattern "inspool2" -NetBiosName 'adviewdev' -DomainAdmin root
   Create new automated instant clone pool with naming method pattern
 
 .EXAMPLE
-  New-HVPool -FullClone -PoolName "FullClone" -PoolDisplayName "FullClonePra" -Description "create full clone" -UserAssignment DEDICATED -Template 'powerCLI-VM-TEMPLATE' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1'  -Datastores 'datastore1' -NamingMethod PATTERN -NamingPattern 'FullCln1' -SysPrepName vmwarecust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
+  New-HVPool -FullClone -PoolName "FullClone" -PoolDisplayName "FullClonePra" -Description "create full clone" -UserAssignment DEDICATED -Template 'powerCLI-VM-TEMPLATE' -VmFolder 'omnissa' -HostOrCluster 'CS-1' -ResourcePool 'CS-1'  -Datastores 'datastore1' -NamingMethod PATTERN -NamingPattern 'FullCln1' -SysPrepName omnissacust -CustType SYS_PREP -NetBiosName adviewdev -DomainAdmin root
   Create new automated full clone pool with naming method pattern
 
 .EXAMPLE
-  New-HVPool -MANUAL -PoolName 'manualVMWare' -PoolDisplayName 'MNLPUL' -Description 'Manual pool creation' -UserAssignment FLOATING -Source VIRTUAL_CENTER -VM 'PowerCLIVM1', 'PowerCLIVM2'
+  New-HVPool -MANUAL -PoolName 'manualOmnissa' -PoolDisplayName 'MNLPUL' -Description 'Manual pool creation' -UserAssignment FLOATING -Source VIRTUAL_CENTER -VM 'PowerCLIVM1', 'PowerCLIVM2'
   Create new managed manual pool from virtual center managed VirtualMachines.
 
 .EXAMPLE
-  New-HVPool -MANUAL -PoolName 'unmangedVMWare' -PoolDisplayName 'unMngPl' -Description 'unmanaged Manual Pool creation' -UserAssignment FLOATING -Source UNMANAGED -VM 'myphysicalmachine.omnissa.com'
+  New-HVPool -MANUAL -PoolName 'unmangedOmnissa' -PoolDisplayName 'unMngPl' -Description 'unmanaged Manual Pool creation' -UserAssignment FLOATING -Source UNMANAGED -VM 'myphysicalmachine.omnissa.com'
   Create new unmanaged manual pool from unmanaged VirtualMachines.
 
 .EXAMPLE
@@ -4426,6 +4428,7 @@ function New-HVPool {
   }
 
   process {
+	  Write-Host "PARAMETER SET SELECTED: $($PSCmdlet.ParameterSetName)" -ForegroundColor Yellow
     $confirmFlag = Get-HVConfirmFlag -keys $PsBoundParameters.Keys
     if ($poolName) {
       try {
@@ -4711,6 +4714,7 @@ function New-HVPool {
 
       if ($clonePool -and ($clonePool.GetType().name -eq 'DesktopSummaryView')) {
         $clonePool = Get-HVPool -poolName $clonePool.desktopsummarydata.name
+		Write-Host "clonePool: $clonePool"
       } elseIf (!($clonePool -and ($clonePool.GetType().name -eq 'DesktopInfo'))) {
         Write-Error "In pipeline did not get object of expected type DesktopSummaryView/DesktopInfo"
         return
@@ -4719,17 +4723,29 @@ function New-HVPool {
       $desktopBase = $clonePool.base
       $desktopSettings = $clonePool.DesktopSettings
       $provisioningType = $clonePool.source
+	  Write-Host "provisioningType: $provisioningType"
       if ($clonePool.AutomatedDesktopData) {
+		  Write-Host "inside if automated pool"
         $provisioningType = $clonePool.AutomatedDesktopData.ProvisioningType
+		Write-Host "provisioningType: $provisioningType"
         $virtualCenterID = $clonePool.AutomatedDesktopData.VirtualCenter
+		Write-Host "virtualCenterID: $virtualCenterID"
         $desktopUserAssignment = $clonePool.AutomatedDesktopData.userAssignment
+		Write-Host "desktopUserAssignment: $desktopUserAssignment"
         $desktopVirtualMachineNamingSpec = $clonePool.AutomatedDesktopData.VmNamingSettings
+		Write-Host "desktopVirtualMachineNamingSpec: $desktopVirtualMachineNamingSpec"
         $DesktopVirtualCenterProvisioningSettings = $clonePool.AutomatedDesktopData.VirtualCenterProvisioningSettings
+		Write-Host "DesktopVirtualCenterProvisioningSettings: $DesktopVirtualCenterProvisioningSettings"
         $DesktopVirtualCenterProvisioningData = $DesktopVirtualCenterProvisioningSettings.VirtualCenterProvisioningData
+		Write-Host "DesktopVirtualCenterProvisioningData: $DesktopVirtualCenterProvisioningData"
         $DesktopVirtualCenterStorageSettings = $DesktopVirtualCenterProvisioningSettings.VirtualCenterStorageSettings
+		Write-Host "DesktopVirtualCenterStorageSettings: $DesktopVirtualCenterStorageSettings"
         $DesktopVirtualCenterNetworkingSettings = $DesktopVirtualCenterProvisioningSettings.VirtualCenterNetworkingSettings
+		Write-Host "DesktopVirtualCenterNetworkingSettings: $DesktopVirtualCenterNetworkingSettings"
         $DesktopVirtualCenterManagedCommonSettings = $clonePool.AutomatedDesktopData.virtualCenterManagedCommonSettings
+		Write-Host "DesktopVirtualCenterManagedCommonSettings: $DesktopVirtualCenterManagedCommonSettings"
         $DesktopCustomizationSettings = $clonePool.AutomatedDesktopData.CustomizationSettings
+		Write-Host "DesktopCustomizationSettings: $DesktopCustomizationSettings"
         $CurrentImageState =`
           $clonePool.AutomatedDesktopData.provisioningStatusData.instantCloneProvisioningStatusData.instantCloneCurrentImageState
       }
@@ -4907,7 +4923,10 @@ function New-HVPool {
         #
         $handleException = $false
         try {
+			Write-Host "virtualCenterID: $virtualCenterID"
+			Write-Host "desktopVirtualCenterProvisioningData: $desktopVirtualCenterProvisioningData"
           $desktopVirtualCenterProvisioningData = Get-HVPoolProvisioningData -vc $virtualCenterID -vmObject $desktopVirtualCenterProvisioningData
+		  Write-Host "after desktopVirtualCenterProvisioningData: $desktopVirtualCenterProvisioningData"
           $hostClusterId = $desktopVirtualCenterProvisioningData.HostOrCluster
           $desktopVirtualCenterStorageSettings = Get-HVPoolStorageObject -hostClusterIds $hostClusterId -storageObject $desktopVirtualCenterStorageSettings
           $DesktopVirtualCenterNetworkingSettings = Get-HVPoolNetworkSetting -networkObject $DesktopVirtualCenterNetworkingSettings
@@ -5177,28 +5196,65 @@ function Get-HVPoolProvisioningData {
     [Parameter(Mandatory = $true)]
     [Omnissa.Horizon.VirtualCenterId]$VcID
   )
-  if (!$vmObject) { $vmObject = $desktopSpecObj.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData }
+  #Write-Host "VmObject: $VmObject"
+  if (!$vmObject) { 
+  #Write-Host "Type: $($desktopSpecObj.GetType().Name)"
+  #Write-Host "not vmobject"
+  $vmObject = $desktopSpecObj.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData
+  #Write-Host " in if vmObject: $vmObject"
+  }
   if ($template) {
+	  Write-Host " in if template: $template"
     $vm_template_helper = New-Object Omnissa.Horizon.VmTemplateService
     $templateList = $vm_template_helper.VmTemplate_List($services,$vcID)
     $templateVM = $templateList | Where-Object { $_.name -eq $template }
+	Write-Host "templateVM in if: $templateVM"
     if ($null -eq $templateVM) {
+		Write-Host "null template"
       throw "No template VM found with Name: [$template]"
     }
+	Write-Host "vmObject before setting template: $vmObject"
+	Write-Host "templateVM.id: $templateVM.id"
+	
 	if (-not $vmObject) {
-		$vmObject = New-Object Omnissa.Horizon.DesktopVirtualCenterProvisioningData
-	}
-    $vmObject.Template = $templateVM.id
+		Write-Host "not vmobject bcz null: $vmObject"
+    $vmObject = New-Object Omnissa.Horizon.DesktopVirtualCenterProvisioningData
+}
+	
+	#$vmObject = New-Object Omnissa.Horizon.DesktopVirtualCenterProvisioningData
+	
+	try {
+		Write-Host "in try:"
+($vmObject | Get-Member -MemberType Property).Name | ForEach-Object {
+    $value = $vmObject.$_
+    Write-Host "$_ = $value"
+}
+		$vmObject.template = $templateVM.id
+	} catch {
+    Write-Host "ERROR: Failed to set vmObject.Template" -ForegroundColor Red
+    Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
+    Write-Host "Exception Type: $($_.Exception.GetType().FullName)" -ForegroundColor Yellow
+    Write-Host "Stack Trace: $($_.Exception.StackTrace)" -ForegroundColor Gray
+
+    # Optional: rethrow to higher-level error handler
+    # throw
+}
+	Write-Host "before dataCenterID in if: $templateVM.datacenter"
     $dataCenterID = $templateVM.datacenter
+	Write-Host "dataCenterID in if: $dataCenterID"
+	Write-Host "dataCenter in if: $dataCenter"
     if ($dataCenter -and $dataCenterID) {
+		Write-Host "in if datacenter and daatcenterId"
         $VmTemplateInfo = $vm_template_helper.VmTemplate_ListByDatacenter($services,$dataCenterID)
         if (! ($VmTemplateInfo.Path -like "/$dataCenter/*")) {
             throw "$template not exists in datacenter: [$dataCenter]"
         }
     }
+	Write-Host "setting vmobject datacenter"
     $vmObject.datacenter = $dataCenterID
   }
   if ($parentVM) {
+	  Write-Host " in if parentVM: $parentVM"
     $parentList = Get-HVBaseImageVmList -vcID $vcID
     $parentVmObj = $parentList | Where-Object { $_.name -eq $parentVM }
     if ($null -eq $parentVMObj) {
@@ -5209,6 +5265,7 @@ function Get-HVPoolProvisioningData {
     $vmObject.datacenter = $dataCenterID
   }
   if ($snapshotVM) {
+	  Write-Host " in if snapshotVM: $snapshotVM"
     $baseImageSnapshot_helper = New-Object Omnissa.Horizon.BaseImageSnapshotService
     $snapshotList = $baseImageSnapshot_helper.BaseImageSnapshot_List($services,$parentVmObj.id)
     $snapshotVmObj = $snapshotList | Where-Object { $_.name -eq $snapshotVM }
@@ -5218,6 +5275,7 @@ function Get-HVPoolProvisioningData {
     $vmObject.Snapshot = $snapshotVmObj.id
   }
   if ($vmFolder) {
+	  Write-Host " in if vmFolder: $vmFolder"
     $vmFolder_helper = New-Object Omnissa.Horizon.VmFolderService
     $folders = $vmFolder_helper.VmFolder_GetVmFolderTree($services,$vmObject.datacenter)
     $folderList = @()
@@ -5240,6 +5298,7 @@ function Get-HVPoolProvisioningData {
     }
   }
   if ($hostOrCluster) {
+	  Write-Host " in if hostOrCluster: $hostOrCluster"
     $vmFolder_helper = New-Object Omnissa.Horizon.HostOrClusterService
     $vmObject.HostOrCluster = Get-HVHostOrClusterID $vmFolder_helper.HostOrCluster_GetHostOrClusterTree($services,$vmobject.datacenter)
     if ($null -eq $vmObject.HostOrCluster) {
@@ -5247,12 +5306,14 @@ function Get-HVPoolProvisioningData {
     }
   }
   if ($resourcePool) {
+	  Write-Host " in if resourcePool: $resourcePool"
     $resourcePool_helper = New-Object Omnissa.Horizon.ResourcePoolService
     $vmObject.ResourcePool = Get-HVResourcePoolID $resourcePool_helper.ResourcePool_GetResourcePoolTree($services,$vmobject.HostOrCluster)
     if ($null -eq $vmObject.ResourcePool) {
       throw "No Resource Pool found with Name: [$resourcePool]"
     }
   }
+  Write-Host "returning vmobject: $vmObject"
   return $vmObject
 }
 
@@ -7013,6 +7074,9 @@ function Start-HVPool {
 .PARAMETER Vcenter
     Virtual Center server-address (IP or FQDN) of the given pool. This should be same as provided to the Connection Server while adding the vCenter server.
 
+.PARAMETER AddVirtualTPM
+    Switch parameter to add virtual TPM to the desktop VMs during push image operation. Only applicable for instant clone pools with SchedulePushImage operation.
+	
 .PARAMETER HvServer
     View API service object of Connect-HVServer cmdlet.
 
@@ -7032,6 +7096,10 @@ function Start-HVPool {
 .EXAMPLE
     Start-HVPool -SchedulePushImage -Pool 'InstantPool' -LogoffSetting FORCE_LOGOFF -ParentVM 'InsParentVM' -SnapshotVM 'InsSnapshotVM'
     Requests an update of push image operation on the specified Instant Clone Engine sourced pool
+	
+.EXAMPLE
+    Start-HVPool -SchedulePushImage -Pool 'InstantPool' -LogoffSetting FORCE_LOGOFF -ParentVM 'InsParentVM' -SnapshotVM 'InsSnapshotVM' -AddVirtualTPM
+    Requests an update of push image operation on the specified Instant Clone Engine sourced pool with virtual TPM enable
 
 .EXAMPLE
     Start-HVPool -CancelPushImage -Pool 'InstantPool'
@@ -7110,6 +7178,8 @@ function Start-HVPool {
     [Parameter(Mandatory = $false,ParameterSetName = 'RECOMPOSE')]
     [Parameter(Mandatory = $false,ParameterSetName = 'PUSH_IMAGE')]
     [string]$Vcenter,
+	[Parameter(Mandatory = $false,ParameterSetName = 'PUSH_IMAGE')]
+    [switch]$AddVirtualTPM,
 
     [Parameter(Mandatory = $false)]
     $HvServer = $null
@@ -7240,10 +7310,16 @@ function Start-HVPool {
             $spec.Settings = New-Object Omnissa.Horizon.DesktopPushImageSettings
             $spec.Settings.LogoffSetting = $logoffSetting
             $spec.Settings.StopOnFirstError = $stopOnFirstError
-            $spec.Settings.AddVirtualTPM = ($poolProvisioningSpecs.$item).AddVirtualTPM
-            If (($poolProvisioningSpecs.$item).AddVirtualTPM) {
-            Write-Verbose -Message "Restoring previous vTPM state"
-            }
+			# Use explicit parameter if provided, otherwise restore from pool provisioning specs
+			if ($PSBoundParameters.ContainsKey('AddVirtualTPM')) {
+              $spec.Settings.AddVirtualTPM = $AddVirtualTPM.IsPresent
+              Write-Verbose -Message "Setting vTPM from parameter: $($AddVirtualTPM.IsPresent)"
+            } else {
+              $spec.Settings.AddVirtualTPM = ($poolProvisioningSpecs.$item).AddVirtualTPM
+              If (($poolProvisioningSpecs.$item).AddVirtualTPM) {
+                Write-Verbose -Message "Restoring previous vTPM state"
+              }
+			}
             Write-Debug -Message "fetched pool provisioning specs: $(($poolProvisioningSpecs.$item) | Out-String)"
             if ($startTime) { $spec.Settings.startTime = $startTime }
             if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($poolList.$item)) {
@@ -12212,10 +12288,10 @@ function Set-HVlicense {
   }
 
   try {
-	  $services.license.license_set($license)
+	  $services.license.license_set($license, $true)
   }
 	catch {
-	  write-error $_.exception message
+	  write-error $_.exception.message
 	  break
 	}
   $licenseresult=$services.license.license_get()
