@@ -7013,6 +7013,10 @@ function Start-HVPool {
 .PARAMETER Vcenter
     Virtual Center server-address (IP or FQDN) of the given pool. This should be same as provided to the Connection Server while adding the vCenter server.
 
+
+.PARAMETER AddVirtualTPM
+    Switch parameter to add virtual TPM to the desktop VMs during push image operation. Only applicable for instant clone pools with SchedulePushImage operation.
+	
 .PARAMETER HvServer
     View API service object of Connect-HVServer cmdlet.
 
@@ -7033,6 +7037,10 @@ function Start-HVPool {
     Start-HVPool -SchedulePushImage -Pool 'InstantPool' -LogoffSetting FORCE_LOGOFF -ParentVM 'InsParentVM' -SnapshotVM 'InsSnapshotVM'
     Requests an update of push image operation on the specified Instant Clone Engine sourced pool
 
+.EXAMPLE
+    Start-HVPool -SchedulePushImage -Pool 'InstantPool' -LogoffSetting FORCE_LOGOFF -ParentVM 'InsParentVM' -SnapshotVM 'InsSnapshotVM' -AddVirtualTPM
+    Requests an update of push image operation on the specified Instant Clone Engine sourced pool with virtual TPM enabled
+	
 .EXAMPLE
     Start-HVPool -CancelPushImage -Pool 'InstantPool'
     Requests a cancellation of the current scheduled push image operation on the specified Instant Clone Engine sourced pool
@@ -7110,6 +7118,9 @@ function Start-HVPool {
     [Parameter(Mandatory = $false,ParameterSetName = 'RECOMPOSE')]
     [Parameter(Mandatory = $false,ParameterSetName = 'PUSH_IMAGE')]
     [string]$Vcenter,
+	
+	[Parameter(Mandatory = $false,ParameterSetName = 'PUSH_IMAGE')]
+    [switch]$AddVirtualTPM,
 
     [Parameter(Mandatory = $false)]
     $HvServer = $null
@@ -7240,10 +7251,16 @@ function Start-HVPool {
             $spec.Settings = New-Object Omnissa.Horizon.DesktopPushImageSettings
             $spec.Settings.LogoffSetting = $logoffSetting
             $spec.Settings.StopOnFirstError = $stopOnFirstError
-            $spec.Settings.AddVirtualTPM = ($poolProvisioningSpecs.$item).AddVirtualTPM
-            If (($poolProvisioningSpecs.$item).AddVirtualTPM) {
-            Write-Verbose -Message "Restoring previous vTPM state"
-            }
+			# Use explicit parameter if provided, otherwise restore from pool provisioning specs
+            if ($PSBoundParameters.ContainsKey('AddVirtualTPM')) {
+              $spec.Settings.AddVirtualTPM = $AddVirtualTPM.IsPresent
+              Write-Verbose -Message "Setting vTPM from parameter: $($AddVirtualTPM.IsPresent)"
+            } else {
+              $spec.Settings.AddVirtualTPM = ($poolProvisioningSpecs.$item).AddVirtualTPM
+              If (($poolProvisioningSpecs.$item).AddVirtualTPM) {
+                Write-Verbose -Message "Restoring previous vTPM state"
+              }
+			}
             Write-Debug -Message "fetched pool provisioning specs: $(($poolProvisioningSpecs.$item) | Out-String)"
             if ($startTime) { $spec.Settings.startTime = $startTime }
             if (!$confirmFlag -OR  $pscmdlet.ShouldProcess($poolList.$item)) {
