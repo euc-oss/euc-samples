@@ -134,7 +134,7 @@ try {
     "rootResource": false
   }'
   
-$apps = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/catalogitems/search/summarylist?startIndex=0&pageSize=50" -Headers $headers -Body $json -ContentType "application/json"
+$apps = Invoke-RestMethod -Method Post -Uri "https://$idmserver/SAAS/jersey/manager/api/catalogitems/search/itemlist?startIndex=0&pageSize=50" -Headers $headers -Body $json -ContentType "application/json"
 
     }
                   
