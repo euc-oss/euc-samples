@@ -7,7 +7,7 @@
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2
 
 #Reverse GeoLocation
-$APIToken = 'pk.d51f727495d5f526486e7a97c94af96a'
+$APIToken = 'YOUR_API_KEY_HERE' #Replace with your LocationIQ API Key. Free keys available from https://locationiq.com/
 
 Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
 $GeoWatcher = New-Object System.Device.Location.GeoCoordinateWatcher #Create the required object
