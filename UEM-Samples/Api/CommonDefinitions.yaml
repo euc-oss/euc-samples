@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  description: >-
+    This contains common definitions required for creating Swagger API specification file.
+  version: '1'
+  title: Common definitions for Swagger API specification
+  license:
+    name: 'Copyright © Omnissa, LLC. All Rights Reserved.'
+definitions:
+  BaseExceptionModel:
+    type: object
+    description: Represents the exception object thrown from API
+    x-ignore: true    
+    properties:
+      errorCode:
+        description: Application error code specific to operation
+        type: integer
+        format: int32
+      message:
+        description: Friendly error message (any serializable type)
+        type: object
+      activityId:
+        description: TransactionId of the request in Guid format
+        type: string
+        format: uuid
+
+  BaseModel:
+    type: object
+    description: Parent class of all view models used in API
+    x-ignore: true
+    properties:
+      id:
+        description: Identifier of the resource in integer format
+        type: integer
+        format: int32
+      uuid:
+        description: Identifier of the resource in Guid format
+        type: string
+        format: uuid
+        
+  PatchDocument:
+    type: object
+    x-ignore: true
+    description: Generic patch model exposed by API framework
+    properties:
+      value:
+        description: value of the property
+        type: object
+      path:
+        description: path of the property
+        type: string
+      op:
+        description: operation to be performed.
+        type: string
+        example: one of these (add, remove, replace, test, copy, move)
+      from:
+        description: used for copy or move operations
+        type: string
+    example:
+      { "op": "replace", "path": "/age", "value": 10}
