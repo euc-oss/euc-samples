@@ -9,11 +9,13 @@
 ##################################
 
 #ws1 variables
-# username
-# password
-# apiKey
-# apiURL
+import os
+username=os.getenv('username')
+password=os.getenv('password')
+apiKey=os.getenv('apiKey')
+apiURL=os.getenv('apiURL')
 
+#target version
 function version { echo "$@" | awk -F. '{ printf("%d%03d%05d%05d\n", $1,$2,$3,$4); }'; }
 target_version="24.11.3"
 
