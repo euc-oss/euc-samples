@@ -998,8 +998,8 @@ function Get-HVEvent {
     if ($timeFilter -ne "") {
       if ($filterQuery -ne "") { $filterQuery = $filterQuery + " AND" }
 
-      if ($isSqlType) { $filterQuery = $filterQuery + " FORMAT(Time, 'MM/dd/yyyy HH:mm:ss.fff')" }
-      else { $timePeriodQuery = $filterQuery = $filterQuery + " TO_CHAR(Time, 'MM/DD/YYYY HH24:MI:SS.FF3')" }
+      if ($isSqlType) { $filterQuery = $filterQuery + " Time " }
+      else { $timePeriodQuery = $filterQuery = $filterQuery + " Time " }
 
       if ($filterType -eq 'contains') { $filterQuery = $filterQuery + " LIKE '%$timeFilter%'" }
       elseif ($filterType -eq 'startsWith') { $filterQuery = $filterQuery + " LIKE '$timeFilter%'" }
@@ -1034,23 +1034,23 @@ function Get-HVEvent {
     $fromDate = $toDate.AddDays(- ($timeInDays))
 
     if ($timePeriod -eq 'all') {
-      if ($isSqlType) { $timePeriodQuery = " FORMAT(Time, 'MM/dd/yyyy HH:mm:ss.fff') < '" + $toDate + "'" }
-      else { $timePeriodQuery = " TO_CHAR(Time, 'MM/DD/YYYY HH24:MI:SS.FF3') < '" + $toDate + "'" }
+      if ($isSqlType) { $timePeriodQuery = " Time < '" + $toDate + "'" }
+      else { $timePeriodQuery = " Time < '" + $toDate + "'" }
     } else {
-      if ($isSqlType) { $timePeriodQuery = " FORMAT(Time, 'MM/dd/yyyy HH:mm:ss.fff')   BETWEEN '" + $fromDate + "' AND  '" + $toDate + "'" }
-      else { $timePeriodQuery = " TO_CHAR(Time, 'MM/DD/YYYY HH24:MI:SS.FF3') BETWEEN '" + $fromDate + "' AND  '" + $toDate + "'" }
+      if ($isSqlType) { $timePeriodQuery = " Time   BETWEEN '" + $fromDate + "' AND  '" + $toDate + "'" }
+      else { $timePeriodQuery = " Time BETWEEN '" + $fromDate + "' AND  '" + $toDate + "'" }
     }
 
 
     # Build the Query string based on the database type and filter parameters
     if ($isSqlType) {
-      $query = "SELECT  UserSID.StrValue AS UserName, Severity, FORMAT(Time, 'MM/dd/yyyy HH:mm:ss.fff') as EventTime, Module, ModuleAndEventText AS Message FROM $eventTable " +
+      $query = "SELECT  UserSID.StrValue AS UserName, Severity, Time as EventTime, Module, ModuleAndEventText AS Message FROM $eventTable " +
       " LEFT OUTER JOIN (SELECT EventID, StrValue FROM $eventDataTable WITH (NOLOCK)  WHERE (Name = 'UserDisplayName')) UserSID ON $eventTable.EventID = UserSID.EventID "
       $query = $query + " WHERE $timePeriodQuery"
       if ($filterQuery -ne "") { $query = $query + " AND $filterQuery" }
       $query = $query + " ORDER BY EventTime DESC"
     } else {
-      $query = " SELECT UserSID.StrValue AS UserName, Severity, TO_CHAR(Time, 'MM/DD/YYYY HH24:MI:SS.FF3') AS EventTime, Module, ModuleAndEventText AS Message FROM $eventTable " +
+      $query = " SELECT UserSID.StrValue AS UserName, Severity, Time AS EventTime, Module, ModuleAndEventText AS Message FROM $eventTable " +
       " LEFT OUTER JOIN (SELECT EventID, StrValue FROM $eventDataTable WHERE (Name = 'UserDisplayName')) UserSID ON $eventTable.EventID = UserSID.EventID"
       $query = $query + " WHERE $timePeriodQuery"
       if ($filterQuery -ne "") { $query = $query + " AND $filterQuery" }
