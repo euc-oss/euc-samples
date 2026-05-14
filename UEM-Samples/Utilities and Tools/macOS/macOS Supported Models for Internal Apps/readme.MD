@@ -45,6 +45,7 @@ Parameters / Flags
 | `--app-name-filter` | N | None | string | Case-insensitive substring to filter app list by name |
 | `--status-filter` | N | None | string | Filter by app status (e.g. `Active`) |
 | `--mode` | N | `dry-run` | enum `{dry-run, update}` | `dry-run` previews changes; `update` performs changes |
+| `--force-update` | N | N/A | N/A | `--force-update` will republish the smart group assignment to any app included in the scope regardless of if model updates are made |
 | `--log-file` | N | None | string (path) | Path to write rotating log file; default logs to stdout only |
 | `--log-level` | N | `INFO` | enum `{DEBUG, INFO, WARNING, ERROR, CRITICAL}` | Controls verbosity |
 | `--page-size` | N | `500` | integer | Page size for the search/list API call |
