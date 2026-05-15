@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Matt Zaske (mzaske@omnissa.com) | 2026-03-19
+Matt Zaske (mzaske@omnissa.com) | 2026-05-14
+v2 - added force-update flag and republish logic
 
 ws1_update_supportedModels.py
 ----------------------------------
@@ -46,8 +47,9 @@ MODEL_ID_MAP: Dict[str, int] = {
     "MacBook Neo": 121,
 }
 
-LIST_ENDPOINT   = "/API/mam/apps/search"
-DETAIL_ENDPOINT = "/API/mam/apps/internal/{id}"
+LIST_ENDPOINT            = "/API/mam/apps/search"
+DETAIL_ENDPOINT          = "/API/mam/apps/internal/{id}"
+ASSIGNMENT_RULES_ENDPOINT = "/API/mam/apps/{applicationUuid}/assignment-rules"
 
 # Fields that must be removed before PUT.
 ALWAYS_STRIP = {
@@ -306,6 +308,14 @@ def build_headers(token: str) -> Dict[str, str]:
     }
 
 
+def build_assignment_rules_headers(token: str) -> Dict[str, str]:
+    return {
+        "Authorization": f"Bearer {token}",
+        "Accept":        "application/json;version=2",
+        "Content-Type":  "application/json",
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Update SupportedModels for macOS internal apps in Workspace ONE UEM v2"
@@ -331,6 +341,8 @@ def main() -> None:
     # Mode
     parser.add_argument("--mode", choices=["dry-run", "update"], default="dry-run",
                         help="dry-run: show changes only | update: apply changes (default: dry-run)")
+    parser.add_argument("--force-update", action="store_true",
+                        help="Perform assignment rules GET+PUT even if all models already present")
 
     # Logging
     parser.add_argument("--log-file",   default=None)
@@ -361,12 +373,14 @@ def main() -> None:
             logger.error("Could not obtain bearer token — aborting")
             sys.exit(1)
 
-    headers  = build_headers(token)
+    headers = build_headers(token)
+    assignment_rules_headers = build_assignment_rules_headers(token)
     base     = args.base_url.rstrip("/")
     is_update = (args.mode == "update")
+    force_update = args.force_update
     models_to_add = [m.strip() for m in args.models.split(",") if m.strip()]
 
-    logger.info("Mode: %s | Models to add: %s", args.mode, models_to_add)
+    logger.info("Mode: %s | Models to add: %s | Force-update: %s", args.mode, models_to_add, force_update)
 
     # ── Fetch app list ────────────────────────────────────────────────────
     list_url = f"{base}{LIST_ENDPOINT}"
@@ -450,45 +464,93 @@ def main() -> None:
         current = current_model_names(full_obj.get("SupportedModels"))
         missing = [m for m in models_to_add if m not in current]
 
-        if not missing:
+        if not missing and not force_update:
             logger.info("SKIP  id=%-6s %-50s  — all models already present", app_id, f"'{name}'")
             skipped_count += 1
             continue
 
-        logger.info("%-7s id=%-6s %-50s  — adding: %s",
-                    "WOULD" if not is_update else "UPDATE",
-                    app_id, f"'{name}'", missing)
+        # ── Perform detail PUT if models are missing ──────────────────────
+        if missing:
+            logger.info("%-7s id=%-6s %-50s  — adding: %s",
+                        "WOULD" if not is_update else "UPDATE",
+                        app_id, f"'{name}'", missing)
 
-        # ── Build sanitized PUT payload ───────────────────────────────────
-        put_body = sanitize_put_payload(
-            full_get_obj=full_obj,
-            app_id=app_id,
-            models_to_add=models_to_add,
-        )
+            # ── Build sanitized PUT payload ───────────────────────────────
+            put_body = sanitize_put_payload(
+                full_get_obj=full_obj,
+                app_id=app_id,
+                models_to_add=models_to_add,
+            )
 
-        logger.debug("PUT id=%s SupportedModels (to send):\n%s",
-                     app_id, json.dumps(put_body.get("SupportedModels"), indent=2))
+            logger.debug("PUT id=%s SupportedModels (to send):\n%s",
+                         app_id, json.dumps(put_body.get("SupportedModels"), indent=2))
 
-        if not is_update:
-            logger.info("(dry-run) PUT would be sent to %s", detail_url)
-            continue
+            if not is_update:
+                logger.info("(dry-run) PUT would be sent to %s", detail_url)
+                continue
 
-        # ── PUT ───────────────────────────────────────────────────────────
-        try:
-            r_put = requests.put(detail_url, headers=headers,
-                                 json=put_body, timeout=60)
-        except Exception as exc:
-            logger.error("PUT %s failed: %s", detail_url, exc)
-            error_count += 1
-            continue
+            # ── PUT ───────────────────────────────────────────────────────
+            try:
+                r_put = requests.put(detail_url, headers=headers,
+                                     json=put_body, timeout=60)
+            except Exception as exc:
+                logger.error("PUT %s failed: %s", detail_url, exc)
+                error_count += 1
+                continue
 
-        if 200 <= r_put.status_code < 300:
+            if r_put.status_code < 200 or r_put.status_code >= 300:
+                logger.error("FAIL  id=%-6s '%s'  %s: %s",
+                             app_id, name, r_put.status_code, r_put.text[:600])
+                error_count += 1
+                continue
+
             logger.info("OK    id=%-6s '%s'", app_id, name)
             updated_count += 1
+        elif force_update:
+            logger.info("FORCE id=%-6s %-50s  — force-update: processing assignment rules only",
+                        app_id, f"'{name}'")
+
+        # ── Handle assignment rules (after PUT success or on force-update) ─
+        if not is_update:
+            if force_update and not missing:
+                logger.info("(dry-run) assignment rules would be updated for %s", detail_url)
+            continue
+        
+        # For update mode, proceed with assignment rules
+        app_uuid = (full_obj.get("Uuid") or full_obj.get("ApplicationUuid") or 
+                   app.get("Uuid") or app.get("ApplicationUuid"))
+        if not app_uuid:
+            logger.warning("Could not find Uuid for id=%s — skipping assignment rules", app_id)
         else:
-            logger.error("FAIL  id=%-6s '%s'  %s: %s",
-                         app_id, name, r_put.status_code, r_put.text[:600])
-            error_count += 1
+            assignment_rules_url = f"{base}{ASSIGNMENT_RULES_ENDPOINT.format(applicationUuid=app_uuid)}"
+            try:
+                r_get_rules = requests.get(assignment_rules_url, headers=assignment_rules_headers, timeout=30)
+            except Exception as exc:
+                logger.error("GET assignment rules %s failed: %s", assignment_rules_url, exc)
+            else:
+                if r_get_rules.status_code != 200:
+                    logger.error("GET assignment rules for id=%s returned %s: %s",
+                                 app_id, r_get_rules.status_code, r_get_rules.text[:400])
+                else:
+                    try:
+                        assignment_rules = r_get_rules.json()
+                    except Exception:
+                        logger.error("Assignment rules response for id=%s is not JSON", app_id)
+                    else:
+                        logger.debug("GET id=%s assignment-rules:\n%s", app_id, json.dumps(assignment_rules, indent=2))
+
+                        # ── PUT Assignment Rules ──────────────────────────────
+                        try:
+                            r_put_rules = requests.put(assignment_rules_url, headers=assignment_rules_headers,
+                                                       json=assignment_rules, timeout=60)
+                        except Exception as exc:
+                            logger.error("PUT assignment rules %s failed: %s", assignment_rules_url, exc)
+                        else:
+                            if 200 <= r_put_rules.status_code < 300:
+                                logger.info("RULES OK id=%-6s '%s'", app_id, name)
+                            else:
+                                logger.error("PUT assignment rules failed for id=%-6s '%s'  %s: %s",
+                                             app_id, name, r_put_rules.status_code, r_put_rules.text[:400])
 
     # ── Summary ───────────────────────────────────────────────────────────
     logger.info("─" * 60)
