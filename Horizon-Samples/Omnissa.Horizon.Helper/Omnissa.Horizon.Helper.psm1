@@ -3160,7 +3160,12 @@ function Get-HVFarmStorageObject {
       'spaceReclamationSettings' = $FarmSpaceReclamationSettings;
     }
 
-    $storageObject.ViewComposerStorageSettings = New-Object Omnissa.Horizon.FarmViewComposerStorageSettings -Property $FarmViewComposerStorageSettingsList
+    # ViewComposerStorageSettings is a legacy View Composer (Linked Clone) construct. In newer
+    # Horizon/Omnissa API versions it has been removed from FarmVirtualCenterStorageSettings.
+    # Only set it when the property is actually present on the object to avoid PropertyNotFound.
+    if ($null -ne $storageObject.PSObject.Properties['ViewComposerStorageSettings']) {
+      $storageObject.ViewComposerStorageSettings = New-Object Omnissa.Horizon.FarmViewComposerStorageSettings -Property $FarmViewComposerStorageSettingsList
+    }
   }
 
   if ($datastores) {
@@ -3187,7 +3192,7 @@ function Get-HVFarmStorageObject {
       $datastoresObj.StorageOvercommit =  $storageOvercommit[$StorageOvercommitCnt]
       $StorageObject.Datastores += $datastoresObj
     }
-    if ($useSeparateDatastoresReplicaAndOSDisks) {
+    if ($useSeparateDatastoresReplicaAndOSDisks -and ($null -ne $storageObject.PSObject.Properties['ViewComposerStorageSettings']) -and ($null -ne $storageObject.ViewComposerStorageSettings)) {
         $StorageObject.ViewComposerStorageSettings.UseSeparateDatastoresReplicaAndOSDisks = $UseSeparateDatastoresReplicaAndOSDisks
         $FarmReplicaDiskDatastore = ($datastoreList | Where-Object { $_.datastoredata.name -eq $replicaDiskDatastore }).id
         $StorageObject.ViewComposerStorageSettings.ReplicaDiskDatastore = $FarmReplicaDiskDatastore
@@ -3335,7 +3340,12 @@ function Get-FarmSpec {
   $farm_spec_helper.setType($farmType)
   if ($farmType -eq 'AUTOMATED') {
     $farm_spec_helper.getDataObject().AutomatedFarmSpec.RdsServerNamingSpec.PatternNamingSettings = $farm_helper.getFarmPatternNamingSettingsHelper().getDataObject()
-    $farm_spec_helper.getDataObject().AutomatedFarmSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings.ViewComposerStorageSettings = $farm_helper.getFarmViewComposerStorageSettingsHelper().getDataObject()
+    # ViewComposerStorageSettings only applies to legacy View Composer (Linked Clone) provisioning
+    # and has been removed from VirtualCenterStorageSettings in newer API versions.
+    $farmStorageSettings = $farm_spec_helper.getDataObject().AutomatedFarmSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings
+    if ($null -ne $farmStorageSettings.PSObject.Properties['ViewComposerStorageSettings']) {
+      $farmStorageSettings.ViewComposerStorageSettings = $farm_helper.getFarmViewComposerStorageSettingsHelper().getDataObject()
+    }
     $farm_spec_helper.getDataObject().AutomatedFarmSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData.ComputeProfile = $farm_helper.getFarmComputeProfileSpecHelper().getDataObject()
   }
   $farm_spec_helper.getDataObject().Data.Settings = $farm_helper.getFarmSessionSettingsHelper().getDataObject()
@@ -4972,7 +4982,14 @@ function New-HVPool {
         #$desktopLogoffSettings = New-Object Omnissa.Horizon.DesktopLogoffSettings
         $desktopLogoffSettings = $desktopSettingsService.getDesktopLogoffSettingsHelper()
         if ($InstantClone) {
-            $deleteOrRefreshMachineAfterLogoff = "DELETE"
+            # deleteOrRefreshMachineAfterLogoff can only be set for floating user assignment.
+            # For dedicated instant-clone pools it must remain 'NEVER', otherwise the server
+            # rejects the request with InvalidArgument.
+            if ($UserAssignment -eq 'FLOATING') {
+                $deleteOrRefreshMachineAfterLogoff = "DELETE"
+            } else {
+                $deleteOrRefreshMachineAfterLogoff = "NEVER"
+            }
             $powerPolicy = "ALWAYS_POWERED_ON"
         }
         $desktopLogoffSettings.setPowerPolicy($powerPolicy)
@@ -5178,6 +5195,7 @@ function Get-HVPoolProvisioningData {
     [Omnissa.Horizon.VirtualCenterId]$VcID
   )
   if (!$vmObject) { $vmObject = $desktopSpecObj.AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterProvisioningData }
+  if (!$vmObject) { $vmObject = New-Object Omnissa.Horizon.DesktopVirtualCenterProvisioningData }
   if ($template) {
     $vm_template_helper = New-Object Omnissa.Horizon.VmTemplateService
     $templateList = $vm_template_helper.VmTemplate_List($services,$vcID)
@@ -5434,7 +5452,9 @@ function Get-HVPoolStorageObject {
       'persistentDiskSettings' = $desktopPersistentDiskSettings;
       'nonPersistentDiskSettings' = $desktopNonPersistentDiskSettings
     }
-    if (!$FullClone) {
+    # ViewComposerStorageSettings is a legacy View Composer (Linked Clone) construct. In newer
+    #  API versions it has been removed from DesktopVirtualCenterStorageSettings.
+    if (!$FullClone -and ($null -ne $storageObject.PSObject.Properties['ViewComposerStorageSettings'])) {
       $storageObject.ViewComposerStorageSettings = New-Object Omnissa.Horizon.DesktopViewComposerStorageSettings -Property $desktopViewComposerStorageSettingsList
     }
   }
@@ -5443,7 +5463,7 @@ function Get-HVPoolStorageObject {
       throw "Parameters datastores length: [$datastores.Length] and StorageOvercommit length: [$StorageOvercommit.Length] should be of same size"
     }
 	$storageObject.Datastores = Get-HVDatastore -DatastoreInfoList $datastoreList -DatastoreNames $datastores -DsStorageOvercommit $StorageOvercommit
-	if ($useSeparateDatastoresReplicaAndOSDisks) {
+	if ($useSeparateDatastoresReplicaAndOSDisks -and ($null -ne $storageObject.PSObject.Properties['ViewComposerStorageSettings']) -and ($null -ne $storageObject.ViewComposerStorageSettings)) {
       $storageObject.ViewComposerStorageSettings.UseSeparateDatastoresReplicaAndOSDisks = $UseSeparateDatastoresReplicaAndOSDisks
       $storageObject.ViewComposerStorageSettings.ReplicaDiskDatastore =  ($datastoreList | Where-Object { ($_.datastoredata.name -eq $replicaDiskDatastore) -or ($_.datastoredata.path -eq $replicaDiskDatastore)}).id
     }
@@ -5673,8 +5693,11 @@ function Get-DesktopSpec {
     } else {
       $desktop_spec_helper.getDataObject().AutomatedDesktopSpec.VmNamingSpec.SpecificNamingSpec = $desktop_helper.getDesktopSpecificNamingSpecHelper().getDataObject()
     }
-    if ($provisioningType -ne 'VIRTUAL_CENTER') {
-      $desktop_spec_helper.getDataObject().AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings.ViewComposerStorageSettings = $desktop_helper.getDesktopViewComposerStorageSettingsHelper().getDataObject()
+    if ($provisioningType -eq 'VIEW_COMPOSER') {
+      $storageSettings = $desktop_spec_helper.getDataObject().AutomatedDesktopSpec.VirtualCenterProvisioningSettings.VirtualCenterStorageSettings
+      if ($null -ne $storageSettings.PSObject.Properties['ViewComposerStorageSettings']) {
+        $storageSettings.ViewComposerStorageSettings = $desktop_helper.getDesktopViewComposerStorageSettingsHelper().getDataObject()
+      }
     }
   } elseIf ($poolType -eq 'MANUAL') {
     $desktop_spec_helper.getDataObject().ManualDesktopSpec.userAssignment = $desktop_helper.getDesktopUserAssignmentHelper().getDataObject()
