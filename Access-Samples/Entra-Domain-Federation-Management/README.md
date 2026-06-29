@@ -1,7 +1,7 @@
 # Entra Federation Management Scripts
 
 Version:        1.0  
-Author:         shildebrandt - UPDATE_WITH_EMAIL  
+Author:         Sascha_Warno - swarno@omnissa.com  
 Creation Date:  2026-06-26
 
 ## Overview
