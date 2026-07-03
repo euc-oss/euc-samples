@@ -26,31 +26,31 @@
     - enforceMfaByFederatedIdp
 
 .EXAMPLE
-    .\New-MgDomainFederation.ps1 -TenantId "12345678-1234-1234-1234-123456789012" `
+    .\New-MgDomainFederation-PS51.ps1 -TenantId "12345678-1234-1234-1234-123456789012" `
         -Domain "customer.com" `
         -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml"
 
 .EXAMPLE
-    .\New-MgDomainFederation.ps1 -TenantId "12345678-1234-1234-1234-123456789012" `
+    .\New-MgDomainFederation-PS51.ps1 -TenantId "12345678-1234-1234-1234-123456789012" `
         -Domain "customer.com" `
         -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" `
         -DisplayName "Customer Corporation" `
         -FederatedIdpMfaBehavior "enforceMfaByFederatedIdp" `
 #>
-#requires -Version 7.0
+#requires -Version 5.1
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true, HelpMessage = "Azure AD tenant ID")]
-    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', ErrorMessage = "TenantId must be a valid GUID")]
+    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')]
     [string]$TenantId,
 
     [Parameter(Mandatory = $true, HelpMessage = "Domain to configure for federation (e.g., customer.com)")]
-    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$', ErrorMessage = "Domain must be a valid domain name")]
+    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')]
     [string]$Domain,
 
     [Parameter(Mandatory = $true, HelpMessage = "Metadata URI (e.g., https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml)")]
-    [ValidateScript({ $_ -match '^https?://' }, ErrorMessage = "MetadataUri must be a valid HTTP/HTTPS URL")]
+    [ValidateScript({ $_ -match '^https?://' })]
     [string]$MetadataUri,
 
     [Parameter(Mandatory = $false, HelpMessage = "Display name for the federation (defaults to domain name)")]
@@ -197,7 +197,7 @@ function test-prereqs {
 # ============================================================================
 # Function: Connect to Graph and create federation
 # ============================================================================
-function New-MgDomainFederationConfiguration {
+function Invoke-NewMgDomainFederationConfiguration {
     param(
         [Parameter(Mandatory = $true)]
         [string]$TenantId,
@@ -288,7 +288,7 @@ try {
 
     # Step 2: Create domain federation
     Write-Host "`nStep 2: Creating domain federation configuration..." -ForegroundColor Yellow
-    $federation = New-MgDomainFederationConfiguration `
+    $federation = Invoke-NewMgDomainFederationConfiguration `
         -TenantId $TenantId `
         -Domain $Domain `
         -Metadata $metadata `

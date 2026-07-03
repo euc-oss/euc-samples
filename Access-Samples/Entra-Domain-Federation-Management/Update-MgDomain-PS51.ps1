@@ -19,21 +19,22 @@
     Simulate the update without making changes.
 
 .EXAMPLE
-    .\Update-MgDomain.ps1 -TenantId "..." -Domain "contoso.com"
+    .\Update-MgDomain-PS51.ps1 -TenantId "..." -Domain "contoso.com"
 
 .EXAMPLE
-    .\Update-MgDomain.ps1 -TenantId "..." -Domain "contoso.com" -WhatIf
+    .\Update-MgDomain-PS51.ps1 -TenantId "..." -Domain "contoso.com" -WhatIf
 #>
+#requires -Version 5.1
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true, HelpMessage = "Azure AD tenant ID")]
-    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', ErrorMessage = "TenantId must be a valid GUID")]
+    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')]
     [string]$TenantId,
 
     [Parameter(Mandatory = $true, HelpMessage = "Domain to update (e.g., contoso.com)")]
     [Alias('DomainId')]
-    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$', ErrorMessage = "Domain must be a valid domain name")]
+    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')]
     [string]$Domain,
 
     [Parameter(Mandatory = $false, HelpMessage = "Authentication type: Managed or Federated")]

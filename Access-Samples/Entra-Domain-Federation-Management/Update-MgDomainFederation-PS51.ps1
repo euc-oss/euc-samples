@@ -29,35 +29,34 @@
     Optional path for the backup CSV file. Defaults to ./O365_Federation_Backup_<timestamp>.csv
 
 .EXAMPLE
-    .\Update-MgDomainFederation.ps1 -TenantId "..." -Domain "customer.com" -InternalDomainFederationId "abc123" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml"
+    .\Update-MgDomainFederation-PS51.ps1 -TenantId "..." -Domain "customer.com" -InternalDomainFederationId "abc123" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml"
 
 .EXAMPLE
-    .\Update-MgDomainFederation.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -BackupPath ".\backups\federation_backup.csv"
+    .\Update-MgDomainFederation-PS51.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -BackupPath ".\backups\federation_backup.csv"
 
 .EXAMPLE
-    .\Update-MgDomainFederation.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -WhatIf
+    .\Update-MgDomainFederation-PS51.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -WhatIf
 
 .EXAMPLE
-    on Windows PowerShell run using pwsh.exe as it requires Powershell 7.x and default for running PS1 files is using powershell.exe in version 5.1
-    pwsh.exe -File .\Update-MgDomainFederation.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -FederatedIdpMfaBehavior "enforceMfaByFederatedIdp"    
+    powershell.exe -File .\Update-MgDomainFederation-PS51.ps1 -TenantId "..." -Domain "customer.com" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" -FederatedIdpMfaBehavior "enforceMfaByFederatedIdp"
 #>
-#requires -Version 7.0
+#requires -Version 5.1
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', ErrorMessage = "TenantId must be a valid GUID")]
+    [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')]
     [string]$TenantId,
 
     [Parameter(Mandatory = $true)]
-    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$', ErrorMessage = "Domain must be a valid domain name")]
+    [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')]
     [string]$Domain,
 
     [Parameter(Mandatory = $false, HelpMessage = 'InternalDomainFederationId from existing federation. If not provided, it will be automatically retrieved.')]
     [string]$InternalDomainFederationId,
 
     [Parameter(Mandatory = $true, HelpMessage = 'Metadata URI (e.g., https://baseurl/SAAS/API/1.0/GET/metadata/idp.xml)')]
-    [ValidateScript({ $_ -match '^https?://' }, ErrorMessage = "MetadataUri must be a valid HTTP/HTTPS URL")]
+    [ValidateScript({ $_ -match '^https?://' })]
     [string]$MetadataUri,
 
     [Parameter(Mandatory = $false)]

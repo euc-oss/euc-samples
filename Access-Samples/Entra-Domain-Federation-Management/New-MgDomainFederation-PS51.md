@@ -1,4 +1,4 @@
-# New-MgDomainFederation.ps1
+# New-MgDomainFederation-PS51.ps1
 
 Creates a new domain federation configuration in Microsoft Entra ID using Microsoft Graph.
 
@@ -13,7 +13,7 @@ Creates a new domain federation configuration in Microsoft Entra ID using Micros
 
 ## Requirements
 
-- PowerShell 7.0+
+- Windows PowerShell 5.1+
 - Microsoft.Graph.Identity.DirectoryManagement module (installed automatically if missing)
 - Entra permissions:
   - Domain-InternalFederation.ReadWrite.All
@@ -33,14 +33,14 @@ Creates a new domain federation configuration in Microsoft Entra ID using Micros
 ## Usage examples
 
 ```powershell
-pwsh -File .\New-MgDomainFederation.ps1 `
+powershell.exe -File .\New-MgDomainFederation-PS51.ps1 `
   -TenantId "12345678-1234-1234-1234-123456789012" `
   -Domain "customer.com" `
   -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml"
 ```
 
 ```powershell
-pwsh -File .\New-MgDomainFederation.ps1 `
+powershell.exe -File .\New-MgDomainFederation-PS51.ps1 `
   -TenantId "12345678-1234-1234-1234-123456789012" `
   -Domain "customer.com" `
   -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml" `

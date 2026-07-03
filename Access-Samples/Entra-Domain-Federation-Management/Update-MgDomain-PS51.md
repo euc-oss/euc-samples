@@ -1,4 +1,4 @@
-# Update-MgDomain.ps1
+# Update-MgDomain-PS51.ps1
 
 Updates a Microsoft Entra domain authentication type using Microsoft Graph.
 
@@ -12,7 +12,7 @@ Updates a Microsoft Entra domain authentication type using Microsoft Graph.
 
 ## Requirements
 
-- PowerShell 7.0+
+- Windows PowerShell 5.1+
 - Microsoft.Graph PowerShell module (installed automatically if missing)
 - Entra permissions:
   - Domain.ReadWrite.All
@@ -27,13 +27,13 @@ Updates a Microsoft Entra domain authentication type using Microsoft Graph.
 ## Usage examples
 
 ```powershell
-pwsh -File .\Update-MgDomain.ps1 `
+powershell.exe -File .\Update-MgDomain-PS51.ps1 `
   -TenantId "12345678-1234-1234-1234-123456789012" `
   -Domain "customer.com"
 ```
 
 ```powershell
-pwsh -File .\Update-MgDomain.ps1 `
+powershell.exe -File .\Update-MgDomain-PS51.ps1 `
   -TenantId "12345678-1234-1234-1234-123456789012" `
   -Domain "customer.com" `
   -AuthenticationType "Federated" `
