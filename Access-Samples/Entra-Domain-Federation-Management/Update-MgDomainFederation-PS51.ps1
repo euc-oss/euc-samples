@@ -28,6 +28,11 @@
 .PARAMETER BackupPath
     Optional path for the backup CSV file. Defaults to ./O365_Federation_Backup_<timestamp>.csv
 
+.PARAMETER AuthenticationMethod
+    Authentication method for Connect-MgGraph.
+    - Interactive (default): browser-based sign-in
+    - DeviceCode: device code sign-in
+
 .EXAMPLE
     .\Update-MgDomainFederation-PS51.ps1 -TenantId "..." -Domain "customer.com" -InternalDomainFederationId "abc123" -MetadataUri "https://tenant.us1.wss.workspaceone.com/SAAS/API/1.0/GET/metadata/idp.xml"
 
@@ -44,11 +49,11 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, HelpMessage = 'Azure AD tenant ID')]
     [ValidatePattern('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')]
     [string]$TenantId,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, HelpMessage = 'Domain to configure for federation (e.g., customer.com)')]
     [ValidatePattern('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')]
     [string]$Domain,
 
@@ -69,8 +74,14 @@ param(
     [Parameter(Mandatory = $false)]
     [string]$BackupPath = "O365_Federation_Backup_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv",
 
+    [Parameter(Mandatory = $false, HelpMessage = 'Authentication method: Interactive (browser) or DeviceCode')]
+    [ValidateSet('Interactive', 'DeviceCode')]
+    [string]$AuthenticationMethod = 'Interactive',
+
     [switch]$WhatIf
 )
+
+$graphConnectedByScript = $false
 
 # Always use WS-Fed protocol
 $Protocol = 'wsFed'
@@ -131,14 +142,85 @@ function Get-IdpMetadata {
 
 function test-prereqs {
     try {
-        if (-not (Get-Module -Name Microsoft.Graph.Identity.DirectoryManagement) -and -not (Get-Module -ListAvailable -Name Microsoft.Graph.Identity.DirectoryManagement)) {
-            Write-Host "Microsoft.Graph.Identity.DirectoryManagement module not found. Installing..." -ForegroundColor Yellow
-            Install-Module -Name Microsoft.Graph.Identity.DirectoryManagement -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
+        $moduleName = 'Microsoft.Graph.Identity.DirectoryManagement'
+        $authModuleName = 'Microsoft.Graph.Authentication'
+        $modulePath = $null
+
+        # Ensure user module location is in PSModulePath for this session.
+        $userModuleRoot = Join-Path -Path $HOME -ChildPath 'Documents\\WindowsPowerShell\\Modules'
+        if ((Test-Path -LiteralPath $userModuleRoot) -and (($env:PSModulePath -split ';') -notcontains $userModuleRoot)) {
+            $env:PSModulePath = "$userModuleRoot;$env:PSModulePath"
         }
-        Import-Module Microsoft.Graph.Identity.DirectoryManagement -ErrorAction Stop
+
+        # PowerShell 5.1 often needs explicit TLS 1.2 and NuGet provider bootstrapping.
+        [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+        if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+            Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force -ErrorAction Stop | Out-Null
+        }
+
+        # Ensure PSGallery can be used non-interactively.
+        $repo = Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue
+        if ($repo -and $repo.InstallationPolicy -ne 'Trusted') {
+            Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+        }
+
+        if (-not (Get-Module -ListAvailable -Name $moduleName)) {
+            Write-Host "$moduleName module not found. Installing..." -ForegroundColor Yellow
+            Install-Module -Name $moduleName -Repository PSGallery -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
+        }
+
+        # Fallback: install umbrella package if the submodule still is not discoverable.
+        if (-not (Get-Module -ListAvailable -Name $moduleName)) {
+            Write-Host "$moduleName still not found. Installing Microsoft.Graph as fallback..." -ForegroundColor Yellow
+            Install-Module -Name Microsoft.Graph -Repository PSGallery -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
+        }
+
+        # Pre-load auth dependency explicitly because submodules require it.
+        if (-not (Get-Module -ListAvailable -Name $authModuleName)) {
+            $authInstalled = Get-InstalledModule -Name $authModuleName -ErrorAction SilentlyContinue | Sort-Object Version -Descending | Select-Object -First 1
+            if ($authInstalled -and $authInstalled.InstalledLocation) {
+                $authRoot = Split-Path -Path $authInstalled.InstalledLocation -Parent
+                if (($env:PSModulePath -split ';') -notcontains $authRoot) {
+                    $env:PSModulePath = "$authRoot;$env:PSModulePath"
+                }
+
+                $authManifestPath = Join-Path -Path $authInstalled.InstalledLocation -ChildPath ($authModuleName + '.psd1')
+                if (Test-Path -LiteralPath $authManifestPath) {
+                    Import-Module -Name $authManifestPath -ErrorAction Stop
+                }
+            }
+        }
+
+        if (-not (Get-Module -Name $authModuleName)) {
+            Import-Module -Name $authModuleName -ErrorAction Stop
+        }
+
+        # Some Windows PowerShell 5.1 environments have PSModulePath issues even after install.
+        # Resolve from installed location and import by explicit path if needed.
+        if (-not (Get-Module -ListAvailable -Name $moduleName)) {
+            $installed = Get-InstalledModule -Name $moduleName -ErrorAction SilentlyContinue | Sort-Object Version -Descending | Select-Object -First 1
+            if ($installed -and $installed.InstalledLocation) {
+                $moduleRoot = Split-Path -Path $installed.InstalledLocation -Parent
+                if (($env:PSModulePath -split ';') -notcontains $moduleRoot) {
+                    $env:PSModulePath = "$moduleRoot;$env:PSModulePath"
+                }
+
+                $manifestPath = Join-Path -Path $installed.InstalledLocation -ChildPath ($moduleName + '.psd1')
+                if (Test-Path -LiteralPath $manifestPath) {
+                    $modulePath = $manifestPath
+                }
+            }
+        }
+
+        if ($modulePath) {
+            Import-Module -Name $modulePath -ErrorAction Stop
+        }
+        else {
+            Import-Module -Name $moduleName -ErrorAction Stop
+        }
     }
     catch {
-        Write-Error "Failed to install/import Microsoft.Graph: $_"
+        Write-Error ('Failed to install/import Microsoft.Graph: {0}' -f $_)
         throw
     }
 }
@@ -150,7 +232,33 @@ try {
     test-prereqs
     $scopes = @('Domain-InternalFederation.ReadWrite.All','Domain.ReadWrite.All')
     Write-Verbose "Connecting to Microsoft Graph with scopes: $($scopes -join ',')"
-    Connect-MgGraph -TenantId $TenantId -Scopes $scopes -ErrorAction Stop
+    $ctx = Get-MgContext -ErrorAction SilentlyContinue
+    $requiredScopes = @('Domain-InternalFederation.ReadWrite.All','Domain.ReadWrite.All')
+    $hasRequiredScopes = $false
+    if ($ctx -and $ctx.Scopes) {
+        $missingScopes = $requiredScopes | Where-Object { $_ -notin @($ctx.Scopes) }
+        $hasRequiredScopes = ($missingScopes.Count -eq 0)
+    }
+
+    if ($ctx -and $ctx.TenantId -eq $TenantId -and $hasRequiredScopes) {
+        Write-Verbose "Reusing existing Microsoft Graph context for tenant $TenantId"
+    }
+    else {
+        if ($ctx) {
+            Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+        }
+
+        if ($AuthenticationMethod -eq 'DeviceCode') {
+            Write-Verbose "Authenticating to Graph using device code flow"
+            Connect-MgGraph -TenantId $TenantId -Scopes $scopes -UseDeviceCode -NoWelcome -ContextScope Process -ErrorAction Stop
+        }
+        else {
+            Write-Verbose "Authenticating to Graph using interactive browser flow"
+            Connect-MgGraph -TenantId $TenantId -Scopes $scopes -NoWelcome -ContextScope Process -ErrorAction Stop
+        }
+
+        $graphConnectedByScript = $true
+    }
 
     $federationConfig = $null
 
@@ -229,7 +337,7 @@ try {
         $result = Update-MgDomainFederationConfiguration @params -ErrorAction Stop
         $DisplayNameOutput = if ($result.DisplayName) { $result.DisplayName } else { $Domain }
         $IssuerURIOutput = if ($result.IssuerUri) { $result.IssuerUri } else { $metadata.IssuerUri }
-        Write-Host "✓ Domain federation updated successfully for $Domain" -ForegroundColor Green
+        Write-Host "Domain federation updated successfully for $Domain" -ForegroundColor Green
         Write-Host "Display Name: $DisplayNameOutput"
         Write-Host "Issuer URI: $IssuerURIOutput"
     }
@@ -239,4 +347,11 @@ try {
 catch {
     Write-Error "Update failed: $_"
     exit 1
+}
+finally {
+    if ($graphConnectedByScript) {
+        Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+    }
+    Remove-Module Microsoft.Graph.Identity.DirectoryManagement -ErrorAction SilentlyContinue
+    Remove-Module Microsoft.Graph.Authentication -ErrorAction SilentlyContinue
 }

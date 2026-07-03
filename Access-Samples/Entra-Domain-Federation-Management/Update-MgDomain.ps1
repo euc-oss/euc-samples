@@ -9,7 +9,7 @@
 .PARAMETER TenantId
     The Azure AD tenant ID.
 
-.PARAMETER DomainId
+.PARAMETER Domain
     The domain to update (e.g., contoso.com).
 
 .PARAMETER AuthenticationType
@@ -43,6 +43,8 @@ param(
     [switch]$WhatIf
 )
 
+$graphConnectedByScript = $false
+
 # ============================================================================
 # Function: Ensure Microsoft.Graph module installed and loaded
 # ============================================================================
@@ -72,7 +74,22 @@ try {
 
     Write-Verbose "Connecting to Microsoft Graph..."
     $scopes = @('Domain.ReadWrite.All')
-    Connect-MgGraph -TenantId $TenantId -Scopes $scopes -ErrorAction Stop
+    $ctx = Get-MgContext -ErrorAction SilentlyContinue
+    $hasRequiredScope = $false
+    if ($ctx -and $ctx.Scopes) {
+        $hasRequiredScope = @($ctx.Scopes) -contains 'Domain.ReadWrite.All'
+    }
+
+    if ($ctx -and $ctx.TenantId -eq $TenantId -and $hasRequiredScope) {
+        Write-Verbose "Reusing existing Microsoft Graph context for tenant $TenantId"
+    }
+    else {
+        if ($ctx) {
+            Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+        }
+        Connect-MgGraph -TenantId $TenantId -Scopes $scopes -ContextScope Process -ErrorAction Stop
+        $graphConnectedByScript = $true
+    }
     Write-Verbose "Successfully connected to Microsoft Graph"
 
     # Build parameters
@@ -92,8 +109,24 @@ try {
     }
     else {
         $result = Update-MgDomain @params -ErrorAction Stop
+        $effectiveAuthenticationType = $AuthenticationType
+        if ($result -and $result.AuthenticationType) {
+            $effectiveAuthenticationType = $result.AuthenticationType
+        }
+        else {
+            try {
+                $domainState = Get-MgDomain -DomainId $Domain -ErrorAction Stop
+                if ($domainState -and $domainState.AuthenticationType) {
+                    $effectiveAuthenticationType = $domainState.AuthenticationType
+                }
+            }
+            catch {
+                Write-Verbose "Could not read back domain state after update: $($_.Exception.Message)"
+            }
+        }
+
         Write-Host "✓ Domain updated successfully: $Domain" -ForegroundColor Green
-        Write-Host "AuthenticationType: $($result.AuthenticationType)"
+        Write-Host "AuthenticationType: $effectiveAuthenticationType"
     }
 
     return $result
@@ -101,4 +134,11 @@ try {
 catch {
     Write-Error "Domain update failed: $_"
     exit 1
+}
+finally {
+    if ($graphConnectedByScript) {
+        Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+    }
+    Remove-Module Microsoft.Graph.Identity.DirectoryManagement -ErrorAction SilentlyContinue
+    Remove-Module Microsoft.Graph.Authentication -ErrorAction SilentlyContinue
 }

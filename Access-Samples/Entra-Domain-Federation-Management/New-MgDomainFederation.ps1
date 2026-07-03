@@ -61,6 +61,8 @@ param(
     [string]$FederatedIdpMfaBehavior = 'acceptIfMfaDoneByFederatedIdp'
 )
 
+$script:graphConnectedByScript = $false
+
 # Always use WS-Fed protocol
 $Protocol = 'wsFed'
 
@@ -223,7 +225,24 @@ function New-MgDomainFederationConfiguration {
 
         Write-Verbose "Connecting to Microsoft Graph..."
         $scopes = @('Domain-InternalFederation.ReadWrite.All','Domain.ReadWrite.All')
-        Connect-MgGraph -TenantId $TenantId -Scopes $scopes -ErrorAction Stop
+        $ctx = Get-MgContext -ErrorAction SilentlyContinue
+        $requiredScopes = @('Domain-InternalFederation.ReadWrite.All','Domain.ReadWrite.All')
+        $hasRequiredScopes = $false
+        if ($ctx -and $ctx.Scopes) {
+            $missingScopes = $requiredScopes | Where-Object { $_ -notin @($ctx.Scopes) }
+            $hasRequiredScopes = ($missingScopes.Count -eq 0)
+        }
+
+        if ($ctx -and $ctx.TenantId -eq $TenantId -and $hasRequiredScopes) {
+            Write-Verbose "Reusing existing Microsoft Graph context for tenant $TenantId"
+        }
+        else {
+            if ($ctx) {
+                Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+            }
+            Connect-MgGraph -TenantId $TenantId -Scopes $scopes -ContextScope Process -ErrorAction Stop
+            $script:graphConnectedByScript = $true
+        }
         Write-Verbose "Successfully connected to Microsoft Graph"
 
         # Build BodyParameter payload for documented Create parameter set
@@ -304,4 +323,11 @@ try {
 catch {
     Write-Error "Domain federation creation failed. See errors above for details."
     exit 1
+}
+finally {
+    if ($script:graphConnectedByScript) {
+        Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
+    }
+    Remove-Module Microsoft.Graph.Identity.DirectoryManagement -ErrorAction SilentlyContinue
+    Remove-Module Microsoft.Graph.Authentication -ErrorAction SilentlyContinue
 }
